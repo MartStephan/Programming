@@ -1,2 +1,2 @@
 # Programming
-Programming lectures
+Programming lectures. Wanted to improve your programming knowledge. Poke into my docs. Only the newest and coolest stuff about programming idioms, C++, Python, Rust, Go, ML, ...
