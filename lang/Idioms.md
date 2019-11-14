@@ -348,7 +348,7 @@ Ein weiteres wichtiges Kriterium für funktionale Programmiersprachen ist die Ve
 
 Darunter versteht man z.B. das Transformieren einer Liste in eine neue Liste oder die Komposition von Listenoperationen.  
 
-### Bedarfsauswertung
+## Bedarfsauswertung (Lazy Evaluation)
 
 Bedarfsauswertung ist auch unter dem Begriff *Lazy Evaluation* bekannt. Imperative Programmiersprachen wie C++ kennen eigentlich nur die strikte Auswertung und eben nicht eine *Lazy Evaluation*.  
 
@@ -855,9 +855,9 @@ Im obigen Beispiel muß man bei der Instantiierung von *‘Stack’* einen konst
 
 ## L-Value/R-Value
 
-In der Programmiersprache C/C++ gibt es die Begriffe lvalue und rvalue. Für ein tieferes Verständnis der Programmiersprache ist die Bedeutung und die Anwendung dieser Begriffe unerläßlich.
+In der Programmiersprache C/C++ gibt es die Begriffe *lvalue* und *rvalue*. Für ein tieferes Verständnis der Programmiersprache ist die Bedeutung und die Anwendung dieser Begriffe unerläßlich.
 
-Jeder Ausdruck in C++ ist entweder ein lvalue oder ein rvalue. Ein lvalue verweist auf ein Objekt, das über einen einzelnen Ausdruck hinaus beibehalten wird. Sie können sich einen lvalue als ein Objekt vorstellen, das über einen Namen verfügt. Alle Variablen, einschließlich nicht veränderbarer (const) Variablen, sind lvalues. Ein rvalue ist ein temporärer Wert, der nicht über den Ausdruck hinaus beibehalten wird, der diesen nutzt.
+Jeder Ausdruck in C++ ist entweder ein *lvalue* oder ein *rvalue*. Ein lvalue verweist auf ein Objekt, das über einen einzelnen Ausdruck hinaus beibehalten wird. Sie können sich einen lvalue als ein Objekt vorstellen, das über einen Namen verfügt. Alle Variablen, einschließlich nicht veränderbarer (const) Variablen, sind *lvalues*. Ein *rvalue* ist ein temporärer Wert, der nicht über den Ausdruck hinaus beibehalten wird, der diesen nutzt.
 
 ```c++
 int main()
@@ -869,6 +869,8 @@ int main()
 	int y = x;  // y ist lvalue; x ist weiterhin lvalue
 }
 ```
+
+Siehe dazu auch https://en.cppreference.com/w/cpp/language/value_category und https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/. 
 
 ## Move-Semantik
 
@@ -1055,6 +1057,12 @@ Schaue ‚Verschattung‘ in Swift
 [23]	() -> Unit = {}, Die neue Programmiersprache für Java und mehr, Teil 3: Funktionale Programmierung, c't 23/2017, Christian Helmbold  
 
 [24]	Musser, David R.; Stepanov, Alexander A., Generic Programming, 1989
+
+[25] Value categories, https://en.cppreference.com/w/cpp/language/value_category (abgerufen am 13. November 2019)
+
+[26] lvalues, rvalues, glvalues, prvalues, xvalues, help!, https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/ (abgerufen am 13. November 2019)
+
+
 
 
 
