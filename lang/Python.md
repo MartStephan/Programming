@@ -90,7 +90,7 @@ Oder mit *main* als Einstiegspunkt.
 #!/usr/bin/python
 
 if __name__ == '__main__':
-	printf("Hallo Welt")
+	print("Hallo Welt")
 ```
 
 Oder strukturierte Programmierung mit einer Funktion.
