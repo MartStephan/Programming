@@ -12,7 +12,7 @@ Dynamisch (“*duck typing*”), objektorientiert, automatische Speicherbereinig
 
  Jede Python-Shell liefert durch Eingabe von *import this* die Eckpunkte der Python-Philosophie.
 
-```python
+```
 import this
 
 The Zen of Python, by Tim Peters
@@ -74,7 +74,7 @@ In Python gibt es den Paketmanager *pip.* Damit können vorhandene Pakete (z.B. 
 
 pip install <package>
 
-**Hello World**
+### **Hello World**
 
 Die einfachste Lösung des 'Hello World" Programms in Python 3.
 
@@ -137,11 +137,57 @@ class MyClass:
 		self.value = 1
 	
     def multiply(self, parameter1):
-		"documentation string for the method"
+		"""documentation string for the method"""
 		return self.value * parameter1
 ```
 
 Besonderheit: Viele Statements in Python erfordern zwingend eine visuelle Einrückung.  
+
+### Basics
+
+**Kommentare**
+
+Einzeilige Kommentare beginnen mit vorangestelltem # Symbol. Kommentarblöcke beginnen mit """ und enden mit """. 
+
+```python
+def myfunc(optional_params):
+   """Comment function purpose here"""
+   # This is a single-line comment
+   print("Hallo")
+   
+```
+
+**Funktionen, Parameter und Rückgabe**
+
+Funktionen werden mit *def* markiert. Parameter können einfach innerhalb der *def*-Klammerung übergeben werden. Mit dem Schlüsselwort *return* kann eine Rückgabe erfolgen.
+
+```python
+#!/usr/bin/python
+
+def amountOfFuel(spacecraftWeights):
+   """calculate fuel needed for each spacecraft and return the sum"""
+   totalFuel = 0
+
+   # calculate fuel for each spacecraft
+   for number in spacecraftWeights:
+      number = math.floor(number/3)-2
+      print(number)
+      # calculate total fuel
+      totalFuel = totalFuel + number; 
+      
+   return totalFuel;
+
+if __name__ == '__main__':
+   print("Hallo")
+   
+   adventofcode = [114739, 132732, 123925, 146385, 72590]
+   totalFuel = amountOfFuel(adventofcode)
+        
+    # print total fuel
+    print("Total fuel needed is ", totalFuel)
+```
+
+
 
 ### Objektmodell und Namensräume
 
@@ -165,7 +211,7 @@ Dadurch lässt sich Python auch in Eclipse, Visual Studio und andere populären 
 
 Iterationen werden (wie in vielen anderen Sprachen auch) mit dem Schlüsselwort *for*  implementiert. Range-basierte for-Schleifen werden unterstützt.  
 
-```
+```python
 for item in ["a", "b", "c"]:
 for i in range(4):     # 0 to 3
 for i in range(4, 8):  # 4 to 7
@@ -182,25 +228,25 @@ Listen sind ähnlich den Arrays in anderen Sprachen. Listen sind veränderlich (
 #!/usr/bin/python
  
 if __name__ == '__main__':
-	mylist = []
-	mylist.append(10)
-	mylist.append(30)
+    mylist = []
+    mylist.append(10)
+    mylist.append(30)
 
-    odds = [1, 3, 5, 7, 9, 11, 13]
-	words = ['hello', 'world']
-	car = ['Toyota', 'Civic', 100, 2452345]
-	literalsLiterals = [ [1, 2, 3], ['a', 'b', 'c'], ['first', 'second', 'third'] ]
+	 odds = [1, 3, 5, 7, 9, 11, 13]
+    words = ['hello', 'world']
+    car = ['Toyota', 'Civic', 100, 2452345]
+    literalsLiterals = [ [1, 2, 3], ['a', 'b', 'c'], ['first', 'second', 'third'] ]
 
     # Suche alle Vokale  
-	vowels = ['a', 'e', 'i', 'o', 'u']
-	word = 'centipede'
-	shrinked = []
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    word = 'centipede'
+    shrinked = []
 
     for letter in word:
-		if letter in vowels:
-			shrinked.append(letter)
+        if letter in vowels:
+            shrinked.append(letter)
 
-	print(mylist)
+    print(mylist)
 
     print(odds)
 	
@@ -212,8 +258,8 @@ if __name__ == '__main__':
 
     print(shrinked)
 
-	# negative Indizes
-	print(vowels[-1])
+    # negative Indizes
+    print(vowels[-1])
 ```
 
 
@@ -222,6 +268,32 @@ if __name__ == '__main__':
 Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, Dictionaries und Sets mit.  
 
 Tuples sind ähnlich den Listen. Nur sind sie nicht veränderlich (*immutable*). Man kann sich Tuples als konstante Liste vorstellen.  
+
+```python
+#!/usr/bin/python
+
+if __name__ == '__main__':
+    # define empty tuple
+    t = tuple()
+
+    # assign some data
+    t = (1, 2, 3)
+    print(t)
+
+    # tuples are surrounded by parenthesis
+    vowels2 = ( 'a', 'e', 'i', 'o', 'u' )
+    print(type(vowels2))
+
+    # take care when using the parenthesis
+    # t is a string
+    t = ('Python')
+    print(type(t))
+
+    # t2 is a tuple
+    t2 = ('Python',)
+    print(type(t2))
+    
+```
 
 ### Dictionary
 
@@ -239,11 +311,11 @@ Ein Set ist eine Ansammlung unsortierter Objekte. Wobei ein Objekt nie mehrfach 
 
 Das Wichtigste vorweg: Python 3 ist inkompatibel zu den Python 2.x Entwicklungslinien. Die wichtigsten Neurungen in Python 3 sind:  
 
--  	Strings (*str*) 	sind jetzt immer Unicode-basiert, *bytes* 	für Byte-Ketten
--  	*exec* und *print* 	sind jetzt Funktionen statt syntaktische Statements
+-  	Strings (*str*) sind jetzt immer Unicode-basiert, *bytes* für Byte-Ketten
+-  	*exec* und *print* sind jetzt Funktionen statt syntaktische Statements
 -  	neue Syntax für Exception-Handling
--  	Viele iterierende Methoden von Containern liefern 	nun *views*, 	anstatt wie vorher ganze Listen zu erzeugen
--  	Es gibt nur noch einen unifizierten Zahlentyp 	(*int*)
+-  	Viele iterierende Methoden von Containern liefern nun *views*, anstatt wie vorher ganze Listen zu erzeugen
+-  	Es gibt nur noch einen unifizierten Zahlentyp (*int*)
 
 ### print
 
@@ -348,25 +420,27 @@ Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokier
 
 ## Literatur  
 
-[1] 	Python – Das umfassende Handbuch, <http://openbook.galileocomputing.de/python/> (abgerufen 	am 18. März 2014)
+[1] Python – Das umfassende Handbuch, <http://openbook.galileocomputing.de/python/> (abgerufen 	am 18. März 2014)
 
-[2]	Learning Python, 5th edition, Mark Lutz, O’Reilly
+[2] Learning Python, 5th edition, Mark Lutz, O’Reilly
 
-[3]	Programming Python, 4th edition, Mark Lutz, O’Reilly
+[3] Programming Python, 4th edition, Mark Lutz, O’Reilly
 
-[4]	Python: Programmiersprache für alle Fälle, Holger Krekel, aus: iX Special, Programmieren heute, 	1/2010
+[4] Python: Programmiersprache für alle Fälle, Holger Krekel, aus: iX Special, Programmieren heute, 	1/2010
 
-[5]	Neues in Python 3.4, https://www.heise.de/developer/artikel/Neues-in-Python-3-4-2174477.html 	(abgerufen am 11. März 2019)
+[5] Neues in Python 3.4, https://www.heise.de/developer/artikel/Neues-in-Python-3-4-2174477.html 	(abgerufen am 11. März 2019)
 
-[6] 	<http://docs.python.org/3.4/whatsnew/3.4.html> (abgerufen am 19. März 2014)
+[6] http://docs.python.org/3.4/whatsnew/3.4.html (abgerufen am 19. März 2014)
 
-[7] 	https://www.heise.de/developer/meldung/Programmiersprache-Python-3-5-erschienen-2811997.html (abgerufen am 22. Oktober 2018)
+[7] https://www.heise.de/developer/meldung/Programmiersprache-Python-3-5-erschienen-2811997.html (abgerufen am 22. Oktober 2018)
 
-[8] 	Python - Universalwerkzeug für einfache und komplexe Aufgaben, Frank Müller, iX 11/2016
+[8] Python - Universalwerkzeug für einfache und komplexe Aufgaben, Frank Müller, iX 11/2016
 
-[9] 	Parallele Programmierung mit Python, Teil 1: Multitasking, Gerhard Völkl, iX 11/2016
+[9] Parallele Programmierung mit Python, Teil 1: Multitasking, Gerhard Völkl, iX 11/2016
 
-[10]	Unicode HowTo, https://docs.python.org/3/howto/unicode.html, abgerufen am 22. Mai 2019
+[10] Unicode HowTo, https://docs.python.org/3/howto/unicode.html, abgerufen am 22. Mai 2019
+
+[11] Head First Python, Second Edition, Paul Barry, 2017
 
 
 
