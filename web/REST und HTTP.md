@@ -561,3 +561,21 @@ Auch bei REST-HTTP muß man sich bei veränderten Schnittstellen um die Versioni
 
 
 
+# GraphQL
+
+GraphQL ist eine von Facebook entwickelte Abfragesprache, die die Kommunikation zwischen (Web-)Client und Server effizienter gestalten soll. Im Unterschied zu RESTful APIs können Entwickler mit GraphQL gezielt Daten abfragen. Zudem sind die Datenfelder in GraphQL-Datenstrukturen typisiert, sodass fehlerhafte Zugriffe früher entdeckt werden können.
+
+## Literatur
+
+[1] Gezielte Auswahl, Typsichere GraphQL-APIs mit Java und React, Nils Hartmann, iX 6/2019
+
+# JSON-API
+
+Die JSON-API-Spezifikation definiert einen Standard für REST-APIs. JSON-API ermöglicht einem Client (genau wie GraphQL), mit einer einzigen Abfrage genau die Daten anzufordern, die er benötigt. JSON-API will die Nachteile einer REST-Architektur durch ein ausgefeiltes API-Design innerhalb einer REST-Architektur lösen.
+
+## Literatur
+
+[1] Gezielte Auswahl, Typsichere GraphQL-APIs mit Java und React, Nils Hartmann, iX 6/2019
+
+
+
