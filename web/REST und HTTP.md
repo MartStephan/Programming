@@ -1,6 +1,137 @@
-# REST und HTTP
-
 [TOC]
+
+# Basics
+
+## Standardisierung
+
+### RFCs
+
+RFC steht für Request for Comments. Die RFCs dienen als öffentliches Diskussionsforum für technische und organisatorische Fragen des Internets. Sie wurden mit dem ARPA-NET im Jahre 1969 ins Leben gerufen. RFCs werden fortlaufend nummeriert. Es gibt keine Versionsnummern. Wird ein RFC umfassend weiterentwickelt, erscheint ein neues Dokument mit einer neuen Nummer. Das alte wird als obsolet gekennzeichnet. 
+
+### W3C
+
+W3C steht für das World Wide Web Consortium. Es standardisiert die wichtigsten Standards im Web. Dazu gehören z.B. HTML, XHTML und XML.
+
+### ECMA
+
+ECMA steht für European Computer Manufacturers Association. Die ECMA standardisiert JavaScript unter seinem offiziellen Namen ECMAScript. Auch die Programmiersprachen C# und C++/CLI sind hier standardisiert. 
+
+## Protokolle
+
+### HTTP
+
+HTTP dient der Kommunikation mit Webservern. Es gibt die Versionen 1.0, 1.1. und 2.0. Bei HTTP handelt es sich um ein verbindungs- oder statusloses Protokoll. Server und Client nehmen also nie einen besonderen Zustand ein, sondern beenden nach jedem Kommando den Prozess vollständig, entweder mit Erfolg oder mit einer Fehlermeldung. 
+
+### HTTP 2.0
+
+Die aktuelle Version von HTTP ist HTTP 2.0, beschrieben in RFC 7540. Die Entwicklung war maßgeblich von Google und Microsoft vorangetrieben worden. Mit HTTP 2.0 soll die Übertragung beschleunigt und optimiert werden. Wichtige neue Möglichkeiten sind: 
+
+- das Zusammenfassen mehrerer Anfragen
+- bessere Kompressionsmöglichkeiten
+- binär codierte Übertragung von Inhalten
+- Server-initiierte Datenübertragungen (Push-Verfahren)
+
+### Web-Sockets
+
+Das Web-Socket Protokoll ist ein auf TCP basierendes Netzwerkprotokoll, das entworfen wurde, um eine bidirektionale Verbindung zwischen einer Webanwendung und einem Web-Socket-Server herzustellen. Es entfallen bei Web-Sockets die durch die HTTP-Kopffelder verursachten zusätzlichen Daten. 
+
+Während bei einer reinen HTTP-Verbindung jede Aktion des Servers eine vorhergehende Anfrage des Clients erfordert, muss beim Web-Socket-Protokoll der Client die Verbindung nur eröffnen. Der Server kann dann diese offene Verbindung aktiv verwenden und weitere Informationen an den Client senden, ohne auf eine neue Verbindung des Clients zu warten. 
+
+### WebDAV
+
+WebDAV steht für Web-based Distributed Authoring und Versioning. Es ist ein offener Standard zur Bereitstellung von Dateien im Internet. Dabei können Benutzer auf ihre Daten transparent zugreifen, also schreibend und lesend. 
+
+### SMTP
+
+SMTP steht für Simple Mail Transfer Protocol. Es kommt in Clientsystemen für das Versenden sowie bei Mailservern zum Senden und Weiterleiten von Emails zum Einsatz. Wie viele Protokolle im Webumfeld ist auch dieses Protokoll ASCII-Text-basiert. 
+
+### FTP
+
+FTP steht für File Transfer Protocol. FTP dient dem Datenaustausch zwischen FTP-Server und -Client, wobei der Client auf eine genau definierte Art und Weise Zugriff auf das Dateisystem des Servers erhalten kann.
+
+### REST
+
+REST steht für Representational State Transfer. Es bezeichnet einen Architekturstil, der bereits häufig benutzte Techniken und Protokolle zusammenfasst und für die Datenübertragung nutzt. 
+
+- URI für die Adressierung von Ressourcen
+- HTTP für Übertragung von Kommandos
+- MIME für die Codierung der Ressourcen
+- JSON oder XML für die Formatierung
+
+Die technischen Merkmale eines REST-Dienstes sind:
+
+- Adressierbarkeit
+- Repräsentationsvariabilität
+- Zustandslosigkeit
+- Skalierbarkeit
+- Allgemeingültigkeit
+- Erweiterbarkeit
+
+### MIME
+
+MIME steht für Multipurpose Internet Mail Extensions. Es wurde ursprünglich entwickelt, um Dokumente in Emails einzubetten. 
+
+Mehr dazu z.B. in https://de.wikipedia.org/wiki/Multipurpose_Internet_Mail_Extensions. 
+
+### JSON
+
+JSON steht für JavaScript Object Notation. JSON wird heutzutage oft zur Kommunikation zwischen Client und Server eingesetzt. Es ist ein kompaktes Format in lesbarer Textform zum Zweck des Datenaustauschs zwischen Anwendungen. 
+
+JSON kennt Objekte, Arrays, Zeichenketten, Zahlen, boolesche Wert und null. Daten können beliebig verschachtelt werden. Als Zeichencodierung benutzt JSON UTF-8. 
+
+### ATOM
+
+ATOM steht für Atom Syndication Format. Es ist ein plattformunabhängiges Format zum Austausch von Feeds. Es hat denselben Zweck wie das bekanntere RSS. ATOM wurde in der RFC 4278 veröffentlicht. 
+
+### GraphQL und OData und JSON-API
+
+REST hat den Nachteil, dass bei zunehmender Komplexität und sehr großen Umgebungen alles etwas unübersichtlich wird. An dieser Stelle sind komplexere Abfragesprachen gefragt, die Mehrfachzugriffe und Abhängigkeiten durch entsprechende Syntaxkonstrukte vereinfachen. Etabliert haben sich hier mehrere Standards:
+
+- GraphQL
+- OData
+- JSON-API
+
+### SPA
+
+SPA steht für Single Page Application. Eine SPA ist eine Webanwendung, die keinen Seitenwechsel (Roundtrip) durchführt, sondern die Anzeige nur durch Austausch von Seitenelementen via JavaScript/DOM verändert. Es gibt dabei also keine serverseitige Seitennavigation. Die URL ändert sich nicht. Initial wird eine komplette HTML-Seite oder zumindest das Grundgerüst einer Webseite in einem HTML-Dokument von dem Server geladen. Die Seite lädt anschließend Daten über Webservices (z.B. REST-basierte Dienste) nach und erzeugt die Darstellung clientseitig. Eine SPA wirkt damit wie eine Desktop-Anwendung. 
+
+### AJAX
+
+AJAX steht für Asynchronous JavaScript und XML. AJAX ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
+
+### RWD
+
+RWD steht für Responsive Web Design. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. Responsive Web Design realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie Bootstrap. 
+
+### Literatur
+
+[1] GraphQL, https://graphql.org/, abgerufen am 08.12.2019
+
+[2] OData, https://www.odata.org/, abgerufen am 08.12.2019
+
+[3] RFC Editor, https://www.rfc-editor.org/, abgerufen am 08.12.2019
+
+## HTML
+
+HTML steht für Hyper Text Markup Language und ist die Grundlage jeder HTML-Seite. Sie dient der Strukturierung der Seiten. 
+
+Die aktuelle Version ist HTML 5. HTML ist sehr alt. Deswegen ist HTML 5 zu einem Konvolut verschiedender Standards geworden.
+
+## CSS
+
+CSS steht für Cascading Style Sheets ist eine Layout- und Formatierungssprache, um Auszeichnungssprachen wie HTML zu formatieren. Idealerweise enthält das HTML-Dokument nur semantische Informationen, und mit CSS werden diese dann gestalterisch und typografisch formatiert. 
+
+## Bootstrap
+
+Bootstrap ist ein von der Firma Twitter entwickeltes CSS-Framework. Es liefert zahlreiche CSS-Klassen, die die Handhabung von CSS vereinfachen. Die Bootstrap-Komponenten erfordern auch JavaScript, wobei hier im Hintergrund jQuery zum Einsatz kommt. 
+
+Die aktuelle Version ist Bootstrap 4.
+
+## Literatur 
+
+[1] Bootstrap, https://getbootstrap.com/, abgerufen am 08.12.2019
+
+# REST und HTTP
 
 ## Einleitung
 
@@ -576,6 +707,8 @@ Die JSON-API-Spezifikation definiert einen Standard für REST-APIs. JSON-API erm
 ## Literatur
 
 [1] Gezielte Auswahl, Typsichere GraphQL-APIs mit Java und React, Nils Hartmann, iX 6/2019
+
+[2] json:api, https://jsonapi.org/, abgerufen am 08.12.2019
 
 
 
