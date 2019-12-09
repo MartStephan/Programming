@@ -10,7 +10,7 @@ Table of Contents
          * [Features](#features)
          * [Prinzipien](#prinzipien)
          * [Modularisierung](#modularisierung)
-         * [<strong>Hello World</strong>](#hello-world)
+         * [Hello World](#hello-world)
          * [Basics](#basics)
          * [Objektmodell und Namensräume](#objektmodell-und-namensräume)
          * [Interpreter und Interoperabilität](#interpreter-und-interoperabilität)
