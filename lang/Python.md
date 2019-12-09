@@ -2,6 +2,33 @@
 
 [TOC]
 
+Table of Contents
+=================
+
+   * [Python](#python)
+      * [Kernkonzepte](#kernkonzepte)
+         * [Features](#features)
+         * [Prinzipien](#prinzipien)
+         * [Modularisierung](#modularisierung)
+         * [<strong>Hello World</strong>](#hello-world)
+         * [Basics](#basics)
+         * [Objektmodell und Namensräume](#objektmodell-und-namensräume)
+         * [Interpreter und Interoperabilität](#interpreter-und-interoperabilität)
+         * [Objektorientierung](#objektorientierung)
+         * [Iterationen](#iterationen)
+         * [List](#list)
+         * [Tuple](#tuple)
+         * [Dictionary](#dictionary)
+         * [Set](#set)
+      * [Python 3](#python-3)
+         * [print](#print)
+         * [Strings](#strings)
+      * [Python 3.4](#python-34)
+      * [Python 3.5](#python-35)
+      * [Literatur](#literatur)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## Kernkonzepte
 
 ### Features
