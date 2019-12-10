@@ -127,7 +127,7 @@ RFC steht für Request for Comments. Die RFCs dienen als öffentliches Diskussio
 
 ### W3C
 
-W3C steht für das World Wide Web Consortium. Es standardisiert die wichtigsten Standards im Web. Dazu gehören z.B. HTML, XHTML und XML.
+W3C steht für das World Wide Web Consortium. Es standardisiert die wichtigsten Standards im Web. Dazu gehören z.B. HTML, XHTML, XML, WebAuthn, FIDO2 und WebAssembly. 
 
 ### ECMA
 
@@ -219,6 +219,16 @@ AJAX steht für Asynchronous JavaScript und XML. AJAX ist die Basis für Single 
 ### RWD
 
 RWD steht für Responsive Web Design. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. Responsive Web Design realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie Bootstrap. 
+
+### WebAuthn
+
+Bei WebAuthn handelt es sich um ein definiertes JavaScript-Interface, über das der Webdienst mit z.B. dem FIDO2-Modul des Browsers spricht. Der Standard definiert eine Programmierschnittstelle, mit der Webanwendungen und Websites ihren Benutzern eine direkte Authentifikation mittels Public-Key-Verfahrens im Webbrowser anbieten können.
+
+### FIDO2
+
+FIDO steht für Fast Identity Online. Es ist eine Allianz, in der u.a. Google, Microsoft, Facebook, Amazon, Paypal, Visa und Mastercard arbeiten. FIDO2 (als Nachfolger von FIDO) soll die sichere, passwortlose Anmeldung bei Online-Diensten möglich machen. FIDO2 basiert auf der Internet-Komponente WebAuth. Teil der Spezifikation ist auch die notwendige Kommunikation zwischen Website, Browser und Sicherheitsschlüssel.
+
+### WebAssembly
 
 ### Literatur
 
