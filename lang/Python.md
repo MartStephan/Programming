@@ -6,11 +6,12 @@ Table of Contents
 =================
 
    * [Python](#python)
+   * [Table of Contents](#table-of-contents)
       * [Kernkonzepte](#kernkonzepte)
          * [Features](#features)
          * [Prinzipien](#prinzipien)
          * [Modularisierung](#modularisierung)
-         * [Hello World](#hello-world)
+         * [<strong>Hello World</strong>](#hello-world)
          * [Basics](#basics)
          * [Objektmodell und Namensräume](#objektmodell-und-namensräume)
          * [Interpreter und Interoperabilität](#interpreter-und-interoperabilität)
@@ -28,6 +29,7 @@ Table of Contents
       * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 
 ## Kernkonzepte
 
