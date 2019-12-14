@@ -328,6 +328,32 @@ Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, 
 
 Ein Dictionary in Python ist eine Art *key-value map*. Dictionaries sind unsortiert und veränderbar.  
 
+```python
+#!/usr/bin/python
+
+if __name__ == '__main__':
+    #empty dictionary
+    person = {}
+
+    #define dictionary Per Anhalter durch die Galaxis
+    person = { 'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker',                  'home': 'earth' }
+    
+    print(person)
+
+    #create additional dictionary containing all person (dictionary inside dictionary)
+    people = {}
+
+    people['Arthur'] = person
+    people['Ford'] = { 'name': 'Ford Prefect', 'gender': 'male', 'occupation': 	                               'researcher', 'home': 'betelgeuse' }
+
+    print(people)
+  
+
+# OUTPUT
+""" {'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker', 'home': 'earth'}
+{'Arthur': {'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker', 'home': 'earth'}, 'Ford': {'name': 'Ford Prefect', 'gender': 'male', 'occupation': 'researcher', 'home': 'betelgeuse'}} """
+```
+
 ### Set
 
 Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, Dictionaries und Sets mit.  
