@@ -107,6 +107,15 @@ Die Aggregation bezeichnet in der objektorientierten Welt eine Beziehung zwische
 
 ## Aspektorientierte Programmierung
 
+## Bedarfsauswertung (Lazy Evaluation)
+
+Bedarfsauswertung ist auch unter dem Begriff *Lazy Evaluation* bekannt. Imperative Programmiersprachen wie C++ kennen eigentlich nur die strikte Auswertung und eben nicht eine *Lazy Evaluation*.  
+
+Bei der Bedarfsauswertung wird der Ausdruck erst bei Nachfrage evaluiert. Vorteile sind:
+
+-  	Ausdrücke werden nur dann evaluiert, wenn sie benötigt werden. Das spart Zeit und Speicher.  	
+-  	Unendliche Datenstrukturen können formuliert werden, von denen zur Laufzeit nur endlich viele Elemente angefordert werden.
+
 ## Closure
 
 Closures sind Funktionen, die auf nicht-lokale Variablen auch dann noch zugreifen können, wenn der dazugehörige Gültigkeitsbereich (vgl. *Scope*) nicht mehr existiert. Vereinfacht gesagt merkt sich eine Closure bei der Definition nicht nur den auszuführenden Code, sondern ihre gesamte Umgebung. Siehe auch Closures in Bezug auf Lambda.
@@ -207,6 +216,8 @@ Bezeichnet in der Programmierung einen Zeiger, der auf einen nicht-initialisiert
 *Delegating constructors* erlauben es, Teile der Arbeit eines Konstruktors von einem anderen Konstruktor derselben Klasse ausführen zu lassen.  
 
 *Inheriting constructors* erlauben es einer abgeleiteten Klasse, die Konstruktoren seiner Elternklasse zu vererben bzw. direkt zu verwenden anstatt sie nochmals zu deklarieren.  
+
+## Dependency Injection (DI)
 
 ## Dependent and non-dependent names
 
@@ -443,15 +454,6 @@ Ein weiteres wichtiges Kriterium für funktionale Programmiersprachen ist die Ve
 
 Darunter versteht man z.B. das Transformieren einer Liste in eine neue Liste oder die Komposition von Listenoperationen.  
 
-## Bedarfsauswertung (Lazy Evaluation)
-
-Bedarfsauswertung ist auch unter dem Begriff *Lazy Evaluation* bekannt. Imperative Programmiersprachen wie C++ kennen eigentlich nur die strikte Auswertung und eben nicht eine *Lazy Evaluation*.  
-
-Bei der Bedarfsauswertung wird der Ausdruck erst bei Nachfrage evaluiert. Vorteile sind:
-
--  	Ausdrücke werden nur dann evaluiert, wenn sie benötigt werden. Das spart Zeit und Speicher.  	
--  	Unendliche Datenstrukturen können formuliert werden, von denen zur Laufzeit nur endlich viele Elemente angefordert werden.
-
 ## Garbage Collection
 
 ## Generische Programmierung
@@ -518,6 +520,8 @@ Vererbung ist ein Begriff aus der Objektorientierung. Wie der Name schon sagt, d
 
 In der Informatik eine Bedingung, die zu gegebener Zeit als ‘wahr’ angenommen werden kann. Eine Schleifen-Invariante ist z.B. immer wahr am Anfang und Ende einer Schleife.   
 
+## Inversion of Control (IoC)
+
 ## Kernel
 
 Als Kernel bezeichnet man üblicherweise den Teil der Software/des Betriebssystems, welcher zwischen Software und Hardware liegt und damit quasi die Vermittlerrolle zwischen Software und Hardware übernimmt. Es übermittelt die (Applikations-) Aufrufe an die Hardware und agiert als Low-Level Treiber, um die (HW-)Geräte zu adressieren. Es gibt (hauptsächlich) zwei Paradigmen, nach denen Kernel eines Betriebssystems organisiert sind. 
@@ -562,6 +566,51 @@ Literale sind in den Beispielen ‚string‘ und ‚60‘.
 Literale dürfen in Zuweisungsoperatoren nur rechtsseitig stehen (s. *R-Value*), als Argument einer Funktion oder als Wert einer Konstanten codiert werden.  
 
 Weiterführend: Funktionen als Literale, s. *Lambda-Funktionen*.  
+
+## L-Value/R-Value
+
+In der Programmiersprache C/C++ gibt es die Begriffe *lvalue* und *rvalue*. Für ein tieferes Verständnis der Programmiersprache ist die Bedeutung und die Anwendung dieser Begriffe unerläßlich.
+
+Jeder Ausdruck in C++ ist entweder ein *lvalue* oder ein *rvalue*. Ein lvalue verweist auf ein Objekt, das über einen einzelnen Ausdruck hinaus beibehalten wird. Sie können sich einen lvalue als ein Objekt vorstellen, das über einen Namen verfügt. Alle Variablen, einschließlich nicht veränderbarer (const) Variablen, sind *lvalues*. Ein *rvalue* ist ein temporärer Wert, der nicht über den Ausdruck hinaus beibehalten wird, der diesen nutzt.
+
+```c++
+int main()
+{
+	int x = 42; // x ist lvalue; 42 ist rvalue*
+
+	const int ci = 7;  // ci ist lvalue; 7 ist rvalue*
+
+	int y = x;  // y ist lvalue; x ist weiterhin lvalue
+}
+```
+
+Siehe dazu auch https://en.cppreference.com/w/cpp/language/value_category und https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/. 
+
+## Move-Semantik
+
+Eine ‘move’ Operation unterscheidet sich deutlich von einer ‘copy’ Operation. Eine ‚copy‘ Operation kopiert die Elemente (bzw. den Inhalt) einer Datenstruktur von einer Quelle zu einem Ziel und belässt die Quelle in ihrem Originalzustand. Dies ist kein Problem bei z.B:  
+
+```c++
+int main()
+{
+	vector<int> src;  
+	vector<int> dest;  
+
+	dest = src;  
+
+	// Was aber tun bei:  
+	Ifstream src(file);  
+
+	Ifstream dest = src ;
+}
+
+```
+
+Eine Definition der ‚move‘ Operation kann lauten:  
+
+*Eine ‚move‘ Operation ist dann gegeben, falls ein Kopieren eines Objektes so realisiert wird, dass das Original nicht wieder benötigt wird. Das Original wird dann automatisch gelöscht und kann nicht mehr verwendet wird. Der Inhalt ist quasi von der Quelle zum Ziel bewegt worden, wobei die Quelle danach nicht mehr existiert.*  
+
+Diese Move-Semantik ist in der Programmiersprache C++ zum erstenmal in C++11 spezifiziert.  
 
 ## Microservices
 
@@ -687,6 +736,10 @@ int main()
 
 Im obigen Beispiel benutze ich die ‚Qualified‘ Bezeichner ‚std::cout‘ und ‚std::endl‘. Würde ich einfach ‚cout‘ bzw. ‚endl‘ benutzen, dann spricht man von ‚Non-Qualified‘ Bezeichner.  
 
+## Race Conditions
+
+Eine Konstellation, in dem das Ergebnis einer Operation von der zeitlich verschränkten Ausführung von bestimmten anderen Operationen abhängt.  
+
 ## Reaktive Programmierung
 
 Reaktive Programmierung besagt, dass eine Anwendung jederzeit auf Stimuli reaktionsfähig sein soll. Dazu gehört Interaktivität, Fehlertoleranz und Skalierbarkeit und, ganz wichtig, die Anwendung soll ereignisgesteuert („event-driven“) sein.  
@@ -759,6 +812,24 @@ int main()
 *RAII* steht für *Resource acquisition is initialization* oder auf Deutsch *Ressourcenbelegung ist Initialisierung.* Es bezeichnet ein Programmiermittel, um die Steuerung der Belegung und Freigabe von Betriebsmitteln an den Gültigkeitsbereich von Variablen zu koppeln. Ein Beispiel in C++ sind z.B. Smart Pointer, welche automatisch ein Ihnen zugewiesenes dynamisches Objekt beim Aufruf des Destruktors wieder freigeben.  
 
 Die zentrale Idee dahinter: Wenn du auf eine Resource aufpassen sollst, verpacke diese in eine Klasse. Benutze den Konstruktor, um die Resource zu intialisieren. Benutze den Destruktor, um die Resource aufzuräumen.  
+
+## Rule of three (C++)
+
+Die ‚Rule of three‘ ist innerhalb der Sprache C++ eine Regel, die besagt, falls mindestens eine der folgenden Operationen (explizit vom Programmierer) implementiert wird, alle der folgenden Operationen implementiert werden sollten:  
+
+-  	Destruktor (destructor)
+-  	Kopier-Konstruktor (copy constructor)
+-  	Zuweisungsoperator-Konstruktor (copy assignment operator)
+
+## Rule of five (C++11)
+
+Die *Rule of three* kann aufgrund der neu hinzugekommenen *move-Operation* in C++11 auf die *Rule of five* erweitert werden. Bei der *rule-of-five* sollten folgende Operationen explizit implementiert warden:  
+
+-  	Destruktor (destructor)
+-  	Kopier-Konstruktor (copy constructor)
+-  	Move-Konstruktor (move construtor)
+-  	Kopier-Zuweisungsoperator Konstruktor (copy assignment operator)
+-  	Move-Zuweisungsoperator Konstruktor (move assignment operator)
 
 ## Scope
 
@@ -948,76 +1019,9 @@ Im obigen Beispiel muß man bei der Instantiierung von *‘Stack’* einen konst
 
 ## Type Safe
 
-## L-Value/R-Value
 
-In der Programmiersprache C/C++ gibt es die Begriffe *lvalue* und *rvalue*. Für ein tieferes Verständnis der Programmiersprache ist die Bedeutung und die Anwendung dieser Begriffe unerläßlich.
 
-Jeder Ausdruck in C++ ist entweder ein *lvalue* oder ein *rvalue*. Ein lvalue verweist auf ein Objekt, das über einen einzelnen Ausdruck hinaus beibehalten wird. Sie können sich einen lvalue als ein Objekt vorstellen, das über einen Namen verfügt. Alle Variablen, einschließlich nicht veränderbarer (const) Variablen, sind *lvalues*. Ein *rvalue* ist ein temporärer Wert, der nicht über den Ausdruck hinaus beibehalten wird, der diesen nutzt.
-
-```c++
-int main()
-{
-	int x = 42; // x ist lvalue; 42 ist rvalue*
-
-	const int ci = 7;  // ci ist lvalue; 7 ist rvalue*
-
-	int y = x;  // y ist lvalue; x ist weiterhin lvalue
-}
-```
-
-Siehe dazu auch https://en.cppreference.com/w/cpp/language/value_category und https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/. 
-
-## Move-Semantik
-
-Eine ‘move’ Operation unterscheidet sich deutlich von einer ‘copy’ Operation. Eine ‚copy‘ Operation kopiert die Elemente (bzw. den Inhalt) einer Datenstruktur von einer Quelle zu einem Ziel und belässt die Quelle in ihrem Originalzustand. Dies ist kein Problem bei z.B:  
-
-```c++
-int main()
-{
-	vector<int> src;  
-	vector<int> dest;  
-
-	dest = src;  
-
-	// Was aber tun bei:  
-	Ifstream src(file);  
-
-	Ifstream dest = src ;
-}
-
-```
-
-Eine Definition der ‚move‘ Operation kann lauten:  
-
-*Eine ‚move‘ Operation ist dann gegeben, falls ein Kopieren eines Objektes so realisiert wird, dass das Original nicht wieder benötigt wird. Das Original wird dann automatisch gelöscht und kann nicht mehr verwendet wird. Der Inhalt ist quasi von der Quelle zum Ziel bewegt worden, wobei die Quelle danach nicht mehr existiert.*  
-
-Diese Move-Semantik ist in der Programmiersprache C++ zum erstenmal in C++11 spezifiziert.  
-
-## Dependency Injection (DI)
-
-## Inversion of Control (IoC)
-
-## Race Conditions
-
-Eine Konstellation, in dem das Ergebnis einer Operation von der zeitlich verschränkten Ausführung von bestimmten anderen Operationen abhängt.  
-
-## Rule of three (C++)
-
-Die ‚Rule of three‘ ist innerhalb der Sprache C++ eine Regel, die besagt, falls mindestens eine der folgenden Operationen (explizit vom Programmierer) implementiert wird, alle der folgenden Operationen implementiert werden sollten:  
-
--  	Destruktor (destructor)
--  	Kopier-Konstruktor (copy constructor)
--  	Zuweisungsoperator-Konstruktor (copy assignment operator)
-
-## Rule of five (C++11)
-
- Die *Rule of three* kann aufgrund der neu hinzugekommenen *move-Operation* in C++11 auf die *Rule of five* erweitert werden. Bei der *rule-of-five* sollten folgende Operationen explizit implementiert warden:  
-
--  	Destruktor (destructor)
--  	Kopier-Konstruktor (copy constructor)
--  	Move-Konstruktor (move construtor)
--  	Kopier-Zuweisungsoperator Konstruktor (copy assignment operator)
--  	Move-Zuweisungsoperator Konstruktor (move assignment operator)
+-  	
 
 ## SOLID  
 
@@ -1078,22 +1082,51 @@ int main()
 
 ## Tuples
 
- Ein Tupel besteht aus einer Liste von Elementen. Die Elemente können sich auch voneinander unterscheiden. Tuples sind z.B. in Python Teil der Sprache. Im Gegensatz zu Listen sind Tupels in Python nicht veränderbar (modal).  
+Ein Tupel besteht aus einer Liste von Elementen. Die Elemente können sich auch voneinander unterscheiden. Tuples sind z.B. in Python Teil der Sprache. Im Gegensatz zu Listen sind Tupels in Python nicht veränderbar (modal).  
 
 ## Traits
 
 ## Type Deduction
 
-Falls Typen nicht explizit deklariert werden, muß der Compiler für eine entsprechende Typ-Ableitung (Type Deduction) sorgen. In C++ gab es Type Deduction (bis zum C++11 Standard) nur über Funktions-Schablonen (Function Templates).
+Falls Typen nicht explizit deklariert werden, muß der Compiler für eine entsprechende Typ-Ableitung (*Type Deduction*) sorgen. In C++ gab es *Type Deduction* bis zum C++11 Standard nur über Funktions-Schablonen (*Function Templates*).
 
-In C++11 gibt es zwei neue Möglichkeiten der Type Deduction:  
+In C++11 gibt es zwei neue Möglichkeiten der *Type Deduction*:  
 
--  	auto
--  	decltype
+-  	*auto*
+-  	*decltype*
 
-Das Gefährliche bei Type Deduction ist, dass u.U. nicht offensichtlich ist, welcher Typ implizit benutzt wird. Deshalb sollte man sich als Entwickler über die Arten von Type Deduction in seiner Sprache bewusst werden und Bescheid wissen.  
+Das Gefährliche bei *Type Deduction* ist, dass u.U. nicht offensichtlich ist, welcher Typ implizit benutzt wird. Deshalb sollte man sich als Entwickler über die Arten von *Type Deduction* in seiner Sprache bewusst werden und Bescheid wissen.  
 
 ## Type Inference
+
+Type inference bezieht sich auf die automatische Typableitung (*type deduction*) bei Programmiersprachen. In C++ wurde Type Inference mit dem Standard C++11 eingeführt. Dafür wurden die Schlüsselwörter *auto* und *decltype* neu mit aufgenommen. Auch andere Sprachen, z.B. Kotlin, bieten Type Inference an. 
+
+Sprachen, die Type Inference anbieten, sind weiterhin statisch typisiert, d.h. der Compiler muss zur Compilezeit den zu verwendenden Typ kennen. 
+
+```c++
+// C++ program to demonstrate working of auto and type inference 
+
+using namespace std; 
+  
+int main() 
+{ 
+	auto x = 4; 
+   auto y = 3.37; 
+   auto ptr = &x; 
+   cout << typeid(x).name() << '\n' 
+        << typeid(y).name() << '\n' 
+        << typeid(ptr).name() << '\n'; 
+  
+   return 0; 
+} 
+
+// out
+// >> i
+// >> d
+// >> Pi
+```
+
+Im obigen Beispiel liefert *typeid* den Typ der Variablen. i steht für *Integer*, d für *Double* und Pi für einen *Pointer to Integer*. 
 
 ## Verschattung (Shadowing)
 
@@ -1101,7 +1134,7 @@ Schaue ‚Verschattung‘ in Swift
 
 ## YAGNI
 
- YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, dass nur umgesetzt werden soll, was tatsächlich nötig ist und gefordert wurde. Oft wird etwas implementiert/umgesetzt, was für das aktuelle Problem/für die aktuelle Anforderung nicht nötig ist. Die Idee dahinter ist oft, dass es ja irgendwann (vielleicht) doch von Nutzen sein kann bzw. später evtl. doch gefordert wird. Es wird also mehr umgesetzt, als dass tatsächlich gefordert ist. Das führt oft zu Problemen/Fehlern, da ohne Anforderung diese zusätzliche Implementierung nicht getestet wird und damit of Fehler in der Implementierung nicht erkannt werden (können). Siehe auch KISS.
+YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, dass nur umgesetzt werden soll, was tatsächlich nötig ist und gefordert wurde. Oft wird etwas implementiert/umgesetzt, was für das aktuelle Problem/für die aktuelle Anforderung nicht nötig ist. Die Idee dahinter ist oft, dass es ja irgendwann (vielleicht) doch von Nutzen sein kann bzw. später evtl. doch gefordert wird. Es wird also mehr umgesetzt, als dass tatsächlich gefordert ist. Das führt oft zu Problemen/Fehlern, da ohne Anforderung diese zusätzliche Implementierung nicht getestet wird und damit of Fehler in der Implementierung nicht erkannt werden (können). Siehe auch KISS.
 
 ## Literatur
 
@@ -1156,6 +1189,8 @@ Schaue ‚Verschattung‘ in Swift
 [25] Value categories, https://en.cppreference.com/w/cpp/language/value_category (abgerufen am 13. November 2019)
 
 [26] lvalues, rvalues, glvalues, prvalues, xvalues, help!, https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/ (abgerufen am 13. November 2019)
+
+[27] Type Inference in C++ (auto and decltype), https://www.geeksforgeeks.org/type-inference-in-c-auto-and-decltype/, abgerufen am 18. Dezember 2019
 
 
 
