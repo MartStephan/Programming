@@ -2,6 +2,19 @@
 
 [TOC]
 
+Table of Contents
+=================
+
+   * [Kotlin](#kotlin)
+      * [Overview](#overview)
+      * [Features 1.0](#features-10)
+         * [Entwicklungswerkzeuge](#entwicklungswerkzeuge)
+         * [Hello World](#hello-world)
+         * [Datentypen](#datentypen)
+      * [Literatur](#literatur)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
 ## Overview
 
 Kotlin is an open source, cross-platform, statically typed,  general-purpose programming language with type inference that is fully  interoperable with Java. Currently there is the Kotlin Foundation taking care of the language. 
