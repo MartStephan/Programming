@@ -11,7 +11,7 @@ Table of Contents
          * [Features](#features)
          * [Prinzipien](#prinzipien)
          * [Modularisierung](#modularisierung)
-         * [<strong>Hello World</strong>](#hello-world)
+         * [Hello World](#hello-world)
          * [Basics](#basics)
          * [Objektmodell und Namensräume](#objektmodell-und-namensräume)
          * [Interpreter und Interoperabilität](#interpreter-und-interoperabilität)
@@ -103,7 +103,7 @@ In Python gibt es den Paketmanager *pip.* Damit können vorhandene Pakete (z.B. 
 
 pip install <package>
 
-### **Hello World**
+### Hello World
 
 Die einfachste Lösung des 'Hello World" Programms in Python 3.
 
@@ -176,7 +176,7 @@ Besonderheit: Viele Statements in Python erfordern zwingend eine visuelle Einrü
 
 **Kommentare**
 
-Einzeilige Kommentare beginnen mit vorangestelltem # Symbol. Kommentarblöcke beginnen mit """ und enden mit """. 
+Einzeilige Kommentare beginnen mit vorangestelltem # Symbol. Kommentarblöcke beginnen mit """ und enden mit """.  Das ist ein sogenannter *doc String*. Er erlaubt eine kurze Dokumentation, die mithilfe von *help(myfunc)* aufgerufen werden kann. Außerdem wird diese Technik in Zusammenhang mit dem Python-Dokumentations-Generator *pydoc* verwendet. 
 
 ```python
 def myfunc(optional_params):
@@ -188,7 +188,7 @@ def myfunc(optional_params):
 
 **Funktionen, Parameter und Rückgabe**
 
-Funktionen werden mit *def* markiert. Parameter können einfach innerhalb der *def*-Klammerung übergeben werden. Mit dem Schlüsselwort *return* kann eine Rückgabe erfolgen.
+Funktionen werden mit *def* markiert. Parameter können einfach innerhalb der *def*-Klammerung übergeben werden. Mit dem Schlüsselwort *return* kann eine Rückgabe erfolgen. Wenn nach return kein Ausdruck steht oder falls *return* gänzlich fehlt, liefert die Funktion *None* zurück.
 
 ```python
 #!/usr/bin/python
@@ -216,7 +216,59 @@ if __name__ == '__main__':
     print("Total fuel needed is ", totalFuel)
 ```
 
+**Kopien und Referenzen**
 
+Ganz wichtig und anders als in den meisten anderen Programmiersprachen: Die Basisdatentypen wie z.B. *char, float, complex,* ... werden bei einer Zuweisung *a = b* kopiert. Das ist bei komplexeren Datentypen wie z.B. *Listen, Tupels, Dictionaries,* ... nicht mehr der Fall. Hier sind die Variablennamen lediglich Referenzen auf ein Objekt. 
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    # Basisdatentypen werden bei einer Zuweisung kopiert
+    a = 42 
+    b = a
+    b = 7
+
+    print(a)
+    print(b)
+
+    # Komplexere Datentypen arbeiten mit Referenzen
+    mylist = [3, 'Erfurt', 'Zwerg']
+    myneuelist = mylist
+    # Änderung betriff auch mylist, da Zuweisung eine Referenz hinterlässt
+    myneuelist[1] = 3.14
+
+    print(mylist)
+```
+
+**Kontrollstrukturen und Schleifenformen**
+
+Wie in vielen anderen Programmiersprachen so gibt es auch in Python die *if*-Abfrage und die *while*-Schleife. Zusätzlich gibt es natürlich auch die for-Schleife in Python. 
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    foo = 42
+    if foo == 42:
+        print("This is the answer")
+    elif foo == 7:
+        print("Not really the answer")
+    else:
+        print("Whatever the answer is")
+
+    zaehler = 0
+    summe = 0
+    while foo > zaehler:
+        summe += zaehler
+        zaehler = zaehler + 1
+
+    print(summe)
+
+    for i in range(1, 11, 2):
+        print(i)
+
+```
 
 ### Objektmodell und Namensräume
 
@@ -235,6 +287,8 @@ Es gibt viele Projekte, die die Interoperabilität mit anderen Sprachen sicherst
 Dadurch lässt sich Python auch in Eclipse, Visual Studio und andere populären IDEs als Sprache „erster Klasse“ integrieren.  
 
 ### Objektorientierung
+
+
 
 ### Iterationen
 
@@ -400,6 +454,20 @@ if __name__ == '__main__':
 ### Strings
 
 Strings bestehen in Python 3.x automatisch aus Unicode-Zeichen. Details zu Unicode in Python können in https://docs.python.org/3/howto/unicode.html nachgelesen werden.
+
+Der Datentyp String gehört in Python zu den Basisdatentypen oder Built-in Types.
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+   a = "Hallo"
+   b = "Welt"
+
+   c = a + ' ' + b
+
+   print(c)
+```
 
 ## Python 3.4
 
