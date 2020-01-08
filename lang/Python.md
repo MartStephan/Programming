@@ -288,7 +288,50 @@ Dadurch lässt sich Python auch in Eclipse, Visual Studio und andere populären 
 
 ### Objektorientierung
 
+Wie in eigentlich allen objektorientierten Sprachen gibt es auch in Python entsprechende Schlüsselwörter und generierte Methoden für Konstruktoren und Destruktoren.
 
+```python
+class meineKlasse(Basisklasse):
+	def __init__(self, args):
+    	pass
+    
+    def __del__(self):
+        pass
+    
+    def funktionsname(self, args):
+        pass
+```
+
+Vererbung ist möglich (siehe oben - Basisklasse). Falls keine Basisklasse angegeben ist, erbt die Klasse nichts. *init* ist der Konstruktor und *del* der Destruktor. Python bietet dir eine Garbage Collection. Dadurch ist ein eigener Destruktor quasi nie notwendig.
+
+Funktionen bekommen als ersten Parameter immer ein Referenz auf das Objekt, von dem sie aufgerufen wird. 
+
+```python
+#!usr/bin/python
+
+# Meine Klasse
+class gibMir:
+    # Konstruktor
+    def __init__(self, a):
+        self.abschnitt = a
+
+    # Klassenmethode
+    def calc(self, x):
+        return (self.abschnitt + x)
+
+if __name__ == '__main__':
+    print("Hallo")
+
+    # Instanziiere meine Klasse
+    dummyClass = gibMir(40)
+
+    # Rufe Klassenmethode auf
+    ergebnis = dummyClass.calc(2)
+
+    # fini
+    print(ergebnis)
+
+```
 
 ### Iterationen
 
@@ -540,6 +583,14 @@ Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokier
 
 
 ## Python 3.5
+
+## Bibliotheken
+
+### NumPy
+
+### SciPy
+
+### Matplotlib
 
 ## Literatur  
 
