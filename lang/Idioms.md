@@ -513,6 +513,35 @@ In der Praxis verwendet man den Begriff bei den REST-HTTP Verben GET, HEAD, PUT 
 
 Vererbung ist ein Begriff aus der Objektorientierung. Wie der Name schon sagt, dient die Vererbung dazu, aus schon bestehenden Klassen neue zu schaffen. Dabei 'erbt' die abgeleitete Klassen (üblicherweise) die Methoden und Attribute der Basisklasse. 
 
+## Integral Promotion
+
+Integral Promotion ist in C/C++ quasi das Gegenteil von *Narrowing Conversion*. Falls ein *int* alle Werte des Original-Typs repräsentieren kann, dann wird der Originaltyp nach *int* konvertiert. Ansonsten wird der Originaltyp nach unsigned int konvertiert. Dieser Prozess wird *Integral Promotion* genannt. 
+
+```c++
+#include <iostream>
+#include <typeinfo>
+
+template <typename T> auto integralPromotionFunc(T first, T second)
+{
+   // Bool-Parameter werden nach int konvertiert und Rückgabe ist ebenfalls int. 
+   return first + second;
+}
+
+int main()
+{
+   // Die beiden bool-Werte werden implizit nach int konvertiert. 
+   auto ret = integralPromotionFunc(true, false);
+   
+   std::cout << "Wert: " << ret << std::endl;
+   std::cout << "Typ: " << typeid(ret).name() << std::endl;
+   
+   return 0;
+}
+
+//> Wert: 1
+//> Typ: i
+```
+
 ## Interpreter
 
 <https://en.wikipedia.org/wiki/Interpreter_%28computing%29>  
@@ -630,6 +659,44 @@ Microservices sind ein Architekturmuster. Microservices zeichnen sich durch folg
 Werden in der funktionalen Programmierung verwendet, um aus kleinen Bauteilen bequem größere Module zu komponieren.  
 
 ## Mutable/Immutable
+
+## Narrowing Conversion
+
+Eine *Narrowing Conversion* ist eine implizite Konvertierung in C/C++ mit Verlust der Datengenauigkeit. Die Konvertierung erfolgt von einem Integer-Typ oder einem *unscoped enum* in einen Integer Typ. Dies kann zu bösen Überraschungen führen und sollte nach Möglichkeit verhindert werden. 
+
+```c++
+#include <iostream>
+
+void narrowingConversion(int i)
+{
+   std::cout << "int: " << i << std::endl;
+}
+
+int main()
+{ 
+   std::cout << std::boolalpha << std::endl;
+    
+   double d(1.234);
+   std::cout << "double: " << d << '\n';
+   // 1) narrowing conversion from double to int
+   narrowingConversion(d);  
+    
+   std::cout << std::endl;
+    
+   bool b(true);
+   std::cout << "bool: " << b << '\n';
+   // 2) narrowing conversion from bool to int
+   narrowingConversion(b); 
+    
+   return 0;
+}
+
+//> double: 1.234
+//> int: 1
+
+//> bool: true
+//> int: 1
+```
 
 ## Nebenläufigkeit
 
