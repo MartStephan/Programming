@@ -903,6 +903,10 @@ Die *Rule of three* kann aufgrund der neu hinzugekommenen *move-Operation* in C+
 
 Scopes sind Sichtbarkeitsbereiche (oder Gültigkeitsbereiche) für Bezeichner.
 
+## SFINAE
+
+SFINAE steht für Substitution Failure Is Not An Error und ist eine Programmiertechnik in C++. Wenn bei der Ersetzung von Template-Parameters ein Fehler auftritt, so wird dies nicht als Kompilierfehler gewertet, solange es eine Ersetzung gibt, die gültig ist. Alle fehlerhaften Instanziierungen aufgrund von fehlerhaften Template-Parametern werden einfach aus der Menge aller Ersetzungen einfach entfernt. 
+
 ## Smart Pointer
 
 Ein Smart Pointer verhält sich grundsätzlich wie ein normaler Zeiger. Er speichert eine Adresse, über die auf ein dynamisches reserviertes Objekt zugegriffen werden kann. Er wird jedoch als intelligent bzw. smart bezeichnet, weil er automatisch im Destruktor das Objekt mit ‚delete‘ freigibt. Das setzt natürlich voraus, dass das Objekt zuvor mit ‚new‘ erzeugt wurde. Der große Vorteil ist, dass man die Speicherfreigabe nicht vergessen kann, da diese automatisch stattfindet. In C++ gibt es den Smart Pointer std::auto_ptr.  
