@@ -1,6 +1,10 @@
 # Rust
 
-Sprache wird gepflegt von Mozilla.
+[TOC]
+
+Die Sprache Rust wird gepflegt von Mozilla.
+
+## Historie
 
 **Version 1.0**  
 
@@ -13,6 +17,10 @@ Freigegeben am 25.6.2015.
 **Version 1.2**
 
 Freigegeben am 6.8.2015.
+
+aktuelle **Version 1.41.1** vom 27. Februar 2020
+
+## Überblick
 
 **Allgemein**
 
@@ -31,7 +39,9 @@ Rust orientiert sich syntaktisch an C und C++.
 -  	Speicher-(De-)Allokation wird vom Rust-Compiler getätigt, d.h. es gibt keine 'malloc' oder 'free' Aufrufe
 -  	'move'-Semantik eingebaut
 
- **Einstieg**
+## **Installation und Hello World**
+
+### Manuell
 
 Mit der Sprache wird der Paketmanager [**Cargo**](https://crates.io/) ausgeliefert. Damit lässt sich ein Beispielprojekt schnell aufbauen:
 
@@ -39,11 +49,12 @@ Mit der Sprache wird der Paketmanager [**Cargo**](https://crates.io/) ausgeliefe
 
 Es wird dabei ein Verzeichnisbaum erstellt mit zwei Dateien: main.rs ist die Hauptdatei für ausführbare Programme. Cargo.toml beschreibt alle Abhängigkeiten und konfiguriert die Build-Schritte. In main.rs wurde sogar ein Hello, World generiert:
 
-*fn main() {*
-
-​    *println!(„Hello World!“)*
-
-*}*
+```rust
+fn main()
+{
+	println!("Hello World!“)
+}
+```
 
 Zum Kompilieren benutzt man den Befehl *build*:
 
@@ -61,6 +72,219 @@ Zum Kompilieren mit Optimierungen:
 
 *$ cargo --release build*
 
+### Visual Studio Code
+
+Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visual Studio Code unter Windows programmieren kann. 
+
+- Installiere Rust für Windows via https://www.rust-lang.org/tools/install [6] *Rustup-Init.exe*.
+
+- Ich habe die Standardeinstellungen übernommen (speziell Installationsverzeichnis und PATH-Umgebung).
+
+- Überprüfe die Rust Installation mit *rustup --version*. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
+
+- ```
+  >> rustup --version
+  rustup 1.21.1 (7832b2ebe 2019-12-20)
+  ```
+
+  
+
+- Mit rustup update kann man sich die aktuelle Version herunterladen
+
+- ```
+  >> rustup update
+  info: syncing channel updates for 'stable-x86_64-pc-windows-msvc'
+  info: checking for self-updates
+  
+    stable-x86_64-pc-windows-msvc unchanged - rustc 1.41.1 (f3e1a954d 2020-02-24)
+  
+  info: cleaning up downloads & tmp directories
+  ```
+
+  
+
+- Starte Visual Studio Code
+
+- Ich persönlich arbeite mit dem "Rust Extension Pack", welches über den integrierten Marketplace in Visual Studio Code installiert werden kann.
+
+- Jetzt bist du soweit für das erste Projekt, welches wir einfach "Hello World" nennen
+
+- Erzeuge ein leeres Projektverzeichnis
+
+- Darin legst du eine Datei names *Cargo.toml* ab, mit folgendem Inhalt
+
+- ```toml
+  [package]
+  name = "hello-world"
+  version = "0.1.0"
+  ```
+
+  
+
+- Lege ein Quellverzeichnis *src* an
+
+- Darin legst du die Quelldatei *main.rs* mit folgendem Inhalt ab
+
+- ```rust
+  fn main() 
+  {
+     println!("Hello World!");
+  }
+  ```
+
+  
+
+- Nun müssen wir nur noch festlegen, welche Task ausgeführt werden soll, wenn wir unseren Rust Code bauen wollen
+
+- Select *View - Command Palette - Tasks: Configure Default Build Task*
+
+- Wähle *Rust: cargo build* aus
+
+- Damit sollte eine *tasks.json* Datei erzeugt werden inkl. den Kommandos *cargo build* und *cargo run*.
+
+- ```json
+  {
+     // See https://go.microsoft.com/fwlink/?LinkId=733558 
+     // for the documentation about the tasks.json format
+     "version": "2.0.0",
+     "tasks": [
+        {
+           "type": "cargo",
+           "subcommand": "build",
+           "problemMatcher": [
+              "$rustc"
+           ],
+           "group": "build"
+        },
+        {
+           "type": "cargo",
+           "subcommand": "run",
+           "problemMatcher": [
+              "$rustc"
+           ],
+           "group": {
+              "kind": "build",
+              "isDefault": true
+           }
+        }
+     ]
+  }
+  ```
+
+  
+
+- Diese wird bei jedem Bau bzw. Ausführung unseres Codes ausgeführt. 
+
+- Damit kann man jetzt auf der Kommandozeile im Projektverzeichnis die Kommandos *cargo build* bzw. *cargo run* ausführen
+
+- ```
+  >>> cargo build
+  >>> Finished dev [unoptimized + debuginfo] target(s) in 0.01s
+      
+  >>> cargo run
+  >>> Compiling hello-world v0.1.0 (<PROJECT_DIR>)
+  >>> Finished dev [unoptimized + debuginfo] target(s) in 2.17s
+  >>> Running `target\debug\hello-world.exe`
+  >>> Hello World!  
+  
+  ```
+
+  
+
+- Und Voila - es ist vollbracht; *Hello World!* wurde ausgegeben
+
+## Basics
+
+**Kommentare**
+
+Zeilenkommetare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
+
+```rust
+fn main()
+{
+   // this is a line comment
+	let x = 5; // this is also a line comment.
+   
+	///
+	/// Example of a doc comment
+	///
+	/// ```
+	/// let five = 5;
+   let five = 5;
+}
+```
+
+**Kontrollstrukturen und Schleifenformen**
+
+Mit dem Schlüsselwort *loop* kann man Schleifen erstellen; mit *break* diese wieder verlassen. 
+
+```rust
+fn main() 
+{
+   let mut a = 0;
+   let r = loop 
+   {
+      a = a + 1;
+      if a == 10 
+      {
+         break a
+      }
+   };
+
+   println!("{}", r)
+}
+
+// 10
+```
+
+**Mutable/Immutable**
+
+In Rust gibt es wie in Python oder Java *Mutable* und *Immutable* Objekte. Das Schöne in Rust ist, daß *mutable* Objekte explizit mit dem Schlüsselwort *mut* deklariert werden müssen und man sich deshalb nicht merken muss, welche Objekte *mutable* und welche *immutable* sind (wie z.B. in Python).
+
+```rust
+/// Example of mutable/immutable
+fn main() 
+{
+   // let a = 0; --> this won't compile as 'a' is immutable
+   // error[E0384]: cannot assign twice to immutable variable 'a'
+   let mut a = 0; // ok, 'a' is mutable and can be changed 
+   let r = loop 
+   {
+      a = a + 1;  // here 'a' changes
+      if a == 10 
+      {
+         break a
+      }
+   };
+}
+```
+
+**Kopien, Referenzen und Ownership**
+
+Wichtig zu wissen: Mit dem *=* Zeichen wechselt in Rust die Ownership. Vor allem Programmierer, die C/C++/Python gewohnt sind, müssen hier umdenken. 
+
+```rust
+/// Example of ownership movemement
+fn main() 
+{
+   
+   let s = String::from("hello world");
+   let newOwner = s; // ownership has moved from s to newOwner
+  
+   /// This won't even compile as s got invalid because of ownership moved
+   //println!("{}", s); 
+   println!("{}", newOwner); 
+}
+
+// hello world
+```
+
+**Ownership**
+
+Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
+
+## Versionen
+
 **Version 1.2**
 
 -  	Verbesserungen in der Performance
@@ -69,14 +293,22 @@ Zum Kompilieren mit Optimierungen:
 Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen nun auch Typen ohne vorher festgelegte Größe, Arrays und Trait-Objekte umfassen können.  
 
  
-  
 
- [RUST1] <http://www.golem.de/news/mozillas-programmiersprache-rust-bedient-sich-bei-der-konkurrenz-1507-115214.html>
 
- [RUST2] <http://www.heise.de/developer/artikel/Rust-Junger-C-C-Herausforderer-mit-abwechslungsreicher-Geschichte-2649509.html> (abgerufen am 10. August 2015)
+ [1] <http://www.golem.de/news/mozillas-programmiersprache-rust-bedient-sich-bei-der-konkurrenz-1507-115214.html>
 
- [RUST3] <http://www.heise.de/newsticker/meldung/Programmiersprachen-Mozillas-C-C-Herausforderer-Rust-1-2-verfuegbar-2775308.html> (abgerufen am 10. August 2015)
+ [2] <http://www.heise.de/developer/artikel/Rust-Junger-C-C-Herausforderer-mit-abwechslungsreicher-Geschichte-2649509.html> (abgerufen am 10. August 2015)
+
+ [3] <http://www.heise.de/newsticker/meldung/Programmiersprachen-Mozillas-C-C-Herausforderer-Rust-1-2-verfuegbar-2775308.html> (abgerufen am 10. August 2015)
+
+[4] Learning Rust, https://www.geekabyte.io/ (abgerufen am 3. März 2020)
+
+[5] Getting Started with Rust on Windows and Visual Studio Code, https://www.twelve21.io/getting-started-with-rust-on-windows-and-visual-studio-code/ (abgerufen am 5. März 2020)
+
+[6] Install Rust, https://www.rust-lang.org/tools/install (abgerufen am 5. März 2020)
+
+
 
  
- 
+
   

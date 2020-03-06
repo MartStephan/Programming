@@ -663,6 +663,28 @@ Werden in der funktionalen Programmierung verwendet, um aus kleinen Bauteilen be
 
 ## Mutable/Immutable
 
+In Sprachen wie Java, Python oder Rust stolpert man zwangsläufig über die Begriffe *mutable* und *immutable*. In Rust gibt es sogar das Schlüsselwort *mut*. 
+
+In kurzen Worten: *Mutable* Objekte können verändert werden. Während *immutable* Objekte nicht verändert werden können. 
+
+```rust
+/// Example of mutable/immutable
+fn main() 
+{
+   // let a = 0; --> this won't compile as 'a' is immutable
+   // error[E0384]: cannot assign twice to immutable variable 'a'
+   let mut a = 0; // ok, 'a' is mutable and can be changed 
+   let r = loop 
+   {
+      a = a + 1;  // here 'a' changes
+      if a == 10 
+      {
+         break a
+      }
+   };
+}
+```
+
 ## Narrowing Conversion
 
 Eine *Narrowing Conversion* ist eine implizite Konvertierung in C/C++ mit Verlust der Datengenauigkeit. Die Konvertierung erfolgt von einem Integer-Typ oder einem *unscoped enum* in einen Integer Typ. Dies kann zu bösen Überraschungen führen und sollte nach Möglichkeit verhindert werden. 
