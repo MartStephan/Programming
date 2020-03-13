@@ -195,7 +195,7 @@ Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
 
 ## Basics
 
-**Kommentare**
+### **Kommentare**
 
 Zeilenkommetare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
 
@@ -214,13 +214,63 @@ fn main()
 }
 ```
 
-**Kontrollstrukturen und Schleifenformen**
+### **Datentypen**
 
-Mit dem Schlüsselwort *loop* kann man Schleifen erstellen; mit *break* diese wieder verlassen. 
+Einen kurzen Überblick über Datentypen (ohne weitere Erklärungen).
+
+- Integer-Typen
+
+| Length  | Signed | Unsigned |
+| ------- | ------ | -------- |
+| 8-bit   | i8     | u8       |
+| 16-bit  | i16    | u16      |
+| 32-bit  | i32    | u32      |
+| 64-bit  | i64    | u64      |
+| 128-bit | i128   | u128     |
+| arch    | isize  | usize    |
+
+- Literale
+
+| Literal   | Beispiel    |
+| --------- | ----------- |
+| Dezimal   | 98_222      |
+| Hex       | 0xff        |
+| Oktal     | 0o77        |
+| Binär     | 0x1111_0000 |
+| Byte (u8) | b'M'        |
+
+- Floating-Point
+
+| Length | Typ  |
+| ------ | ---- |
+| 32-bit | f32  |
+| 64-bit | f64  |
+
+- Ansonsten
+
+| Typ  | Werte       |
+| ---- | ----------- |
+| bool | true, false |
+| char | ' '         |
+
+- Compound
+
+| Typ   | Beispiel                   |
+| ----- | -------------------------- |
+| tup   | let tup = (500, 100.1, 5); |
+| array | let a = [1, 2, 3, 4, 5];   |
+
+Tupel und Arrays werden mit runden Klammern (Tupel) bzw. eckigen Klammern (Array) deklariert. 
+
+### **Schleifen**
+
+Mit dem Schlüsselwort *loop* kann man Schleifen erstellen; mit *break* diese wieder verlassen. Ebenso wenig fehlen dürfen natürlich *for*-Schleifen und *while*-Schleifen. 
 
 ```rust
+/// Examples for various loops in Rust
 fn main() 
 {
+   // Show me loop
    let mut a = 0;
    let r = loop 
    {
@@ -231,13 +281,37 @@ fn main()
       }
    };
 
-   println!("{}", r)
+   println!("{}", r);
+   
+   // Show me for
+   for x in 1..3 
+   {
+      println!("X = {}", x);
+   }
+   
+   // Show me while
+   let mut x = 2; 
+   let mut done = false; 
+
+   while !done 
+   {
+      x += 1;
+
+      if x % 5 == 0 
+      {
+         done = true;
+         println!("no rest {}", x);
+      }
+   }
 }
 
 // 10
+// X = 1
+// X = 2
+// no rest 5
 ```
 
-**Mutable/Immutable**
+### **Mutable/Immutable**
 
 In Rust gibt es wie in Python oder Java *Mutable* und *Immutable* Objekte. Das Schöne in Rust ist, daß *mutable* Objekte explizit mit dem Schlüsselwort *mut* deklariert werden müssen und man sich deshalb nicht merken muss, welche Objekte *mutable* und welche *immutable* sind (wie z.B. in Python).
 
@@ -259,7 +333,37 @@ fn main()
 }
 ```
 
-**Kopien, Referenzen und Ownership**
+### **Funktionen**
+
+Funktionen starten mit dem Schlüsselwort *fn*. Die main-Funktion nennt sich auch *main()* und ist der Einstiegspunkt des ausführbaren Programms. Parameter setzt man in Klammern, mit Komma getrennt und unter Angabe des Datentypes. Der Rückgabewert wird mit dem 'Zeiger'-Operator angegeben. 
+
+```rust
+/// Example of functions
+fn main() 
+{
+   println!("Hallo Welt");
+   
+	let x =eine_andere_funktion(42);
+   
+   println!("return {}", x);
+}
+
+// Funktion bekommen das Schlüsselwort fn
+// Parameter setzt man in Klammern mit entsprechendem Datentyp
+// Rückgabewert wird mit 'Zeiger'-Operator angegeben
+fn eine_andere_funktion(val: u32) -> u8 
+{
+   println!("eine_andere_funktion {}", val);
+
+   return 1;
+}
+
+// Hallo Welt
+// eine_andere_funktion 42
+// return 1
+```
+
+### **Kopien, Referenzen und Ownership**
 
 Wichtig zu wissen: Mit dem *=* Zeichen wechselt in Rust die Ownership. Vor allem Programmierer, die C/C++/Python gewohnt sind, müssen hier umdenken. 
 
@@ -279,9 +383,90 @@ fn main()
 // hello world
 ```
 
-**Ownership**
+### **Ownership**
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
+
+**Structs**
+
+Für Strukturen gibt es das Schlüsselwort *struct*. Ein kurzes Beispiel sollte genügen. 
+
+```rust
+/// Example of strcuts/enums
+#[derive(Debug)]
+struct Point
+{
+   x: i32,
+   y: i32,
+}
+
+fn main() 
+{
+   let startingPoint = Point {x: 10, y: 10};
+
+   println!("The starting point today is {:?}.", startingPoint)
+}
+
+// The starting point today is Point { x: 10, y: 10 }.
+```
+
+### **enums und Pattern Matching**
+
+Weiter geht es mit einem kleinen Beispiel für die Benutzung von *enum*. Interessant in Rust ist die Möglichkeit, zusätzliche Daten direkt in den Enum-Wert zu setzen. Zusätzlich lassen sich in Rust Werte mit einem sogenannten *match* Operator vergleichen. 
+
+```rust
+/// Example of enums
+
+/// enumeration using enum
+#[derive(Debug)]
+enum InternetProtocol
+{
+   IP4,
+   IP6,
+}
+
+/// enumeration with additional data 
+#[derive(Debug)]
+enum InternetProtocolExtended
+{
+   IP4(String),
+   IP6(String),
+}
+
+fn main() 
+{
+   // use our enumeration values
+   let ip = InternetProtocol::IP4;
+
+   let ipx = InternetProtocolExtended::IP6(String::from("::1"));
+
+   println!("We're using {:?}.", ip);
+   println!("and extended version {:?}.", ipx);
+   
+   let protocol = ipNumber(ip);
+
+   println!("I'm using protocol {}", protocol);
+}
+
+// Function using Pattern matching
+fn ipNumber(ip: InternetProtocol) -> u8 
+{
+   // Pattern matching using match
+   match ip
+   {
+       InternetProtocol::IP4 => 4,
+       InternetProtocol::IP6 => 6,
+   }
+}
+
+// We're using IP4.
+// and extended version IP6("::1").
+// I'm using protocol 4
+```
+
+## Packages, Crates, and Modules
+
+
 
 ## Versionen
 
@@ -306,6 +491,10 @@ Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen
 [5] Getting Started with Rust on Windows and Visual Studio Code, https://www.twelve21.io/getting-started-with-rust-on-windows-and-visual-studio-code/ (abgerufen am 5. März 2020)
 
 [6] Install Rust, https://www.rust-lang.org/tools/install (abgerufen am 5. März 2020)
+
+[7] Mozillas Rust - Konkurrenz für C und C++, iX 06/2015, S. 68-73
+
+[8] The Rust Programming Language, https://doc.rust-lang.org/book/title-page.html (abgerufen am 10. März 2020)
 
 
 
