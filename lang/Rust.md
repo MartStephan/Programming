@@ -39,7 +39,7 @@ Rust orientiert sich syntaktisch an C und C++.
 -  	Speicher-(De-)Allokation wird vom Rust-Compiler getätigt, d.h. es gibt keine 'malloc' oder 'free' Aufrufe
 -  	'move'-Semantik eingebaut
 
-## **Installation und Hello World**
+## Installation und Hello World
 
 ### Manuell
 
@@ -195,7 +195,7 @@ Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
 
 ## Basics
 
-### **Kommentare**
+### Kommentare
 
 Zeilenkommetare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
 
@@ -214,7 +214,7 @@ fn main()
 }
 ```
 
-### **Datentypen**
+### Datentypen
 
 Einen kurzen Überblick über Datentypen (ohne weitere Erklärungen).
 
@@ -262,7 +262,7 @@ Einen kurzen Überblick über Datentypen (ohne weitere Erklärungen).
 
 Tupel und Arrays werden mit runden Klammern (Tupel) bzw. eckigen Klammern (Array) deklariert. 
 
-### **Schleifen**
+### Schleifen
 
 Mit dem Schlüsselwort *loop* kann man Schleifen erstellen; mit *break* diese wieder verlassen. Ebenso wenig fehlen dürfen natürlich *for*-Schleifen und *while*-Schleifen. 
 
@@ -311,7 +311,7 @@ fn main()
 // no rest 5
 ```
 
-### **Mutable/Immutable**
+### Mutable/Immutable
 
 In Rust gibt es wie in Python oder Java *Mutable* und *Immutable* Objekte. Das Schöne in Rust ist, daß *mutable* Objekte explizit mit dem Schlüsselwort *mut* deklariert werden müssen und man sich deshalb nicht merken muss, welche Objekte *mutable* und welche *immutable* sind (wie z.B. in Python).
 
@@ -333,7 +333,7 @@ fn main()
 }
 ```
 
-### **Funktionen**
+### Funktionen
 
 Funktionen starten mit dem Schlüsselwort *fn*. Die main-Funktion nennt sich auch *main()* und ist der Einstiegspunkt des ausführbaren Programms. Parameter setzt man in Klammern, mit Komma getrennt und unter Angabe des Datentypes. Der Rückgabewert wird mit dem 'Zeiger'-Operator angegeben. 
 
@@ -363,7 +363,7 @@ fn eine_andere_funktion(val: u32) -> u8
 // return 1
 ```
 
-### **Kopien, Referenzen und Ownership**
+### Kopien, Referenzen und Ownership
 
 Wichtig zu wissen: Mit dem *=* Zeichen wechselt in Rust die Ownership. Vor allem Programmierer, die C/C++/Python gewohnt sind, müssen hier umdenken. 
 
@@ -383,7 +383,7 @@ fn main()
 // hello world
 ```
 
-### **Ownership**
+### Ownership
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
 
@@ -410,7 +410,7 @@ fn main()
 // The starting point today is Point { x: 10, y: 10 }.
 ```
 
-### **enums und Pattern Matching**
+### enums und Pattern Matching
 
 Weiter geht es mit einem kleinen Beispiel für die Benutzung von *enum*. Interessant in Rust ist die Möglichkeit, zusätzliche Daten direkt in den Enum-Wert zu setzen. Zusätzlich lassen sich in Rust Werte mit einem sogenannten *match* Operator vergleichen. 
 
@@ -466,7 +466,62 @@ fn ipNumber(ip: InternetProtocol) -> u8
 
 ## Packages, Crates, and Modules
 
+Das Modul-System von Rust umfasst folgende Features. 
 
+- **Packages** Ein Konzept in Cargo, um code(), build(), deploy() Schritte durchzuführen 
+- **Crates** Beinhaltet Module in einer Baumstruktur, um Bibliotheken oder Executables zu erstellen
+- **Modules** und **use** Werden benutzt, um die Organisation, Gültigkeit und Privatheit im Baum zu steuern
+- **Paths** Ein Weg, um Dinge zu addressieren (z.B. Structs, Funktionen, Module, ...)
+
+**Packages and Crates**
+
+Einige dieser Features haben wir zuvor schon angewandt. So besteht ein *Package* immer aus einer *Cargo.toml* Datei. Diese Datei beschreibt, wie die *Crates* zu bauen sind. 
+
+Ein Package kann entweder kein oder ein Bibliothek *Crate* beinhalten. Aber nicht mehr als eine. Es kann soviele Binär-*Crates* wie nötig beinhalten. 
+
+*Cargo* erwartet *src/main.rs* immer als Wurzel eines Binär-*Crate* (executable). Während eine Bibliothek immer eine *src/lib.rs* als Wurzel besitzen muss.
+
+Mehrere Binary-*Crates* können verwendet werden, indem man die zusätzlichen Dateien in *src/bin* ablegt. 
+
+**Modules, use und Paths**
+
+Module organisieren den Code innerhalb eines *Crate* in Gruppen. Mit Modulen kann man steuern, ob der Code für die Allgemeinheit bestimmt ist (public) oder nur für interne Zwecke (private). Lass uns zusammen eine Bibliothek erstellen. 
+
+Dafür erzeugen wir eine Bibliothek, indem wir *src/lib.rs* erzeugen und darin ein Modul (inkl. Untermodule) für ein HiFi System implementieren. 
+
+```rust
+/// File: src/lib.rs
+
+mod hi_fi_system 
+{
+   mod cd_player
+   {
+      fn play() {}
+      fn pause() {}
+      fn stop() {}
+   }
+
+   mod amplifier
+   {
+      fn vol_up(val: u32) {}
+      fn vol_down(val: u32) {}
+   }
+}
+```
+
+Im Wurzelpfad legen wir eine *cargo.toml* Datei mit folgendem Inhalt ab. 
+
+```toml
+# file cargo.toml
+[package]
+name = "hifi-module"
+version = "0.1.0"
+authors = ["Martin Stephan <mstephan.mail@gmx.de>"]
+
+[dependencies]
+```
+
+Jetzt kann man mit dem Befehl cargo build schon bauen und erhält eine Bibliothek namens *libhifi_module.rlib*.
 
 ## Versionen
 
