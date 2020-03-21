@@ -47,7 +47,7 @@ Mit der Sprache wird der Paketmanager [**Cargo**](https://crates.io/) ausgeliefe
 
 *$ cargo new --bin example*	
 
-Es wird dabei ein Verzeichnisbaum erstellt mit zwei Dateien: main.rs ist die Hauptdatei für ausführbare Programme. Cargo.toml beschreibt alle Abhängigkeiten und konfiguriert die Build-Schritte. In main.rs wurde sogar ein Hello, World generiert:
+Es wird dabei ein Verzeichnisbaum erstellt mit zwei Dateien: *main.rs* ist die Hauptdatei für ausführbare Programme. *Cargo.toml* beschreibt alle Abhängigkeiten und konfiguriert die Bau-Schritte. In *main.rs* wurde sogar ein *"Hello, World"* generiert:
 
 ```rust
 fn main()
@@ -197,7 +197,7 @@ Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
 
 ### Kommentare
 
-Zeilenkommetare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
+Zeilenkommentare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
 
 ```rust
 fn main()
@@ -387,7 +387,7 @@ fn main()
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
 
-**Structs**
+### **Structs**
 
 Für Strukturen gibt es das Schlüsselwort *struct*. Ein kurzes Beispiel sollte genügen. 
 
@@ -490,7 +490,7 @@ Module organisieren den Code innerhalb eines *Crate* in Gruppen. Mit Modulen kan
 Dafür erzeugen wir eine Bibliothek, indem wir *src/lib.rs* erzeugen und darin ein Modul (inkl. Untermodule) für ein HiFi System implementieren. 
 
 ```rust
-/// File: src/lib.rs
+/// file: src/lib.rs
 
 mod hi_fi_system 
 {
@@ -521,7 +521,107 @@ authors = ["Martin Stephan <mstephan.mail@gmx.de>"]
 [dependencies]
 ```
 
-Jetzt kann man mit dem Befehl cargo build schon bauen und erhält eine Bibliothek namens *libhifi_module.rlib*.
+Jetzt kann man mit dem Befehl *cargo build* schon bauen und erhält eine Bibliothek namens *libhifi_module.rlib*.
+
+Wie können wir jetzt dem CD Player einen Play-Befehl schicken? Wir müssen die Funktion play() aufrufen. Allerdings sind Module und Funktionen ohne das Schlüsselwort *pub* immer private in Rust, d.h. wir müssen unseren Code von oben noch einmal anpassen. 
+
+```rust
+/// example of public modules and functions
+mod hi_fi_system 
+{
+   // make cd_player and functions public
+   pub mod cd_player
+   {
+      pub fn play() {}
+      pub fn pause() {}
+      pub fn stop() {}
+   }
+
+   // make amplifier and functions public
+   pub mod amplifier
+   {
+      pub fn vol_up(val: u32) {}
+      pub fn vol_down(val: u32) {}
+   }
+}
+
+pub fn hear_johnny_cash()
+{
+   // Access using absolute path
+   crate::hi_fi_system::cd_player::play();;
+
+   // Access using relative path
+   hi_fi_system::amplifier::vol_up(6); 
+}
+```
+
+Bleibt im obigen Beispiel noch die Frage, wieso *hi_fi_system* nicht public markiert ist: *hi_fi_system* muß ebenfalls public deklariert werden, falls von außen auf das Modul zugegriffen wird. Im Beispiel wird aber in der gleichen Datei auf das Modul zugegriffen. Das funktioniert auch ohne das *pub*-Schlüsselwort. 
+
+Geht es nicht einfacher und kürzer? Ja, indem man mit dem Schlüsselwort *use* arbeitet. Auch hier wieder ein Beispiel.
+
+```rust
+/// example of using the use keyword
+mod hi_fi_system 
+{
+   pub mod cd_player
+   {
+      pub fn play() {}
+      pub fn pause() {}
+      pub fn stop() {}
+   }
+
+   pub mod amplifier
+   {
+      pub fn vol_up(val: u32) {}
+      pub fn vol_down(val: u32) {}
+   }
+}
+
+use crate::hi_fi_system::cd_player; 
+use crate::hi_fi_system::amplifier::vol_up; 
+
+pub fn hear_johnny_cash()
+{
+   // making use of use - ha ha 
+   cd_player::play();
+
+   // even shorter making use of second use above
+   vol_up(10);
+}
+```
+
+**External Packages**
+
+Um vorhandene externe Pakete einzubinden, muss ich die Abhängigkeit in der *cargo.toml* entsprechend angeben. Wir probieren das gleich mal mit dem externen Paket *rand* zum Erzeugen von Zufallszahlen aus. 
+
+```toml
+# file cargo.toml with external dependency to rand
+[package]
+name = "hifi-module"
+version = "0.2.0"
+authors = ["Martin Stephan <mstephan.mail@gmx.de>"]
+
+[dependencies]
+rand = "0.7.3"
+```
+
+Und ein kleines Beispiel zur Benutzung. 
+
+```rust
+/// Example of external package usage
+// import random() function
+extern crate rand; 
+use rand::random;
+
+fn main() 
+{
+   println!("Hallo Welt");
+
+   let x: u8 = random();
+
+   println!("Erzähle es niemandem weiter {}", x);
+}
+```
 
 ## Versionen
 
