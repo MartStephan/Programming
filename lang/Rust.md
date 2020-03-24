@@ -674,6 +674,8 @@ Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen
 
 [8] The Rust Programming Language, https://doc.rust-lang.org/book/title-page.html (abgerufen am 10. März 2020)
 
+[9] Rust - Sichere Programmiersprache für systemnahe und parallele Software, ix developer, Winter 2019/20
+
 
 
  
