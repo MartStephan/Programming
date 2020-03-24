@@ -2,6 +2,30 @@
 
 [TOC]
 
+Table of Contents
+=================
+
+* [Rust](#rust)
+  * [Historie](#historie)
+  * [Überblick](#%C3%BCberblick)
+  * [Installation und Hello World](#installation-und-hello-world)
+    * [Manuell](#manuell)
+    * [Visual Studio Code](#visual-studio-code)
+  * [Basics](#basics)
+    * [Kommentare](#kommentare)
+    * [Datentypen](#datentypen)
+    * [Schleifen](#schleifen)
+    * [Mutable/Immutable](#mutableimmutable)
+    * [Funktionen](#funktionen)
+    * [Kopien, Referenzen und Ownership](#kopien-referenzen-und-ownership)
+    * [Ownership](#ownership)
+    * [<strong>Structs</strong>](#structs)
+    * [enums und Pattern Matching](#enums-und-pattern-matching)
+  * [Packages, Crates, and Modules](#packages-crates-and-modules)
+  * [Versionen](#versionen)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
 Die Sprache Rust wird gepflegt von Mozilla.
 
 ## Historie
