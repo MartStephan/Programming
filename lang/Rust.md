@@ -25,6 +25,7 @@ Table of Contents
     * [enums und Pattern Matching](#enums-und-pattern-matching)
   * [Packages, Crates, and Modules](#packages-crates-and-modules)
   * [Versionen](#versionen)
+  * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
