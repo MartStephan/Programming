@@ -6,6 +6,7 @@ Table of Contents
 =================
 
 * [Rust](#rust)
+* [Table of Contents](#table-of-contents)
   * [Historie](#historie)
   * [Überblick](#%C3%BCberblick)
   * [Installation und Hello World](#installation-und-hello-world)
@@ -19,7 +20,7 @@ Table of Contents
     * [Funktionen](#funktionen)
     * [Kopien, Referenzen und Ownership](#kopien-referenzen-und-ownership)
     * [Ownership](#ownership)
-    * [<strong>Structs</strong>](#structs)
+    * [Structs](#structs)
     * [enums und Pattern Matching](#enums-und-pattern-matching)
   * [Packages, Crates, and Modules](#packages-crates-and-modules)
   * [Versionen](#versionen)
