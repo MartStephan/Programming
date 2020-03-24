@@ -44,7 +44,7 @@ Freigegeben am 25.6.2015.
 
 Freigegeben am 6.8.2015.
 
-aktuelle **Version 1.41.1** vom 27. Februar 2020
+aktuelle **Version 1.42.0** vom 12. März 2020
 
 ## Überblick
 
@@ -661,7 +661,7 @@ fn main()
 Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen nun auch Typen ohne vorher festgelegte Größe, Arrays und Trait-Objekte umfassen können.  
 
  
-
+## Literatur
 
  [1] <http://www.golem.de/news/mozillas-programmiersprache-rust-bedient-sich-bei-der-konkurrenz-1507-115214.html>
 
