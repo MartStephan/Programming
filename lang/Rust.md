@@ -76,7 +76,7 @@ Es wird dabei ein Verzeichnisbaum erstellt mit zwei Dateien: *main.rs* ist die H
 ```rust
 fn main()
 {
-	println!("Hello World!“)
+   println!("Hello World!“)
 }
 ```
 
@@ -168,8 +168,6 @@ Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
 
 - ```json
   {
-     # See https://go.microsoft.com/fwlink/?LinkId=733558 
-     # for the documentation about the tasks.json format
      "version": "2.0.0",
      "tasks": [
         {
@@ -227,13 +225,13 @@ Zeilenkommentare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare
 fn main()
 {
    // this is a line comment
-	let x = 5; // this is also a line comment.
+   let x = 5; // this is also a line comment.
    
-	///
-	/// Example of a doc comment
-	///
-	/// ```
-	/// let five = 5;
+   ///
+   /// Example of a doc comment
+   ///
+   /// ```
+   /// let five = 5;
    let five = 5;
 }
 ```
@@ -367,7 +365,7 @@ fn main()
 {
    println!("Hallo Welt");
    
-	let x =eine_andere_funktion(42);
+   let x =eine_andere_funktion(42);
    
    println!("return {}", x);
 }
