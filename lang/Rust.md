@@ -411,7 +411,7 @@ fn main()
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
 
-### **Structs**
+### Structs
 
 Für Strukturen gibt es das Schlüsselwort *struct*. Ein kurzes Beispiel sollte genügen. 
 
