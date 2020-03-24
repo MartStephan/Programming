@@ -76,16 +76,14 @@ Kurzanleitung, um Rust auf einem Windows-PC zu installieren.
 
 - Ich habe die Standardeinstellungen übernommen (speziell Installationsverzeichnis und PATH-Umgebung).
 
-- Überprüfe die Rust Installation mit *rustup --version*. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
+- Überprüfe die Rust Toolchain Installation mit *rustup --version*. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
 
 - ```
   >> rustup --version
   rustup 1.21.1 (7832b2ebe 2019-12-20)
   ```
 
-  
-
-- Mit rustup update kann man sich die aktuelle Version herunterladen
+- Mit *rustup update* kann man sich die aktuelle Version der Rust Language herunterladen. Diese sollte bei einer Neuinstallation immer auf der letzten aktuellen stabilen Release sein.
 
 - ```
   >> rustup update
