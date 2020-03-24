@@ -194,7 +194,7 @@ Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
   }
   ```
 
-  
+- Dokumentation über das *tasks.json* Format findet man auf https://go.microsoft.com/fwlink/?LinkId=733558 
 
 - Diese wird bei jedem Bau bzw. Ausführung unseres Codes ausgeführt. 
 
