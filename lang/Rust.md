@@ -66,7 +66,36 @@ Rust orientiert sich syntaktisch an C und C++.
 
 ## Installation und Hello World
 
-### Manuell
+### Installation
+
+Kurzanleitung, um Rust auf einem Windows-PC zu installieren.
+
+- Installiere Rust für Windows via https://www.rust-lang.org/tools/install [6] *Rustup-Init.exe*.
+
+- Ich habe die Standardeinstellungen übernommen (speziell Installationsverzeichnis und PATH-Umgebung).
+
+- Überprüfe die Rust Installation mit *rustup --version*. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
+
+- ```
+  >> rustup --version
+  rustup 1.21.1 (7832b2ebe 2019-12-20)
+  ```
+
+  
+
+- Mit rustup update kann man sich die aktuelle Version herunterladen
+
+- ```
+  >> rustup update
+  info: syncing channel updates for 'stable-x86_64-pc-windows-msvc'
+  info: checking for self-updates
+  
+    stable-x86_64-pc-windows-msvc unchanged - rustc 1.41.1 (f3e1a954d 2020-02-24)
+  
+  info: cleaning up downloads & tmp directories
+  ```
+
+### Konsolen Entwicklung
 
 Mit der Sprache wird der Paketmanager [**Cargo**](https://crates.io/) ausgeliefert. Damit lässt sich ein Beispielprojekt schnell aufbauen:
 
@@ -101,32 +130,7 @@ Zum Kompilieren mit Optimierungen:
 
 Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visual Studio Code unter Windows programmieren kann. 
 
-- Installiere Rust für Windows via https://www.rust-lang.org/tools/install [6] *Rustup-Init.exe*.
-
-- Ich habe die Standardeinstellungen übernommen (speziell Installationsverzeichnis und PATH-Umgebung).
-
-- Überprüfe die Rust Installation mit *rustup --version*. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
-
-- ```
-  >> rustup --version
-  rustup 1.21.1 (7832b2ebe 2019-12-20)
-  ```
-
-  
-
-- Mit rustup update kann man sich die aktuelle Version herunterladen
-
-- ```
-  >> rustup update
-  info: syncing channel updates for 'stable-x86_64-pc-windows-msvc'
-  info: checking for self-updates
-  
-    stable-x86_64-pc-windows-msvc unchanged - rustc 1.41.1 (f3e1a954d 2020-02-24)
-  
-  info: cleaning up downloads & tmp directories
-  ```
-
-  
+- Falls noch nicht geschehen, installiere die neueste Visual Studio Code Version.
 
 - Starte Visual Studio Code
 
