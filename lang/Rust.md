@@ -128,13 +128,13 @@ Zum Kompilieren mit Optimierungen:
 
 ### Visual Studio Code
 
-Zum schnellen Entwicklen hier eine Kurzbeschreibung, wie man Rust-Code mit Visual Studio Code unter Windows programmieren kann. 
+Zum schnellen Entwickeln hier eine Kurzbeschreibung, wie man Rust-Code mit Visual Studio Code unter Windows programmieren kann. 
 
 - Falls noch nicht geschehen, installiere die neueste Visual Studio Code Version.
 
 - Starte Visual Studio Code
 
-- Ich persönlich arbeite mit dem "Rust Extension Pack", welches über den integrierten Marketplace in Visual Studio Code installiert werden kann.
+- Ich persönlich arbeite mit dem "Rust Extension Pack" (von Swellaby), welches über den integrierten Marketplace in Visual Studio Code installiert werden kann.
 
 - Jetzt bist du soweit für das erste Projekt, welches wir einfach "Hello World" nennen
 
