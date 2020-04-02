@@ -650,6 +650,130 @@ fn main()
 }
 ```
 
+## Collections
+
+Wie in anderen Sprachen auch, gibt es in Rust sogenannte Collections. Drei davon schauen wir uns an:
+
+- Vector
+- String
+- Hash Map
+
+Collections werden in Rust im Gegensatz zu Built-in Typen auf dem Heap angelegt und können dadurch dynamisch wachsen.
+
+Wir fangen mit dem Vektor *Vec<T>* an. 
+
+```rust
+// Rust collections examples of Vector
+fn main() 
+{
+   println!("Hello World!");
+
+   // create new, empty vector
+   let mut v1: Vec<i32> = Vec::new();
+
+   // create vector with initialisation
+   let v2 = vec![1,2,3];
+
+   // update v1
+   v1.push(4);
+   v1.push(2);
+
+   // reading elements
+   let third: &i32 = &v2[2];
+   println!("The third element of v2 is {}", third);
+
+   // iterating over vector elements
+   for i in &v1 
+   {  
+      println!("{}", i);
+   }
+}
+
+//Hello World!
+//The third element of v2 is 3
+//4
+//2
+```
+
+Beispiele für String. Eine Besonderheit von Rust-Strings ist, dass sie intern immer als UTF-8 gespeichert werden. Das hat einige Konsequenzen bei der Benutzung. Aber siehe selbst. 
+
+```rust
+// Rust collections examples of String
+// Note that String representation is UTF-8
+// This means there is e.g. no indexing possible
+fn main() 
+{
+   // create new, empty string
+   let mut s1 = String::new();
+
+   // create string with initialisation
+   let mut s2 = "Martin".to_string();
+
+   // equivalent you can write
+   let s3 = String::from(" Top");
+
+   // grow string by surname
+   s2.push_str(" Stephan");
+   println!("s2 is {}", s2);
+
+   // you can use '+' to concatenate strings
+   let s4 = s2 + &s3;
+   println!("s4 is {}", s4);
+
+   // Iterate over String chars 
+   for c in "Martin".chars() 
+   {
+      println!("{}", c);
+   }
+}
+
+//s2 is Martin Stephan
+//s4 is Martin Stephan Top
+//M
+//a
+//r
+//t
+//i
+//n
+```
+
+Und zum Schluss einige Beispiele für die Benutzung von Hash Maps *HashMap<K, V>*. Hash Maps in Rust implementierenn eine Hash-Funktion. In anderen Sprachen werden auch andere Namen verwendet wie Maps (C++) oder Dictionaries (Python).
+
+```rust
+// Rust collections examples of Hash Maps
+use std::collections::HashMap;
+
+fn main() 
+{
+   // create new, empty hash map
+   let mut life = HashMap::new();
+
+   // insert values in our hash map
+   life.insert(String::from("Adams"), 10);
+   life.insert(String::from("Kafka"), 42);
+
+   // creating a hash map using collect 
+   let equipes = vec![String::from("fcb"), String::from("ksc")];
+   let points = vec![1,3];
+   let scores: HashMap<_, _> = equipes.iter().zip(points.iter()).collect();
+
+   // accessing hash maps
+   let team = String::from("ksc");
+   let score = scores.get(&team);
+   println!("ksc {:?}", score);
+
+   // iterating hash maps
+   for (equipes, points) in &scores 
+   {
+      println!("{}: {}", equipes, points);
+   }
+}
+
+//ksc Some(3)
+//fcb: 1
+//ksc: 3
+```
+
 ## Versionen
 
 **Version 1.2**
@@ -659,7 +783,7 @@ fn main()
 
 Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen nun auch Typen ohne vorher festgelegte Größe, Arrays und Trait-Objekte umfassen können.  
 
- 
+
 ## Literatur
 
  [1] <http://www.golem.de/news/mozillas-programmiersprache-rust-bedient-sich-bei-der-konkurrenz-1507-115214.html>
