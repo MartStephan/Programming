@@ -24,6 +24,8 @@ Table of Contents
     * [Structs](#structs)
     * [enums und Pattern Matching](#enums-und-pattern-matching)
   * [Packages, Crates, and Modules](#packages-crates-and-modules)
+  * [Collections](#collections)
+  * [Error Handling](#error-handling)
   * [Versionen](#versionen)
   * [Literatur](#literatur)
 
