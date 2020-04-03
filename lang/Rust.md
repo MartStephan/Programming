@@ -774,6 +774,68 @@ fn main()
 //ksc: 3
 ```
 
+## Error Handling
+
+Rust bietet mehrere Möglichkeiten zur Fehlerbehandlung. 
+
+- *Result<T, E>* 
+- *panic!*
+
+**panic!**
+
+Für nicht wieder heilbare Fehler bietet Rust das *panic!* Makro. Mit *panic!* wird eine Fehlermeldung ausgegeben, der Stack aufgeräumt und dann das Programm verlassen. 
+
+```rust
+// Rust Error Handling
+fn main() 
+{
+   // something bad happened - Panik Panther
+   panic!("Panik Panther");
+}
+
+//thread 'main' panicked at 'Panik Panther', src\main.rs:5:4
+//note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+//error: process didn't exit successfully: `collections.exe` (exit code: 101)
+```
+
+**Result<T, E>**
+
+Result<T, E> kennt zwei Varianten.
+
+```rust
+enum Result<T, E>
+{
+    Ok(T),
+    Err(E),
+}
+```
+
+Praktisch sieht es dann so aus. 
+
+```rust
+// Rust Error Handlin
+use std::fs::File;
+
+fn main() 
+{
+   let f = File::open("hello.txt");
+
+   let f = match f 
+   {
+      Ok(file) => file,
+      Err(error) => 
+      {
+          panic!("Problem opening the file: {:?}", error)
+      },
+  };
+  println!("f{:?}", f);
+}
+
+//thread 'main' panicked at 'Problem opening the file: Os { code: 2, kind: NotFound, //message: "Das System kann die angegebene Datei nicht finden." }', src\main.rs:13:11
+//note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+//error: process didn't exit successfully: `collections.exe` (exit code: 101)
+```
+
 ## Versionen
 
 **Version 1.2**
