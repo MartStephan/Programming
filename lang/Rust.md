@@ -26,6 +26,7 @@ Table of Contents
   * [Packages, Crates, and Modules](#packages-crates-and-modules)
   * [Collections](#collections)
   * [Error Handling](#error-handling)
+  * [Generics](#generics)
   * [Versionen](#versionen)
   * [Literatur](#literatur)
 
