@@ -226,7 +226,7 @@ Zum schnellen Entwickeln hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
 
 ### Kommentare
 
-Zeilenkommentare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
+Kommentare sind kein Problem, wenn du von C/C++ kommst. Zeilenkommentare werden mit // am Anfang der Zeile signalisiert. Doku-Kommentare mit ///. 
 
 ```rust
 fn main()
@@ -240,6 +240,30 @@ fn main()
    /// ```
    /// let five = 5;
    let five = 5;
+}
+```
+
+Es gibt natürlich auch Blockkommentare.
+
+```rust
+/* fn largest<T>(list: &[T]) -> T
+{
+    let mut largest = list[0];
+
+    for &item in list.iter() 
+    {
+        if item > largest 
+        {
+            largest = item;
+        }
+    }
+
+    largest
+} */
+
+fn main()
+{
+    println!("hello");
 }
 ```
 
@@ -422,21 +446,36 @@ Für Strukturen gibt es das Schlüsselwort *struct*. Ein kurzes Beispiel sollte 
 
 ```rust
 /// Example of strcuts/enums
-#[derive(Debug)]
+
+/// Let's have a Point structure
 struct Point
 {
    x: i32,
    y: i32,
 }
 
-fn main() 
+/// Implement functions for our Point structure
+impl Point
 {
-   let startingPoint = Point {x: 10, y: 10};
+   fn x(&self) -> i32
+   {
+      self.x
+   }
 
-   println!("The starting point today is {:?}.", startingPoint)
+   fn y(&self) -> i32 
+   {
+      self.y
+   }
 }
 
-// The starting point today is Point { x: 10, y: 10 }.
+fn main() 
+{
+   let starting_point = Point {x: 10, y: 10};
+
+   println!("The starting point today is x={} y={}", starting_point.x(), 		starting_point.y());
+}
+
+// The starting point today is x=10 y=10
 ```
 
 ### enums und Pattern Matching
@@ -836,6 +875,269 @@ fn main()
 //thread 'main' panicked at 'Problem opening the file: Os { code: 2, kind: NotFound, //message: "Das System kann die angegebene Datei nicht finden." }', src\main.rs:13:11
 //note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 //error: process didn't exit successfully: `collections.exe` (exit code: 101)
+```
+
+## Generics
+
+Generics in Rust sind syntaktisch vergleichbar mit Templates in C++. Man kann Generics bei Funktionsparametern, Strukturen und Funktionen verwenden.
+
+```rust
+// Rust Generics examples
+
+/// Function finds the largest item inside a vector 
+/* fn largest<T>(list: &[T]) -> T
+{
+    let mut largest = list[0];
+
+    for &item in list.iter() 
+    {
+        if item > largest 
+        {
+            largest = item;
+        }
+    }
+
+    largest
+} */
+
+/// Struct using Generics
+
+// Let's have a Point struct with Generic data type
+struct Point<T>
+{
+    // Point members can have any type T
+    x: T,   
+    y: T,
+}
+
+// Let's implement a generic function for Point structure returning the x member
+impl<T> Point<T>
+{
+    fn get_x(&self) -> &T
+    {
+        &self.x 
+    }
+
+    fn get_y(&self) -> &T 
+    {
+        &self.y
+    }
+}
+
+fn main() 
+{
+    println!("hello");
+
+    //let number_list = vec![34, 50, 25, 100, 65];
+
+    let pointInt = Point { x: 5, y: 10 };
+    let pointFloat = Point { x: 1.0, y: 4.0 };
+
+    println!("p.x = {} p.y = {}", pointInt.get_x(), pointInt.get_y());
+}
+
+//hello
+//p.x = 5 p.y = 10
+```
+
+**Traits**
+
+*Traits* in Rust ähneln *Interfaces* (Schnittstellen) in anderen Sprachen. In Rust benutzen wir *Traits*, um gemeinsames Verhalten in abstrakter Art und Weise zu definieren. Dafür gibt es das Schlüsselwort *trait*. 
+
+```rust
+// Rust Trait example
+
+// define a trait called Summary and a method called summarize
+// of course you can define many methods
+// think of an abstract (pure) interface in other languages
+pub trait Summary 
+{
+    fn summarize(&self) -> String;
+}
+
+// define a struct called News Article
+pub struct NewsArticle 
+{
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+}
+
+// and let it implement our Trait Summary
+impl Summary for NewsArticle 
+{
+    fn summarize(&self) -> String
+    {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+fn main() 
+{
+    // implement NewsArticle
+    let news = NewsArticle
+    {
+        headline: String::from("Now hotter than ever"),
+        location: String::from("Panama"),
+        author: String::from("Erich"),
+        content: String::from("too much literacy"),
+    };
+
+    // use Trait definition to output the news
+    println!("My first news: {}", news.summarize());
+}
+
+//My first news: Now hotter than ever, by Erich (Panama)
+```
+
+Genau wie in C++ kann man Default-Implementierungen für die Methoden in einem Trait bereitstellen. Mit dem Beispiel von oben sähe es z.B. so aus. 
+
+```rust
+// Trait mit Default-Implementierung
+pub trait Summary 
+{
+    fn summarize(&self) -> String 
+    {
+    	String::from("(Read more...)")
+    }
+}
+```
+
+Ebenso kann man *Traits* als Parameter benutzen und ebenso als Rückgabetyp. 
+
+```rust
+// Trait als Parameter ...
+pub fn notify(item: impl Summary) 
+{
+	println!("Breaking news! {}", item.summarize());
+}
+
+// .. und als Rückgabetyp
+fn returns_summarizable() -> impl Summary 
+{
+	NewsArticle 
+    {
+    	headline: String::from("Now hotter than ever"),
+        location: String::from("Panama"),
+        author: String::from("Erich"),
+        content: String::from("too much literacy"),
+    }
+}
+```
+
+**Lifetime**
+
+Die Lebenszeit von Variablen ist im Prinzip identisch mit der, die man von der Sprache C/C++ gewohnt ist. So endet die Lebenszeit z.B. mit dem Ende der Klammerung. 
+
+```rust
+fn main() 
+{
+    let r = 5; 
+
+    {
+        let x = 5;
+    } // lifetime of x ends here 
+
+    // use Trait definition to output the news
+    println!("Give me an r {} as x is no more valid", r);
+}
+//Give me an r 5 as x is no more valid
+```
+
+In C++ gibt es aber eine Stolperfalle, die in Rust gelöst ist: Was, wenn eine Instanz (Funktion, Stuct, Klasse) eine Referenz auf eine Entität besitzt? In C++ kein Problem. Der Programmierer muß sich selbst darum kümmern, dass der Zugriff auf die Referenz keine *Dangling Reference* verursacht. 
+
+In Rust funktioniert dies nicht, falls die Lebenszeit der Referenzen nicht eindeutig ist. Schauen wir uns folgendes Beispiel an. 
+
+```rust
+// Rust Lifetime examples
+
+// This won't work as the language cannot know lifetime of the references 
+// Thus it just doesn't compile it 
+fn longest(x: &str, y: &str) -> &str 
+{
+    if x.len() > y.len() 
+    {
+        x
+    } 
+    else 
+    {
+        y
+    }
+}
+
+fn main() 
+{
+    let r = 5; 
+
+    {
+        let x = 5;
+    } // lifetime of x ends here 
+
+    // use Trait definition to output the news
+    println!("Give me an r {} as x is no more valid", r);
+}
+
+// Does not compile - Error Message 
+/*
+error[E0106]: missing lifetime specifier
+ --> src\main.rs:4:33
+  |
+4 | fn longest(x: &str, y: &str) -> &str
+  |                                 ^ expected named lifetime parameter
+  |
+  = help: this function's return type contains a borrowed value, but the signature does not say whether it is borrowed from `x` or `y`
+help: consider introducing a named lifetime parameter
+  |
+4 | fn longest<'lifetime>(x: &str, y: &str) -> &'lifetime str
+  |           ^^^^^^^^^^^                      ^^^^^^^^^^
+  ...
+*/
+```
+
+Für Rust ist nicht ersichtlich, wann die Lebenszeit der Referenzen in der Funktion *longest()* enden. Also verweigert Rust die Übersetzung. Aber wie kann ich das lösen? Dafür gibt es eine eigene Syntax; die sogenannte *Lifetime Annotation*. Diese startet mit einem Apostroph ( ' ) und wird danach üblicherweise mit lowercase und so kurz als möglich angegeben. Wir wollen das am obigen Beispiel gleich einmal umsetzen.
+
+```rust
+// Rust Lifetime examples
+
+//Examples for references
+//&i32        // a reference
+//&'a i32     // a reference with an explicit lifetime
+//&'a mut i32 // a mutable reference with an explicit lifetime
+
+// Now Rust is satisfied as we use explicit lifetimes
+// Hint: The syntax is similar to generics (or templates in c++)
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str 
+{
+    if x.len() > y.len() 
+    {
+        x
+    } 
+    else 
+    {
+        y
+    }
+}
+
+fn main() 
+{
+    let r = 5; 
+
+    {
+        let x = 5;
+    } // lifetime of x ends here 
+
+    // use Trait definition to output the news
+    println!("Give me an r {} as x is no more valid", r);
+
+    let string1 = "abcd";
+    let string2 = "xyz";
+
+    let result = longest(string1, string2);
+    println!("The longest string is {}", result);
+}
+//Give me an r 5 as x is no more valid
+//The longest string is abcd
 ```
 
 ## Versionen
