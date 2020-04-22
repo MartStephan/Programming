@@ -136,7 +136,7 @@ Die Komposition bezeichnet in der objektorientierten Welt einen Spezialfall der 
 
 ## Concepts
 
-Concepts in C++ sind Prädikate zur Compile-Zeit. Sie werden während der Übersetzung evaluiert und liefern einen Wahrheitswert. 
+*Concepts* in C++ sind Prädikate zur Compile-Zeit. Sie werden während der Übersetzung evaluiert und liefern einen Wahrheitswert. 
 
 Damit ist es möglich, Anforderungen an die Templates als Teil des Interfaces zu formulieren. 
 
@@ -197,7 +197,7 @@ Integral ggt(Integral& a, Integral& b)
 
 ## Daemon
 
-Der Begriff ‚Daemon’ wird hauptsächlich unter UNIX bzw. UNIX-artigen Betriebssystemem benutzt und bezeichnet einen Systemdienst. In anderen Worten: Ein Programm, das im Hintergrund abläuft und bestimmte Dienste zur Verfügung stellt.  
+Der Begriff *Daemon* wird hauptsächlich unter UNIX bzw. UNIX-artigen Betriebssystemem benutzt und bezeichnet einen Systemdienst. In anderen Worten: Ein Programm, das im Hintergrund abläuft und bestimmte Dienste zur Verfügung stellt.  
 
 Benutzerinteraktionen finden nur auf indirektem Wege statt, z.B. über Pipes, Signale oder Sockets.  
 
@@ -619,9 +619,90 @@ int main()
 
 Siehe dazu auch https://en.cppreference.com/w/cpp/language/value_category und https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/. 
 
+## Monomorphisation
+
+*Monomorphisation* in der Informatik bedeutet die Übersetzung einer polymorphen Funktion in eine monomorphe Funktion, indem für jeden möglichen Datentyp eine spezialisierte Funktion erzeugt wird. 
+
+*Monomorphisation* wird in vielen Sprachen umgesetzt. Zu nennen sind hier z.B. C++, Rust, C#.
+
+```c++
+// Beispiel für Monomorphisation in C++
+#include <iostream>
+
+// generic function template which is a generic 
+// and polymorphic function. The compiler automatically
+// creates two functions getMax(...) in our example as
+// therre are two appearances of T: int and float
+template <class T> T getMax(T& a, T& b)
+{
+   return (a > b ? a : b);
+}
+
+int main()
+{
+   int iFirst = 5; 
+   int iSecond = 6;
+   int iResult = getMax<int>(iFirst, iSecond);
+
+   std::cout << "The greatest int " << iResult << "\n";
+
+   float fFirst = 5.1;
+   float fSecond = 6.1;
+   float fResult = getMax<float>(fFirst, fSecond);
+
+   std::cout << "The greatest float " << fResult << "\n";
+}
+```
+
+Der resultierende, übersetzte Code sieht dann entsprechend so aus.
+
+```c++
+#include <iostream>
+
+template <class T> T getMax(T& a, T& b)
+{
+   return (a > b ? a : b);
+}
+
+/* First instantiated from: insights.cpp:12 */
+#ifdef INSIGHTS_USE_TEMPLATE
+template<>
+int getMax<int>(int & a, int & b)
+{
+  return (a > b ? a : b);
+}
+#endif
+
+
+/* First instantiated from: insights.cpp:18 */
+#ifdef INSIGHTS_USE_TEMPLATE
+template<>
+float getMax<float>(float & a, float & b)
+{
+  return (a > b ? a : b);
+}
+#endif
+
+
+int main()
+{
+  int iFirst = 5;
+  int iSecond = 6;
+  int iResult = getMax<int>(iFirst, iSecond);
+  std::operator<<(std::operator<<(std::cout, "The greatest int ").operator<<(iResult), "\n");
+  float fFirst = static_cast<float>(5.0999999999999996);
+  float fSecond = static_cast<float>(6.0999999999999996);
+  float fResult = getMax<float>(fFirst, fSecond);
+  std::operator<<(std::operator<<(std::cout, "The greatest float ").operator<<(fResult), "\n");
+}
+
+```
+
+
+
 ## Move-Semantik
 
-Eine ‘move’ Operation unterscheidet sich deutlich von einer ‘copy’ Operation. Eine ‚copy‘ Operation kopiert die Elemente (bzw. den Inhalt) einer Datenstruktur von einer Quelle zu einem Ziel und belässt die Quelle in ihrem Originalzustand. Dies ist kein Problem bei z.B:  
+Eine *move*-Operation unterscheidet sich deutlich von einer *copy*-Operation. Eine *copy*-Operation kopiert die Elemente (bzw. den Inhalt) einer Datenstruktur von einer Quelle zu einem Ziel und belässt die Quelle in ihrem Originalzustand. Dies ist kein Problem bei z.B:  
 
 ```c++
 int main()
@@ -639,11 +720,11 @@ int main()
 
 ```
 
-Eine Definition der ‚move‘ Operation kann lauten:  
+Eine Definition der *move*-Operation kann lauten:  
 
 *Eine ‚move‘ Operation ist dann gegeben, falls ein Kopieren eines Objektes so realisiert wird, dass das Original nicht wieder benötigt wird. Das Original wird dann automatisch gelöscht und kann nicht mehr verwendet wird. Der Inhalt ist quasi von der Quelle zum Ziel bewegt worden, wobei die Quelle danach nicht mehr existiert.*  
 
-Diese Move-Semantik ist in der Programmiersprache C++ zum erstenmal in C++11 spezifiziert.  
+Diese *Move*-Semantik ist in der Programmiersprache C++ zum erstenmal in C++11 spezifiziert. Modernere Sprachen wie Rust haben die *Move*-Semantik von Anfang an eingebaut. 
 
 ## Microservices
 
@@ -725,15 +806,19 @@ int main()
 
 ## Nebenläufigkeit
 
+## Nullhypothese
+
+In der Statistik bezeichnet man eine Aussage bzw. einen Standpunkt, dass es keinen Zusammenhang zwischen zwei gemessenen Phänomenen gibt bzw. ein bestimmter Zusammenhang nicht besteht, als *Nullhypothese*.
+
 ## Objektorientierte Programmierung
 
-Mit Hilfe der objektorientierten Programmierung wird versucht, Objekte aus der realen Welt und ihre Interaktion „originalgetreu“ abzubilden.  
+Mit Hilfe der *objektorientierten Programmierung* wird versucht, Objekte aus der realen Welt und ihre Interaktion „originalgetreu“ abzubilden.  
 
 Man erschafft sogenannte Klassen, in denen diese Eigenschaften von Objekten und die Funktionen, die auf diese Objekte angewendet werden können (sogenannte Methoden), festgelegt werden. Man hat nun die Möglichkeit, viele verschiedene Objekte dieser Klassen zu erzeugen, den Eigenschaften unterschiedliche Werte zuzuweisen und die Methoden anzuwenden. Objekte werden auch Instanzen (einer Klasse) genannt.  
 
 Klassen können ihre Eigenschaften und Methoden zudem vererben. Sie dienen in diesem Zusammenhang als Basisklasse, ihre Erben nennt man abgeleitete Klassen.  
 
-Ein weiteres Prinzip von objektorientierten Sprachen ist die Kapselung. Die Sichtbarkeit von Eigenschaften und Methoden lässt sich über Schlüsselwörter festlgen. Dabei unterscheidet man oft zwischen öffentlich („public“), geschützt („protected“) und privat („private“). Man nennt private Eigenschaften oder Methoden auch gekapselt.  
+Ein weiteres Prinzip von objektorientierten Sprachen ist die Kapselung. Die Sichtbarkeit von Eigenschaften und Methoden lässt sich über Schlüsselwörter festlegen. Dabei unterscheidet man oft zwischen öffentlich („public“), geschützt („protected“) und privat („private“). Man nennt private Eigenschaften oder Methoden auch gekapselt.  
 
 ## O-Notation
 
@@ -746,6 +831,45 @@ Ein weiteres Prinzip von objektorientierten Sprachen ist die Kapselung. Die Sich
 ## Package
 
 ## Pointers to Functions
+
+## Polymorphismus
+
+*Polymorphismus* ist eigentlich ein Begriff aus der Biologie/Genetik und bedeutet das Auftreten mehrere Genvarianten innerhalb einer Population. Übersetzt bedeutet *Polymorphismus* 'Vielgestaltigkeit'.
+
+In der Informatik wird *Polymorphismus* für die generische Programmierung verwendet, z.B in C++ mit Hilfe von Templates oder in Rust mit Hilfe von Generics. *Polymorphismus* ist ein wichtiges Feature in objektorientierten Sprachen.
+
+In C++ gibt es mehrere Arten von *Polymorphismus*. 
+
+- Methoden überschreiben
+- Operatoren und/oder Funktionen überladen
+- Virtuelle Funktionen
+
+Ein kleines Beispiel zum Überladen von Funktionen in C++.
+
+```c++
+// Beispiel für Polymorphismus in C++
+#include <iostream>
+
+// function overloading
+// functions can be overloaded by 
+// - change in number of arguments
+// - change in type of arguments
+void foo(int x) { std::cout << "value of x is " << x << "\n"; }
+void foo(float x) { std::cout << "value of x is " << x << "\n"; }
+void foo(char x) { std::cout << "value of x is " << x << std::endl; }
+
+int main()
+{
+   // usage of polymorphism idiom
+   foo(5);
+   foo(4.5f);
+   foo('c');
+}
+
+// value of x is 5
+// value of x is 4.5
+// value of x is c
+```
 
 ## Predicates
 
@@ -847,7 +971,7 @@ Ein Ansatz für eine asynchrone, nicht-blockierende API ist die Verwendung von F
 
 ## Referenzielle Transparenz
 
-In der Programmierung bezeichnet die referenzielle Transparenz, daß ein Ausdruck (eine Funktion) immer den gleichen Wert zurückgibt. Dies macht man sich bei Reinen Funktionen zunutze. Reine Funktionen sind Funktionen, die immer den gleichen Wert zurückgeben, wenn sie mit den gleichen Funktionen aufgerufen werden. 
+In der Programmierung bezeichnet die *referenzielle Transparenz,* daß ein Ausdruck (eine Funktion) immer den gleichen Wert zurückgibt. Dies macht man sich bei Reinen Funktionen zunutze. *Reine Funktionen* sind Funktionen, die immer den gleichen Wert zurückgeben, wenn sie mit den gleichen Argumenten aufgerufen werden. 
 
 ## Reine Funktionen
 
@@ -897,8 +1021,6 @@ int main()
 	std::cout << powConst(2,10) << std::endl;
 }
 ```
-
-
 
 ## Resource acquisition is initialization (RAAI)
 
@@ -952,7 +1074,7 @@ Beispiele für statische Programmiersprachen: C++, Java
 
 ## Traits
 
-Traits sind Klassen-Templates, die Eigenschaften von generischen Datentypen ermitteln. In C++11 wurde dafür der *<type_traits>* Header eingeführt. 
+*Traits* in C++ sind Klassen-Templates, die Eigenschaften von generischen Datentypen ermitteln. In C++11 wurde dafür der *<type_traits>* Header eingeführt. 
 
 ```c++
 //Type Traits Beispiel 
@@ -993,13 +1115,58 @@ int main()
 
 ```
 
+In Rust ähneln Traits Interfaces (Schnittstellen) in anderen Sprachen. In Rust benutzen wir Traits, um gemeinsames Verhalten in abstrakter Art und Weise zu definieren. Dafür gibt es das Schlüsselwort *trait*. 
+
+```rust
+// define a trait called Summary and a method called summarize
+// of course you can define many methods
+// think of an abstract (pure) interface in other languages
+pub trait Summary 
+{
+    fn summarize(&self) -> String;
+}
+
+// define a struct called News Article
+pub struct NewsArticle 
+{
+    pub headline: String,
+    pub location: String,
+    pub author: String,
+    pub content: String,
+}
+
+// and let it implement our Trait Summary
+impl Summary for NewsArticle 
+{
+    fn summarize(&self) -> String
+    {
+        format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+}
+
+fn main() 
+{
+    // implement NewsArticle
+    let news = NewsArticle
+    {
+        headline: String::from("Now hotter than ever"),
+        location: String::from("Panama"),
+        author: String::from("Erich"),
+        content: String::from("too much literacy"),
+    };
+
+    // use Trait definition to output the news
+    println!("My first news: {}", news.summarize());
+}
+```
+
 ## Turing-Vollständigkeit
 
 ## Type Checking
 
 ## Type Erasure
 
-Type Erasure erlaubt es dir, verschiedene Datentypen mit einem generischen Interface zu verwenden. Wörtlich genommen bedeutet Type Erasure, dass die Typinformation reduziert wird. In C z.B. mit Hilfe von void. Gut zu sehen in der *std::qsort* Definition. 
+*Type Erasure* erlaubt es dir, verschiedene Datentypen mit einem generischen Interface zu verwenden. Wörtlich genommen bedeutet *Type Erasure*, dass die Typinformation reduziert wird. In C z.B. mit Hilfe von *void*. Gut zu sehen in der *std::qsort* Definition. 
 
 ```c
 void qsort( void *ptr, std::size_t count, std::size_t size, /*c-compare-pred*/* comp );
@@ -1207,7 +1374,7 @@ using namespace std;
   
 int main() 
 { 
-	auto x = 4; 
+   auto x = 4; 
    auto y = 3.37; 
    auto ptr = &x; 
    cout << typeid(x).name() << '\n' 
@@ -1225,6 +1392,41 @@ int main()
 
 Im obigen Beispiel liefert *typeid* den Typ der Variablen. i steht für *Integer*, d für *Double* und Pi für einen *Pointer to Integer*. 
 
+## Variadische Funktion
+
+In der Programmierung bezeichnet man Funktionen, die nicht bereits in ihrer Deklaration die Anzahl ihrer Parameter festgelegt haben, als *variadische Funktionen*. 
+
+So wurden z.B. in C++11 variadische Templates in die Sprache eingeführt. Noch weiter vereinfacht wurde dieses Konzept in C++17 mit der Einführung von *Fold Expressions*.
+
+```c++
+// Example of C++11 variadic template
+#include <iostream>
+#include <cstdlib>
+
+template<typename ... Args> bool istWahr(Args ... args)
+{
+   bool ergebnis = true; 
+   const int size = sizeof...(args) + 2;
+   int res[size] = {1,args...,2};
+
+   for (int i=1; i<size-1; i++)
+   {
+      if (res[i] == false)
+      {
+         ergebnis = false;
+      }
+   }
+
+   return ergebnis;
+}
+int main()
+{
+   std::cout << std::boolalpha;
+   std::cout << "istWahr(true) " << istWahr(true) << std::endl;
+   std::cout << "istWahr(true, false) " << istWahr(true, false) << std::endl;
+}
+```
+
 ## Verschattung (Shadowing)
 
 Schaue ‚Verschattung‘ in Swift
@@ -1235,59 +1437,67 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 
 ## Literatur
 
-[1] 	Seven Languages in Seven Weeks, Bruce A. Tate, Pragmatic Programmers
+[1]  Seven Languages in Seven Weeks, Bruce A. Tate, Pragmatic Programmers
 
-[2]	<http://www.stroustrup.com/C++11FAQ.html>
+[2] <http://www.stroustrup.com/C++11FAQ.html>
 
-[3]	<http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1516.pdf>
+[3] <http://www.open-std.org/JTC1/SC22/WG14/www/docs/n1516.pdf>
 
-[4]	<http://gcc.gnu.org/projects/cxx0x.html>
+[4] <http://gcc.gnu.org/projects/cxx0x.html>
 
-[5]	<http://msdn.microsoft.com/en-us/library/dd465215.aspx>
+[5] <http://msdn.microsoft.com/en-us/library/dd465215.aspx>
 
-[6] 	<http://blogs.msdn.com/b/vcblog/archive/2010/04/06/c-0x-core-language-features-in-vc10-the-table.aspx>
+[6] <http://blogs.msdn.com/b/vcblog/archive/2010/04/06/c-0x-core-language-features-in-vc10-the-table.aspx>
 
-[7] 	<http://clang.llvm.org/cxx_status.html
+[7] http://clang.llvm.org/cxx_status.html
 
-[8]	C++11, Rainer Grimm, Addison-Wesley
+[8] C++11, Rainer Grimm, Addison-Wesley
 
-[9]	<http://www.boost.org/doc/libs/1_50_0/libs/smart_ptr/shared_ptr.htm>, (abgerufen am 29.Juni 2012)
+[9] <http://www.boost.org/doc/libs/1_50_0/libs/smart_ptr/shared_ptr.htm>, (abgerufen am 29.Juni 2012)
 
-[10] 	<https://wiki.apache.org/stdcxx/C++0xCompilerSupport>
+[10]  <https://wiki.apache.org/stdcxx/C++0xCompilerSupport>
 
-[11]	C++11 – auch ein Stimmungsbild, heise developer
+[11] C++11 – auch ein Stimmungsbild, heise developer
 
-[12]	Simpler Multithreading in C++0x, <http://www.devx.com/SpecialReports/Article/38883/0/page/1>
+[12] Simpler Multithreading in C++0x, <http://www.devx.com/SpecialReports/Article/38883/0/page/1>
 
-[13]	Anthony Williams: An Introduction to Variadic Templates in C++0x,  <http://www.devx.com/cplus/Article/41533>
+[13] Anthony Williams: An Introduction to Variadic Templates in C++0x,  <http://www.devx.com/cplus/Article/41533>
 
-[14]	Weniger ist mehr, Einführung in Googles Programmiersprache Go, Jörg Walter, c’t 2011, Heft 18
+[14] Weniger ist mehr, Einführung in Googles Programmiersprache Go, Jörg Walter, c’t 2011, Heft 18
 
-[15]	An introduction to programming in Go, Caleb Doxsey, 2012, <http://www.golang-book.com/>
+[15] An introduction to programming in Go, Caleb Doxsey, 2012, <http://www.golang-book.com/>
 
-[16]	Peter Kaiser, Johannes Ernesti: Python, <http://openbook.galileocomputing.de/python/index.htm#_top>
+[16] Peter Kaiser, Johannes Ernesti: Python, <http://openbook.galileocomputing.de/python/index.htm#_top>
 
-[17]	Visual Studio 2013 Available Now!, <http://blogs.msdn.com/b/vcblog/archive/2013/10/17/visual-studio-2013-available-now.aspx>, (abgerufen am 18. Oktober 2013)
+[17] Visual Studio 2013 Available Now!, <http://blogs.msdn.com/b/vcblog/archive/2013/10/17/visual-studio-2013-available-now.aspx>, (abgerufen am 18. Oktober 2013)
 
-[18]	The future of C++, Herb Sutter, <http://channel9.msdn.com/Events/Build/2013/2-306> (abgerufen am 18. Oktober 2013)
+[18] The future of C++, Herb Sutter, <http://channel9.msdn.com/Events/Build/2013/2-306> (abgerufen am 18. Oktober 2013)
 
-[19]	C++ Truths Blog, Sumant Tambe, <http://cpptruths.blogspot.de/> (abgerufen am 14. März 2014)  
+[19] C++ Truths Blog, Sumant Tambe, <http://cpptruths.blogspot.de/> (abgerufen am 14. März 2014)  
 
-[20]	More C++ Idioms, Wikibook, <http://en.wikibooks.org/wiki/More_C++_Idioms> (abgerufen am 14. März 2014)
+[20] More C++ Idioms, Wikibook, <http://en.wikibooks.org/wiki/More_C++_Idioms> (abgerufen am 14. März 2014)
 
-[21]	google-styleguide, <https://code.google.com/p/google-styleguide/> (abgerufen am 16. Mai 2014)
+[21] google-styleguide, <https://code.google.com/p/google-styleguide/> (abgerufen am 16. Mai 2014)
 
-[22]	C++ Core Guidelines, <https://github.com/isocpp/CppCoreGuidelines> (abgerufen am 2. Februar 2016)  
+[22] C++ Core Guidelines, <https://github.com/isocpp/CppCoreGuidelines> (abgerufen am 2. Februar 2016)  
 
-[23]	() -> Unit = {}, Die neue Programmiersprache für Java und mehr, Teil 3: Funktionale Programmierung, c't 23/2017, Christian Helmbold  
+[23] () -> Unit = {}, Die neue Programmiersprache für Java und mehr, Teil 3: Funktionale Programmierung, c't 23/2017, Christian Helmbold  
 
-[24]	Musser, David R.; Stepanov, Alexander A., Generic Programming, 1989
+[24] Musser, David R.; Stepanov, Alexander A., Generic Programming, 1989
 
 [25] Value categories, https://en.cppreference.com/w/cpp/language/value_category (abgerufen am 13. November 2019)
 
 [26] lvalues, rvalues, glvalues, prvalues, xvalues, help!, https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/ (abgerufen am 13. November 2019)
 
 [27] Type Inference in C++ (auto and decltype), https://www.geeksforgeeks.org/type-inference-in-c-auto-and-decltype/, abgerufen am 18. Dezember 2019
+
+[28] How not to be wrong, Jordan Ellenberg, 2014
+
+[29] Gödel, Escher, Bach - ein endloses geflochtenes Band, Douglas R. Hofstadter, 2006
+
+[30] https://cppinsights.io/, abgerufen am 20.04.2020
+
+
 
 
 
