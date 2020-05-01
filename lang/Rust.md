@@ -1141,14 +1141,134 @@ fn main()
 //The longest string is abcd
 ```
 
+## Automatisierte Tests
+
+### Tests schreiben
+
+Wir verschaffen uns jetzt einen kleinen Überblick über die (in Rust eingebaute) Möglichkeiten von automatisierten Tests. 
+
+Dazu erzeugen wir uns zuerst mal eine Bibliothek mit einigen Funktionen, die es zu testen gilt. 
+
+```
+$ cargo new adder --lib
+	Created library 'adder' project
+```
+
+Wechsle in das so erzeugte Verzeichnis. Unsere cargo.toml Datei sollte ungefähr so aussehen. 
+
+```toml
+[package]
+name = "adder"
+version = "0.1.0"
+authors = ["Martin Stephan <mstephan.mail@gmx.de>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+```
+
+Wechsle in das src-Verzeichnis, in dem schon ein Gerüst für einen Testfunktion erzeugt wurde. 
+
+```rust
+#[cfg(test)]
+mod tests 
+{
+   #[test]
+   fn it_works() 
+   {
+      assert_eq!(2 + 2, 4);
+   }
+}
+```
+
+Man kann diesen simplen Test schon ausführen mit dem *cargo test* Befehl. *cargo test* übersetzt den Code , lässt ihn laufen und gibt das Testergebnis aus. 
+
+Lass uns es mit einem eigenen Test probieren. Schlüsselwörter, die wir dafür brauchen, sind: 
+
+- #[cfg(test)] - Start eines Test-Abschnittes
+- mod tests - Modul Test
+- #[test] - Makro, welches den Beginn eines einzelnen Tests anzeigt
+- assert - Makros, um Ergebnis zu verifizieren (in unterschiedlichen Ausprägungen)
+- panic! - Zeigt an, dass Test fehlgeschlagen ist
+
+```rust
+pub struct Guess 
+{
+    // should only contain values between 1 and 100 inclusive
+    value: i32,
+}
+
+impl Guess 
+{
+    pub fn new(value: i32) -> Guess 
+    {
+        if value < 1 || value > 100 
+        {
+            // panic immediately 
+            panic!("Guess value must be between 1 and 100, got {}.", value);
+        }
+
+        Guess { value }
+    }
+}
+
+// Let the tests begin
+#[cfg(test)]
+mod tests 
+{
+   use super::*;
+    
+   #[test]
+   #[should_panic]
+   fn greater_than_100() 
+   {
+      Guess::new(200);
+   }
+}
+```
+
+### Tests automatisieren
+
+Natürlich gehört auch eine Automatisierung der Tests zum Funktionsumfang von Rust Tests. Dazu kann man dem *cargo test* Befehl Kommandozeilenoptionen mit auf den Weg geben. Einer der wichtigsten Befehle ist sicherlich *cargo test --help*, mit dem man sich die Optionen anzeigen lassen kann. So kann man z.B. die Tests parallel oder single-threaded laufen lassen, die Tests im Detail filtern, die Ausgaben beeinflussen, usw. 
+
+```
+cargo test --help
+cargo.exe-test
+Execute all unit and integration tests and build examples of a local package
+
+USAGE:
+    cargo.exe test [OPTIONS] [TESTNAME] [-- <args>...]
+
+OPTIONS:
+    -q, --quiet                      Display one character per test instead of one line
+        --lib                        Test only this package's library unit tests
+        --bin <NAME>...              Test only the specified binary
+        --bins                       Test all binaries
+        --example <NAME>...          Test only the specified example
+        --examples                   Test all examples
+        --test <NAME>...             Test only the specified test target
+        --tests                      Test all tests
+        ....
+```
+
+Ein Blick in die Hilfe und die Dokumentation ist auf alle Fälle zu empfehlen, falls man sich näher mit Tests beschäftigen will.  
+
 ## Versionen
 
-**Version 1.2**
+**Version 1.20** 
 
 -  	Verbesserungen in der Performance
 -  	‚Dynamically-sized Types‘ stehen dem Entwickler jetzt zur Verfügung
 
 Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen nun auch Typen ohne vorher festgelegte Größe, Arrays und Trait-Objekte umfassen können.  
+
+**Version 1.40**
+
+Größeres Update. 
+
+- Attribut *#[non_exhaustive]* - damit kann man Structs, Enums und Enum-Varianten, zu denen man zu einem späteren Zeitpunkt evtl. noch Felder hinzufügen möchte, kennzeichnen.
+- Verbesserungen bei *macros!()*
 
 
 ## Literatur
@@ -1170,6 +1290,10 @@ Das Feature ‚Dynamically-sized Types‘ erlaubt, dass intelligente Zeigertypen
 [8] The Rust Programming Language, https://doc.rust-lang.org/book/title-page.html (abgerufen am 10. März 2020)
 
 [9] Rust - Sichere Programmiersprache für systemnahe und parallele Software, ix developer, Winter 2019/20
+
+[10] Bewusst unvollständig: Programmiersprache Rust 1.40 führt #[non_exhaustive] ein, https://www.heise.de/developer/meldung/Bewusst-unvollstaendig-Programmiersprache-Rust-1-40-fuehrt-non-exhaustive-ein-4621122.html (abgerufen am 27.04.2020)
+
+[11] Announcing Rust 1.20, https://blog.rust-lang.org/2017/08/31/Rust-1.20.html (abgerufen am 1.5.2020)
 
 
 
