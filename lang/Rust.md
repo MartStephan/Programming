@@ -27,6 +27,9 @@ Table of Contents
   * [Collections](#collections)
   * [Error Handling](#error-handling)
   * [Generics](#generics)
+  * [Automatisierte Tests](#automatisierte-tests)
+    * [Tests schreiben](#tests-schreiben)
+    * [Tests automatisieren](#tests-automatisieren)
   * [Versionen](#versionen)
   * [Literatur](#literatur)
 
