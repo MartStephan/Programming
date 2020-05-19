@@ -1076,6 +1076,49 @@ Während dynamische Programmiersprachen erst zur Laufzeit prüfen, ob eine Opera
 
 Beispiele für statische Programmiersprachen: C++, Java
 
+## Template Spezialisierung
+
+In C++ unterscheidet man zwischen allgemeinen Templates und spezialisierten Templates. Und zwar bei Klassen-Templates als auch bei Funktions-Templates. 
+
+Ein Beispiel für die verschiedenen Möglichkeiten der Template-Klassenspezialisierung.
+
+```c++
+// Example of template specialisation
+#include <iostream>
+#include <cstdlib>
+
+/// primäres oder allgemeines Template
+/// NxM Matrix
+template <typename T, int Line, int Column>     
+class Matrix{};
+
+/// teilweise Spezialisierung
+/// hier: 3x3 Matrix
+template <typename T>                           
+class Matrix<T, 3, 3>{};
+
+/// vollständige Spezialisierung
+/// hier: 3x3 Matrix bestehend aus int-Werten
+template <>                                     
+class Matrix<int, 3, 3>{};
+
+int main()
+{
+   std::cout << "Hallo" << std::endl;
+   
+   /// benutzt die vollständige Spezialisierung - class Matrix<int, 3, 3>{};
+   Matrix<int, 3, 3> m1;         
+
+   /// benutzt die teilweise Spezialisierung - class Matrix<T, 3, 3> 
+   Matrix<double, 3, 3> m2;       
+
+   /// benutzt das primäre Template - class Matrix<T, Line, Column>
+   Matrix<std::string, 4, 3> m3;  
+}
+```
+
+Welche Variante wählt nun der Compiler jeweils aus? Grundsätzlich gilt: der Compiler verwendet die am meisten spezialisierte Variante. Ansonsten das primäre Template.
+
 ## Traits
 
 *Traits* in C++ sind Klassen-Templates, die Eigenschaften von generischen Datentypen ermitteln. In C++11 wurde dafür der *<type_traits>* Header eingeführt. 
