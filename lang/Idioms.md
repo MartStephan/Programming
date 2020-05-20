@@ -1119,6 +1119,53 @@ int main()
 
 Welche Variante wählt nun der Compiler jeweils aus? Grundsätzlich gilt: der Compiler verwendet die am meisten spezialisierte Variante. Ansonsten das primäre Template.
 
+Dito für Funktions-Template. Mit einem Unterschied: eine teilweise Spezialisierung gibt es nicht. 
+
+```c++
+// Example of template specialisation
+#include <iostream>
+#include <cstdlib>
+#include <string>
+
+/// primäres oder allgemeines Template
+template <typename T> std::string getTypeName(T)
+{
+   return "unknown type";
+}
+
+/// vollständige Spezialisierung mit int
+template <> std::string getTypeName<int>(int)
+{
+   return "int";
+}
+
+/// vollständige Spezialisierung mit double
+std::string getTypeName(double)
+{ 
+   return "double";
+}
+
+int main()
+{ 
+   /// allgemeines Template, da keine Spezialisierung für bool vorhanden
+   std::cout << "getTypeName(true): " << getTypeName(true) << std::endl;
+   
+   /// vollständige Spezialisierung mit int
+   std::cout << "getTypeName(4711): " << getTypeName(4711) << std::endl;
+   
+   /// vollständige Spezialisierung mit double
+   std::cout << "getTypeName(3.14): " << getTypeName(3.14) << std::endl;
+    
+   std::cout << std::endl;
+   
+   return 0;
+}
+ 
+///> getTypeName(true): unknown type
+///> getTypeName(4711): int
+///> getTypeName(3.14): double
+```
+
 ## Traits
 
 *Traits* in C++ sind Klassen-Templates, die Eigenschaften von generischen Datentypen ermitteln. In C++11 wurde dafür der *<type_traits>* Header eingeführt. 
@@ -1207,9 +1254,24 @@ fn main()
 }
 ```
 
+## Tuples
+
+Ein Tupel besteht aus einer Liste von Elementen. Die Elemente können sich auch voneinander unterscheiden. Tuples sind z.B. in Python Teil der Sprache. Im Gegensatz zu Listen sind Tupels in Python nicht veränderbar (modal).  
+
 ## Turing-Vollständigkeit
 
 ## Type Checking
+
+## Type Deduction
+
+Falls Typen nicht explizit deklariert werden, muß der Compiler für eine entsprechende Typ-Ableitung (*Type Deduction*) sorgen. In C++ gab es *Type Deduction* bis zum C++11 Standard nur über Funktions-Schablonen (*Function Templates*).
+
+In C++11 gibt es zwei neue Möglichkeiten der *Type Deduction*:  
+
+-  	*auto*
+-  	*decltype*
+
+Das Gefährliche bei *Type Deduction* ist, dass u.U. nicht offensichtlich ist, welcher Typ implizit benutzt wird. Deshalb sollte man sich als Entwickler über die Arten von *Type Deduction* in seiner Sprache bewusst werden und Bescheid wissen.  
 
 ## Type Erasure
 
@@ -1308,9 +1370,42 @@ int main()
 }
 ```
 
+## Type Inference
+
+Type inference bezieht sich auf die automatische Typableitung (*type deduction*) bei Programmiersprachen. In C++ wurde Type Inference mit dem Standard C++11 eingeführt. Dafür wurden die Schlüsselwörter *auto* und *decltype* neu mit aufgenommen. Auch andere Sprachen, z.B. Kotlin, bieten Type Inference an. 
+
+Sprachen, die Type Inference anbieten, sind weiterhin statisch typisiert, d.h. der Compiler muss zur Compilezeit den zu verwendenden Typ kennen. 
+
+```c++
+// C++ program to demonstrate working of auto and type inference 
+
+using namespace std; 
+
+int main() 
+{ 
+   auto x = 4; 
+   auto y = 3.37; 
+   auto ptr = &x; 
+   cout << typeid(x).name() << '\n' 
+        << typeid(y).name() << '\n' 
+        << typeid(ptr).name() << '\n'; 
+
+   return 0; 
+} 
+
+// out
+// >> i
+// >> d
+// >> Pi
+```
+
+Im obigen Beispiel liefert *typeid* den Typ der Variablen. i steht für *Integer*, d für *Double* und Pi für einen *Pointer to Integer*. 
+
 ## Typing Model
 
 Either **dynamic** or **static**. Dynamically typed means that types are bound at execution time rather than compile time.  
+
+## Type Safe
 
 ## Type Template Parameter vs Non-Type Template Parameter
 
@@ -1327,12 +1422,6 @@ Stack<int, 100> meinStack;
 ```
 
 Im obigen Beispiel muß man bei der Instantiierung von *‘Stack’* einen konstanten Wert für ‘N’ bereitstellen. Während ‘N’ ein Non-Type Template Parameter darstellt, ist ‘T’ ein Type Template Parameter.
-
-## Type Safe
-
-
-
--  	
 
 ## SOLID  
 
@@ -1390,54 +1479,6 @@ int main()
 ### Interface Segregation Principle
 
 ### Dependency Inversion Principle
-
-## Tuples
-
-Ein Tupel besteht aus einer Liste von Elementen. Die Elemente können sich auch voneinander unterscheiden. Tuples sind z.B. in Python Teil der Sprache. Im Gegensatz zu Listen sind Tupels in Python nicht veränderbar (modal).  
-
-## Traits
-
-## Type Deduction
-
-Falls Typen nicht explizit deklariert werden, muß der Compiler für eine entsprechende Typ-Ableitung (*Type Deduction*) sorgen. In C++ gab es *Type Deduction* bis zum C++11 Standard nur über Funktions-Schablonen (*Function Templates*).
-
-In C++11 gibt es zwei neue Möglichkeiten der *Type Deduction*:  
-
--  	*auto*
--  	*decltype*
-
-Das Gefährliche bei *Type Deduction* ist, dass u.U. nicht offensichtlich ist, welcher Typ implizit benutzt wird. Deshalb sollte man sich als Entwickler über die Arten von *Type Deduction* in seiner Sprache bewusst werden und Bescheid wissen.  
-
-## Type Inference
-
-Type inference bezieht sich auf die automatische Typableitung (*type deduction*) bei Programmiersprachen. In C++ wurde Type Inference mit dem Standard C++11 eingeführt. Dafür wurden die Schlüsselwörter *auto* und *decltype* neu mit aufgenommen. Auch andere Sprachen, z.B. Kotlin, bieten Type Inference an. 
-
-Sprachen, die Type Inference anbieten, sind weiterhin statisch typisiert, d.h. der Compiler muss zur Compilezeit den zu verwendenden Typ kennen. 
-
-```c++
-// C++ program to demonstrate working of auto and type inference 
-
-using namespace std; 
-  
-int main() 
-{ 
-   auto x = 4; 
-   auto y = 3.37; 
-   auto ptr = &x; 
-   cout << typeid(x).name() << '\n' 
-        << typeid(y).name() << '\n' 
-        << typeid(ptr).name() << '\n'; 
-  
-   return 0; 
-} 
-
-// out
-// >> i
-// >> d
-// >> Pi
-```
-
-Im obigen Beispiel liefert *typeid* den Typ der Variablen. i steht für *Integer*, d für *Double* und Pi für einen *Pointer to Integer*. 
 
 ## Variadische Funktion
 
