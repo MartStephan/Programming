@@ -1,0 +1,2 @@
+# ignore all temporary and local Python project files
+games/hellokitty/__pycache__
