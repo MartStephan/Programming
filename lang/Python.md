@@ -425,7 +425,7 @@ if __name__ == '__main__':
 
 Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, Dictionaries und Sets mit.  
 
-Ein Dictionary in Python ist eine Art *key-value map*. Dictionaries sind unsortiert und veränderbar.  
+Ein *Dictionary* in Python ist eine Art *key-value map*. *Dictionaries* sind unsortiert und veränderbar (*immutable*).  
 
 ```python
 #!/usr/bin/python
@@ -584,6 +584,35 @@ Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokier
 
 ## Python 3.5
 
+## Python 3.9
+
+**Dictionaries verbinden**
+
+Es gibt nun einen eleganten Weg, um zwei Dictionaries miteinander zu verbinden. 
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    
+    ingredients = {'spam': 1, 'egg': 2, 'ham': 3}
+    print(ingredients)
+
+    junk = {'egg': 'brown', 'e405': 'lecker'}
+    print(junk)
+
+    # new in python 3.9 - combine the two dictionaries
+    recipe = ingredients | junk
+    print(recipe)
+
+```
+
+Doppelte Elemente werden entfernt und das zuletzt deklarierte übernommen.
+
+**Flexible Funktionen und variable Anmerkungen**
+
+Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hinzugefügt, um bestehende Typen mit kontextspezifischen Metadaten auszustatten.
+
 ## Bibliotheken
 
 ### NumPy
@@ -615,6 +644,8 @@ Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokier
 [10] Unicode HowTo, https://docs.python.org/3/howto/unicode.html, abgerufen am 22. Mai 2019
 
 [11] Head First Python, Second Edition, Paul Barry, 2017
+
+[12] Python 3.9 startet in die Beta-Phase, https://www.heise.de/news/Python-3-9-startet-in-die-Beta-Phase-4724615.html, abgerufen am 20.05.2020
 
 
 
