@@ -199,6 +199,35 @@ Integral ggt(Integral& a, Integral& b)
 
 ## Concurrency
 
+## Container
+
+Als Container bezeichnet man in der Programmierung üblicherweise eine Sammlung von generischen Klassen, Objekten und/oder Algorithmen. Diese beinhalten allgemeinübliche Datenstrukturen wie *stacks, queues, arrays* u.ä. 
+
+In C++ unterscheidet man zwischen sequentiellen Containern und assoziativen Containern. 
+
+### Sequentielle Container
+
+Als Sequentielle Container bezeichnet man Strukturen, auf die sequentiell zugegriffen werden kann. In C++:
+
+| C++ Sequentieller Container | Eigenschaft                           |
+| --------------------------- | ------------------------------------- |
+| array                       | statisch; wird auf dem Stack angelegt |
+| vector                      | dynamisch; wird auf dem Heap angelegt |
+| dequeue                     |                                       |
+| forward_list                |                                       |
+| list                        |                                       |
+
+### Assoziative Container
+
+Als Assoziative Container bezeichnet man Strukturen, die *key-value* Paare beinhalten und die sich durch schnelle Zugriffszeiten auszeichnen. In C++ gibt es sowohl sortierte als auch unsortierte Varianten der Assoziativen Container. Wichtig zu wissen: Sortierte Container bieten logarithmische Zugriffszeit, während unsortierte Container dir konstante Zugriffszeit bieten. 
+
+| C++ Assoziative Container | Eigenschaft                                    |
+| ------------------------- | ---------------------------------------------- |
+| set                       | *Key* und *Value* sind identisch;              |
+| map                       | Jeder *Key* besitzt einen assoziierten *Value* |
+| multiset                  |                                                |
+| multimap                  |                                                |
+
 ## Daemon
 
 Der Begriff *Daemon* wird hauptsächlich unter UNIX bzw. UNIX-artigen Betriebssystemem benutzt und bezeichnet einen Systemdienst. In anderen Worten: Ein Programm, das im Hintergrund abläuft und bestimmte Dienste zur Verfügung stellt.  
@@ -1584,6 +1613,10 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [29] Gödel, Escher, Bach - ein endloses geflochtenes Band, Douglas R. Hofstadter, 2006
 
 [30] https://cppinsights.io/, abgerufen am 20.04.2020
+
+[31] CPP Reference, https://cppreference.com
+
+
 
 
 
