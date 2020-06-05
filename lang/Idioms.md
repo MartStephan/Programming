@@ -127,6 +127,31 @@ Bei der Bedarfsauswertung wird der Ausdruck erst bei Nachfrage evaluiert. Vortei
 -  	Ausdrücke werden nur dann evaluiert, wenn sie benötigt werden. Das spart Zeit und Speicher.  	
 -  	Unendliche Datenstrukturen können formuliert werden, von denen zur Laufzeit nur endlich viele Elemente angefordert werden.
 
+Tatsächlich benutzen moderne C++ Compiler *Lazy Evaluation* bei der Template-Instanziierung (wobei es keine Pflicht für Compiler ist). Dabei werden Funktionen eines Klassen-Templates, die niemals aufgerufen werden, auch nicht generiert. 
+
+```c++
+// Example of lazy evaluation in C++
+#include <iostream>
+#include <cstdlib>
+
+template<typename T> class Harman
+{
+public:
+   Harman() = default;
+  
+   // both methods are not called thus the (modern) compiler 
+   // does not create any method bodies in resulting binary
+   bool isBest() const { return true; }
+   bool isWorst() const { return false; }
+};
+
+int main()
+{
+   Harman<int> harman;
+  
+}
+```
+
 ## Closure
 
 Closures sind Funktionen, die auf nicht-lokale Variablen auch dann noch zugreifen können, wenn der dazugehörige Gültigkeitsbereich (vgl. *Scope*) nicht mehr existiert. Vereinfacht gesagt merkt sich eine Closure bei der Definition nicht nur den auszuführenden Code, sondern ihre gesamte Umgebung. Siehe auch Closures in Bezug auf Lambda.
