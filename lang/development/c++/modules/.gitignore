@@ -1,0 +1,3 @@
+# ignore all temporary and local project files
+math.o
+math.exe
