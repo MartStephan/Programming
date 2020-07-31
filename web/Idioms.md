@@ -2,6 +2,50 @@
 
 [TOC]
 
+Table of Contents
+=================
+
+* [Idioms](#idioms)
+  * [Standardisierung](#standardisierung)
+    * [RFCs](#rfcs)
+    * [W3C](#w3c)
+    * [ECMA](#ecma)
+  * [Techniken](#techniken)
+    * [Sprachen](#sprachen)
+      * [WebAssembly](#webassembly)
+      * [HTML](#html)
+      * [CSS](#css)
+      * [Bootstrap](#bootstrap)
+    * [Frontends](#frontends)
+    * [Backends](#backends)
+    * [Authentifizierung](#authentifizierung)
+      * [OAuth 2\.0](#oauth-20)
+      * [Open ID Connect](#open-id-connect)
+      * [WebAuthn](#webauthn)
+      * [FIDO2](#fido2)
+    * [Protokolle](#protokolle)
+      * [HTTP](#http)
+      * [HTTP 2\.0](#http-20)
+      * [Web\-Sockets](#web-sockets)
+      * [WebDAV](#webdav)
+      * [SMTP](#smtp)
+      * [FTP](#ftp)
+      * [REST](#rest)
+      * [MIME](#mime)
+      * [JSON](#json)
+      * [ATOM](#atom)
+      * [GraphQL und OData und JSON\-API](#graphql-und-odata-und-json-api)
+      * [SPA](#spa)
+      * [AJAX](#ajax)
+      * [RWD](#rwd)
+      * [PWA](#pwa)
+      * [Fugu](#fugu)
+  * [GraphQL](#graphql)
+  * [JSON\-API](#json-api)
+  * [Literatur](#literatur)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
 ## Standardisierung
 
 ### RFCs
