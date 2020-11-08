@@ -342,10 +342,46 @@ if __name__ == '__main__':
 Iterationen werden (wie in vielen anderen Sprachen auch) mit dem Schlüsselwort *for*  implementiert. Range-basierte for-Schleifen werden unterstützt.  
 
 ```python
-for item in ["a", "b", "c"]:
-for i in range(4):     # 0 to 3
-for i in range(4, 8):  # 4 to 7
-for key, val in dict.items():
+#!/usr/bin/python
+ 
+if __name__ == '__main__':
+    for item in ["a", "b", "c"]:
+        print(item)
+
+    for i in range(4):     # 0 to 3
+        print(i)
+
+    for j in range(4, 8):  # 4 to 7
+        print(j)
+
+    for k in range(31,-1,-1):	# 31 to 0 step -1
+        print(k)
+
+    ingredients = {'spam': 1, 'egg': 2, 'ham': 3}
+    for key, val in ingredients.items():
+        print(key)
+        
+#>a
+#>b
+#>c
+#>0
+#>1
+#>2
+#>3
+#>4
+#>5
+#>6
+#>7
+#>31
+#>30
+#>29
+#........
+#>2
+#>1
+#>0
+#>spam
+#>egg
+#>ham
 ```
 
 ### List
