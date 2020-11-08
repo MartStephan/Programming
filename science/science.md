@@ -52,7 +52,7 @@ Und diese acht Code-Wörter sind die einzigen, die erlaubt sind. Bekommt der Emp
 ```python
 #!/usr/bin/python
 
-def mkflag(bit_pos):
+def make_flag(bit_pos):
    """ This function creates a flag by setting a single bit inside a value.
    Ex1: MKFLAG(0) ---> 0000 0000 0000 0000 0000 0000 0000 0001 
    Ex1: MKFLAG(1) ---> 0000 0000 0000 0000 0000 0000 0000 0010 
@@ -63,19 +63,21 @@ def extract_bit(bit_pos, bit_field):
    """ Extract specified number of bits from given value.
    bit_pos position of bit to get (starting with bit 0)
    bit_field bitfield from which to extract bits"""
-   return bit_field & mkflag(bit_pos)
+   return bit_field & make_flag(bit_pos)
 
 
 if __name__ == '__main__':
-   print("mkflag(0) is ", mkflag(0))
-   print("mkflag(1) is ", mkflag(1))
-   print("mkflag(2) is ", mkflag(2))
-   print("mkflag(3) is ", mkflag(3))
-   print("mkflag(4) is ", mkflag(4))
+   hamming = 0
+   for i in range(31,-1,-1):
+       print("make_flag(", i, ") is ", make_flag(i))
 
-   print("extract_bit(0, 1) is", extract_bit(0, 1))
-   print("extract_bit(0, 2) is", extract_bit(0, 2))
+       b1 = 7 & make_flag(i)
+       b2 = 15 & make_flag(i)
+       hamming += not(b1==b2)
 
+   print("hamming distance ", hamming)
+
+#>hamming distance  1
 ```
 
 ## Kleinstes gemeinsames Vielfaches
@@ -90,7 +92,7 @@ Definition: Eine Primzahl ist eine natürliche Zahl, die genau zwei unterschiedl
 
 Dadurch ist z.B. die 1 keine Primzahl (da sie nicht zwei unterschiedliche Teiler hat).
 
-Ein einfacher Algorithmus zum Finden von Primzahlen ist z.B. der sogenannte *Sieb des Eratosthenes*. Siehe unten. 
+Ein einfacher Algorithmus zum Finden von Primzahlen ist z.B. der sogenannte *Sieb des Eratosthenes*.
 
 ## Primfaktorzerlegung
 
