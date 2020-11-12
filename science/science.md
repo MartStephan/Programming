@@ -9,6 +9,10 @@ Table of Contents
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
+## Euklidischer Algorithmus 
+
+Mit dem Euklidischen Algorithmus lässt sich der *größte gemeinsame Teiler* zweier natürlicher Zahlen berechnen. 
+
 ## Größter gemeinsamer Teiler
 
 
@@ -96,7 +100,7 @@ Ein einfacher Algorithmus zum Finden von Primzahlen ist z.B. der sogenannte *Sie
 
 ## Primfaktorzerlegung
 
-
+Mit Hilfe der Primfaktorzerlegung lässt sich das *kleinste gemeinsame Vielfache* berechnen. 
 
 ## Shannon
 
@@ -153,6 +157,8 @@ Alle Zahlen, die 'umkreist' wurden, sind Primzahlen.
 [4] A Mathematical Theory of Communication, Claude Shannon, 1948
 
 [5] Die Zahl, die aus der Kälte kam, Rudolf Taschner, 2013
+
+[6] Weizenbaum J., Die Macht der Computer und die Ohnmachtder Vernunft. Suhrkamp, Frankfurt am Main, 1977
 
 
 
