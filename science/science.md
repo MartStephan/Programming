@@ -100,7 +100,25 @@ Ein einfacher Algorithmus zum Finden von Primzahlen ist z.B. der sogenannte *Sie
 
 ## Primfaktorzerlegung
 
-Mit Hilfe der Primfaktorzerlegung lässt sich das *kleinste gemeinsame Vielfache* berechnen. 
+Mit Hilfe der Primfaktorzerlegung lassen sich sowohl das *kleinste gemeinsame Vielfache* als auch der *größte gemeinsame Teiler*  berechnen. 
+
+Beispiel mit den Zahlen 12 und 18. 
+
+kgv(12,18) = 36
+
+ggt(12,18) = 6
+
+| Zahl | Primfaktor 1 | Primfaktor 2 | Primfaktor 3 | Primfaktor 4 |
+| ---- | ------------ | ------------ | ------------ | ------------ |
+| 12   | 2            | 2            | 3            | -            |
+| 18   | 2            | -            | 3            | 3            |
+
+Regeln: 
+
+1. Führe für jede Zahl eine Primfaktorzerlegung durch. Schreibe die Primfaktoren wie oben gezeigt in eine Tabelle. Identische Primfaktoren werden dabei untereinander geschrieben. Falls kein identischer Primfaktor mehr vorhanden ist, bleibt die Zelle frei. 
+
+2. kgv(): Nimm jeweils exakt einen Primfaktor aus jeder Spalte und multipliziere diese. Hier: 2 * 2 * 3 * 3 = 36
+3. ggt(): Nimm jeweils exakt einen Primfaktor aus jeder Spalte, in der Primfaktoren für beide Zahlen vorhanden sind und multipliziere diese. Hier: 2 * 3 = 6.
 
 ## Shannon
 
