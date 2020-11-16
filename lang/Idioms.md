@@ -110,6 +110,10 @@ Table of Contents
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
+## Argument-Dependent-Lookup (ADL)
+
+
+
 ## Aggregation
 
 Die Aggregation bezeichnet in der objektorientierten Welt eine Beziehung zwischen (meist) zwei Objekten. 
@@ -1133,6 +1137,10 @@ Während dynamische Programmiersprachen erst zur Laufzeit prüfen, ob eine Opera
 
 Beispiele für statische Programmiersprachen: C++, Java
 
+## Strong Types (Starke Datentypen)
+
+Der Vorteil von starken Typen ist, dass sie implizite Konvertierungen ausschalten. Vor allem in C/C++ sind implizite Konvertierungen oft von Nachteil (wobei viele Entwickler es eher als Vorteil sehen; vor allem C-Entwickler). Leider hat C++ implizite Konvertierungen von C geerbt. Es gibt allerdings inzwischen verschiedene Strong-Types-Bibliotheken, bei denen sich ein Blick lohnt: Björn Fahllers *strong_type*, Jonathan Müllers *type_safe* oder auch Jonathan Boccaras *NamedType*.
+
 ## Template Spezialisierung
 
 In C++ unterscheidet man zwischen allgemeinen Templates und spezialisierten Templates. Und zwar bei Klassen-Templates als auch bei Funktions-Templates. 
@@ -1643,6 +1651,12 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [30] https://cppinsights.io/, abgerufen am 20.04.2020
 
 [31] CPP Reference, https://cppreference.com
+
+[32] Björn Fahller, strong_type, https://github.com/rollbear/strong_type
+
+[33] Jonathan Müller, type_safe, https://github.com/foonathan/type_safe
+
+[34] Jonathan Boccara, NamedType, https://github.com/joboccara/NamedType
 
 
 
