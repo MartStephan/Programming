@@ -7,6 +7,7 @@ Table of Contents
 
 * [Idioms](#idioms)
 * [Table of Contents](#table-of-contents)
+  * [Argument\-Dependent\-Lookup (ADL)](#argument-dependent-lookup-adl)
   * [Aggregation](#aggregation)
   * [Aspektorientierte Programmierung](#aspektorientierte-programmierung)
   * [Bedarfsauswertung (Lazy Evaluation)](#bedarfsauswertung-lazy-evaluation)
@@ -86,6 +87,7 @@ Table of Contents
   * [Smart Pointer](#smart-pointer)
   * [Static Methods](#static-methods)
   * [Statische Programmiersprachen](#statische-programmiersprachen)
+  * [Strong Types (Starke Datentypen)](#strong-types-starke-datentypen)
   * [Template Spezialisierung](#template-spezialisierung)
   * [Traits](#traits)
   * [Tuples](#tuples)
