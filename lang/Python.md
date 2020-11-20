@@ -552,6 +552,10 @@ if __name__ == '__main__':
    print(c)
 ```
 
+### Anderes
+
+Aus der Funktion *raw_input()* in Python 2.x wurde nun einfach *input()*.
+
 ## Python 3.4
 
 Neue Features in Python 3.4. umfassen:  
