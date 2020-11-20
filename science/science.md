@@ -9,6 +9,18 @@ Table of Contents
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
+## Verschlüsselung
+
+### Symmetrische Verschlüsselung
+
+
+
+### Asymmetrische Verschlüsselung
+
+Asymmetrische Verschlüsselung beruht darauf, dass die Nachrichten mit einem Schlüssel verschlüsselt und mit einem anderen Schlüssel entschlüsselt werden. Dabei lässt sich allerdings der inverse Schlüssel nicht auf praktische Weise aus dem anderen berechnen. 
+
+Und hier kommt die Mathematik ins Spiel. Mathematisch liegt der asymmetrischen Verschlüsselung nämlich zugrunde, dass es Funktionen gibt, deren Umkehrfunktion vergleichsweise viel Rechenaufwand erfordert. Zum Beispiel ist es verhältnismäßig einfach, das Produkt zweier großer *Primzahlen* zu errechnen, aber deutlich aufwändiger, die beiden Faktoren allein anhand des Produkts zu finden.
+
 ## Euklidischer Algorithmus 
 
 Mit dem Euklidischen Algorithmus lässt sich der *größte gemeinsame Teiler* zweier natürlicher Zahlen berechnen. 
