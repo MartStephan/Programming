@@ -628,6 +628,41 @@ Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokier
 
 ## Python 3.5
 
+**Operator @ für Matrix Multiplikationen**
+
+Es gibt einen neuen Operator @ für Matrix Multiplikationen. Zu beachten ist, dass aktuell keine builtin Python Typen diesen Operator unterstützen. Dagegen hat numpy die Unterstützung für diesen Operator seit NumPy 1.10. Deswegen hier ein Beispiel im JupyterLab (bzw. JupyterNotebook):
+
+```python
+import numpy
+
+# create array of size three filled with ones
+x = numpy.ones(3)
+x
+array([1., 1., 1.])
+
+# create 2D-array with ones on the diagonal and zeros elsewhere
+m = numpy.eye(3)
+m
+array([[1., 0., 0.],
+       [0., 1., 0.],
+       [0., 0., 1.]])
+
+# matrix multiplication
+# 1x1 + 1x0 + 1x0 + 1x0 + 1x1 + 1x0 + 1x0 + 1x0 +1x1 = [1., 1, 1,]
+x @ m
+array([1., 1., 1.])
+```
+
+**Typ Annotationen**
+
+**Unpacking Syntax für Containertypen**
+
+**Coroutinen mit async und await**
+
+**Verschiedenes**
+
+- Die Funktion *os.listdir()* wurde durch *os.scandir()* ersetzt, um den Zugriff auf Dateisysteme beschleunigen zu können.
+
 ## Python 3.9
 
 **Dictionaries verbinden**
@@ -690,6 +725,8 @@ Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hi
 [11] Head First Python, Second Edition, Paul Barry, 2017
 
 [12] Python 3.9 startet in die Beta-Phase, https://www.heise.de/news/Python-3-9-startet-in-die-Beta-Phase-4724615.html, abgerufen am 20.05.2020
+
+[13] Algorithmen in Python, 2020, David Kopec
 
 
 
