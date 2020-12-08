@@ -100,6 +100,14 @@ if __name__ == '__main__':
 
 
 
+## Kombinatorik
+
+### Permutationen
+
+### Kombinationen mit Wiederholung
+
+### Kombinationen ohne Wiederholung
+
 ## Primzahlen
 
 Primzahlen sind schon seit der Antike bekannt, z.B. bei Euklid und Eratosthenes. Schon diese erkannten zahlreiche mathematische Eigenschaften rund um Primzahlen. In der Informatik besitzen Primzahlen vor allem in der Kryptographie hohe Bedeutung. 
@@ -176,6 +184,62 @@ Zuerst wird die Zahl 1 gestrichen. Die Zahl 2 wird umkreist und dann alle Vielfa
 
 Alle Zahlen, die 'umkreist' wurden, sind Primzahlen. 
 
+## Wahrscheinlichkeitstheorie
+
+### Zufallsexperiment, Ereignis, Häufigkeit, Laplace-Experiment
+
+Wir führen ein Zufallsexperiment *n-mal* nacheinander aus. Wenn jedes Ergebnis dabei gleich wahrscheinlich ist, nennt man das **Laplace-Experiment**. Tritt ein Ereignis *E* genau *k-mal* ein, so heißt k die **absolute Häufigkeit** und k/n die **relative Häufigkeit** des Ereignisses *E*. 
+$$
+P(E) = \frac{k}{n}
+$$
+Beispiel:
+
+Die Wahrscheinlichkeit mit einem Würfel einen Pasch zu werfen ist 
+$$
+P(E) = \frac{6}{36} = \frac{1}{6}
+$$
+da die Anzahl der möglichen Ergebnisse 36 ist. Davon sind 6 Ergebnisse ein Pasch. 
+
+### Mehrstufige Zufallsexperimente
+
+*Bei mehrstufigen Zufallsexperimenten wird die **Produktregel** angewandt.* 
+
+Die Wahrscheinlichkeit eines Ergebnisses erhält man, indem man die Wahrscheinlichkeiten jedes eintretenden Ereignisses A und B miteinander multipliziert. 
+$$
+P(AB) = P(A)*P(B)
+$$
+Beispiele: 
+
+Wie hoch ist die Wahrscheinlichkeit, zweimal hintereinander mit einem Würfel eine '6' zu würfeln?
+$$
+P(AB) = \frac{1}{6} * \frac{1}{6} = \frac{1}{36}
+$$
+*Beachte*: Bei Experimenten ohne Zurücklegen (z.B. beim Ziehen der Lottozahlen) ändern sich die Wahrscheinlichkeiten beim zweiten Zug.
+
+*Für die Wahrscheinlichkeit eines Ereignisses wird die **Summenregel** angewandt.*
+
+Die Wahrscheinlichkeit eines Ereignisses wird berechnet, indem man die Wahrscheinlichkeiten der zu diesem Ereignis gehörenden Ergebnisse A und B addiert. 
+$$
+P(E) = P(A) + P(B)
+$$
+Beispiele:
+
+Man wirft zwei Münzen. Wie hoch ist die Wahrscheinlichkeit, dass das Ergebnis ein Pasch ist (also entweider zweimal Zahl oder zweimal Wappen).
+
+P(Zahl-Pasch) = 1/3; P(Wappen-Pasch) = 1/3; P(kein Pasch) = 1/3
+$$
+P(E) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
+$$
+Für das gegenteilige Ereignis gilt:
+$$
+P(E) = 1 - (P(\overline{E}))
+$$
+Wie hoch ist die Wahrscheinlichkeit, dass das Ergebnis kein Pasch ist?
+$$
+P(E) = 1 - \frac{2}{3} = \frac{1}{3}
+$$
+
+
 ## Literatur
 
 [1] Fermats letzter Satz: Die abenteuerliche Geschichte eines mathematischen Rätsels, Simon Singh, 2000
@@ -189,6 +253,10 @@ Alle Zahlen, die 'umkreist' wurden, sind Primzahlen.
 [5] Die Zahl, die aus der Kälte kam, Rudolf Taschner, 2013
 
 [6] Weizenbaum J., Die Macht der Computer und die Ohnmachtder Vernunft. Suhrkamp, Frankfurt am Main, 1977
+
+[7] Statistische Methoden und ihre Anwendungen, Erwin Kreyszig, 1991
+
+
 
 
 
