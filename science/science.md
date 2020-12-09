@@ -1,13 +1,36 @@
-# Idioms
+# Science
 
 [TOC]
 
 Table of Contents
 =================
 
-* 
+* [Science](#science)
+* [Table of Contents](#table-of-contents)
+  * [Verschlüsselung](#verschl%C3%BCsselung)
+    * [Symmetrische Verschlüsselung](#symmetrische-verschl%C3%BCsselung)
+    * [Asymmetrische Verschlüsselung](#asymmetrische-verschl%C3%BCsselung)
+  * [Euklidischer Algorithmus](#euklidischer-algorithmus)
+  * [Größter gemeinsamer Teiler](#gr%C3%B6%C3%9Fter-gemeinsamer-teiler)
+  * [Hamming](#hamming)
+  * [Kleinstes gemeinsames Vielfaches](#kleinstes-gemeinsames-vielfaches)
+  * [Primzahlen](#primzahlen)
+  * [Primfaktorzerlegung](#primfaktorzerlegung)
+  * [Shannon](#shannon)
+  * [Sieb des Eratosthenes](#sieb-des-eratosthenes)
+  * [Statistik und Wahrscheinlichkeitstheorie](#statistik-und-wahrscheinlichkeitstheorie)
+    * [Zufallsexperiment, Ereignis, Häufigkeit, Laplace\-Experiment](#zufallsexperiment-ereignis-h%C3%A4ufigkeit-laplace-experiment)
+    * [Wahrscheinlichkeit](#wahrscheinlichkeit)
+      * [Additionsregel](#additionsregel)
+    * [Bedingte Wahrscheinlichkeit](#bedingte-wahrscheinlichkeit)
+      * [Multiplikationssatz](#multiplikationssatz)
+      * [Bayes](#bayes)
+  * [Kombinatorik](#kombinatorik)
+      * [Permutationen](#permutationen)
+      * [Kombinationen](#kombinationen)
+  * [Literatur](#literatur)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)https://github.com/ekalinin/github-markdown-toc.go)
 
 ## Verschlüsselung
 
@@ -100,13 +123,7 @@ if __name__ == '__main__':
 
 
 
-## Kombinatorik
 
-### Permutationen
-
-### Kombinationen mit Wiederholung
-
-### Kombinationen ohne Wiederholung
 
 ## Primzahlen
 
@@ -184,47 +201,54 @@ Zuerst wird die Zahl 1 gestrichen. Die Zahl 2 wird umkreist und dann alle Vielfa
 
 Alle Zahlen, die 'umkreist' wurden, sind Primzahlen. 
 
-## Wahrscheinlichkeitstheorie
+## Statistik und Wahrscheinlichkeitstheorie
 
 ### Zufallsexperiment, Ereignis, Häufigkeit, Laplace-Experiment
 
-Wir führen ein Zufallsexperiment *n-mal* nacheinander aus. Wenn jedes Ergebnis dabei gleich wahrscheinlich ist, nennt man das **Laplace-Experiment**. Tritt ein Ereignis *E* genau *k-mal* ein, so heißt k die **absolute Häufigkeit** und k/n die **relative Häufigkeit** des Ereignisses *E*. 
+*Definition*
+
+Die Menge aller möglichen (sich gegenseitig ausschließenden) Ergebnisse des Zufallsexperiments wird Ergebnismenge genannt und üblicherweise mit dem griechischen Buchstaben "Omega" bezeichnet.
+
+Gegeben sind die Ereignisse A,B als Teilmengen von der Ergebnismenge:
+
+- Das Ergebnis A **und** B entspricht dem Durchschnitt 
+
+  - $$
+    A \cap B
+    $$
+
+- Das Ergebnis A **oder** B entspricht der Vereinigung
+
+  - $$
+    A \cup B
+    $$
+
+### Wahrscheinlichkeit
+
+Wir führen ein Zufallsexperiment *n-mal* nacheinander aus. Wenn jedes Ergebnis dabei gleich wahrscheinlich ist, nennt man das **Laplace-Experiment**. Tritt ein Ereignis *E* genau *k-mal* ein, so heißt *k* die **absolute Häufigkeit** und *k/n* die **relative Häufigkeit** des Ereignisses *E*. 
 $$
 P(E) = \frac{k}{n}
 $$
-Beispiel:
+mit k = Anzahl der für E **günstigen Fälle**; n = Anzahl der **möglichen Fälle**
 
-Die Wahrscheinlichkeit mit einem Würfel einen Pasch zu werfen ist 
+- Beispiel: Die Wahrscheinlichkeit mit zwei Würfeln einen Pasch zu werfen ist 
+
 $$
 P(E) = \frac{6}{36} = \frac{1}{6}
 $$
 da die Anzahl der möglichen Ergebnisse 36 ist. Davon sind 6 Ergebnisse ein Pasch. 
 
-### Mehrstufige Zufallsexperimente
+#### Additionsregel
 
-*Bei mehrstufigen Zufallsexperimenten wird die **Produktregel** angewandt.* 
+Für die Wahrscheinlichkeit eines Ereignisses wird die **Summenregel (Additionssatz)** angewandt.
 
-Die Wahrscheinlichkeit eines Ergebnisses erhält man, indem man die Wahrscheinlichkeiten jedes eintretenden Ereignisses A und B miteinander multipliziert. 
+Für zwei unvereinbare Ereignisse A und B ist die Wahrscheinlichkeit, dass das Ereignis "A" oder "B" eintritt, gleich der Summe der Wahrscheinlichkeiten von A und B. 
 $$
-P(AB) = P(A)*P(B)
+P(A \cup B)=P(A)+P(B), falls A \cap B=0
 $$
-Beispiele: 
 
-Wie hoch ist die Wahrscheinlichkeit, zweimal hintereinander mit einem Würfel eine '6' zu würfeln?
-$$
-P(AB) = \frac{1}{6} * \frac{1}{6} = \frac{1}{36}
-$$
-*Beachte*: Bei Experimenten ohne Zurücklegen (z.B. beim Ziehen der Lottozahlen) ändern sich die Wahrscheinlichkeiten beim zweiten Zug.
+- Beispiel: Man wirft zwei Münzen. Wie hoch ist die Wahrscheinlichkeit, dass das Ergebnis ein Pasch ist (also entweider zweimal Zahl oder zweimal Wappen).
 
-*Für die Wahrscheinlichkeit eines Ereignisses wird die **Summenregel** angewandt.*
-
-Die Wahrscheinlichkeit eines Ereignisses wird berechnet, indem man die Wahrscheinlichkeiten der zu diesem Ereignis gehörenden Ergebnisse A und B addiert. 
-$$
-P(E) = P(A) + P(B)
-$$
-Beispiele:
-
-Man wirft zwei Münzen. Wie hoch ist die Wahrscheinlichkeit, dass das Ergebnis ein Pasch ist (also entweider zweimal Zahl oder zweimal Wappen).
 
 P(Zahl-Pasch) = 1/3; P(Wappen-Pasch) = 1/3; P(kein Pasch) = 1/3
 $$
@@ -232,13 +256,90 @@ P(E) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
 $$
 Für das gegenteilige Ereignis gilt:
 $$
-P(E) = 1 - (P(\overline{E}))
-$$
-Wie hoch ist die Wahrscheinlichkeit, dass das Ergebnis kein Pasch ist?
-$$
-P(E) = 1 - \frac{2}{3} = \frac{1}{3}
+P(\overline{E})=1-P(E)
 $$
 
+- Beispiel: Wie hoch ist die Wahrscheinlichkeit, dass das Ergebnis kein Pasch ist?
+
+$$
+P(\overline{E})=1-\frac{2}{3}=\frac{1}{3}
+$$
+
+### Bedingte Wahrscheinlichkeit
+
+#### Multiplikationssatz
+
+*Bei mehrstufigen Zufallsexperimenten wird die **Produktregel (Multiplikationssatz)** angewandt.* 
+
+Die Wahrscheinlichkeit eines Ergebnisses erhält man, indem man die Wahrscheinlichkeiten jedes eintretenden Ereignisses A und B miteinander multipliziert. Die Ereignisse A und B müssen statistisch unabhängig sein.
+$$
+P(A \cap B)=P(A)*P(B|A)
+$$
+- Beispiel: Wie hoch ist die Wahrscheinlichkeit, zweimal hintereinander mit einem Würfel eine '6' zu würfeln?
+
+$$
+P(A \cap B)=\frac{1}{6}*\frac{1}{6}=\frac{1}{36}
+$$
+*Beachte*: Bei Experimenten ohne Zurücklegen (z.B. beim Ziehen der Lottozahlen) ändern sich die Wahrscheinlichkeiten beim zweiten Zug.
+
+#### Bayes
+
+
+
+## Kombinatorik
+
+#### Permutationen
+
+Geg: n-Dinge
+
+Ges: Anzahl z der möglichen Anordnungen
+
+Anzahl der möglichen Reihenfolgen aller N-Dinge (*Permutationen*)
+$$
+z = n! = 1 * 2 * 3 ... n
+$$
+
+- Beispiel: In einer Urne befinden sich 6 Lose mit den Nummern von 1 bis 6. Wieviele mögliche Reihenfolgen gibt es, falls die Lose nacheinander ohne Zurücklegen gezogen werden?
+
+$$
+z = 6! = 720
+$$
+
+#### Kombinationen 
+
+Anzahl der möglichen Gruppierungen von k Elementen aus n Dingen (*Kombinationen*)
+
+- mit Wiederholung, mit Berücksichtigung der Reihenfolge
+
+$$
+n^k
+$$
+
+- Beispiel: Wir haben zwei Ziffern 0 und 1. Wieviele Kombinationen 4. Ordnung sind möglich (also 0000, 0001, 00010, 0011, ...)?
+
+$$
+n^k=2^4=16
+$$
+
+
+
+- mit Wiederholung, ohne Berücksichtigung der Reihenfolge
+
+$$
+\binom{n+k-1}{k}=\frac{(n+k-1)(n+k-2)...(n+1)n}{1*2...k}
+$$
+
+- ohne Wiederholung, mit Berücksichtigung der Reihenfolge
+
+$$
+n*(n-1)*(n-2)...(n-k+1)=\frac{n!}{(n-k)!}
+$$
+
+- ohne Wiederholung, ohne Berücksichtigung der Reihenfolge
+
+$$
+\binom{n}{k}=\frac{n!}{k!(n-k)!}
+$$
 
 ## Literatur
 
@@ -255,6 +356,10 @@ $$
 [6] Weizenbaum J., Die Macht der Computer und die Ohnmachtder Vernunft. Suhrkamp, Frankfurt am Main, 1977
 
 [7] Statistische Methoden und ihre Anwendungen, Erwin Kreyszig, 1991
+
+[8] Algorithmen in Python, David Kopec, 2020
+
+[9] Mathematik für Informatiker, Band 2, Analysis und Statistik, Gerald Teschl, Susanne Teschl, 2014
 
 
 
