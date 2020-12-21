@@ -1143,6 +1143,10 @@ Beispiele für statische Programmiersprachen: C++, Java
 
 Der Vorteil von starken Typen ist, dass sie implizite Konvertierungen ausschalten. Vor allem in C/C++ sind implizite Konvertierungen oft von Nachteil (wobei viele Entwickler es eher als Vorteil sehen; vor allem C-Entwickler). Leider hat C++ implizite Konvertierungen von C geerbt. Es gibt allerdings inzwischen verschiedene Strong-Types-Bibliotheken, bei denen sich ein Blick lohnt: Björn Fahllers *strong_type*, Jonathan Müllers *type_safe* oder auch Jonathan Boccaras *NamedType*.
 
+## Syntactic Sugar
+
+Syntactic Sugar ist ein Idiom aus der Programmierwelt und besagt, dass mithilfe ebendiesem Syntactic Sugar Dinge einfacher gelesen oder ausgedrückt werden können. Es macht ein Programm 'süßer' (ich würde sagen: abstrakter) und für das menschliche Gehirn besser verarbeitbar. 
+
 ## Template Spezialisierung
 
 In C++ unterscheidet man zwischen allgemeinen Templates und spezialisierten Templates. Und zwar bei Klassen-Templates als auch bei Funktions-Templates. 
