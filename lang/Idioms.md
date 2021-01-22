@@ -573,6 +573,10 @@ int main()
 
 In den Sprachen Java, C# gibt es das Konzept der Generics.
 
+## Graduell Typisierte Sprache
+
+Eine graduell typsisierte Sprache ist eine Programmiersprache, bei der man Typ-Annotationen verwenden kann, diese aber nicht benötigt werden. Zum Beispiel ist Python seit Version 3.5 eine graduell typisierte Sprache durch die Möglichkeit, Typ-Annotationen anzugeben. Wohingegen sie zuvor eine rein dynamisch typisierte Sprache war. 
+
 ## Idempotenz
 
 In der Programmierung wird ein Stück Code als idempotent bezeichnet, falls bei mehrfach hintereinander ausgeführten Code-Aufrufen immer das gleiche Ergebnis geliefert wird, als wenn der Code nur einmal aufgerufen wird. 
