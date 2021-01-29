@@ -2,39 +2,6 @@
 
 [TOC]
 
-Table of Contents
-=================
-
-* [Python](#python)
-* [Table of Contents](#table-of-contents)
-  * [Kernkonzepte](#kernkonzepte)
-    * [Features](#features)
-    * [Prinzipien](#prinzipien)
-    * [Modularisierung](#modularisierung)
-    * [Hello World](#hello-world)
-    * [Basics](#basics)
-    * [Objektmodell und Namensräume](#objektmodell-und-namensr%C3%A4ume)
-    * [Interpreter und Interoperabilität](#interpreter-und-interoperabilit%C3%A4t)
-    * [Objektorientierung](#objektorientierung)
-    * [Iterationen](#iterationen)
-    * [List](#list)
-    * [Tuple](#tuple)
-    * [Dictionary](#dictionary)
-    * [Set](#set)
-  * [Python 3](#python-3)
-    * [print](#print)
-    * [Strings](#strings)
-  * [Python 3\.4](#python-34)
-  * [Python 3\.5](#python-35)
-  * [Python 3\.9](#python-39)
-  * [Bibliotheken](#bibliotheken)
-    * [NumPy](#numpy)
-    * [SciPy](#scipy)
-    * [Matplotlib](#matplotlib)
-  * [Literatur](#literatur)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
-
 ## Kernkonzepte
 
 ### Features
@@ -189,6 +156,23 @@ def myfunc(optional_params):
    print("Hallo")
    
 ```
+
+**Basic Data Types**
+
+Wie in anderen Sprachen gibt es auch in Python Basis Datentypen für Integer, Floating-Point, Komplexe Zahlen und Strings.
+
+| int  | long            | float    | complex |
+| ---- | --------------- | -------- | ------- |
+| 10   | 51924361L       | 0.0      | 3.14j   |
+| -185 | 0xBABEAFFEL     | 15.20    | .876j   |
+| 0x69 | -4721885298529L | -21.9    | 4.5e-7j |
+| 0x10 |                 | 33.3+e10 | 2+3j    |
+
+| str              |
+| ---------------- |
+| "I am a string." |
+| 'I am too.'      |
+|                  |
 
 **Funktionen, Parameter und Rückgabe**
 
@@ -509,7 +493,7 @@ Das Wichtigste vorweg: Python 3 ist inkompatibel zu den Python 2.x Entwicklungsl
 -  	Viele iterierende Methoden von Containern liefern nun *views*, anstatt wie vorher ganze Listen zu erzeugen
 -  	Es gibt nur noch einen unifizierten Zahlentyp (*int*)
 
-### print
+**print**
 
 print ist mit Python 3.x eine Funktion. 
 
@@ -534,7 +518,7 @@ if __name__ == '__main__':
    print(1, 2, 3, 4, 5, sep = "") 
 ```
 
-### Strings
+**Strings**
 
 Strings bestehen in Python 3.x automatisch aus Unicode-Zeichen. Details zu Unicode in Python können in https://docs.python.org/3/howto/unicode.html nachgelesen werden.
 
@@ -552,7 +536,26 @@ if __name__ == '__main__':
    print(c)
 ```
 
-### Anderes
+**String Formatierung**
+
+In Python 2.x vewendete man den %-Operator, um Variablen in eine Zeichenkette einzufügen. Ab Version 3 gibt es die Methode *format*.  
+
+```python
+#!/usr/bin/python
+
+if __name__ == '__main__':
+   var = "boss"
+   out_v2 = "hello %s" %(var)
+   out_v3 = "hello {0}".format(var)
+
+   print(out_v2)
+   print(out_v3)
+
+#> hello boss
+#> hello boss
+```
+
+**Anderes**
 
 Aus der Funktion *raw_input()* in Python 2.x wurde nun einfach *input()*.
 
@@ -655,6 +658,49 @@ array([1., 1., 1.])
 
 **Typ Annotationen**
 
+Mit Type Annotationen (oder Type Hints) hat man jetzt auch in Python die Möglichkeit, die erwarteten Typen von Variablen, Funktionsparametern und Funktionsrückgabewerten zu kennzeichnen. Ein kleines Beispiel sollte genügen, um zu sehen, wie Typ-Annotationen in Python aussehen.
+
+```python
+#!/usr/bin/python
+
+import string
+
+# none annotations at all
+def add_world(message, times):
+   """ Add the string 'world' n times """ 
+   res = message
+
+   i = 1
+   while i <= times:
+      res = res + " world"
+      i = i + 1
+
+   return res
+
+# function parameter annotation and return value annotation
+def add_world_using_annotation(message: str, times: int) -> str:
+   """ Add the string 'world' n times """
+   # variable definition annotation
+   res: str = message
+
+   i = 1
+   while i <= times:
+      res = res + " world"
+      i = i + 1
+
+   return res
+
+if __name__ == '__main__':
+   msg = add_world("hello", 2)
+   print(msg)
+
+   msg = add_world_using_annotation("hello", 3)
+   print(msg)
+
+#> hello world world
+#> hello world world world
+```
+
 **Unpacking Syntax für Containertypen**
 
 **Coroutinen mit async und await**
@@ -662,6 +708,81 @@ array([1., 1., 1.])
 **Verschiedenes**
 
 - Die Funktion *os.listdir()* wurde durch *os.scandir()* ersetzt, um den Zugriff auf Dateisysteme beschleunigen zu können.
+
+## Python 3.6
+
+**Formatted String Literals**
+
+Es gibt ein neues Präfix für Zeichenketten. Vor die Zeichenkette schreibt man einfach ein "f" und an die Stelle, an  der der Wert der Variablen erscheinen soll, den Variablennamen in  geschweiften Klammern. 
+
+```python
+#!/usr/bin/python
+
+if __name__ == '__main__':
+   var = "boss"
+   out_v2 = "hello %s" %(var)
+   out_v3 = "hello {0}".format(var)
+   out_v3_6 = f"hello {var}"
+
+   print(out_v2)
+   print(out_v3)
+   print(out_v3_6)
+
+#> hello boss
+#> hello boss
+#> hello boss
+```
+
+**Underscores in Numeric Literals**
+
+Literale kann man jetzt mit Unterstrichen strukturieren. 
+
+```python
+#!/usr/bin/python
+
+if __name__ == '__main__':
+   # underscores for literals
+   einnahmen = 10_000_000.00
+   address = 0xCAFE_F00D
+   flags = 0b_0011_1111_0100_1110
+
+   print(einnahmen)
+   print(f'{address:x}')
+   print(f'{flags:b}')
+
+#> 10000000.0
+#> cafef00d
+#> 11111101001110
+```
+
+**Syntax for Variable Annotations**
+
+
+
+**File System Path Protocol**
+
+**Asynchronous Comprehensions**
+
+**Module** 
+
+| Modul   | Beschreibung                               |
+| ------- | ------------------------------------------ |
+| secrets | Use this to generate secure random numbers |
+
+```python
+#!/usr/bin/python
+
+from secrets import token_bytes
+
+def random_key(length: int) -> int:
+   # generate a random number with length 'length'
+   random_bytestring: bytes = token_bytes(length)
+   return int.from_bytes(random_bytestring, "big")
+
+if __name__ == '__main__':
+	rand_int: int = random_key(10)
+     
+```
 
 ## Python 3.9
 
@@ -702,19 +823,19 @@ Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hi
 
 ## Literatur  
 
-[1] Python – Das umfassende Handbuch, <http://openbook.galileocomputing.de/python/> (abgerufen 	am 18. März 2014)
+[1] Python – Das umfassende Handbuch, <http://openbook.galileocomputing.de/python/>, abgerufen am 18. März 2014
 
 [2] Learning Python, 5th edition, Mark Lutz, O’Reilly
 
 [3] Programming Python, 4th edition, Mark Lutz, O’Reilly
 
-[4] Python: Programmiersprache für alle Fälle, Holger Krekel, aus: iX Special, Programmieren heute, 	1/2010
+[4] Python: Programmiersprache für alle Fälle, Holger Krekel, aus: iX Special, Programmieren heute, 1/2010
 
-[5] Neues in Python 3.4, https://www.heise.de/developer/artikel/Neues-in-Python-3-4-2174477.html 	(abgerufen am 11. März 2019)
+[5] heise developer, Neues in Python 3.4, https://www.heise.de/developer/artikel/Neues-in-Python-3-4-2174477.html, abgerufen am 11. März 2019
 
 [6] http://docs.python.org/3.4/whatsnew/3.4.html (abgerufen am 19. März 2014)
 
-[7] https://www.heise.de/developer/meldung/Programmiersprache-Python-3-5-erschienen-2811997.html (abgerufen am 22. Oktober 2018)
+[7] heise developer, https://www.heise.de/developer/meldung/Programmiersprache-Python-3-5-erschienen-2811997.html, abgerufen am 22. Oktober 2018
 
 [8] Python - Universalwerkzeug für einfache und komplexe Aufgaben, Frank Müller, iX 11/2016
 
@@ -727,6 +848,8 @@ Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hi
 [12] Python 3.9 startet in die Beta-Phase, https://www.heise.de/news/Python-3-9-startet-in-die-Beta-Phase-4724615.html, abgerufen am 20.05.2020
 
 [13] Algorithmen in Python, 2020, David Kopec
+
+[14] heise developer, Die wichtigsten neuen Features in Python 3.6, https://www.heise.de/developer/artikel/Die-wichtigsten-neuen-Features-in-Python-3-6-3506992.html, abgerufen am 28.01.2021
 
 
 
