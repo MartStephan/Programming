@@ -2,48 +2,6 @@
 
 [TOC]
 
-Table of Contents
-=================
-
-* [Science](#science)
-* [Table of Contents](#table-of-contents)
-  * [Verschlüsselung](#verschl%C3%BCsselung)
-    * [Symmetrische Verschlüsselung](#symmetrische-verschl%C3%BCsselung)
-    * [Asymmetrische Verschlüsselung](#asymmetrische-verschl%C3%BCsselung)
-  * [Euklidischer Algorithmus](#euklidischer-algorithmus)
-  * [Größter gemeinsamer Teiler](#gr%C3%B6%C3%9Fter-gemeinsamer-teiler)
-  * [Hamming](#hamming)
-  * [Kleinstes gemeinsames Vielfaches](#kleinstes-gemeinsames-vielfaches)
-  * [Primzahlen](#primzahlen)
-  * [Primfaktorzerlegung](#primfaktorzerlegung)
-  * [Shannon](#shannon)
-  * [Sieb des Eratosthenes](#sieb-des-eratosthenes)
-  * [Statistik und Wahrscheinlichkeitstheorie](#statistik-und-wahrscheinlichkeitstheorie)
-    * [Zufallsexperiment, Ereignis, Häufigkeit, Laplace\-Experiment](#zufallsexperiment-ereignis-h%C3%A4ufigkeit-laplace-experiment)
-    * [Wahrscheinlichkeit](#wahrscheinlichkeit)
-      * [Additionsregel](#additionsregel)
-    * [Bedingte Wahrscheinlichkeit](#bedingte-wahrscheinlichkeit)
-      * [Multiplikationssatz](#multiplikationssatz)
-      * [Bayes](#bayes)
-  * [Kombinatorik](#kombinatorik)
-      * [Permutationen](#permutationen)
-      * [Kombinationen](#kombinationen)
-  * [Literatur](#literatur)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)https://github.com/ekalinin/github-markdown-toc.go)
-
-## Verschlüsselung
-
-### Symmetrische Verschlüsselung
-
-
-
-### Asymmetrische Verschlüsselung
-
-Asymmetrische Verschlüsselung beruht darauf, dass die Nachrichten mit einem Schlüssel verschlüsselt und mit einem anderen Schlüssel entschlüsselt werden. Dabei lässt sich allerdings der inverse Schlüssel nicht auf praktische Weise aus dem anderen berechnen. 
-
-Und hier kommt die Mathematik ins Spiel. Mathematisch liegt der asymmetrischen Verschlüsselung nämlich zugrunde, dass es Funktionen gibt, deren Umkehrfunktion vergleichsweise viel Rechenaufwand erfordert. Zum Beispiel ist es verhältnismäßig einfach, das Produkt zweier großer *Primzahlen* zu errechnen, aber deutlich aufwändiger, die beiden Faktoren allein anhand des Produkts zu finden.
-
 ## Euklidischer Algorithmus 
 
 Mit dem Euklidischen Algorithmus lässt sich der *größte gemeinsame Teiler* zweier natürlicher Zahlen berechnen. 
@@ -341,6 +299,97 @@ $$
 \binom{n}{k}=\frac{n!}{k!(n-k)!}
 $$
 
+## Verschlüsselung
+
+Oder in anderen Worten: Kryptographie. Kryptographie setzt sich aus den beiden altgriechischen Wörtern *kryptos* und *graphein* zusammen. Diese bedeuten *geheim* und *schreiben*.
+
+Als schlechter Stil der Verschlüsselung gilt, den Verschlüsselungsalgorithmus geheimzuhalten. Besser ist es, auf den französischen Mathematiker Auguste Kerckhoff zu hören, der bereits Ende des 19. Jahrhunderts folgendes formulierte: Die Sicherheit eines Kryptosystems soll nur von der Geheimhaltung des Schlüssels, nicht jedoch von der des Algorithmus abhängen. Das ist das sogenannte *Kerckhoffs' Prinzip*.
+
+### Symmetrische Verschlüsselung
+
+Bei symmetrischen Verschlüsselungsverfahren wird für die Ver- und Entschlüsselung einer Nachricht derselbe Schlüssel verwendet. Ein sehr einfaches Beispiel wäre z.B. jeden Buchstaben des Klartextes durch einen Buchstaben zu ersetzen, der 13 Positionen danach folgt. Diese Art von Verschlüsseling wird auch Caesar-Verschlüsselung genannt.
+
+Sicherer ist ein Schlüssel, der wie ein Passwort aufgebaut ist, d.h. aus beliebigen Zeichen in einer willkürlichen Reihenfolge. Noch sicherer wird es, indem man lange Schlüssel benutzt. Als sicher gilt ein zufälliger Schlüssel, dessen Länge der Nachrichtenlänge entspricht und der nur ein einziges Mal verwendet wird. In der Praxis nennt man solche Schlüssel *One-Time-Pads*. 
+
+Es gilt dann nur noch das Problem zu lösen, wie der Schlüssel zum Empfänger transportiert wird. 
+
+Ein simples Beispiel für einen Schlüssel aus beliebiger Zeichen in einer willkürlichen Reihenfolge kann mittels *xor* demonstriert werden.
+
+```python
+#!/usr/bin/python
+
+import string
+
+# example for a caesar encoding
+def rot_13(message: str):
+   """ This function replaces each letter in the input by 
+   the letter 13 positions after it in the alphabet.
+   This is a symmetric encryption and an example for a
+   Caesar cipher. """
+   result = ""
+   for char in message:
+      # ASCII table: 65: A ... 90: Z - 97: a ... 122: z
+      if 65 <= ord(char) <= 90 or 97 <= ord(char) <= 122:
+         # capitalized letters
+         if 65 <= ord(char) <= 90:
+            if ord(char) + 13 > 90:
+               char = chr(ord(char) + 13 - 90 + 65 - 1)
+            else:
+               char = chr(ord(char) + 13)
+         # lowercase letters
+         else:
+            if ord(char) + 13 > 122:
+               char = chr(ord(char) + 13 - 122 + 97 - 1)
+            else:
+               char = chr(ord(char) + 13)
+      else:
+         pass
+
+      result += char
+
+   return result
+
+
+if __name__ == '__main__':
+   enc = rot_13("hello")
+
+   print("rot_13(hello) is ", enc)
+
+#> rot_13(hello) is uryyb
+```
+
+Ein heutiger de-facto Standard für eine symmetrische Verschlüsselung ist der sogenannte AES-Algorithmus in den Varianten AES-128, AES-192 und AES-256.
+
+### Asymmetrische Verschlüsselung
+
+Die Grundlagen für asymmetrische Verschlüsselungsverfahren wurden erst in der zweiten Hälfte der 1970er Jahre publiziert [10]. Asymmetrische Verschlüsselung beruht darauf, dass die Nachrichten mit einem Schlüssel verschlüsselt und mit einem anderen Schlüssel entschlüsselt werden. Dabei lässt sich allerdings der inverse Schlüssel nicht auf praktische Weise aus dem anderen berechnen. 
+
+In der Praxis spricht man dabei oft von einem *Private-Key* und einem *Public-Key*. 
+
+Und hier kommt die Mathematik ins Spiel. Mathematisch liegt der asymmetrischen Verschlüsselung nämlich zugrunde, dass es Funktionen gibt, deren Umkehrfunktion vergleichsweise viel Rechenaufwand erfordert. Zum Beispiel ist es verhältnismäßig einfach, das Produkt zweier großer *Primzahlen* zu errechnen, aber deutlich aufwändiger, die beiden Faktoren allein anhand des Produkts zu finden.
+
+Ein bekannter asymmetrischer Algorithmus ist zum Beispiel der RSA-Algorithmus. Er kommt heutzutage allerdings in der Praxis nicht mehr sehr häufig vor. Primär werden heutzutage Verschlüsselungen auf Basis elliptischer Kurven verwendet. 
+
+### Hash-Funktionen
+
+Ein Problem, das alle Verschlüsselungen haben: Wie ist sichergestellt, dass die eigentliche, verschlüsselte, Nachricht nicht manipuliert wurde? Dafür werden sogenannte *Hash-Funktionen* benutzt. Es wird also zusätzlich zur (verschlüsselten) Nachricht auch noch ein *Hash-Wert* beim Sender berechnet. Dieser wird mitübertragen und der Empfänger kann diesen *Hash-Wert* neu berechnen und mit dem übertragenen vergleichen.
+
+Man findet heutzutage im Wesentlichen zwei *Hash-Verfahren*: Zum einen die *Message-Digest-Varianten (MD)*; zum anderen die *Secure-Hash-Algorithmen (SHA)*. Die MD-Varianten gelten heutzutage als unsicher. Weswegen man auf *SHA256*, *SHA512* oder *SHA3* zurückgreifen sollte. 
+
+Und es geht noch weiter: Wie kann man sicherstellen, dass der *Hash-Wert* nicht manipuliert wurde? Dafür gibt es den sogenannten *Message Authentication Code (MAC)*. Ein *MAC* ist im Prinzip ein *Hash-Wert* zusammen mit einem geheimen Schlüssel. Dieser geheime Schlüssel (*shared key*) muss beiden Kommunikationspartnern bekannt sein. Dadurch kann sichergestellt werden, dass der *MAC* nicht manipuliert wurde.
+
+### Zertifikate, Signaturen und Co.
+
+Bleibt noch die Frage, wie das alles im Internet funktioniert: Zum einen muß die Übertragung verschlüsselt übertragen werden. Zum anderen muß man als Client sicherstellen können, dass man mit dem richtigen Sender (Server) kommuniziert. 
+
+Die Verschlüsselung erfolgt heutzutage über eine symmetrische Verschlüsselung, üblicherweise *TLS/SSL*, welches dann über *http* getunnelt wird - das sogenannte *https*. Für den initialen Schlüsselaustausch wird ein Ad-hoc Schlüssel generiert, z.B. mit dem *Diffie-Hellman Key Exchange* Vefahren.
+
+Die Authentifizierung des Servers ist hingegen etwas aufwändiger. Die Grundidee ist, dass der Server mit Hilfe asymmetrischer Verschlüsselung nachweisen kann, daß er es tatsächlich ist. Dazu besitzt er den privaten Schlüssel. Clients können sich den öffentlichen Schlüssel dazu besorgen. Der öffentlich Schlüssel wird um weitere Daten ergänzt - damit erhält man ein sogenanntes *Zertifikat*. 
+
+Der Server verschlüsselt also seine Nachricht mit seinem privaten Schlüssel. Jeder, der den öffentlichen Schlüssel besitzt, kann die Nachricht des Servers wieder entschlüsseln. Die Idee dahinter ist, dass man bei Nachrichten, die man entschlüsseln kann, sichergehen kann, dass diese vom korrekten Server verschlüsselt wurden. Nur dieser besitzt nämlich den privaten Schlüssel - das ist die sogenannte *digitale Signatur*.
+
+Wie kann man jetzt der *digitalen Signatur* trauen? Auch dafür gibt es wieder Zertifikate. Und zwar von vertrauenswürdigen Instanzen - den sogenannten *Certificate Authorities (CA)*. Am Ende der Kette stehen die sogenannten *Root-CA-Zertifikate*. Und diese werden tatsächlich direkt von den Betriebssystemherstellern bzw. Browser-Herstellern mitgeliefert. Fini.
+
 ## Literatur
 
 [1] Fermats letzter Satz: Die abenteuerliche Geschichte eines mathematischen Rätsels, Simon Singh, 2000
@@ -353,13 +402,17 @@ $$
 
 [5] Die Zahl, die aus der Kälte kam, Rudolf Taschner, 2013
 
-[6] Weizenbaum J., Die Macht der Computer und die Ohnmachtder Vernunft. Suhrkamp, Frankfurt am Main, 1977
+[6] Weizenbaum J., Die Macht der Computer und die Ohnmacht der Vernunft. Suhrkamp, Frankfurt am Main, 1977
 
 [7] Statistische Methoden und ihre Anwendungen, Erwin Kreyszig, 1991
 
 [8] Algorithmen in Python, David Kopec, 2020
 
 [9] Mathematik für Informatiker, Band 2, Analysis und Statistik, Gerald Teschl, Susanne Teschl, 2014
+
+[10] The Code Book. The Secret History of Codes and Codebreaking, Simon Singh, 2000
+
+[11] Was man über Kryptografie wissen sollte, https://www.heise.de/developer/artikel/Was-man-ueber-Kryptografie-wissen-sollte-5001908.html, abgerufen am 26.01.2021
 
 
 
