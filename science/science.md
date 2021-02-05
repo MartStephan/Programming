@@ -344,14 +344,38 @@ Sicherer ist ein Schlüssel, der wie ein Passwort aufgebaut ist, d.h. aus belieb
 
 Es gilt dann nur noch das Problem zu lösen, wie der Schlüssel zum Empfänger transportiert wird. 
 
-Ein simples Beispiel für einen Schlüssel aus beliebiger Zeichen in einer willkürlichen Reihenfolge kann mittels *xor* demonstriert werden.
+Ein simples Beispiel für einen Schlüssel aus beliebiger Zeichen in einer willkürlichen Reihenfolge kann mittels *XOR* demonstriert werden.
 
 ```python
 #!/usr/bin/python
 
 import string
+from secrets import token_bytes
+from typing import Tuple
 
-# example for a caesar encoding
+def random_key(length: int) -> int:
+   # generate a random number with length 'length'
+   random_bytestring: bytes = token_bytes(length)
+   # this works as an int in Python can have any (arbitrary) length
+   return int.from_bytes(random_bytestring, "big")
+
+def encrypt_xor(message: str) -> Tuple[int, int]:
+   """ One-Time-Pad encryption
+   Returns the key and the encrypted message """
+   # encode sting as bytes object
+   message_bytes: bytes = message.encode()
+   key: int = random_key(len(message_bytes))
+   message_ints: int = int.from_bytes(message_bytes, "big")
+   # encrypt using XOR with key and message
+   encrypted: int = message_ints ^ key 
+   return key, encrypted
+
+def decrypt_xor(key1: int, key2: int) -> str:
+   """ One-Time-Pad decryption using XOR"""
+   decrypted: int = key1 ^ key2
+   bytestream: bytes = decrypted.to_bytes((decrypted.bit_length()+7) // 8, "big")
+   return bytestream.decode()
+
 def rot_13(message: str):
    """ This function replaces each letter in the input by 
    the letter 13 positions after it in the alphabet.
@@ -382,11 +406,23 @@ def rot_13(message: str):
 
 
 if __name__ == '__main__':
+   # chiffre - rotate-by-13
    enc = rot_13("hello")
-
    print("rot_13(hello) is ", enc)
 
-#> rot_13(hello) is uryyb
+   # chiffre - encrypt with one-time-pad using XOR
+   key1, key2 = encrypt_xor("One Time Pad!")
+   print("key:     ", key1)
+   print("message: ", key2)
+
+   # chiffre - decrypt using XOR
+   msg: str = decrypt_xor(key1, key2)
+   print("Message: ", msg)
+
+#> rot_13(hello) is  uryyb
+#> key:      16791963154501998582585035768554
+#> message:  12409003956335922730723896174283
+#> Message:  One Time Pad!
 ```
 
 Ein heutiger de-facto Standard für eine symmetrische Verschlüsselung ist der sogenannte AES-Algorithmus in den Varianten AES-128, AES-192 und AES-256.
@@ -445,14 +481,6 @@ Wie kann man jetzt der *digitalen Signatur* trauen? Auch dafür gibt es wieder Z
 
 [11] Was man über Kryptografie wissen sollte, https://www.heise.de/developer/artikel/Was-man-ueber-Kryptografie-wissen-sollte-5001908.html, abgerufen am 26.01.2021
 
-
-
-
-
-
-
-
-
-
+[12] The Missing Semester of Your CS Semester, https://missing.csail.mit.edu/, abgerufen am 05.02.2021
 
 
