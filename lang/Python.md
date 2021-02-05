@@ -637,18 +637,12 @@ Um Aufzählungstypen zu benutzen, muss der Typ *Enum* aus dem Modul *enum* impor
 
 Es gibt jetzt ein neues Modul *ensurepip,* mit welchem das Bootstrapping der *pip* Installation in laufende Python Installationen möglich wird. *pip* ist ein Werkzeug, um Python-Pakete zu installieren und zu verwalten.
 
-**Modul zur besseren Darstellung und Manipulierung von Datei- und Verzeichnispfaden (*****pathlib)***
+**Module**
 
-Das Modul *pathlib* bietet Klassen an, um auf verschiedenen Betriebssystemen Operationen auf Datei- und Verzeichnispfaden durchzuführen.
-
-**Modul für statistische Funktionen (*****statistics*****)**
-
-Das Modul *statistics* bietet Funktionen für mathematische Statistik-Funktionalitäten  
-
--  	Mittelwert
--  	Median
--  	Standardabweichung
--  	usw.
+| Modul      | Beschreibung                                                 |
+| ---------- | ------------------------------------------------------------ |
+| pathlib    | Das Modul *pathlib* bietet Klassen an, um auf verschiedenen Betriebssystemen Operationen auf Datei- und Verzeichnispfaden durchzuführen. |
+| statistics | Das Modul *statistics* bietet Funktionen für mathematische Statistik-Funktionalitäten, z.B. Mittelwert, Median, Standardabweichung, usw. |
 
 **Debugging-Werkzeug für die Ablaufverfolgung von Speicherblöcken (tracemalloc)**
 
@@ -657,8 +651,6 @@ Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokier
 -  	Traceback von der Stelle, an der ein Objekt allokiert wurde
 -  	Statistik von allokierten Blöcken sortiert nach Dateinamen und Zeilennummer: Gesamtgröße, Anzahl und durchschnittliche Größe der allokierten Blöcke
 -  	Berechnung des Unterschiedes von zwei ‚Snapshots‘, um Speicherlecks zu entdecken
-
-
 
 ## Python 3.5
 
@@ -736,9 +728,22 @@ if __name__ == '__main__':
 
 **Coroutinen mit async und await**
 
+```python
+#import aiohttp
+#>>> async def get_page(url):
+#...    response = await aiohttp.request('GET',url)
+#...    #usw.
+```
+
 **Verschiedenes**
 
 - Die Funktion *os.listdir()* wurde durch *os.scandir()* ersetzt, um den Zugriff auf Dateisysteme beschleunigen zu können.
+
+**Module**
+
+| Modul  | Beschreibung                               |
+| ------ | ------------------------------------------ |
+| typing | Laufzeitunterstützung für Typ Annotationen |
 
 ## Python 3.6
 
@@ -788,11 +793,37 @@ if __name__ == '__main__':
 
 **Syntax for Variable Annotations**
 
+In Python 3.5 wurden Typ-Annotatinen eingeführt. Mit Python 3.6 ist es jetzt auch möglich, Typ-Annotationen bei Variablen anzugeben.
 
+```python
+#!/usr/bin/python
+
+from typing import List
+
+if __name__ == '__main__':
+   # type annotations for variables
+   name: str = "Hallo"
+   meine_liste: List[int] = []
+   meine_liste = [1, 3, 5, 7, 9, 11, 13]
+
+   print(name)
+   print(meine_liste)
+   
+#> Hallo
+#> [1, 3, 5, 7, 9, 11, 13]
+```
 
 **File System Path Protocol**
 
+Es gibt eine neue Schnittstelle *os.PathLike*, mit der es einfacher wird, Betriebssystempfade als Zeichenketten zu verarbeiten. 
+
 **Asynchronous Comprehensions**
+
+Mit dem Feature *Asynchronous Comprehensions* kann man jetzt die seit Python 3.5 bekannten Funktionalitäten *async* und *await* auch in *Comprehensions* benutzen.
+
+```python
+#>>> ergebnis = [await f() for f in f_liste]
+```
 
 **Module** 
 
