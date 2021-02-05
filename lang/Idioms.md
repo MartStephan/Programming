@@ -1044,6 +1044,12 @@ Ein Ansatz für eine asynchrone, nicht-blockierende API ist die Verwendung von F
 
 In der Programmierung bezeichnet die *referenzielle Transparenz,* daß ein Ausdruck (eine Funktion) immer den gleichen Wert zurückgibt. Dies macht man sich bei Reinen Funktionen zunutze. *Reine Funktionen* sind Funktionen, die immer den gleichen Wert zurückgeben, wenn sie mit den gleichen Argumenten aufgerufen werden. 
 
+## Regular und SemiRegular Datentypen
+
+In C++ bezeichnet man einen Datentyp, der sich wie ein *int* verhält ("*behaves like an int*"), als *Regular*. Er kann kopiert werden und das Ergebnis des Kopierens ist unabhängig vom Original. 
+
+Ein *Semi-Regular* Datentyp muss die Sechser-Regel umsetzen (*rule-of-six*) und zusätzlich eine *swap*-Methode unterstützen.
+
 ## Reine Funktionen
 
 Wie in *Referenzielle Transparenz* schon erwähnt: Reine Funktionen zeichnen sich aus durch: 
@@ -1099,23 +1105,54 @@ int main()
 
 Die zentrale Idee dahinter: Wenn du auf eine Resource aufpassen sollst, verpacke diese in eine Klasse. Benutze den Konstruktor, um die Resource zu intialisieren. Benutze den Destruktor, um die Resource aufzuräumen.  
 
-## Rule of three (C++)
+## Rule of three
 
-Die ‚Rule of three‘ ist innerhalb der Sprache C++ eine Regel, die besagt, falls mindestens eine der folgenden Operationen (explizit vom Programmierer) implementiert wird, alle der folgenden Operationen implementiert werden sollten:  
+Die *rule-of-three* ist innerhalb der Sprache C++ eine Regel, die besagt, falls mindestens eine der folgenden Operationen (explizit vom Programmierer) implementiert wird, alle der folgenden Operationen implementiert werden sollten.
 
 -  	Destruktor (destructor)
 -  	Kopier-Konstruktor (copy constructor)
 -  	Zuweisungsoperator-Konstruktor (copy assignment operator)
 
-## Rule of five (C++11)
+## Rule of five
 
-Die *Rule of three* kann aufgrund der neu hinzugekommenen *move-Operation* in C++11 auf die *Rule of five* erweitert werden. Bei der *rule-of-five* sollten folgende Operationen explizit implementiert warden:  
+Die *Rule of three* kann aufgrund der neu hinzugekommenen *move-Operation* in C++11 auf die *Rule of five* erweitert werden. Bei der *rule-of-five* sollten folgende Operationen explizit implementiert werden. 
 
 -  	Destruktor (destructor)
 -  	Kopier-Konstruktor (copy constructor)
 -  	Move-Konstruktor (move construtor)
 -  	Kopier-Zuweisungsoperator Konstruktor (copy assignment operator)
 -  	Move-Zuweisungsoperator Konstruktor (move assignment operator)
+
+## Rule of six
+
+Bei der *rule-of-six* sollten folgende Operatoren explizit implementiert werden.
+
+- ein Default-Konstruktor
+- ein Copy-Konstruktor
+- ein Copy-Zuweisungsoperator
+- ein Move-Konstruktor
+- ein Move-Zuweisungsoperator
+- ein Destruktor
+
+```c++
+/// Sample class implementing the rule-of-six
+class Vertigo
+{
+public:
+   // Default Konstruktor
+   Vertigo() {}                  
+   // Copy-Konstruktor
+   Vertigo(const Vertigo&) {}
+   // Copy-Zuweisungsoperator
+   Vertigo& operator=(const Vertigo&) {return *this;}
+   // Move-Konstruktor
+   Vertigo(const Vertigo&&) {}
+   // Move-Zuweisungsoperator
+   Vertigo& operator=(const Vertigo&&) {return *this;}
+   // Destruktor
+   ~Vertigo() {}
+};
+```
 
 ## Scope
 
