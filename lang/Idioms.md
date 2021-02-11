@@ -591,6 +591,72 @@ In der Praxis verwendet man den Begriff bei den REST-HTTP Verben GET, HEAD, PUT 
 
 Vererbung ist ein Begriff aus der Objektorientierung. Wie der Name schon sagt, dient die Vererbung dazu, aus schon bestehenden Klassen neue zu schaffen. Dabei 'erbt' die abgeleitete Klassen (üblicherweise) die Methoden und Attribute der Basisklasse. 
 
+## Inkrement Operatoren
+
+Bei den Inkrement-Operatoren unterscheiden wir zwischen Prä-Inkrement-Operatoren und Post-Inkrement-Operatoren.
+
+```c++
+int solution = 41;
+
+// increment solution by one using the Pre-Increment-Operator
+++solution;
+
+// increment solution by one using the Post-Increment-Operator
+solution++;
+```
+
+Üblicherweise verwendet man in C++ den Prä-Inkrement-Operator. Aber wieso? Das zeigt (zugegebenermaßen sehr künstliches) folgendes Beispiel. Man sieht hier, dass falls C++-Überladungen für den Inkrement-Operator existieren, der Post-Inkrement-Operator immer auf einer Kopie arbeitet, da er sich den alten Wert ja merken muß. Während der Prä-Inkrement-Operator ohne Kopie performanter arbeiten kann. Um sich keine Gedanken über die Überladung machen zu müssen, nimmt man in C++ einfach immer den Prä-Inkrement-Operator.
+
+```c++
+#include <iostream>
+
+class My_Int
+{
+public:
+   // constructor
+   My_Int(int v) : val(v) {}
+
+   int get_val() { return val; }
+
+   // pre-increment operator
+   My_Int& operator++()
+   {
+      ++val;
+      return *this;
+   }
+
+   // post-increment operator
+   My_Int operator++(int)
+   {
+      My_Int cpy(*this);
+      ++val;
+      return cpy;
+   }
+
+private:
+   int val;
+};
+
+int main()
+{
+   My_Int cut(41); 
+
+   std::cout << "now is " << cut.get_val() << "\n";
+
+   // pre-increment
+   My_Int pre_cut = ++cut;
+   std::cout << "pre-increment is " << pre_cut.get_val() << "\n";
+
+   // post-increment
+   My_Int post_cut = cut++;
+   std::cout << "post-increment is " << post_cut.get_val() << "\n";
+}
+
+///> now is 41
+///> pre-increment is 42
+///> post-increment is 42
+```
+
 ## Integral Promotion
 
 Integral Promotion ist in C/C++ quasi das Gegenteil von *Narrowing Conversion*. Falls ein *int* alle Werte des Original-Typs repräsentieren kann, dann wird der Originaltyp nach *int* konvertiert. Ansonsten wird der Originaltyp nach unsigned int konvertiert. Dieser Prozess wird *Integral Promotion* genannt. 
