@@ -413,7 +413,7 @@ if __name__ == '__main__':
     mylist.append(10)
     mylist.append(30)
 
-	 odds = [1, 3, 5, 7, 9, 11, 13]
+	odds = [1, 3, 5, 7, 9, 11, 13]
     words = ['hello', 'world']
     car = ['Toyota', 'Civic', 100, 2452345]
     literalsLiterals = [ [1, 2, 3], ['a', 'b', 'c'], ['first', 'second', 'third'] ]
@@ -443,6 +443,51 @@ if __name__ == '__main__':
     print(vowels[-1])
 ```
 
+**List Comprehensions**
+
+Mit List Comprehensions kann man in Python kurz und bündig Listen zu erstellen. Die Syntax erfolgt mit eckigen Klammern: 
+
+```python
+[ expression for item in list if conditional ]
+```
+
+Ein kleines Beispiel soll das demonstrieren.
+
+```python
+#!usr/bin/python
+
+def square_list_loops():
+    # You can either use loops
+    squares = []
+
+    for x in range(10):
+        squares.append(x**2)
+ 
+    print(squares)
+
+def square_list_comprehensions():
+    # Or you can use list comprehensions to get the same result:
+    squares = [x**2 for x in range(10)]
+
+    print(squares)
+
+if __name__ == '__main__':
+    """Example for List Comprehensions"""
+    
+    # simple list using list comprehension
+    x: int = [i for i in range(10)]
+    print(x)
+
+    # list of square numbers using loop
+    square_list_loops()
+
+    # list of square numbers using comprehensions
+    square_list_comprehensions()
+    
+#> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+#> [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+#> [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]    
+```
 
 ### Tuple
 

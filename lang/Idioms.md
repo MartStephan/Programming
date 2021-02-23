@@ -14,6 +14,7 @@ Table of Contents
   * [Closure](#closure)
   * [Compiler](#compiler)
   * [Composition](#composition)
+  * [Comprehensions](#comprehensions)
   * [Concepts](#concepts)
   * [Concurrency](#concurrency)
   * [Container](#container)
@@ -45,6 +46,7 @@ Table of Contents
   * [Graduell Typisierte Sprache](#graduell-typisierte-sprache)
   * [Idempotenz](#idempotenz)
   * [Inheritance, Multiple Inheritance, Protected Inheritance, Virtual Inheritance](#inheritance-multiple-inheritance-protected-inheritance-virtual-inheritance)
+  * [Inkrement Operatoren](#inkrement-operatoren)
   * [Integral Promotion](#integral-promotion)
   * [Interpreter](#interpreter)
   * [Invariante](#invariante)
@@ -114,7 +116,7 @@ Table of Contents
   * [YAGNI](#yagni)
   * [Literatur](#literatur)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)https://github.com/ekalinin/github-markdown-toc.go)
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 ## Argument-Dependent-Lookup (ADL)
 
@@ -175,6 +177,29 @@ Closures sind Funktionen, die auf nicht-lokale Variablen auch dann noch zugreife
 Die Komposition bezeichnet in der objektorientierten Welt einen Spezialfall der Aggregation. Die Komposition beschreibt (wie die Aggregation) die Beziehung zwischen einem Ganzen und seinen Teilen. Ein Objekt kann dabei nur Teil maximals eines Ganzen sein. 
 
 ![](F:\Martin\Projects\Programmieren\UML\Komposition.png)
+
+## Comprehensions
+
+Comprehensions (oder List Comprehensions) ist ein Begriff, der in Python eine Methode beschreibt, um kurz und bündig Listen zu erstellen. Ein kleines Beispiel.
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    """Example for List Comprehensions"""
+    
+	# simple list using loops 
+    numbers = []
+    for item in range(10):
+        numbers.append(item)
+    print(numbers)
+    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    # simple list using list comprehensions
+    x: int = [i for i in range(10)]
+    print(x)
+    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
 
 ## Concepts
 
