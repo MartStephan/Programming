@@ -6,6 +6,7 @@ Table of Contents
 =================
 
 * [Idioms](#idioms)
+* [Table of Contents](#table-of-contents)
   * [Standardisierung](#standardisierung)
     * [RFCs](#rfcs)
     * [W3C](#w3c)
@@ -40,8 +41,11 @@ Table of Contents
       * [RWD](#rwd)
       * [PWA](#pwa)
       * [Fugu](#fugu)
+      * [WSGI](#wsgi)
   * [GraphQL](#graphql)
   * [JSON\-API](#json-api)
+  * [Frameworks](#frameworks)
+    * [Flask](#flask)
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
