@@ -6,6 +6,7 @@ Table of Contents
 =================
 
 * [Python](#python)
+* [Table of Contents](#table-of-contents)
   * [Kernkonzepte](#kernkonzepte)
     * [Features](#features)
     * [Prinzipien](#prinzipien)
@@ -20,6 +21,7 @@ Table of Contents
     * [Tuple](#tuple)
     * [Dictionary](#dictionary)
     * [Set](#set)
+    * [Further built\-in functions](#further-built-in-functions)
   * [Python 3](#python-3)
   * [Python 3\.4](#python-34)
   * [Python 3\.5](#python-35)
