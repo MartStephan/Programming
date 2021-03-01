@@ -354,7 +354,7 @@ if __name__ == '__main__':
 
 ### Iterationen
 
-Iterationen werden (wie in vielen anderen Sprachen auch) mit dem Schlüsselwort *for*  implementiert. Range-basierte for-Schleifen werden unterstützt.  
+Iterationen werden (wie in vielen anderen Sprachen auch) mit dem Schlüsselwort *for* implementiert. *Range*-basierte for-Schleifen werden unterstützt.  
 
 ```python
 #!/usr/bin/python
@@ -555,9 +555,62 @@ if __name__ == '__main__':
 
 ### Set
 
-Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, Dictionaries und Sets mit.  
+Python bringt vier effiziente (eingebaute) Datenstrukturen mit: *Listen*, *Tuples*, *Dictionaries* und *Sets* mit.  
 
-Ein Set ist eine Ansammlung unsortierter Objekte. Wobei ein Objekt nie mehrfach vorkommenn darf.  
+Ein *Set* ist eine Ansammlung unsortierter Objekte. Wobei ein Objekt nie mehrfach vorkommenn darf.  
+
+### Further built-in functions
+
+**range**
+
+Die *range*-Funktion kennt man natürlich aufgrund der *range-based for-loops*. Tatsächlich ist *range* eine generische built-in Funktion in Python. *Range* liefert eine Sequenz von Zahlen. Diese Sequenz beginnt standardmäßig bei 0 und erhöht sich standardmäßig um 1. 
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    """Example for Python built-in functions"""
+    
+    # range returns a sequence of numbers, from 1 to 10
+    odds = filter(lambda i: (i % 2) == 1 , range(1, 10))
+
+    for x in odds:
+        print(x)
+```
+
+**filter**
+
+Die *filter*-Funktion liefert einen Iterator auf Elemente, wobei die Elemente zuvor via einer Funktion gefiltert werden.
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    """Example for Python built-in functions"""
+    
+    # filter returns elements that have been filtered by a function beforehand
+    odds = filter(lambda i: (i % 2) == 1 , range(1, 10))
+
+    for x in odds:
+        print(x)
+```
+
+**lambda**
+
+Auch *Lambdas* sind in Python built-in. Verwende das *Lambda*-Pattern, um Funktionen an Ort und Stelle zu definieren.
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+    """Example for Python built-in functions"""
+    
+    # lambda is an anonymous function inside a filter function
+    odds = filter(lambda i: (i % 2) == 1 , range(1, 10))
+
+    for x in odds:
+        print(x)
+```
 
 ## Python 3
 
