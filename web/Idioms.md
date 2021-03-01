@@ -205,6 +205,10 @@ Zentrale technische Mittel für PWA sind der Service Worker und das Web  App Man
 
 Mit dem Projekt Fugu möchte Google die Lücke zwischen Progressive Web Apps und  nativen Anwendungen durch das Einführen vieler weiterer  Webschnittstellen schließen. Es soll dann z.B. möglich sein, auf das native Dateisystem oder umfassend auf die Zwischenablage zugreifen zu können. 
 
+#### WSGI
+
+WSGI steht für Web Server Gateway Interface [14]. WSGI beschreibt und spezifiziert, wie ein Web-Server mit Web-Applikationen kommuniziert. WSGI ist ein Python Standard, beschrieben in PEP 3333.
+
 ## GraphQL
 
 GraphQL ist eine von Facebook entwickelte Abfragesprache, die die Kommunikation zwischen (Web-)Client und Server effizienter gestalten soll. Im Unterschied zu RESTful APIs können Entwickler mit GraphQL gezielt Daten abfragen. Zudem sind die Datenfelder in GraphQL-Datenstrukturen typisiert, sodass fehlerhafte Zugriffe früher entdeckt werden können.
@@ -212,6 +216,52 @@ GraphQL ist eine von Facebook entwickelte Abfragesprache, die die Kommunikation 
 ## JSON-API
 
 Die JSON-API-Spezifikation definiert einen Standard für REST-APIs. JSON-API ermöglicht einem Client (genau wie GraphQL), mit einer einzigen Abfrage genau die Daten anzufordern, die er benötigt. JSON-API will die Nachteile einer REST-Architektur durch ein ausgefeiltes API-Design innerhalb einer REST-Architektur lösen.
+
+## Frameworks
+
+### Flask
+
+Flask ist ein schlankes, in Python geschriebenes Webframework. Der Fokus liegt auf Erweiterbarkeit und guter Dokumentation. Es gibt auch eine Erweiterung Flask-RESTPlus, mit dem sich REST-APIs für Enterprise-Anwendungen entwickeln lassen. 
+
+Die Installation erfolgt entweder über den Python-Paketmanager *pip* oder (so wie ich es benutze) via Anaconda [13]. Anaconda liefert schon alles Nötige mit inkl. Flask und aller Paket-Abhängigkeiten.
+
+Ein minimales "Hello World!" Programm ist mit Flask in einer Minute erstellbar. 
+
+```python
+#!/usr/bin/python
+
+import string
+from flask import Flask
+
+# 'app' as instance of Flask which is our WSGI application
+app = Flask(__name__)
+
+# use the route-decorator to specify the URL path (e.g. if you 
+# don't like URL root than you could say route("/hello")
+@app.route("/")
+def hello():
+   return "Hello World!"
+```
+
+1. Obiges Beispiel in einem Editor deiner Wahl eingeben und unter *hello.py* (oder wie auch immer du es nennen willst) abspeichern.
+2. Gehe mit der Kommandozeile in das Verzeichnis, in dem deine Applikation *hello.py* liegt
+3. Setze die FLASK Umgebungsvariable auf die Flask-Applikation. 
+   1. Linux: export *FLASK_APP=hello.py*
+   2. Windows: set *FLASK_APP=hello.py*
+4. Starte Flask mit *flask run*
+5. Nimm den Browser deiner Wahl und navigiere auf http://127.0.0.1:5000/ 
+6. Be proud if you see *Hello World!* in your Browser window
+
+```shell
+$> set FLASK_APP=hello.py
+$> flask run
+ * Serving Flask app "hello.py"
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
 
 ## Literatur 
 
@@ -234,3 +284,11 @@ Die JSON-API-Spezifikation definiert einen Standard für REST-APIs. JSON-API erm
 [9] c't 05/2020, Manuel Ottlik, REST-APIs dokumentieren nach OpenAPI-Standard
 
 [10] Gezielte Auswahl, Typsichere GraphQL-APIs mit Java und React, Nils Hartmann, iX 6/2019
+
+[11] The Pallets Project - Flask, https://palletsprojects.com/p/flask/, abgerufen am 12.02.2021
+
+[12] Quickstart - Flask Documentation, https://flask.palletsprojects.com/en/1.0.x/quickstart/#a-minimal-application, abgerufen am 12.02.2021
+
+[13] Anaconda, https://www.anaconda.com/, abgerufen am 12.02.2021
+
+[14] What is WSGI?, https://wsgi.readthedocs.io/en/latest/what.html, abgerufen am 12.02.2021
