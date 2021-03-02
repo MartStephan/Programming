@@ -164,6 +164,10 @@ int main()
 }
 ```
 
+Tatsächlich gibt es noch mehr Arten von Bedarfsauswertungen: Eager Evaluation (Strict Evaluation), Partial Evaluation, Remote Evaluation, Short-circuit Evaluation. Die Rechereche überlasse ich (vorerst) dem interessierten Leser. 
+
+Nur soviel: Die 'gewöhnliche' Bedarfsauswertung von vielen Programmiersprachen ist die *Eager Evaluation* (oder auch *Strict Evaluation*). Ein Ausdruck wird dabei sofort ausgewertet, sobald der Ausdruck einer Variablen zugeordnet wird, z.B. in C oder Java. 
+
 ## Closure
 
 Closures sind Funktionen, die auf nicht-lokale Variablen auch dann noch zugreifen können, wenn der dazugehörige Gültigkeitsbereich (vgl. *Scope*) nicht mehr existiert. Vereinfacht gesagt merkt sich eine Closure bei der Definition nicht nur den auszuführenden Code, sondern ihre gesamte Umgebung. Siehe auch Closures in Bezug auf Lambda.
