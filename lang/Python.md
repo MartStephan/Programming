@@ -565,7 +565,7 @@ Ein *Set* ist eine Ansammlung unsortierter Objekte. Wobei ein Objekt nie mehrfac
 
 **range**
 
-Die *range*-Funktion kennt man natürlich aufgrund der *range-based for-loops*. Tatsächlich ist *range* eine generische built-in Funktion in Python. *Range* liefert eine Sequenz von Zahlen. Diese Sequenz beginnt standardmäßig bei 0 und erhöht sich standardmäßig um 1. 
+Die *range*-Funktion kennt man natürlich aufgrund der *range-based for-loops*. Tatsächlich ist *range* eine generische built-in Funktion in Python. *Range* liefert eine Sequenz von Zahlen. Diese Sequenz beginnt standardmäßig bei 0 und erhöht sich standardmäßig um 1. Der Aufruf ist *range(begin, end, step)*. Wobei *begin* inklusive ist, aber *end* exklusive.
 
 ```python
 #!usr/bin/python
