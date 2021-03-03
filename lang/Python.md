@@ -614,6 +614,33 @@ if __name__ == '__main__':
         print(x)
 ```
 
+**map**
+
+Die *map*-Funktion gibt eine Liste zurück, indem zuvor eine Funktion auf jedes Element einer Liste angewendet wird - *map(func, seq)*.
+
+```python
+#!usr/bin/python
+
+def get_length(item):
+    return len(item)
+
+if __name__ == '__main__':
+    """Example for Python built-in functions"""
+    
+    # map - calculate length of each item in the sequence 
+    lengths = map(get_length, ('wake', 'the', 'sleeping', 'dragon'))
+
+    for y in lengths: 
+        print(y)
+       
+#> 4
+#> 3
+#> 8
+#> 6
+```
+
+
+
 ## Python 3
 
 Das Wichtigste vorweg: Python 3 ist inkompatibel zu den Python 2.x Entwicklungslinien. Die wichtigsten Neurungen in Python 3 sind:  
