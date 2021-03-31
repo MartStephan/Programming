@@ -1804,6 +1804,8 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 
 [34] Jonathan Boccara, NamedType, https://github.com/joboccara/NamedType
 
+[35] Cooperative vs. Preemptive: a quest to maximize concurrency power, Bobby Priambodo, https://medium.com/traveloka-engineering/cooperative-vs-preemptive-a-quest-to-maximize-concurrency-power-3b10c5a920fe, abgerufen am 05. März 2021
+
 
 
 
