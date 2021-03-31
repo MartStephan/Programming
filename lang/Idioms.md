@@ -364,6 +364,28 @@ Im Gegensatz zu dynamischen Programmiersprachen nimmt bei statischen Programmier
 
 Beispiele für dynamische Programmiersprachen: Ruby, Python.
 
+## Erstellungsprozess C/C++
+
+Der klassische Erstellungsprozess für C/C++ Programme gliedert sich auf in: Präprozessor, Compiler und Linker. 
+
+### Präprozessor 
+
+Der Präprozessor kümmert sich um Präprozessor-Direktiven wie #include und #define und weitere Direktiven wie z.B. #ifdef und #endif. Der Präprozessor erzeugt eine Textdatei, die üblicherweise richtig groß ist. Man kann das schön mit dem Compiler-Flag -E sehen.
+
+```
+#> g++ -E helloWorld.cpp
+```
+
+Die Ausgabe des Präprozessor stellt die Eingabe des Compilers dar. 
+
+### Compiler 
+
+Die Kompilierung findet auf allen Dateien statt, die der Präprozessor erzeugt. Der Compiler erzeugt Assemblercode in sogenannten Objektdateien. Die Objektdateien stellen die Eingabe für den Linker dar. 
+
+### Linker
+
+Der Linker kann eine ausführbare Datei, eine statische oder eine geteilte Bibliothek (shared library) erzeugen. Er hat die Aufgabe, die Referenzen zu undefinierten Symbolen aufzulösen.
+
 ## Functors
 
 Functors ist ein Begriff aus der Mathematik bzw. aus der Algebra und bezeichnet eine Abbildung zwischen (Merkmals-)Klassen. 
