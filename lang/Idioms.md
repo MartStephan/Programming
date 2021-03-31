@@ -32,6 +32,10 @@ Table of Contents
   * [Duck Typing](#duck-typing)
   * [Domain\-Specific\-Languages](#domain-specific-languages)
   * [Dynamische Programmiersprache](#dynamische-programmiersprache)
+  * [Erstellungsprozess C/C\+\+](#erstellungsprozess-cc)
+    * [Präprozessor](#pr%C3%A4prozessor)
+    * [Compiler](#compiler-1)
+    * [Linker](#linker)
   * [Functors](#functors)
   * [Funktionale Programmierung](#funktionale-programmierung)
     * [First\-class functions](#first-class-functions)
@@ -117,6 +121,8 @@ Table of Contents
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
+
 
 ## Argument-Dependent-Lookup (ADL)
 
