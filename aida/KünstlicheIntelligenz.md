@@ -51,7 +51,7 @@ Table of Contents
     * [Reinforcement Learning Applications](#reinforcement-learning-applications)
   * [Literatur](#literatur)
 
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)https://github.com/ekalinin/github-markdown-toc.go)
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 ## Definition
 
@@ -223,11 +223,11 @@ In gewissen Applikationen und/oder mit gewissen Modellen besitzen wir möglicher
 
 Künstliche Neuronale Netze nehmen sich das Gehirn zum Vorbild. Das Gehirn besteht aus einer riesigen Anzahl von "Recheneinheiten", den sogenannten Neuronen. Jedes Neuron ist dabei verbunden mit einer großen Anzahl anderer Neuronen. Die Verbindungen zwischen Neuronen sind die sogenannten Synapsen. 
 
-In den 60er Jahren wurde das Perzeptron-Modell zum erstenmal als Modell für die Mustererkennung von Frank Rosenblatt vorgeschlagen. Das Modell bildet ein Netzwerk von künstlichen Neuronen und synaptischen Verbindungen. Jedes Neuron hat einen Aktivierungswert und eine Verbindung von Neuron A nach Neuron B hat ein Gewicht, das den Einfluss von A auf B bemisst. Neuronen können in mehreren Schichten organisiert werden. Was landläufig als *multilayer perceptron* bezeichnet wird. 
+In den 60er Jahren wurde das Perzeptron-Modell zum erstenmal als Modell für die Mustererkennung von Frank Rosenblatt [6] vorgeschlagen. Das Modell bildet ein Netzwerk von künstlichen Neuronen und synaptischen Verbindungen. Jedes Neuron hat einen Aktivierungswert und eine Verbindung von Neuron A nach Neuron B hat ein Gewicht, das den Einfluss von A auf B bemisst. Neuronen können in mehreren Schichten organisiert werden. Was landläufig als *multilayer perceptron* bezeichnet wird. 
 
 **Neuronale Netze und Lern-Algorithmen**
 
-Lernalgorithmen sind es jetzt, die diese Gewichte zwischen zwei Neuronen anpassen. Beim Supervised Learning werden gewisse Neuronen als Eingangs-Neuronen benannt und andere als Ausgangs-Neuronen. Wir definieren jetzt eine Fehler-Funktion, die die Summe der Differenzen zwischen den Ausgangswerten für einen gegebenen Input und den tatsächlich erwarteten Ausgangwert misst. Beim Trainieren passen wir die Gewichte nach und nach an, so dass der Fehler minimiert wird. 
+Lernalgorithmen sind es jetzt, die diese Gewichte zwischen zwei Neuronen anpassen. Beim *Supervised Learning* werden gewisse Neuronen als Eingangs-Neuronen benannt und andere als Ausgangs-Neuronen. Wir definieren jetzt eine Fehler-Funktion, die die Summe der Differenzen zwischen den Ausgangswerten für einen gegebenen Input und den tatsächlich erwarteten Ausgangwert misst. Beim Trainieren passen wir die Gewichte nach und nach an, so dass der Fehler minimiert wird. 
 
 Neuronale Netze, die nur Verbindungen zwischen Layern in einer Richtung besitzen, nennt man *feedforward Netzwerke*. Im Gegensatz zu *recurrent Netzwerke*, die auch Verbindungen zwischen Neuronen innerhalb eines Layers besitzen dürfen (inkl. Verbindungen zu sich selbst) und sogar Verbindungen zu Neuronen aus vorherigen Layern. 
 
@@ -237,13 +237,21 @@ Beim *Multilayer-Netzwerk* startet man mit dem raw input (z.B. Pixel) und jede S
 
 Ein klassisches Multilayer-Netzwerk ist üblicherweise *fully connected*, d.h. jedes Neuron in einer Schicht ist verbunden mit jedem Neuron der nächsten Schicht. Le Cun et al schlugen 1989 in "Backpropagation applied to handwritten zip code recognition" [7] ein anderes Modell vor, in dem Units definiert werden, die nur über einen Teilbereich eines Layers verbunden sind. Dies reduziert die Verbindungen und die Anzahl der Parameter. Diese Netze werden *Convolutional Neural Networks* genannt. 
 
+Ein Spezialfall eines *multilayer networks* ist der sogenannte *Autoencoder*. Eine Eigenschaft des Autoencoder ist, dass er weniger hidden units in den Zwischenschichten besitzt, als er am Eingang besitzt. Er implementiert quasi einen Encoder, der einen n-dimensionalen Eingang encodiert und in eine Schicht mit weniger *hidden units* umwandelt. Am Ende wiederum wandelt ein Decoder die komprimierten *hidden units* wieder in den n-dimensionalen Vektor um, wie er am Eingang bestand. Der *Autoencoder* ist ein Beispiel eines *Unsupervised Learning* Algorithmus.
+
 ### Deep Learning
 
-Nach und nach wurden die Ergebnisse vor allem aufgrund von Big Data und genügend Rechenpower besser und besser. Auch die Überwachung und das Lernen selbst wurden daduch immer selbstständiger, was zu den sogenannten *Deep Learning* Algorithmen führte. Die Idee hinter Deep Learning ist, vor allem die *hidden units* mit einem mimimalen menschlichen Einfluss trainieren zu lassen, d.h. die Algorithmen so zu gestalten, dass Features und Attribute selbstständig gelernt werden. Dadurch sind sie heutzutage die attraktivste Form von künstlichen Neuronalen Netzen. 
+Nach und nach wurden die Ergebnisse vor allem aufgrund von Big Data und genügend Rechenpower besser und besser. Auch die Überwachung und das Lernen selbst wurden daduch immer selbstständiger, was zu den sogenannten *Deep Learning* Algorithmen führte. Die Idee hinter *Deep Learning* ist, vor allem die *hidden units* mit einem mimimalen menschlichen Einfluss trainieren zu lassen, d.h. die Algorithmen so zu gestalten, dass Features und Attribute selbstständig gelernt werden. Dadurch sind sie heutzutage die attraktivste Form von künstlichen Neuronalen Netzen. 
+
+Die Idee hinter *Deep Learning* basiert auf *Multilayer*-Netzwerken, wie oben beschrieben. Man startet mit dem raw input (z.B. Pixel) und jede Schicht führt inkrementell eine komplexere Transformation durch, so dass am Ende ein abstraktes Ergebnis erzielt wird. Die erste Schicht verarbeitet also z.B. nur einzelne Pixel aus einem Bild. Im nächsten Schritt werden daraus Striche und Kanten bis am Ende beispielsweise Zahlen erkannt werden können.
 
 ## Unsupervised Learning
 
-Bei *Unsupervised Learning* Algorithmen sind die Trainingsdaten nicht gekennzeichnet, d.h. es gibt keine vorgegebenen Werte für die Ausgangs-Variable(n) in den Trainingsdaten. Ziel ist es, Objekte anhand ihrer Gemeinsamkeiten und Unterschiede zu Clustern zusammenzufassen. Der Anwender gibt dabei die Cluster-Definitionen nicht vor, sondern überlässt diese Aufgabe dem Computer. 
+Bei *Unsupervised Learning* Algorithmen sind die Trainingsdaten nicht gekennzeichnet, d.h. es gibt keine vorgegebenen Werte für die Ausgangs-Variable(n) in den Trainingsdaten. Ziel ist es, Objekte anhand ihrer Gemeinsamkeiten und Unterschiede zu *Clustern* zusammenzufassen. Der Anwender gibt dabei die Cluster-Definitionen nicht vor, sondern überlässt diese Aufgabe dem Computer. 
+
+Anwendungen des Unsupervised Learning sind z.B. *document clustering* oder Anwendungen in der Bioinformatik.
+
+Auch im Bereich des *Supervised Learning* werden Ähnlichkeiten zu Clustern zusammengefasst. Das kann dann geschehen, falls man Ähnlichkeiten im voraus definieren kann. Diese Applikationen werden im Fachjargon oft unter dem Namen *kernel functions* zusammengefasst. Ein bekannter Algorithmus daraus ist z.B. die *Support Vector Machine*.
 
 ### Learning Clusters
 
@@ -257,9 +265,11 @@ Matrix Decomposition
 
 "Algorithmen der Kategorie Reinforcement Learning lernen selbstständig, indem sie versuchen, Belohnungen zu maximieren beziehungsweise Strafen zu minimieren. Dahinter steckt das Prinzip von Try-und-Error, verbunden mit einer Bewertung, die gutes (zielführendes) Verhalten belohnt und schlechte Verhaltensmuster bestraft." [3]
 
-Die bekanntesten Vertreter von Reinforcement Learning sind die genetischen Algorithmen. 
+Die bekanntesten Vertreter von *Reinforcement Learning* sind die genetischen Algorithmen. 
 
-"Reinforcement Learning wird bei Minimierung- und Maximierungsaufgaben verwendet. Desweiteren kommt es bei Lernprozessen, bei denen auf sich verändernde Umwelteinflüsse reagiert werden soll, zum Einsatz." [3]
+"*Reinforcement Learning* wird bei Minimierung- und Maximierungsaufgaben verwendet. Desweiteren kommt es bei Lernprozessen, bei denen auf sich verändernde Umwelteinflüsse reagiert werden soll, zum Einsatz." [3]
+
+Ein einfaches Beispiel eines *Reinforcement Learning* Algorithmus ist der *K-Armed Bandit*. 
 
 #### Genetische Algorithmen
 
@@ -283,7 +293,7 @@ Der k-Means Algorithmus ist einer der bekanntesten Clustering-Algorithmen im *Un
 
 ### Temporal Difference Learning
 
-tbd
+Ein typisches Beispiel für eine Anwendung des *Temporal Difference Learning* ist ein Fußball spielender Roboter. Nicht nur die letztendliche Bewegung, die zu einem Tor führt, soll bewertet werden. Sondern eigentlich müssten alle Spielzüge von Anfang an bewertet werden und am Ende eines Spielzuges (also Spielzug führte zu einem Tor oder nicht) in die Gesamtbewertung mit einfließen. Solche Art von Algorithmen nennt man *Temporal Difference Learning (TD)*.
 
 ### Reinforcement Learning Applications
 
