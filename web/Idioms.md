@@ -221,6 +221,19 @@ GraphQL ist eine von Facebook entwickelte Abfragesprache, die die Kommunikation 
 
 Die JSON-API-Spezifikation definiert einen Standard für REST-APIs. JSON-API ermöglicht einem Client (genau wie GraphQL), mit einer einzigen Abfrage genau die Daten anzufordern, die er benötigt. JSON-API will die Nachteile einer REST-Architektur durch ein ausgefeiltes API-Design innerhalb einer REST-Architektur lösen.
 
+## Prototyping
+
+In der Praxis verwendet man of Prototyping, um ein Gefühl zu haben, ob meine Site/App die Aufgabe für einen Benutzer erfolgreich erledigen kann. Der Vorteil des Prototyping ist, mit wenig Aufwand schnell meine Anwendung testen zu können. Und zwar bevor ich Zeit in die eigentliche Implementierung stecke. Programme, die heutzutage am häufigsten für das Prototyping verwendet werden, sind:
+
+- Adobe XD
+- Axure RP
+- Invision
+- Sketch
+- Framer
+- Figma
+- Proto.io
+- POP
+
 ## Frameworks
 
 ### Flask
