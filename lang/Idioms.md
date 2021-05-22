@@ -718,6 +718,8 @@ int main()
 
 Integral Promotion ist in C/C++ quasi das Gegenteil von *Narrowing Conversion*. Falls ein *int* alle Werte des Original-Typs repräsentieren kann, dann wird der Originaltyp nach *int* konvertiert. Ansonsten wird der Originaltyp nach unsigned int konvertiert. Dieser Prozess wird *Integral Promotion* genannt. 
 
+*Integral Promotion* ist eine implizite Konvertierung, d.h. der Übersetzer führt diese Konvertierung implizit durch, falls esvom Entwickler nicht explizit verhindert wird. 
+
 ```c++
 #include <iostream>
 #include <typeinfo>
@@ -742,6 +744,8 @@ int main()
 //> Wert: 1
 //> Typ: i
 ```
+
+Der Grund dahinter ist oft die Verwendung einer arithmetischen Operation (wie z.B. die Addition in obigem Beispiel). Arithmetische Operationen akzeptieren keine Typen kleiner als *int*. Für eine Auflistung von arithmetischen Operationen siehe [36].
 
 ## Interpreter
 
@@ -1833,6 +1837,8 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [34] Jonathan Boccara, NamedType, https://github.com/joboccara/NamedType
 
 [35] Cooperative vs. Preemptive: a quest to maximize concurrency power, Bobby Priambodo, https://medium.com/traveloka-engineering/cooperative-vs-preemptive-a-quest-to-maximize-concurrency-power-3b10c5a920fe, abgerufen am 05. März 2021
+
+[36] Arithmetische Operationen in C++, https://en.cppreference.com/w/cpp/language/operator_arithmetic, abgerufen am 21. Mai 2021
 
 
 
