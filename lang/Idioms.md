@@ -301,13 +301,64 @@ Als Assoziative Container bezeichnet man Strukturen, die *key-value* Paare beinh
 | multiset                  |                                                |
 | multimap                  |                                                |
 
+## Curiously Recurring Template Pattern (CRTP)
+
+CRTP in C++ ist ein Idiom, bei dem eine Klasse *Derived* sich von einer Template-Klasse *Base* ableitet und diese *Base*-Klasse hat *Derived* als Template-Argument. Es kann dazu verwendet werden, auf elegante Art und Weise Objektzähler zu realisieren.
+
+```c++
+// CRTP simple example
+#include <iostream>
+#include <string>
+
+template<class T>
+struct Base
+{
+    static inline int created = 0;
+    static inline int alive = 0;
+    
+    Base() 
+    { 
+        ++created;
+        ++alive;
+        std::cout << "Base constructor\n"; 
+    }
+    
+    ~Base()
+    {
+        --alive;
+        std::cout << "Base destructor\n"; 
+    }
+};  
+
+class Derived_1 : Base<Derived_1>
+{
+};
+
+class Derived_2 : Base<Derived_2>
+{
+};
+
+int main()
+{
+   std::cout << "hallo\n";
+    
+   Derived_1 A; 
+   
+   return 0;
+}
+
+//> hallo
+//> Base constructor
+//> Base destructor
+```
+
 ## Daemon
 
 Der Begriff *Daemon* wird hauptsächlich unter UNIX bzw. UNIX-artigen Betriebssystemem benutzt und bezeichnet einen Systemdienst. In anderen Worten: Ein Programm, das im Hintergrund abläuft und bestimmte Dienste zur Verfügung stellt.  
 
 Benutzerinteraktionen finden nur auf indirektem Wege statt, z.B. über Pipes, Signale oder Sockets.  
 
-Viele Daemon-Programme benutzen ein angehängtes ‚d‘, um sich als Daemon zu kennzeichnen, z.B. systemd oder syslogd.  
+Viele Daemon-Programme benutzen ein angehängtes ‚d‘, um sich als *Daemon* zu kennzeichnen, z.B. *systemd* oder *syslogd*.  
 
 ## Dangling Pointer
 
