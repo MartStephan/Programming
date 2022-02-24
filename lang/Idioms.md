@@ -20,6 +20,7 @@ Table of Contents
   * [Container](#container)
     * [Sequentielle Container](#sequentielle-container)
     * [Assoziative Container](#assoziative-container)
+  * [Curiously Recurring Template Pattern (CRTP)](#curiously-recurring-template-pattern-crtp)
   * [Daemon](#daemon)
   * [Dangling Pointer](#dangling-pointer)
   * [Deep/Shallow Copy](#deepshallow-copy)
@@ -63,10 +64,11 @@ Table of Contents
   * [Lambda](#lambda)
   * [Literal](#literal)
   * [L\-Value/R\-Value](#l-valuer-value)
-  * [Monomorphisation](#monomorphisation)
-  * [Move\-Semantik](#move-semantik)
+  * [Memoisation](#memoisation)
   * [Microservices](#microservices)
   * [Mixins](#mixins)
+  * [Monomorphisation](#monomorphisation)
+  * [Move\-Semantik](#move-semantik)
   * [Monaden](#monaden)
   * [Mutable/Immutable](#mutableimmutable)
   * [Narrowing Conversion](#narrowing-conversion)
@@ -872,6 +874,69 @@ int main()
 
 Siehe dazu auch https://en.cppreference.com/w/cpp/language/value_category und https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/. 
 
+## Memoisation
+
+Memoisation ist ein Verfahren, bei dem die Ergebnisse von Berechnungen gespeichert werden, um sie später wiederzuverwenden. Ohne dass man später die Ergebnisse erneut berechnen müsste. Oft ist damit eine effizientere Software möglich. Hier gezeigt am Beispiel der Berechnung der Fibonacci-Folge. 
+
+```python
+#!/usr/bin/python
+
+# see https://gertingold.github.io/pythonnawi/profiling.html on how to measure runtime
+
+import time
+from typing import Dict
+
+# returns the n-th-fibonacci number whereas n is the parameter starting with 0 
+def fib(n: int) -> int:
+    if n < 2:
+        # Abbruchbedingung
+        return n
+
+    # Rekursion
+    return fib(n-2) + fib(n-1)
+
+# this is our Memoisation dictionary already containg Fibonacci numbers for 0 and 1 
+memo: Dict[int, int] = {0: 0, 1: 1}
+def fibmemo(n: int) -> int:
+    if n not in memo:
+        memo[n] = fibmemo(n-2) + fibmemo(n-1)
+    return memo[n]
+
+if __name__ == '__main__':
+    print("Hello World")
+
+    start = time.time()
+    print(fib(0))
+    print(fib(25))
+    end = time.time()
+    print('{:5.4f}s'.format(end-start))
+
+    start = time.time()
+    print(fibmemo(0))
+    print(fibmemo(25))
+    end = time.time()
+    print('{:5.4f}s'.format(end-start))
+
+#> 0
+#> 75025
+#> 0.0299s - without memoisation
+#> 0
+#> 75025
+#> 0.0010s - using memoisation
+```
+
+## Microservices
+
+Microservices sind ein Architekturmuster. Microservices zeichnen sich durch folgende Eigenschaften aus (kein Anspruch auf Vollständigkeit): 
+
+- Individuell ausrollbar
+- Microservices bilden eine klar begrenzte Geschäftsfunktion ab.
+- Ein in sich abgeschlossenes Stück Software, dass für alle Aspekte seiner Funktionalität selbsttätig verantwortlich ist. 
+- Ein Microservice sollte eine REST-Schnittstelle anbieten.
+- Ein Microservice ist in seinem Umfang an Code klein und überschaubar.
+
+## Mixins
+
 ## Monomorphisation
 
 *Monomorphisation* in der Informatik bedeutet die Übersetzung einer polymorphen Funktion in eine monomorphe Funktion, indem für jeden möglichen Datentyp eine spezialisierte Funktion erzeugt wird. 
@@ -978,18 +1043,6 @@ Eine Definition der *move*-Operation kann lauten:
 *Eine ‚move‘ Operation ist dann gegeben, falls ein Kopieren eines Objektes so realisiert wird, dass das Original nicht wieder benötigt wird. Das Original wird dann automatisch gelöscht und kann nicht mehr verwendet wird. Der Inhalt ist quasi von der Quelle zum Ziel bewegt worden, wobei die Quelle danach nicht mehr existiert.*  
 
 Diese *Move*-Semantik ist in der Programmiersprache C++ zum erstenmal in C++11 spezifiziert. Modernere Sprachen wie Rust haben die *Move*-Semantik von Anfang an eingebaut. 
-
-## Microservices
-
-Microservices sind ein Architekturmuster. Microservices zeichnen sich durch folgende Eigenschaften aus (kein Anspruch auf Vollständigkeit): 
-
-- Individuell ausrollbar
-- Microservices bilden eine klar begrenzte Geschäftsfunktion ab.
-- Ein in sich abgeschlossenes Stück Software, dass für alle Aspekte seiner Funktionalität selbsttätig verantwortlich ist. 
-- Ein Microservice sollte eine REST-Schnittstelle anbieten.
-- Ein Microservice ist in seinem Umfang an Code klein und überschaubar.
-
-## Mixins
 
 ## Monaden 
 
