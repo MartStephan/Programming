@@ -191,6 +191,8 @@ REST hat den Nachteil, dass bei zunehmender Komplexität und sehr großen Umgebu
 
 SPA steht für Single Page Application. Eine SPA ist eine Webanwendung, die keinen Seitenwechsel (Roundtrip) durchführt, sondern die Anzeige nur durch Austausch von Seitenelementen via JavaScript/DOM verändert. Es gibt dabei also keine serverseitige Seitennavigation. Die URL ändert sich nicht. Initial wird eine komplette HTML-Seite oder zumindest das Grundgerüst einer Webseite in einem HTML-Dokument von dem Server geladen. Die Seite lädt anschließend Daten über Webservices (z.B. REST-basierte Dienste) nach und erzeugt die Darstellung clientseitig. Eine SPA wirkt damit wie eine Desktop-Anwendung. 
 
+Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in aller Munde: Angular, Vue und React. Üblicherweise sollte man auf eine dieser Lösungen zurückgreifen, da eine Eigenentwicklung in den seltensten Fällen sinnvoll ist, da man sich dann um sehr viele Standardprobleme in der Applikationsentwicklung selbst kümmern muss. 
+
 #### AJAX
 
 AJAX steht für Asynchronous JavaScript und XML. AJAX ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
@@ -279,6 +281,12 @@ $> flask run
  * Debug mode: off
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
+
+### Angular
+
+### React
+
+### Vue 
 
 ## Literatur 
 
