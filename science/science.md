@@ -37,6 +37,68 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 Mit dem Euklidischen Algorithmus lässt sich der *größte gemeinsame Teiler* zweier natürlicher Zahlen berechnen. 
 
+## Fibonacci-Folge
+
+Die Fibonacci-Folge ist eine Folge von Zahlen, in der jede Zahl außer der ersten und der zweiten die Summe ihrer beiden Vorgänger ist. 
+
+```
+0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...
+```
+
+Man kann folgende Formel verwenden, um den Wert jeder beliebigen Fibonacci-Zahl n in der Reihe zu erhalten.
+$$
+fib(n)=fib(n-1)+fib(n-2)
+$$
+Die Fibonacci-Folge eignet sich hervorragend für einen rekursiven Ansatz. Allerdings ist dieser Ansatz nicht der effizienteste. Eine automatische Memoisation schafft hier Abhilfe. Wie der Python-Code unten schön veranschaulicht. 
+
+```python
+#!/usr/bin/python
+
+# see https://gertingold.github.io/pythonnawi/profiling.html on how to measure runtime
+
+import time
+from typing import Dict
+
+# returns the n-th-fibonacci number whereas n is the parameter starting with 0 
+def fib(n: int) -> int:
+    if n < 2:
+        # Abbruchbedingung
+        return n
+
+    # Rekursion
+    return fib(n-2) + fib(n-1)
+
+# this is our Memoisation dictionary already containg Fibonacci numbers for 0 and 1 
+memo: Dict[int, int] = {0: 0, 1: 1}
+def fibmemo(n: int) -> int:
+    if n not in memo:
+        memo[n] = fibmemo(n-2) + fibmemo(n-1)
+    return memo[n]
+
+if __name__ == '__main__':
+    print("Hello World")
+
+    start = time.time()
+    print(fib(0))
+    print(fib(25))
+    end = time.time()
+    print('{:5.4f}s'.format(end-start))
+
+    start = time.time()
+    print(fibmemo(0))
+    print(fibmemo(25))
+    end = time.time()
+    print('{:5.4f}s'.format(end-start))
+
+#>> Hello World
+#>> 0
+#>> 75025  
+#>> 0.0211s
+#>> 0
+#>> 75025
+#>> 0.0040s
+```
+
 ## Größter gemeinsamer Teiler
 
 
@@ -111,6 +173,10 @@ if __name__ == '__main__':
 ## Kleinstes gemeinsames Vielfaches
 
 
+
+
+
+## Komprimierung
 
 
 
@@ -344,17 +410,19 @@ Sicherer ist ein Schlüssel, der wie ein Passwort aufgebaut ist, d.h. aus belieb
 
 Es gilt dann nur noch das Problem zu lösen, wie der Schlüssel zum Empfänger transportiert wird. 
 
-Ein simples Beispiel für einen Schlüssel aus beliebiger Zeichen in einer willkürlichen Reihenfolge kann mittels *XOR* demonstriert werden.
+Ein simples Beispiel für einen Schlüssel aus beliebigen Zeichen in einer willkürlichen Reihenfolge kann mittels *XOR* demonstriert werden.
 
 ```python
 #!/usr/bin/python
+
+""" Example of a One-Time-Pad Cryptograhie """
 
 import string
 from secrets import token_bytes
 from typing import Tuple
 
 def random_key(length: int) -> int:
-   # generate a random number with length 'length'
+   # generate a random number with length 'length' by using 'token_bytes' from secrets
    random_bytestring: bytes = token_bytes(length)
    # this works as an int in Python can have any (arbitrary) length
    return int.from_bytes(random_bytestring, "big")
@@ -362,7 +430,7 @@ def random_key(length: int) -> int:
 def encrypt_xor(message: str) -> Tuple[int, int]:
    """ One-Time-Pad encryption
    Returns the key and the encrypted message """
-   # encode sting as bytes object
+   # encode string as UTF-8 bytes object
    message_bytes: bytes = message.encode()
    key: int = random_key(len(message_bytes))
    message_ints: int = int.from_bytes(message_bytes, "big")
@@ -374,6 +442,7 @@ def decrypt_xor(key1: int, key2: int) -> str:
    """ One-Time-Pad decryption using XOR"""
    decrypted: int = key1 ^ key2
    bytestream: bytes = decrypted.to_bytes((decrypted.bit_length()+7) // 8, "big")
+   # decode UTF-8 bytes back to a string
    return bytestream.decode()
 
 def rot_13(message: str):
@@ -483,4 +552,5 @@ Wie kann man jetzt der *digitalen Signatur* trauen? Auch dafür gibt es wieder Z
 
 [12] The Missing Semester of Your CS Semester, https://missing.csail.mit.edu/, abgerufen am 05.02.2021
 
+[13] SHA256 algorithm, https://sha256algorithm.com/, abgerufen am 07.02.2022
 
