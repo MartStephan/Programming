@@ -207,6 +207,8 @@ Wie in anderen Sprachen gibt es auch in Python Basis Datentypen für Integer, Fl
 | 'I am too.'      |
 |                  |
 
+Wichtig zu wissen ist, dass es in Python nur einen einzigen *int*-Typ, der Zahlen mit beliebiger Genauigkeit speichern kann. Die Funktion *sys.getsizeof()* hilft Ihnen, herauszufinden, wie viele Bytes an Speicher ihre Python-Objekte verbrauchen. Ein *int* in Python besteht aber mindestens aus 28 Byte und kann um je ein Bit anwachsen. 
+
 **Funktionen, Parameter und Rückgabe**
 
 Funktionen werden mit *def* markiert. Parameter können einfach innerhalb der *def*-Klammerung übergeben werden. Mit dem Schlüsselwort *return* kann eine Rückgabe erfolgen. Wenn nach return kein Ausdruck steht oder falls *return* gänzlich fehlt, liefert die Funktion *None* zurück.
@@ -639,7 +641,9 @@ if __name__ == '__main__':
 #> 6
 ```
 
+**Name Mangling**
 
+Wenn Sie den Namen einer Methode oder Instanzvariablen in einer Klasse mit zwei führenden Unterstrichen beginnen, wird Python ihren Namen "durch die Mangel drehen" (name mangling), d.h. ihren Implementierungsnamen mit einem Salt versehen, damit er nicht mehr so einfach durch andere Klassen entdeckt werden kann. Siehe auch [15].
 
 ## Python 3
 
@@ -1039,6 +1043,8 @@ Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hi
 [13] Algorithmen in Python, 2020, David Kopec
 
 [14] heise developer, Die wichtigsten neuen Features in Python 3.6, https://www.heise.de/developer/artikel/Die-wichtigsten-neuen-Features-in-Python-3-6-3506992.html, abgerufen am 28.01.2021
+
+[15] Python Naming Conventions, https://peps.python.org/pep-0008/#naming-conventions, abgerufen am 19.04.2022
 
 
 
