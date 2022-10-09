@@ -52,6 +52,18 @@ Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
 ## Standardisierung
 
+### IAB
+
+Internet Architecture Board. Es legt Richtung und Baustellen für Weiterentwicklungen im Internet fest und organisiert Entwicklungen. Für das IAB wurden zwei Unterstützungsgruppen gebildet: IETF und IRTF.
+
+### IETF - Internet Engineering Task Force
+
+### IRTF - Internet Research Task Force 
+
+### ICANN - Internet Corporation for Assigned Names and Numbers
+
+Wichtigste Aufgabe: Zuteilung von Namen und Adressen im Internet. 
+
 ### RFCs
 
 RFC steht für Request for Comments. Die RFCs dienen als öffentliches Diskussionsforum für technische und organisatorische Fragen des Internets. Sie wurden mit dem ARPA-NET im Jahre 1969 ins Leben gerufen. RFCs werden fortlaufend nummeriert. Es gibt keine Versionsnummern. Wird ein RFC umfassend weiterentwickelt, erscheint ein neues Dokument mit einer neuen Nummer. Das alte wird als obsolet gekennzeichnet. 
@@ -65,6 +77,43 @@ W3C steht für das World Wide Web Consortium. Es standardisiert die wichtigsten 
 ECMA steht für European Computer Manufacturers Association. Die ECMA standardisiert JavaScript unter seinem offiziellen Namen ECMAScript. Auch die Programmiersprachen C# und C++/CLI sind hier standardisiert. 
 
 ## Techniken
+
+### Basistechnologien
+
+#### URI - Uniform Resource Identifier
+
+Eindeutige Bezeichnung für Hypermedia Dokumente. Dient zur eindeutigen Identifikation und Adressierung von WWW-Dokumenten. 
+
+URIs haben zwei Ausprägungen:
+
+*URN* - Uniform Resource Name
+
+Namensbeschreibung einer Web-Resource. Die heute fast immer anzutreffende Ausprägung. 
+
+*URL* - Uniform Resource Locator
+
+Adressbeschreibung einer Web-Resource
+
+**URI-Syntax**
+
+- URIs wurden von IETF und W3C in RFC 1630 standardisiert
+- Generelle Gestalt einer URI: **Präfix ":" Suffix**
+- Präfix: spezifiziert Informationsdienst/-Protokoll
+- Suffix: spezifiziert Länge und Identifikation
+
+**URL-Syntax**
+
+- RFC 1738, 1808
+- Beispiele: ftp://ftp.hpi.uni-potsdam.de 
+- http://localhost:8080/login
+
+#### HTTP - Hypertext Transfer Protocol
+
+Protokoll zum Übertragen von Hypermedia Dokumenten im Internet. 
+
+#### HTML - Hypertext Markup Language
+
+Beschreibungssprache für Hypermedia Dokumente
 
 ### Sprachen
 
@@ -80,9 +129,17 @@ HTML steht für Hyper Text Markup Language und ist die Grundlage jeder HTML-Seit
 
 Die aktuelle Version ist HTML 5. HTML ist sehr alt. Deswegen ist HTML 5 zu einem Konvolut verschiedender Standards geworden.
 
+HTML besteht aus zwei Teilen:
+
+**Header** - enthält (Meta-) Informationen über das Dokument
+
+**Body** - enthält eigentlichen Inhalt des Dokuments 
+
 #### CSS
 
 CSS steht für Cascading Style Sheets ist eine Layout- und Formatierungssprache, um Auszeichnungssprachen wie HTML zu formatieren. Idealerweise enthält das HTML-Dokument nur semantische Informationen, und mit CSS werden diese dann gestalterisch und typografisch formatiert. 
+
+CSS ist also zuständig für die Beschreibung des Layouts (der Darstellung) der HTML-Struktur.
 
 #### Bootstrap
 
@@ -116,16 +173,314 @@ FIDO steht für Fast Identity Online. Es ist eine Allianz, in der u.a. Google, M
 
 #### HTTP
 
-HTTP dient der Kommunikation mit Webservern. Es gibt die Versionen 1.0, 1.1. und 2.0. Bei HTTP handelt es sich um ein verbindungs- oder statusloses Protokoll. Server und Client nehmen also nie einen besonderen Zustand ein, sondern beenden nach jedem Kommando den Prozess vollständig, entweder mit Erfolg oder mit einer Fehlermeldung. 
+HTTP dient der Kommunikation zwischen dem Web-Client (Browser) und einem Webserver. Die erste Version (HTTP/0.9) entstand 1989/90 am CERN. Es gibt die Versionen HTTP/1.0 (RFC 1945), HTTP/1.1 (RFC 2068, 2616) und HTTP/2. Bei HTTP handelt es sich um ein verbindungs- oder statusloses Protokoll. Server und Client nehmen also nie einen besonderen Zustand ein, sondern beenden nach jedem Kommando den Prozess vollständig, entweder mit Erfolg oder mit einer Fehlermeldung. 
 
-#### HTTP 2.0
+HTTP ist ein zustandsloses Protokoll, d.h. es besitzt keine Kenntniss von bereits erfolgten Anfragen-Antworten-Zyklen.
 
-Die aktuelle Version von HTTP ist HTTP 2.0, beschrieben in RFC 7540. Die Entwicklung war maßgeblich von Google und Microsoft vorangetrieben worden. Mit HTTP 2.0 soll die Übertragung beschleunigt und optimiert werden. Wichtige neue Möglichkeiten sind: 
+**HTTP-Methoden**
 
-- das Zusammenfassen mehrerer Anfragen
-- bessere Kompressionsmöglichkeiten
+- GET - Anfordern eines Dokuments vom Server durch den Client
+- POST - Informationsübertragung vom Client zum Server
+- HEAD - ähnlich GET, aber nur Nachrichtenkopf wird angefordert
+- PUT - Hinzufügen einer Ressource auf dem Server
+- PATCH - Aktualisieren eines Dokuments, ohne es ganz zu ersetzen
+- DELETE - Löschen einer Ressource vom Server
+- OPTIONS - Anfordern der vom Server unterstützten HTTP-Methoden
+- TRACE - Auslieferung der vom Server tatsächlich empfangenen Anfrage
+- CONNECT - Aufbau eines verschlüsselten Tunnels 
+
+#### HTTP - Nachrichtenformat und Statuscodes 
+
+Erinnerung: Die Kommunikation ist realisiert als Anfrage (Request) / Antwort (Response) Zyklen.
+
+Alle HTTP Nachrichten folgen einheitlicher Struktur - dem *Generic Message Format*
+
+- Startsequenz
+- Nachrichtenkopf
+- Leerzeile
+- Nachrichtenrumpf
+
+HTTP definiert verschiedene Klassen von Statuscodes
+
+- 1xx - Informative Nachrichten
+- 2xx - Success
+- 3xx - Umleitung
+- 4xx - Client-Fehler
+- 5xx - Server-Fehler 
+
+#### HTTP - Mechanismen zur Optimierung
+
+HTTP Anfragen können dauern. Weshalb?
+
+- Moderne Webseiten enthalten zahlreiche eingebettete Ressourcen
+- Eine TCP-Verbindung muss bei jedem Request/Response aufgebaut werden
+
+Deshalb gibt es verschiedene Mechanismen zur Optimierung.
+
+- Persistente Verbindungen und HTTP-Pipelining
+- Komprimierung
+- Caching
+
+**Persistente Verbindungen** 
+
+HTTP erlaubt multiple Request/Response-Zyklen innerhalb einer "persistenten Verbindung". Eine persistente Verbindung kann aufgebaut werden, falls der Server das Kommando "Connection: keep-alive" in der Response enthält. 
+
+Der Client beendet die HTTP-Session imdem beim letzten HTTP-Request die Option 'close' im Nachrichtenkopf gesetzt wird. 
+
+Persistente Verbindungen sind Standard seit HTTP/1.1.
+
+Persistente Verbindungen erlauben dem Client auch, HTTP-Pipelining umsusetzen, d.h. Anfragen an einen Server können parallelisiert werden, indem der Client nicht auf vorherige Antworten warten muss, bevor neue Anfragen gesendet werden.
+
+**Komprimierung**
+
+HTTP/1.1 erlaubt Server, Daten im Nachrichtenrumpf komprimiert zu übertragen. Mit HTTP/2 kann auch der Nachrichtenkopf komprimiert werden.
+
+Es gibt verschiedene Komprimierungsalgorithmen, die Clients dem Server mitteilen können. 
+
+*Accept-Encoding: gzip, deflate, br*
+
+Server wählt passenden Komprimierungsalgorithmus aus und sendet z.B. 
+
+*Content-Encoding: gzip*
+
+Mögliche Komprimierungen: *deflate, gzip, br, exi, identity*
+
+**Caching**
+
+Caching führt zu einer drastischen Reduktion des Kommunikationsaufkommens und der Serverlast. 
+
+Ein Cache kann verschieden platziert sein:
+
+- Clientseitiger Cache
+- Eigenständiger Cache
+- Serverseitiger Cache
+
+Beim Caching muss die Cache-Konsistenz gesichert sein. Es ist zu unterscheiden zwischen
+
+- Cache-Hit
+- Cache-Miss
+
+Aber wie kann die Cache-Konsistenz sichergestellt werden?
+
+- Dokumente werden mit Zeitstempeln und Verfallsdaten versehen
+
+Das wichtigste Nachrichtenkopf-Feld ist: cache-control
+
+z.B. *cache-control: max-age: 3600*
+
+- *max-age*
+- *no-cache*
+- *no-store*
+
+#### HTTP - Sessions und Cookies
+
+Cookies sind ja heutzutage jedem bekannt, nachdem ein Gericht (EuGH) 2019 das Setzen und Abrufen von Cookies durch Internetseiten eine **aktive Einwilligung** der Webseiten-Besucher erfordert. 
+
+Erinnerung: Request/Response-Zyklen sind zustandslos; was oft nicht praktibal ist. Daher wurden sogenannte Sessions eingeführt, die quasi mehrere mehrere Request/Response-Zyklen zu einer Session zusammenführen. 
+
+- Sessions werden technisch durch Session-IDs identifiziert
+
+- Session-IDs müssen übertragen werden. Das kann auf verschiedenen Wegen geschehen:
+
+  - Cookies - Key-Value-Paare im HTTP-Header
+
+    - Cookies bieten leistungsfähiges Konzept zur Bildung von Sessions / Übertragung von Session-IDs
+    - Anwendungsfälle: Nutzer-Präferenzen speichern, Identifikation der Nutzer, Tracking
+    - Ablauf
+      1. HTTP-Server beauftragt den Client, Cookie anzulegen, indem er in einer HTTP-Antwort das Headerfeld *set-cookie* setzt
+      2. Browser speichert Cookie in einer internen Datenbank
+      3. Bei jedem Request an die gleiche Domain sendet Browser all seine dafür passenden Cookies im Request-Headerfield *cookie*
+
+  - Hidden Fields in HTML-Formularen
+
+    - Formular besitzt Felder vom Typ *hidden*, die einen Namen und Wert haben können, z.B. SessionID
+    - Formulare werden dem Server mit POST-Methode von HTTP übermittelt
+
+    ```html
+    <input type="hidden"
+           name="SessionID"
+           value="1234567890" />
+    ```
+
+    
+
+  - URL Rewriting 
+
+    - Session Informationen werden einfach an die URL drangehängt 
+    - Beispiel: http://example.org/index.html?sessionid=1234567890.
+
+#### HTTP - Content Negotiation
+
+Was ist Content Negotiation?
+
+Server kann Informationsressourcen mit gleicher URI in unterschiedlichen Varianten vorhalten, z.B. 
+
+- verschiedene Sprachvarianten
+- verschiedene Auflösungen
+- Komprimierungsverfahren
+- ...
+
+Client und Server können aushandeln, welche dieser Varianten übertragen werden soll (*Content Negotiation*)
+
+Content Negotiation kann in drei Varianten erfolgen
+
+- Server-driven Negotiation
+  - Client kündigt im accept-Headerfeld akzeptable Varianten an
+- Agent-driven Negotiation
+  - Server sendet in seiner ersten Antwort an den Client Informationen über verfügbare Varianten mittels eines *300 Multiple Choices* Status
+  - Client wählt passende Variante aus
+- Transparent Content Negotiation 
+  - Kombination aus Server-Driven und Agent-Driven Negotiation mittels Proxy-Server
+
+```http
+# Request
+GET / HTTP/1.1
+Host: example.org
+Connection: keep-alive
+Accept: text/html, image/jpeg;q=0.4
+Accept-Encoding: gzip,deflate
+Accept-Language: de-DE,de;q-0.8
+Accept-Charset: ISO-8859-1,utf-8
+...
+# Response
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=utf-8
+Content-Encoding: gzip
+Content-Language: de
+Connection: keep-alive
+...
+
+```
+
+
+
+#### HTTP - Authentifizierung
+
+Soll auf sicherheitsrelevante Daten des WWW-Servers zugegriffen werden, ist eine vorherige Authentifikation und Autorisierung des Clients erforderlich. 
+
+Die Realisierung erfolgt folgendermaßen:
+
+- Client sendet Anforderung für geschützte Ressource
+- Server prüft Verfügbarkeit der Ressource und antwortet mit Status Code *401 Unauthorized* zusammen mit einem *www-authenticate* Response-Headerfeld
+- Client sendet neuen Request mit *Authorization*-Headerfeld, das die vom Server im *Authenticate*-Response-Headerfeld angeforderten Credentials in der verlangten Form beinhaltet
+
+Es gibt zwei Formen der Authentifizierung (gemäß RFC 2617):
+
+- Basic Authentication
+  - Angefordertes Credential ist ein Benutzername und Passwort, die im Klartext übertragen werden
+- Digest Access Authentication (RFC 7616)
+  - Verschlüsselung des Passworts mit Hilfe einer kryptographischen Hashfunktion, also einer nicht umkehrbaren Verschlüsselungsfunktion ohne Schlüssel, wie etwa MD5 (RFC 1321)
+  - Passwort wird vor Versand gehasht und zusammen mit weiteren kodierten Informationen als sogenannter Digest übertragen
+  - Im Digest werden folgende Informationen spezifiziert
+    - Benutzername
+    - Realm Value
+    - Passwort
+    - Nonce
+    - HTTP-Methode, die Client anwenden will
+    - URI der angefragten geschützten Ressource
+    - ...
+  - Server berechnet seinerseits Digest - dazu wird Passwort aus der Datenbank des Servers ermittelt, restliche Informationen werden aus Klartextteil der Clientanfrage gewonnen
+  - Server vergleicht berechneten Digest mit Digest des Clients und übermittelt im Erfolgsfall nach einer Autorisationsprüfung die Ressource 
+
+#### HTTPS
+
+Zum vertraulichen Datentransport wurde 1994 von Netscape eine sichere Transportinfrastruktur entwickelt:
+
+- HTTP über SSL - HTTPS
+
+Mit *SSL* (Secure Socket Layer) wird zwischen Anwendungsschicht (z.B. HTTP) und Transportschicht (z.B. TCP) eine neue Protokollschicht eingezogen. Diese Schicht beinhaltet Werkzeuge zur Absicherung der Kommunikation - Verschlüsselung, Signieren, Authentifikation.
+
+SSL wurde von der IETF standardisiert als *TLS* (Transport Layer Security). TLS 1.0 entsprach weitgehend SSL 3.0. TSL wird heute sehr verbreitet eingesetzt zur Absicherung des Webs (HTTPS) sowie Email-Verbindungen (IMAP+TLS, SMTP+TLS).
+
+SSL/TLS bietet: 
+
+- Private Verbindung - nach anfänglichem Handshake-Verfahren zum sicheren Schlüsseltausch werden Daten symmetrisch verschlüsselt. 
+- Authentifikation über asymmetrische Verschlüsselungsverfahren
+- Zuverlässige Verbindung - Nachrichtentransport überprüft Unversertheit der transportierten Daten über Message Authentication Code - MAC
+
+HTTPS (RFC 2818) bietet sichere Übertragung und steht für Hypertext-Transfer Protocol Secure
+
+Schichtenmodell:
+
+- HTTP (Anwendung)
+- TLS (Transport)
+- TCP (Transport)
+- IP (Internet)
+- Ethernet (Netzzugang)
+
+#### HTTP/2
+
+Die aktuelle Version von HTTP ist HTTP/2, beschrieben in RFC 7540. Die Entwicklung war maßgeblich von Google und Microsoft vorangetrieben worden. Mit HTTP/2 soll die Übertragung beschleunigt und optimiert werden. Wichtige neue Möglichkeiten sind: 
+
+- das Zusammenfassen mehrerer Anfragen (Request Multiplexing)
+- bessere Kompressionsmöglichkeiten (kann auch Header-Informationen komprimieren)
 - binär codierte Übertragung von Inhalten
 - Server-initiierte Datenübertragungen (Push-Verfahren)
+- rückwärtskompatibel zum HTTP/1.1-Vokabular
+  - Methoden und Status Codes von HTTP/1.1 bleiben erhalten
+
+
+Stand 2022: HTTP/2 wird zu 97% von den aktuellen Browsern unterstützt. Aber von den gängigen Servern (Apache, nginx, IIS) jedoch noch von weniger als der Hälfte der Top 10 Millionen Webseiten genutzt. 
+
+##### Stream, Message, Frame
+
+HTTP/2 führt neue Konzepte ein:
+
+- Stream
+  - virtueller Kanal innerhalb einer Verbindung, über den bi-direktional Nachrichten transportiert werden können
+- Message
+  - HTTP-Nachricht, wie Request, Response, etc., die aus einem oder mehreren Frames besteht
+- Frame
+  - kleinste Kommunikationseinheit, die einen speziellen Datentyp transportiert, z.B. HTTP-Header, Payload, etc.
+
+##### Multiplexing
+
+Erlaubt verflochtenen Abruf und Empfang multipler Ressourcen innerhalb einer TCP/IP-Verbindung
+
+Requests blockieren nicht mehr. 
+
+##### Header-Kompression
+
+HTTP/2 erlaubt nun auch Header-Kompression. Dabei wird die Kompressionsmethode HPACK verwendet. 
+
+HTTP/2 empfiehlt, Nachrichtenteil nicht mehr zu komprimieren
+
+- bei gzip und deflate gibt es Sicherheitslücken
+- Binärformat sorgt bereits für eine effiziente Komprimierung, weshalb in RFC 7540 von einer Komprimierung im Zuge der TLS-Verschlüsselung abgeraten wird
+
+##### Server Side Push
+
+Auf ersten HTTP-Request hin kann Server gleich weitere Ressourcen in der Antwort mitschicken. Wie kann der Server die zu pushenden Ressourcen erkennen?
+
+- Autor der Webanwendungen können Server Push explizit oder durch zusätzliche HTTP-Header veranlassen
+- HTTP-Server können 'lernen', welche Ressourcen gepusht werden müssen
+
+##### Verschlüsselung
+
+HTTP/2 Spezifikation erzwingt Nutzung von TLS nicht. 
+
+Aber die großen Browserhersteller (Google, Mozilla, Microsoft) erzwingen Nutzung von TLS in ihrer Implementierung. 
+
+#### HTTP/3
+
+HTTP/3 ist praktisch schon fertig, aber noch kein Standard und ist die aktuellste Version von HTTP. 
+
+Bis einschließlich HTTP/2 basiert HTTP auf TCP. Neben TCP gibt es ein zweites Transport-Protokoll: UDP - User Datagram Protocol. 
+
+Eine weitere Verbesserung der Performance kann also der Wechsel von TCP zu UDP bewirken. Auf der anderen Seite wollte man einige Funktionen von TCP beibehalten. Deshalb kam es zur Einführung eines neuen Protokolls *QUIC*.
+
+##### QUIC
+
+QUIC steht für UDP Internet Connections und ist definiert in RFC 9000. QUIC ist eine Zwischenschicht zwischen Anwendung (WWW) und UDP. 
+
+HTTP/3 ermöglicht jetzt HTTP über QUIC.
+
+Unterschiede zu HTTP/2:
+
+- schnellerer Verbindungsaufbau
+- erfordert immer eine Verschlüssellung
+- verbessertes Multiplexing
+- Streams werden nun über QUIC realisiert und nicht mehr über HTTP
 
 #### Web-Sockets
 
@@ -317,3 +672,7 @@ $> flask run
 [13] Anaconda, https://www.anaconda.com/, abgerufen am 12.02.2021
 
 [14] What is WSGI?, https://wsgi.readthedocs.io/en/latest/what.html, abgerufen am 12.02.2021
+
+[15] openHPI, Zum Web-Profi in drei Schritten, https://open.hpi.de/courses/webtech-exam-2, abgerufen am 29.09.2022
+
+[16] HTTP-Status-Codes, https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml, abgerufen am 2.10.2022
