@@ -8,14 +8,20 @@ Table of Contents
 * [Idioms](#idioms)
 * [Table of Contents](#table-of-contents)
   * [Standardisierung](#standardisierung)
+	* [IAB](#iab)
+	* [IETF](#ietf)
+	* [IRTF](#irtf)
+	* [ICANN](#icann)
     * [RFCs](#rfcs)
     * [W3C](#w3c)
     * [ECMA](#ecma)
   * [Techniken](#techniken)
+    * [Basistechnologien](#basistechnologien)
     * [Sprachen](#sprachen)
       * [WebAssembly](#webassembly)
       * [HTML](#html)
       * [CSS](#css)
+	  * [XML](#xml)
       * [Bootstrap](#bootstrap)
     * [Frontends](#frontends)
     * [Backends](#backends)
@@ -135,11 +141,40 @@ HTML besteht aus zwei Teilen:
 
 **Body** - enthält eigentlichen Inhalt des Dokuments 
 
+Mit HTML kann man 
+
+- Hyperlinks hinterlegen
+- Multimedia-Komponenten einbinden
+- (bis zu einem gewissen Grad) die graphische Darstellung beeinflussen
+
+HTML-Dokumente bestehen aus einzelnen HTML-Elementen, die durch *Markups* und *Tags* gekennzeichnet sind. 
+
+**Server-seitige Web-Programmierung**
+
+HTML-Dokumente können auf individuelle Anforderung eines Nutzer mit einer Web-Anwendung erst erzeugt werden. 
+
+**Client-seitige Web-Programmierung**
+
+*DHTML-Dokumente* verfügen über eingebaute Skripte, mit denen die Darstellung der Seite während ihrer Anzeige verändert werden kann durch Benutzerinteraktion (Menü ausklappen, Countdown, Text hervorheben, ...) oder andere Ereignisse. 
+
+Andere Techniken (*AJAX*) ermöglichen die Kommunikation zwischen Browser und Server während der Anzeige einer Webseite, so dass diese erweitert oder verändert werden können.
+
 #### CSS
 
 CSS steht für Cascading Style Sheets ist eine Layout- und Formatierungssprache, um Auszeichnungssprachen wie HTML zu formatieren. Idealerweise enthält das HTML-Dokument nur semantische Informationen, und mit CSS werden diese dann gestalterisch und typografisch formatiert. 
 
 CSS ist also zuständig für die Beschreibung des Layouts (der Darstellung) der HTML-Struktur.
+
+#### XML
+
+XML dient als Meta-Markupsprache und ermöglicht dadurch, alle nur erdenklichen Dokumenttypen mit einer speziellen, eigenen Syntax zu beschreiben. 
+
+XML ist Ausgangspunkt für eine ganze Reihe anwendungsspezifischer Markup-Sprachen, die genau auf die jeweiligen spezialisierten Anwendungsdomänen zugeschnitten sind, z.B. 
+
+- MathML - Mathematical Markup Language
+- SVG - Scalable Vector Graphics
+- ODF - Open Document Format for Office Applications 
+- ...
 
 #### Bootstrap
 
@@ -550,7 +585,7 @@ Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in al
 
 #### AJAX
 
-AJAX steht für Asynchronous JavaScript und XML. AJAX ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
+*AJAX* steht für Asynchronous JavaScript und XML. *AJAX* ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
 
 #### RWD
 
