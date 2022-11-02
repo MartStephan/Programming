@@ -11,7 +11,8 @@ Table of Contents
     * [Syntax](#syntax)
     * [Elemente](#elemente)
   * [CSS](#css)
-    * [Darstellung](#darstellung)
+    * [Syntax](#syntax)
+    * [Positionierung und Box-Modell](#positionierung-und-box-modell)	
   * [XML](#xml)
   * [Literatur](#literatur)
 
@@ -334,13 +335,149 @@ Weitere Features sind z.B. Tags wie <time>, <meter> oder <progress>.
 
 ## CSS - Cascading Stylesheets
 
-CSS beschreibt die Darstellung (Layout) eines HTML-Dokuments (z.B. Schriftarten, Schriftgrößen, ...)
+CSS beschreibt die Darstellung (Layout) eines HTML-Dokuments (z.B. Schriftarten, Schriftgrößen, ...). Mit CSS wurde eine unabhängige Formatierungs-Beschreibungssprache für die Beschreibung der Layout-Präsentation von HTML-Dokumenten entwickelt. 
 
-### Darstellung
+Stylesheets können auf verschiedene Arten mit HTML-Dokumenten verbunden werden. 
 
+- Inline-Definition in HTML-Elementen mit style-Attribut
 
+- ```html
+  <span style="font-weight: bold">Fetter Text</span>
+  ```
 
+- (Interne) Stylesheets in HTML-Dokumenten mit dem <style>-Tag
 
+- (Externe) Stylesheets werden mithilfe der <link>-Deklaration im Header des HTML-Dokuments aus separaten Dateien eingebunden
+
+### Syntax
+
+Ein CSS Stylesheet ist eine Ansammlung von Regeln. Beispiel für eine CSS Regel. 
+
+```css
+h1 {
+    color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+```
+
+Eine CSS Regel besteht also aus
+
+- einem Selektor (hier: h1)
+- und (einer) Deklaration(en) (hier: color: ...)
+
+Mögliche Deklarationen, die mit einer CSS Regel beschrieben werden können, sind z.B.: 
+
+- Schrift
+- Abstände und Rahmen
+- Position und Größe
+- Farben und Hintergründe
+- Sichtbarkeit und Art der Anzeige
+- Umfließung
+- ...
+
+Ein Selektor wählt HTML-Elemente aus, für das die Deklarationen angewendet werden. Es gibt: 
+
+- Klassen- und ID-Selektoren
+- Attribut-Selektoren
+- Context-Selektoren
+- Externe Selektoren 
+
+Beispiele
+
+```css
+/* Standard Selektor */
+p { color: red; }
+
+/* Attribut Selektor */
+p[small] { font-size: 8px; }
+
+/* Kontext-Selektor */
+td p { color:#0000FF; }
+
+/* Klassen Selektor */
+p.footnote { font-size: 8px; }
+
+/* ID-Selektor */
+a#imprint { font-weight: bold; }
+
+/* Pseudo-Klassen und Pseudo-Elemente (kleine Auswahl only) */
+a:hover { text-decoration: underline; }
+input:focus { border: ipx solid blue; }
+```
+
+**Vererbung**
+
+CSS-Formatierungsanweisungen werden im HTML-Dokumentenbaum an alle unter einem Element liegende Nachfahren vererbt. 
+
+**Mehrere Stylesheets**
+
+Eine der grundlegenden Ideen von CSS ist die gleichzeitige Nutzung von mehreren Stylesheets. Mögliche Kaskadierung umfasst:
+
+- Browser-Stylesheets
+- Nutzer-Stylesheets
+- Autoren-Stylesheets
+
+### Positionierung und Box-Modell
+
+Mittels Positionierung können Elemente innerhalb eines HTML-Dokuments angeordnet werden. Außerdem wird festgelegt, wie Elemente vom Text umflossen werden.
+
+Durch die Verwendung von *position* können Elemente beliebig positioniert und aus dem regulären Elementfluss entfernt werden. Es gibt die position-Eigenschaften:
+
+- absolute
+- fixed
+- relative 
+- static
+
+Beispiel
+
+```css
+/* CSS Stylesheet */
+div.relative {
+    position: relative; 
+}
+
+div.absolute{
+    position: absolute;
+    top: 50px;
+    right: 0;
+}
+```
+
+```html
+<!-- html Dokument -->
+<div class="relative">
+    Dieses div hat die Position relative.
+    <div class="absolute">
+        Dieses div hat die Position absolute.
+    </div>
+</div>
+
+```
+
+**z-Index**
+
+Die z-Index Eigenschaft wird für Elemente verwendet, die sich überlappen. Je größer der Wert, desto höher liegt das Element und überdeckt andere Elemente. 
+
+**Box-Modell**
+
+Rechtecke werden durch das Box-Modell beschrieben. Bestandteile einer Box sind:
+
+- Inhalt - Texte und Bilder
+- Innenabstand - (padding)
+- Rahmen - (border)
+- Außenabstand - (margin)
+
+```css
+/* Box-Modell Beispiel */
+div {
+    background-color: lightgrey;
+    width: 300px;
+    padding: 25px;
+    border: 25px solid green;
+    margin: 25px;
+}
+```
 
 ## XML - Extensible Markup Language 
 
@@ -348,7 +485,7 @@ CSS beschreibt die Darstellung (Layout) eines HTML-Dokuments (z.B. Schriftarten,
 
 ## Literatur 
 
-[1] openHPI, Zum Web-Profi in drei Schritten, https://open.hpi.de/courses/webtech-exam-2, abgerufen am 1.11.2022
+[1] openHPI, Zum Web-Profi in drei Schritten, https://open.hpi.de/courses/webtech-exam-2, abgerufen am 2.11.2022
 
 [2] HTML Tag-Referenz, https://www.w3schools.com/tags/, abgerufen am 1.11.2022
 
