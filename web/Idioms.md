@@ -176,6 +176,10 @@ XML ist Ausgangspunkt für eine ganze Reihe anwendungsspezifischer Markup-Sprach
 - ODF - Open Document Format for Office Applications 
 - ...
 
+**XSL - Extensible Stylesheet Language**
+
+XML beschreibt nur die Struktur; die Formatierung eines Dokuments wird durch die Dokument-Formatbeschreibungssprache in Form von Stylesheets ähnlich zu HTML bestimmt. 
+
 #### Bootstrap
 
 Bootstrap ist ein von der Firma Twitter entwickeltes CSS-Framework. Es liefert zahlreiche CSS-Klassen, die die Handhabung von CSS vereinfachen. Die Bootstrap-Komponenten erfordern auch JavaScript, wobei hier im Hintergrund jQuery zum Einsatz kommt. 
@@ -587,9 +591,17 @@ Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in al
 
 *AJAX* steht für Asynchronous JavaScript und XML. *AJAX* ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
 
-#### RWD
 
-RWD steht für Responsive Web Design. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. Responsive Web Design realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie Bootstrap. 
+
+#### Responsive Web Design - RWD
+
+*RWD* steht für *Responsive Web Design*. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. *Responsive Web Design* realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie *Bootstrap*. 
+
+Folgende Paradigmen gelten:
+
+- Webseiten sollen auf Spezifika verschiedener Endgeräte - Desktop, Tablet, Smartphone, - reagieren können.
+- RWD sollte technisch aber nur vermittels HTML und CSS realisiert werden - JavaScript soll in der Regel nicht zum Einsatz kommen.
+- RWD sollte auch nicht darauf beruhen, auf kleineren Bildschirmen Inhalte wegzulassen, sondern diese anders anzuordnen. 
 
 #### PWA
 

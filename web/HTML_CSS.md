@@ -479,13 +479,59 @@ div {
 }
 ```
 
+### Responsive Web Design
+
+RWD* steht für *Responsive Web Design*. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. *Responsive Web Design* realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie *Bootstrap*. 
+
+Folgende Paradigmen gelten:
+
+- Webseiten sollen auf Spezifika verschiedener Endgeräte - Desktop, Tablet, Smartphone, - reagieren können.
+- RWD sollte technisch aber nur vermittels HTML und CSS realisiert werden - JavaScript soll in der Regel nicht zum Einsatz kommen.
+- RWD sollte auch nicht darauf beruhen, auf kleineren Bildschirmen Inhalte wegzulassen, sondern diese anders anzuordnen. 
+
+**Viewport**
+
+Viewport bezeichnet den für Nutzer sichtbaren Bereich einer Webseite. HTML erlaubt Autoren, den Viewport selbst festzulegen: 
+
+```html
+<!-- Viewport festlegen -->
+<meta name="viewport" content="width=device-width">
+<!-- device-width ist die Breite des genutzten Gerätes -->
+```
+
+**CSS Layout** 
+
+Webseiten werden häufig anhand eines horizontalen Rasters (Grid) gestaltet, die für verschiedene Bildschirmbreiten skaliert werden. 
+
+**Media Queries**
+
+CSS3 führt erstmals Media Queries ein. Dabei erlauben @media Blöcke die Definitionen von CSS-Regeln, die nur gelten, wenn eine bestimmte Bedingung gilt. 
+
+Beispiel: Nur für Bildschirme bis maximale Smartphone-Breite
+
+```css
+@media only screen and (max-width: 768px) {
+    img { width: 100% }
+}
+```
+
+Nur für Bildschirme im Querformat
+
+```css
+@media only screen and (orientation: landscape) { ... }
+```
+
 ## XML - Extensible Markup Language 
 
+XML erlaubt die Einführung von neuen und aussagekräftigen Elementen durch die Definition von eigenen DTDs (HTML Document Type Definition). XML ist deshalb eine Meta-Markup-Sprache. 
 
+Die XML-Spezifikation beschreibt nur die Struktur von Dokumenten. Ein XML-Dokument, das der allgemeinen XML-Spezifikation entspricht und die Regeln und Definitionen in der Grammatik einhält, wird valide genannt. 
+
+Definition der Grammatik kann durch ein XML-Schema oder eine DTD festgelegt werden. 
 
 ## Literatur 
 
-[1] openHPI, Zum Web-Profi in drei Schritten, https://open.hpi.de/courses/webtech-exam-2, abgerufen am 2.11.2022
+[1] openHPI, Zum Web-Profi in drei Schritten, https://open.hpi.de/courses/webtech-exam-2, abgerufen am 4.11.2022
 
 [2] HTML Tag-Referenz, https://www.w3schools.com/tags/, abgerufen am 1.11.2022
 
