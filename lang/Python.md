@@ -13,6 +13,8 @@ Table of Contents
     * [Modularisierung](#modularisierung)
     * [Hello World](#hello-world)
     * [Basics](#basics)
+    * [Datentypen](#datentypen)
+    * [Slicing](#slicing)
     * [Objektmodell und Namensräume](#objektmodell-und-namensr%C3%A4ume)
     * [Interpreter und Interoperabilität](#interpreter-und-interoperabilit%C3%A4t)
     * [Objektorientierung](#objektorientierung)
@@ -21,6 +23,8 @@ Table of Contents
     * [Tuple](#tuple)
     * [Dictionary](#dictionary)
     * [Set](#set)
+    * [Mathematische Operatoren](#mathematische-operatoren)
+    * [Wertebereiche](#wertebereiche)
     * [Further built\-in functions](#further-built-in-functions)
   * [Python 3](#python-3)
   * [Python 3\.4](#python-34)
@@ -28,9 +32,15 @@ Table of Contents
   * [Python 3\.6](#python-36)
   * [Python 3\.9](#python-39)
   * [Bibliotheken](#bibliotheken)
+    * [TKinter](#tkinter)
+    * [Python4Delphi](#python4delphi)
     * [NumPy](#numpy)
     * [SciPy](#scipy)
     * [Matplotlib](#matplotlib)
+    * [TensorFlow](#tensorflow)
+    * [scikit-learn](#scikit-learn)
+    * [SymPy](#sympy)
+    * [Chainer](#chainer)
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
@@ -190,24 +200,24 @@ def myfunc(optional_params):
    
 ```
 
-**Basic Data Types**
+**Variablen und Typen**
 
-Wie in anderen Sprachen gibt es auch in Python Basis Datentypen für Integer, Floating-Point, Komplexe Zahlen und Strings.
+Die Definition von Variablen kann ohne Angabe von Typen erfolgen. Variablen sind natürlich trotzdem typisiert und können erfragt werden.
 
-| int  | long            | float    | complex |
-| ---- | --------------- | -------- | ------- |
-| 10   | 51924361L       | 0.0      | 3.14j   |
-| -185 | 0xBABEAFFEL     | 15.20    | .876j   |
-| 0x69 | -4721885298529L | -21.9    | 4.5e-7j |
-| 0x10 |                 | 33.3+e10 | 2+3j    |
-
-| str              |
-| ---------------- |
-| "I am a string." |
-| 'I am too.'      |
-|                  |
-
-Wichtig zu wissen ist, dass es in Python nur einen einzigen *int*-Typ, der Zahlen mit beliebiger Genauigkeit speichern kann. Die Funktion *sys.getsizeof()* hilft Ihnen, herauszufinden, wie viele Bytes an Speicher ihre Python-Objekte verbrauchen. Ein *int* in Python besteht aber mindestens aus 28 Byte und kann um je ein Bit anwachsen. 
+```python
+>>>
+>>> age = 42
+>>> name = "Martin"
+>>> hobbies = ["python", "cycling"]
+>>>
+>>> type(age)
+<class 'int'>
+>>> type(name)
+<class 'str'>
+>>> type(hobbies)
+<class 'list'>
+>>>
+```
 
 **Funktionen, Parameter und Rückgabe**
 
@@ -291,6 +301,68 @@ if __name__ == '__main__':
     for i in range(1, 11, 2):
         print(i)
 
+```
+
+### Datentypen
+
+Wie in anderen Sprachen gibt es auch in Python Basis Datentypen für Integer, Floating-Point, Komplexe Zahlen und Strings.
+
+| int  | long            | float    | complex |
+| ---- | --------------- | -------- | ------- |
+| 10   | 51924361L       | 0.0      | 3.14j   |
+| -185 | 0xBABEAFFEL     | 15.20    | .876j   |
+| 0x69 | -4721885298529L | -21.9    | 4.5e-7j |
+| 0x10 |                 | 33.3+e10 | 2+3j    |
+
+| str              |
+| ---------------- |
+| "I am a string." |
+| 'I am too.'      |
+|                  |
+
+Wichtig zu wissen ist, dass es in Python nur einen einzigen *int*-Typ, der Zahlen mit beliebiger Genauigkeit speichern kann. Die Funktion *sys.getsizeof()* hilft Ihnen, herauszufinden, wie viele Bytes an Speicher ihre Python-Objekte verbrauchen. Ein *int* in Python besteht aber mindestens aus 28 Byte und kann um je ein Bit anwachsen. 
+
+**Strings**
+
+Strings können mit einzelnen oder auch doppelten Anführungszeichen definiert werden 
+
+```python
+>>>
+>>> info = "I'm scared"
+>>> help = 'Please "HELP"'
+>>> print(info, help)
+I'm scared Please "HELP"
+>>>
+```
+
+Es gibt auch sogenannte Raw Strings, die verwendet werden können, falls man die textuellen Bestandteile so nutzen möchte wie spezifiziert, 
+
+```python
+>>>
+>>> dir_path = 'c:\\transer\this\new'
+>>> print(dir_path)
+c:\transer      his
+ew
+>>> dir_path = r'c:\\transer\this\new'
+>>> print(dir_path)
+c:\\transer\this\new
+>>>
+```
+
+### Slicing 
+
+Python besitzt mit dem Slicing eine mächtige Funktion, um auf Bestandteile eines Textes zuzugreifen, Syntax lautet str[start:end] bzw. str[start:end : step].
+
+```python
+>>>
+>>> print(text[5:10])
+piece
+>>>
+>>> text = "1a2b3c4d5e6f7g"
+>>> second = text[::2]
+>>> print(second)
+1234567
+>>>
 ```
 
 ### Objektmodell und Namensräume
@@ -403,6 +475,25 @@ if __name__ == '__main__':
 #>ham
 ```
 
+Für indizierte Zugriffe gibt es in Python reichlich syntactic sugar. 
+
+```python
+>>>
+>>> for ch in name:
+...     print(ch)
+...
+T
+I
+M
+>>> for i, ch in enumerate(name):
+...     print(i, ch)
+...
+0 T
+1 I
+2 M
+>>>
+```
+
 ### List
 
 Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, Dictionaries und Sets mit.  
@@ -445,11 +536,39 @@ if __name__ == '__main__':
 
     # negative Indizes
     print(vowels[-1])
+    
+    # Listen kann man addieren
+    odds += [15, 17, 19]
+    
+    # praktische built-in Funktionen
+    min(odds)
+    max(odds)
+    sum(odds)
+    
+    # Initialisierung mit Multiplikation
+    zeros = [0] * 10
+    
+```
+
+**Slicing** 
+
+Bei Listen kann man Slicing anwenden. Löschen kann man auch mit der Slicing-Syntax.
+
+```python
+>>>
+>>> odds = [1, 3, 5, 7, 9, 11, 13]
+>>> odds[2:4]
+[5, 7]
+>>>
+>>> odds[2:4] = []
+>>> odds
+[1, 3, 9, 11, 13]
+>>>
 ```
 
 **List Comprehensions**
 
-Mit List Comprehensions kann man in Python kurz und bündig Listen zu erstellen. Die Syntax erfolgt mit eckigen Klammern: 
+Mit List Comprehensions kann man in Python kurz und bündig Listen zu erstellen. Als List Comprehension bezeichnet man einen Ausdruck, der basierend auf einer Sequenz von Werten sowie einer Berechnungsvorschrift seine neue Ergebnisliste erzeugt. Die Syntax erfolgt mit eckigen Klammern: 
 
 ```python
 [ expression for item in list if conditional ]
@@ -493,6 +612,31 @@ if __name__ == '__main__':
 #> [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]    
 ```
 
+**Sortierung und Reihenfolgen**
+
+Für die Sortierung von Listen gibt es ebenfalls built-in Funktionen, die wir nutzen können.
+
+```python
+>>>
+>>> numbers = [1, 100, 49, 33, 42, 2245, 2, 1]
+>>> numbers.sort()
+>>> numbers
+[1, 1, 2, 33, 42, 49, 100, 2245]
+>>>
+>>> numbers.reverse()
+>>> numbers
+[2245, 100, 49, 42, 33, 2, 1, 1]
+>>>
+>>>
+>>> names = ['Tim', 'Peter', 'Mike', 'Sophie']
+>>> names
+['Tim', 'Peter', 'Mike', 'Sophie']
+>>> names.sort()
+>>> names
+['Mike', 'Peter', 'Sophie', 'Tim']
+>>>
+```
+
 ### Tuple
 
 Python bringt vier effiziente (eingebaute) Datenstrukturen mit: Listen, Tuples, Dictionaries und Sets mit.  
@@ -502,6 +646,10 @@ Tuples sind ähnlich den Listen. Nur sind sie nicht veränderlich (*immutable*).
 ```python
 #!/usr/bin/python
 
+def def multi_return():
+    # returning multiple values using tuple
+    return (404, "Not Found", ["Info1", "Info2"])
+    
 if __name__ == '__main__':
     # define empty tuple
     t = tuple()
@@ -523,6 +671,43 @@ if __name__ == '__main__':
     t2 = ('Python',)
     print(type(t2))
     
+    # multi-return tuple
+    multi_return()
+    
+    
+```
+
+**Tuple (Un-)Packing**
+
+Beim Tuple (Un-)Packing kann man auf der linken Seite einer Zuweisung einfach mehrere Variablen notieren, denen dann die Werte des  Tupels auf der rechten Seite positionsbasiert zugewiesen werden. 
+
+```python
+>>>
+>>> info = (42.195, "km", "Marathon")
+>>> info
+(42.195, 'km', 'Marathon')
+>>> distanz, einheit, begriff = info
+>>> distanz
+42.195
+>>> einheit
+'km'
+>>> begriff
+'Marathon'
+>>>
+```
+
+**Named Tuples** 
+
+Named Tuples bieten sowohl positions- als auch namensbasierte Zugriffe. Allerdings muss man Named Tuple per Import extern einbinden.
+
+```python
+>>>
+>>> from collections import namedtuple
+>>> Person = ('Person', 'name age gender')
+>>> martin = Person('Martin', 18, 'male')
+>>> martin
+Person(name='Martin', age=18, gender='male')
+>>>
 ```
 
 ### Dictionary
@@ -539,7 +724,7 @@ if __name__ == '__main__':
     person = {}
 
     #define dictionary Per Anhalter durch die Galaxis
-    person = { 'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker',                  'home': 'earth' }
+    person = { 'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker', 'home': 'earth' }
     
     print(person)
 
@@ -547,7 +732,7 @@ if __name__ == '__main__':
     people = {}
 
     people['Arthur'] = person
-    people['Ford'] = { 'name': 'Ford Prefect', 'gender': 'male', 'occupation': 	                               'researcher', 'home': 'betelgeuse' }
+    people['Ford'] = { 'name': 'Ford Prefect', 'gender': 'male', 'occupation': 'researcher', 'home': 'betelgeuse' }
 
     print(people)
   
@@ -557,11 +742,74 @@ if __name__ == '__main__':
 {'Arthur': {'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker', 'home': 'earth'}, 'Ford': {'name': 'Ford Prefect', 'gender': 'male', 'occupation': 'researcher', 'home': 'betelgeuse'}} """
 ```
 
+**Set und Dictionary Comprehensions**
+
+```python
+>>>
+>>> odds = {i for  i in range(10) if i % 2 !=0}
+>>> odds
+{1, 3, 5, 7, 9}
+>>>
+```
+
 ### Set
 
 Python bringt vier effiziente (eingebaute) Datenstrukturen mit: *Listen*, *Tuples*, *Dictionaries* und *Sets* mit.  
 
 Ein *Set* ist eine Ansammlung unsortierter Objekte. Wobei ein Objekt nie mehrfach vorkommenn darf.  
+
+### zip( ) 
+
+In Python gibt es eine Built-In Funktion zip( ), die es erlaubt, zwei oder mehr Datenbestände zu einer Einheit zu verbinden; z.B. zwei Listen. 
+
+```python
+>>>
+>>> languages = ["french", "italian", "deutsch", "english"]
+>>> know = [True, False, True, True]
+>>> print(list(zip(languages, know)))
+[('french', True), ('italian', False), ('deutsch', True), ('english', True)]
+>>>
+```
+
+### Mathematische Operatoren
+
+Gegenüber anderen Sprachen bringt Python einige Besonderheiten bei mathematischen Operatoren mit sich, Die Ganzzahldivision ohne Rest mit // und die Berechnung der Potenz mit **.
+
+```python
+>>> thousand = 1000
+>>> thousand // 42
+23
+>>>
+>>> thousand / 42
+23.80952380952381
+>>>
+>>> thousand ** 2
+1000000
+>>> thousand ** 3
+1000000000
+>>>
+```
+
+Nützliche mathematische Funktionen findet man im Modul *math*.
+
+### Wertebereiche
+
+Mit range(startIndex, endIndex) lassen sich Wertebereiche generieren. 
+
+```python
+>>>
+>>> range(2,8)
+range(2, 8)
+>>> list(range(2,8))
+[2, 3, 4, 5, 6, 7]
+>>> for i in range(3):
+...     print(i)
+...
+0
+1
+2
+>>>
+```
 
 ### Further built-in functions
 
@@ -1008,11 +1256,37 @@ Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hi
 
 ## Bibliotheken
 
+### TKinter
+
+TKinter ist eine Bibliothek, die auch Teil von Python ist Damit kann man mit Bordmitteln grafische User-Interfaces erstellen. 
+
+### Python4Delphi
+
+Möglichkeit mit Hilfe von Python und Delphi die Annehmlichkeiten eines GUI-Builders (Delphi) mit einer modernen Programmiersprache (Python) zu kombinieren.
+
 ### NumPy
 
 ### SciPy
 
 ### Matplotlib
+
+[18] Eine Open-Source-Bibliothek, die häufig für die Visualisierung von Daten mit Hilfe von Diagrammen verwendet wird. Mit nur wenigen Codezeilen können Grafiken, Tortendiagramme, Streudiagramme, Histogramme usw. erstellt werden, 
+
+### TensorFlow
+
+[19] Ein beliebtes Open-Source-Deep-Learning-Framework für numerische Berechnungen. Die Bibliothek wird auch für maschinelles Lernen verwendet. TensorFlow wurde von den Forschern des Google-Brain-Teams innerhalb der Google-AI-Organisation entwickelt und wird heute von vielen Wissenschaftlern eingesetzt. 
+
+### scikit-learn
+
+[20] Eine Bibliothek für maschinelles Lernen. Sie kann für eine Vielzahl von Anwendungen verwendet werden, darunter Klassifizierung, Regression, Clustering und Modellauswahl.
+
+### SymPy
+
+[21] Eine Bibliothek, die umfassende Methoden für symbolische Berechnungen bietet und im Sinne eines Computer-Algebra--Systems genutzt werden kann. Symbolisches Rechnen ermöglicht das Lösen von Gleichungen, z.B. die Auflösung nach einer bestimmten Variable. Dabei wird eine exakte Lösung ermittelt und nicht nur ein numerischer Näherungswert bestimmt Symbolisches Rechnen gilt mit Blick auf den Einsatz am Computer als deutlich komplexer als die Verwendung von Näherungsverfahren. Derartige Algorithmen selbst zu entwickeln ist sehr anspruchsvoll 
+
+### Chainer
+
+[22] Eine Bibliothek, um Deep-Learning-Modelle zu erstellen. Die drei Hauptschwerpunkte sind: Transportsysteme (autonomes Fahren), Fertigungsindustrie (Objekterkennung, Optimierung, Robotik) und Gesundheitsvorsorge (Bildanalyse). 
 
 ## Literatur  
 
@@ -1045,6 +1319,28 @@ Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hi
 [14] heise developer, Die wichtigsten neuen Features in Python 3.6, https://www.heise.de/developer/artikel/Die-wichtigsten-neuen-Features-in-Python-3-6-3506992.html, abgerufen am 28.01.2021
 
 [15] Python Naming Conventions, https://peps.python.org/pep-0008/#naming-conventions, abgerufen am 19.04.2022
+
+[16] entwickler magazin 7.2022, The Beauty of Python - Teil 1, Michael Inden
+
+[17] entwickler magazin, 4.2022, Grafische Oberflächen und Systemfeatures für Python-Skripte, Elena Bochkor, Dr. Veikko Krypczyk
+
+[18] https://matplotlib.org
+
+[19] https://www.tensorflow.org
+
+[20] https://scikit-learn.org
+
+[21] https://sympy.org
+
+[22] https://chainer.org
+
+[23] https://github.com/pyscripter/python4delphi
+
+[24] entwickler magazin, 8.2022, The Beauty of Python - Teil 2, Michael Inden
+
+
+
+
 
 
 
