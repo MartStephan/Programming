@@ -51,7 +51,9 @@ Freigegeben am 25.6.2015.
 
 Freigegeben am 6.8.2015.
 
-aktuelle **Version 1.42.0** vom 12. März 2020
+aktuelle **Version 1.63.0** vom 08. August 2022
+
+
 
 ## Überblick
 
@@ -440,9 +442,38 @@ fn main()
 // hello world
 ```
 
+Rust hat auch einen Mechanismus, um Werte ohne Ownership zu referenzieren: Bezeichnenderweise *references* bezeichnet. Ähnlich wie in C++ kann man dafür den &-Operator nutzen: Ein &String s2 kann also auf einen String s1 referenzieren, ohne die Ownership zu übertragen.
+
 ### Ownership
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
+
+Rust Ownership ist ein Satz von Regeln, die beschreiben, wie Rust Programme den Speicher verwalten.
+
+Regeln sind:
+
+- Each value in Rust has an owner
+- There can only be one owner at a time
+- When the owner goes out of scope, the value will be dropped
+
+```rust
+/// examples of Rust ownership 
+fn main() {
+    let s1 = String::from("hello");
+    let s2 = s1;
+    /// to ensure memory safety, after the line let s2 = s1, Rust considers s1 as no longer valid
+    
+    /// you can use clone() to make a clone or copy - here: heap data gets copied
+    let s3 = s2.clone();
+    
+    /// here x is still valid after let y = x, because this is stack-only data which gets copied anyway 
+    let x = 5;
+    let y = x; 
+    
+}
+```
+
+
 
 ### Structs
 
