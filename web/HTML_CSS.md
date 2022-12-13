@@ -13,6 +13,7 @@ Table of Contents
   * [CSS](#css)
     * [Syntax](#syntax)
     * [Positionierung und Box-Modell](#positionierung-und-box-modell)	
+    * [Responsive Web Design](#responsive-web-design)
   * [XML](#xml)
   * [Literatur](#literatur)
 
@@ -319,14 +320,14 @@ Eine Zeichenfläche für Bitmap-Grafiken bietet das <canvas>-Tag.  Auf Canvas ka
 </canvas>
 
 <script type="text/javascript">
-    // Zugriff auf Canvas-Element über Variablen
+    <!-- Zugriff auf Canvas-Element über Variablen -->
     const example = document.querySelector('#example');
     const context = example.getContext('2d');
     
-    // Blau als Füllfarbe
+    <!-- Blau als Füllfarbe -->
     context.fillstyle = "rgb(0,0,255)";
     
-    // Quadrat zeichnen
+    <!-- Quadrat zeichnen -->
     context.fillRect(50,10,100,100);
 </script>
 ```
