@@ -99,6 +99,18 @@ if __name__ == '__main__':
 #>> 0.0040s
 ```
 
+## Graphentheorie
+
+Aus []: "Ein Graph ist ein abstraktes mathematisches Konstrukt, das zur Modellierung eines praktischem Problems verwendet wird, indem das Problem in eine Menge verknüpfter Knoten unterteilt wird. Eine Verbindung zwischen einem Knoten (Englisch vertex) und dem nächsten wird Kante (Englisch edge) genannt." 
+
+Die Graphentheorie ermöglicht es uns Such- und Optimierungsverfahren performant anzuwenden, z.B. ist das "Haus vom Nikolaus" ein Graphenproblem. Ein frühes bekanntes Beispiel ist das 
+
+[Königsberger Brückenproblem]: https://www.spektrum.de/lexikon/mathematik/die-wurzeln-der-graphentheorie/9636
+
+, welches Leonhard Euler 1736 gelöst hat. 
+
+Euler konnte beweisen, dass man genau dann alle Kanten eines Graphen exakt einmal ablaufen kann, wenn jeder Knoten bloß eine gerade Anzahl von Verbindungen besitzt - oder wenn es genau zwei Knoten mit ungeraden Verbindungen gibt. Falls Letzteres gilt, ist der eine Knoten der Start- und der andere der Endpunkt der Route. 
+
 ## Größter gemeinsamer Teiler
 
 
@@ -553,4 +565,6 @@ Wie kann man jetzt der *digitalen Signatur* trauen? Auch dafür gibt es wieder Z
 [12] The Missing Semester of Your CS Semester, https://missing.csail.mit.edu/, abgerufen am 05.02.2021
 
 [13] SHA256 algorithm, https://sha256algorithm.com/, abgerufen am 07.02.2022
+
+[14] Das unmögliche Haus vom Nikolaus, Manon Bischoff, https://www.spektrum.de/kolumne/graphentheorie-die-mathematik-hinter-dem-haus-vom-nikolaus/2081799, abgerufen am 13.12.2022
 
