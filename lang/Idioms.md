@@ -1455,6 +1455,8 @@ Das Verhalten einer Klasse sollte erweiterbar sein, ohne sie dafür modifizieren
 
 Das Liskovsche Substitutionsprinzip oder Ersetzbarkeitsprinzip ist ein Idiom aus der Objektorientierten Programmierung und besagt, dass ein Programm, das Objekte der Basisklasse B verwendet, auch mit Objekten der von B abgeleiteten Klasse C korrekt funktionieren muß.
 
+Oder anders ausgedrückt: Subtypen müssen sich so wie ihr Basistyp verhalten. Sie dürfen also die Funktionalität des Basistyps nur erweitern, aber nicht verändern. 
+
 ```c++
 // This file shows examples for Liskovsches Substitutionsprinzip (Type Erasure) in C++ 
 #include <iostream>
