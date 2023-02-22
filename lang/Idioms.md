@@ -11,6 +11,7 @@ Table of Contents
   * [Aggregation](#aggregation)
   * [Aspektorientierte Programmierung](#aspektorientierte-programmierung)
   * [Bedarfsauswertung (Lazy Evaluation)](#bedarfsauswertung-lazy-evaluation)
+  * [Clean Code](#clean-code)
   * [Closure](#closure)
   * [Compiler](#compiler)
   * [Composition](#composition)
@@ -96,6 +97,12 @@ Table of Contents
   * [Scope](#scope)
   * [SFINAE](#sfinae)
   * [Smart Pointer](#smart-pointer)
+  * [SOLID](#solid)
+    * [Single Responsibility Principle](#single-responsibility-principle)
+    * [Open/Close Principle](#openclose-principle)
+    * [Liskov Substitution Principle](#liskov-substitution-principle)
+    * [Interface Segregation Principle](#interface-segregation-principle)
+    * [Dependency Inversion Principle](#dependency-inversion-principle)
   * [Static Methods](#static-methods)
   * [Statische Programmiersprachen](#statische-programmiersprachen)
   * [Strong Types (Starke Datentypen)](#strong-types-starke-datentypen)
@@ -111,12 +118,6 @@ Table of Contents
   * [Typing Model](#typing-model)
   * [Type Safe](#type-safe)
   * [Type Template Parameter vs Non\-Type Template Parameter](#type-template-parameter-vs-non-type-template-parameter)
-  * [SOLID](#solid)
-    * [Single Responsibility Principle](#single-responsibility-principle)
-    * [Open/Close Principle](#openclose-principle)
-    * [Liskov Substitution Principle](#liskov-substitution-principle)
-    * [Interface Segregation Principle](#interface-segregation-principle)
-    * [Dependency Inversion Principle](#dependency-inversion-principle)
   * [Variadische Funktion](#variadische-funktion)
   * [Verschattung (Shadowing)](#verschattung-shadowing)
   * [YAGNI](#yagni)
@@ -175,6 +176,33 @@ int main()
 Tatsächlich gibt es noch mehr Arten von Bedarfsauswertungen: Eager Evaluation (Strict Evaluation), Partial Evaluation, Remote Evaluation, Short-circuit Evaluation. Die Rechereche überlasse ich (vorerst) dem interessierten Leser. 
 
 Nur soviel: Die 'gewöhnliche' Bedarfsauswertung von vielen Programmiersprachen ist die *Eager Evaluation* (oder auch *Strict Evaluation*). Ein Ausdruck wird dabei sofort ausgewertet, sobald der Ausdruck einer Variablen zugeordnet wird, z.B. in C oder Java. 
+
+## Clean Code
+
+Der Begriff Clean Code wurde von Robert C. Martin, auch bekannt als Uncle Bob, und seinem gleichnamigen Standardwerk [37] bekannt gemacht. Clean Code bezeichnet Code, der einfach und direkt geschrieben ist und problemlos von anderen Entwickler(innen) gelesen, verstanden und verändert werden kann. Clean Code enthält keine Duplizierungen, verschleiert nicht die Absichten der Autoren und ist gründlich durch automatisierte Tests abgedeckt. 
+
+Um Clean Code umzusetzen, bedient man sich bewährter Lösungen und Prinzipien aus der Softwareentwicklung, u.a.
+
+- Design Prinzipien
+  - DRY  (don't repeat yourself)
+  - KISS (keep it stupid and simple)
+  - YAGNI (you ain't gonna need it)
+  - SOLID
+  - Scout Rule
+  - Favour Composition over Inheritance
+  - Information Hiding Principle
+  - Principle of Least Astonishment
+- Design Patterns 
+  - Creational Patterns (Erzeugungsmuster)
+  - Structural Patterns (Strukturmuster)
+  - Behavioral Patterns (Verhaltensmuster)
+- Code Reviews
+- Coding Styles
+- Coding Guidelines
+- Tools
+- Codemetriken
+- Softwaretests
+- Automatisierung
 
 ## Closure
 
@@ -365,6 +393,8 @@ Viele Daemon-Programme benutzen ein angehängtes ‚d‘, um sich als *Daemon* z
 ## Dangling Pointer
 
 Bezeichnet in der Programmierung einen Zeiger, der auf einen nicht-initialisierten Speicher zeigt (nullptr) oder auf einen nicht mehr gültigen Speicher zeigt.  
+
+Ab und an trifft man auch auf den Begriff Dangling References. 
 
 ## Deep/Shallow Copy
 
@@ -1401,6 +1431,73 @@ SFINAE steht für Substitution Failure Is Not An Error und ist eine Programmiert
 
 Ein Smart Pointer verhält sich grundsätzlich wie ein normaler Zeiger. Er speichert eine Adresse, über die auf ein dynamisches reserviertes Objekt zugegriffen werden kann. Er wird jedoch als intelligent bzw. smart bezeichnet, weil er automatisch im Destruktor das Objekt mit ‚delete‘ freigibt. Das setzt natürlich voraus, dass das Objekt zuvor mit ‚new‘ erzeugt wurde. Der große Vorteil ist, dass man die Speicherfreigabe nicht vergessen kann, da diese automatisch stattfindet. In C++ gibt es den Smart Pointer std::auto_ptr.  
 
+## SOLID  
+
+Der Begriff SOLID steht für:  
+
+-  	**S** Single Responsibility Principle
+-  	**O** Open/Closed Principle
+-  	**L** Liskov Substitution Principle
+-  	**I** Interface Segregation Principle
+-  	**D** Dependency Inversion Principle
+
+Dieses Programmierparadigma soll die Software sowohl benutzbarer machen als auch einfacher zu erweitern und sollte im Schnittstellen-Design (Interface-Design) berücksichtigt werden.
+
+### Single Responsibility Principle
+
+Das SRP besagt, dass es für ein Modul (z.B. eine Klasse) nur einen einzigen Grund für Änderungen gebenn soll. Damit ist gemeint, dass das Modul nur einem einzigen Akteur gegenüber verantwortlich sein soll. 
+
+### Open/Close Principle
+
+Das Verhalten einer Klasse sollte erweiterbar sein, ohne sie dafür modifizieren zu müssen. Dies können wir z.B. durch Verwendung von Polymorphie erreichen oder auch durch die Anwendung von Design Patterns (z.B. Behavioral Pattern - Verhaltensmuster).
+
+### Liskov Substitution Principle
+
+Das Liskovsche Substitutionsprinzip oder Ersetzbarkeitsprinzip ist ein Idiom aus der Objektorientierten Programmierung und besagt, dass ein Programm, das Objekte der Basisklasse B verwendet, auch mit Objekten der von B abgeleiteten Klasse C korrekt funktionieren muß.
+
+```c++
+// This file shows examples for Liskovsches Substitutionsprinzip (Type Erasure) in C++ 
+#include <iostream>
+#include <string>
+
+class Base
+{
+public:
+    virtual void printName() = 0;
+}; 
+
+class Child : public Base
+{
+public:
+    void printName() { std::cout << "Child" << std::endl; }
+}; 
+
+void whois(Base* type)
+{ 
+    if (type)
+    {
+        type->printName();
+    }
+}
+
+int main()
+{
+    Child child; 
+    
+    whois(&child);
+}
+```
+
+### Interface Segregation Principle
+
+Das Interface Segregation Principle besagt, dass ein Client nur von den Details eines Service abhängig sein sollte, die er auch benötigt. Beispielsweise sollte eine Klasse, die ein Interface implementiert, nur jene Methoden davon implementieren, die für den Anwendungsfall auch wirklich nötig sind.
+
+### Dependency Inversion Principle
+
+Um ein gut wartbares und widerstandsfähiges System zu entwickeln, sollten wir uns überlegen, welche Codeteile besonders von Änderungen betroffen sein könnten. Eine Persistenz ist hier ein anschauliches Beispiel: Anstatt sich darauf zu verlassen, dass wir immer auf ein lokales Dateisystem schreiben, sollten wir diesen Teil extrahieren und in eine Low-Level-Klasse verlagern. Wenn wir z.B. unsere Persistenz irgendwann in einem Cloud-Bucket speichern wollen, dann miüssen wir die Low-Level-Klasse nur austauschen, ohne die High-Level-Klasse anpassen zu müssen. 
+
+Damit die High-Level-Klasse sich nicht der Implementationsdetails der Abhängigkeit (Dependency) gewahr sein muss, implementieren wir ein Interface für die Persistenz und kehren so die Abhängigkeit um (Inversion). Wichtig: Die Abhängigkeit geht immer in Richtung High zu Low - eine Low-Level-Klasse ist niemals von einer High-Level-Klasse abhängig. 
+
 ## Static Methods
 
 Beispiele: C++, Java 8
@@ -1770,63 +1867,6 @@ Stack<int, 100> meinStack;
 
 Im obigen Beispiel muß man bei der Instantiierung von *‘Stack’* einen konstanten Wert für ‘N’ bereitstellen. Während ‘N’ ein Non-Type Template Parameter darstellt, ist ‘T’ ein Type Template Parameter.
 
-## SOLID  
-
-Der Begriff SOLID steht für:  
-
--  	**S** Single Responsibility Principle
--  	**O** Open/Closed Principle
--  	**L** Liskov Substitution Principle
--  	**I** Interface Segregation Principle
--  	**D** Dependency Inversion Principle
-
-Dieses Programmierparadigma soll die Software sowohl benutzbarer machen als auch einfacher zu erweitern und sollte im Schnittstellen-Design (Interface-Design) berücksichtigt werden.
-
-### Single Responsibility Principle
-
-### Open/Close Principle
-
-### Liskov Substitution Principle
-
-Das Liskovsche Substitutionsprinzip oder Ersetzbarkeitsprinzip ist ein Idiom aus der Objektorientierten Programmierung und besagt, dass ein Programm, das Objekte der Basisklasse B verwendet, auch mit Objekten der von B abgeleiteten Klasse C korrekt funktionieren muß.
-
-```c++
-// This file shows examples for Liskovsches Substitutionsprinzip (Type Erasure) in C++ 
-#include <iostream>
-#include <string>
-
-class Base
-{
-public:
-    virtual void printName() = 0;
-}; 
-
-class Child : public Base
-{
-public:
-    void printName() { std::cout << "Child" << std::endl; }
-}; 
-
-void whois(Base* type)
-{ 
-    if (type)
-    {
-        type->printName();
-    }
-}
-
-int main()
-{
-    Child child; 
-    
-    whois(&child);
-}
-```
-
-### Interface Segregation Principle
-
-### Dependency Inversion Principle
-
 ## Variadische Funktion
 
 In der Programmierung bezeichnet man Funktionen, die nicht bereits in ihrer Deklaration die Anzahl ihrer Parameter festgelegt haben, als *variadische Funktionen*. 
@@ -1943,6 +1983,8 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [35] Cooperative vs. Preemptive: a quest to maximize concurrency power, Bobby Priambodo, https://medium.com/traveloka-engineering/cooperative-vs-preemptive-a-quest-to-maximize-concurrency-power-3b10c5a920fe, abgerufen am 05. März 2021
 
 [36] Arithmetische Operationen in C++, https://en.cppreference.com/w/cpp/language/operator_arithmetic, abgerufen am 21. Mai 2021
+
+[37] Robert C. Martin, Clean Code. Refactoring, Patterns, Testen und Techniken für sauberen Code. mitp, 2009. 
 
 
 
