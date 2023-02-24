@@ -38,6 +38,7 @@ Table of Contents
     * [Präprozessor](#pr%C3%A4prozessor)
     * [Compiler](#compiler-1)
     * [Linker](#linker)
+  * [Favour Composition over Inheritance](#favour-composition-over-inheritance)
   * [Functors](#functors)
   * [Funktionale Programmierung](#funktionale-programmierung)
     * [First\-class functions](#first-class-functions)
@@ -51,6 +52,7 @@ Table of Contents
     * [Generics](#generics)
   * [Graduell Typisierte Sprache](#graduell-typisierte-sprache)
   * [Idempotenz](#idempotenz)
+  * [Information Hiding Principle](#information-hiding-principle)
   * [Inheritance, Multiple Inheritance, Protected Inheritance, Virtual Inheritance](#inheritance-multiple-inheritance-protected-inheritance-virtual-inheritance)
   * [Inkrement Operatoren](#inkrement-operatoren)
   * [Integral Promotion](#integral-promotion)
@@ -82,6 +84,7 @@ Table of Contents
   * [Pointers to Functions](#pointers-to-functions)
   * [Polymorphismus](#polymorphismus)
   * [Predicates](#predicates)
+  * [Principle of Least Astonishment](#principle-of-least-astonishment)
   * [Programming Model](#programming-model)
   * [Promotion Trait](#promotion-trait)
   * [Qualified and Non\-Qualified Bezeichner](#qualified-and-non-qualified-bezeichner)
@@ -94,6 +97,7 @@ Table of Contents
   * [Rule of three](#rule-of-three)
   * [Rule of five](#rule-of-five)
   * [Rule of six](#rule-of-six)
+  * [Scout Rule](#scout-rule)
   * [Scope](#scope)
   * [SFINAE](#sfinae)
   * [Smart Pointer](#smart-pointer)
@@ -475,6 +479,10 @@ Die Kompilierung findet auf allen Dateien statt, die der Präprozessor erzeugt. 
 
 Der Linker kann eine ausführbare Datei, eine statische oder eine geteilte Bibliothek (shared library) erzeugen. Er hat die Aufgabe, die Referenzen zu undefinierten Symbolen aufzulösen.
 
+## Favour Composition over Inheritance
+
+Durch Komposition von Klassen anstelle von Vererbung fördern wir die lose Kopplung eines Systems. 
+
 ## Functors
 
 Functors ist ein Begriff aus der Mathematik bzw. aus der Algebra und bezeichnet eine Abbildung zwischen (Merkmals-)Klassen. 
@@ -726,6 +734,10 @@ Eine graduell typsisierte Sprache ist eine Programmiersprache, bei der man Typ-A
 In der Programmierung wird ein Stück Code als idempotent bezeichnet, falls bei mehrfach hintereinander ausgeführten Code-Aufrufen immer das gleiche Ergebnis geliefert wird, als wenn der Code nur einmal aufgerufen wird. 
 
 In der Praxis verwendet man den Begriff bei den REST-HTTP Verben GET, HEAD, PUT und DELETE, die laut REST-HTTP Spezifikation idempotente Methoden sind, d.h. der Client darf sie per Definition ohne negativen Effekt ein zweites Mal aufrufen. 
+
+## Information Hiding Principle
+
+Eine Schnittstelle sollte nur die absolut notwendigen Details nach außen sichtbar machen. Mache also nur jene Methoden oder Attribute öffentlich, die absolut notwendig sind. 
 
 ## Inheritance, Multiple Inheritance, Protected Inheritance, Virtual Inheritance
 
@@ -1209,6 +1221,10 @@ int main()
 
 ## Predicates
 
+## Principle of Least Astonishment
+
+Software sollte die Nutzenden nicht vor Überraschungen stellen. 
+
 ## Programming Model
 
 Various languages have various programming models: **object-oriented**, **functional**, **procedural**. There are even more but these are the most-used ones. Object-oriented means the language supports encapsulation (data and behaviour are packaged together), inheritance through classes (object types are organized in a class tree), and polymorphism (object can take many forms).  
@@ -1418,6 +1434,10 @@ public:
    ~Vertigo() {}
 };
 ```
+
+## Scout Rule
+
+Alte Pfadfinderregel: Hinterlasse den Zeltplatz (hier: Codebase) sauberer als du ihn vorgefunden hast. Wenn man also sowieso an einer Klasse arbeitet, dann versuche sie gleich mit aufzuräumen, also z.B. veraltete Kommentare löschen oder eine zu lange Methode in mehrere kurze aufzuteilen. 
 
 ## Scope
 
@@ -1987,6 +2007,8 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [36] Arithmetische Operationen in C++, https://en.cppreference.com/w/cpp/language/operator_arithmetic, abgerufen am 21. Mai 2021
 
 [37] Robert C. Martin, Clean Code. Refactoring, Patterns, Testen und Techniken für sauberen Code. mitp, 2009. 
+
+[38] https://carstenwindler.de/software-quality, abgerufen am 24.02.2023
 
 
 
