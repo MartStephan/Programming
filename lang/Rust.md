@@ -78,7 +78,7 @@ Rust orientiert sich syntaktisch an C und C++.
 
 ### Installation
 
-Kurzanleitung, um Rust auf einem Windows-PC zu installieren.
+**Kurzanleitung, um Rust auf einem *Windows-PC* zu installieren.**
 
 - Installiere Rust für Windows via https://www.rust-lang.org/tools/install [6] *Rustup-Init.exe*.
 
@@ -102,6 +102,70 @@ Kurzanleitung, um Rust auf einem Windows-PC zu installieren.
   
   info: cleaning up downloads & tmp directories
   ```
+
+**Kurzanleitung, um Rust unter *Linux* zu installieren.**
+
+To install Rust under Linux you might choose direct download using *curl*. 
+
+- Install *curl* if not yet available 
+- Download Rust package for Linux
+
+```
+>> sudo apt install curl
+>> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+info: downloading installer
+
+Welcome to Rust!
+
+This will download and install the official compiler for the Rust
+programming language, and its package manager, Cargo.
+
+Rustup metadata and toolchains will be installed into the Rustup
+home directory, located at:
+
+  /home/user/.rustup
+
+This can be modified with the RUSTUP_HOME environment variable.
+
+The Cargo home directory is located at:
+
+  /home/user/.cargo
+
+This can be modified with the CARGO_HOME environment variable.
+
+The cargo, rustc, rustup and other commands will be added to
+Cargo's bin directory, located at:
+
+  /home/user/.cargo/bin
+
+This path will then be added to your PATH environment variable by
+modifying the profile files located at:
+
+  /home/user/.profile
+  /home/user/.bashrc
+
+You can uninstall at any time with rustup self uninstall and
+these changes will be reverted.
+
+Current installation options:
+
+
+   default host triple: x86_64-unknown-linux-gnu
+     default toolchain: stable (default)
+               profile: default
+  modify PATH variable: yes
+
+1) Proceed with installation (default)
+2) Customize installation
+3) Cancel installation
+
+>> 1
+
+stable-x86_64-unknown-linux-gnu installed - rustc 1.67.1 (d5a82bbd2 2023-02-07)
+
+Rust is installed now. Great!
+```
 
 ### Konsolen Entwicklung
 
