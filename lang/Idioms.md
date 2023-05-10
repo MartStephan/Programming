@@ -74,6 +74,7 @@ Table of Contents
   * [Move\-Semantik](#move-semantik)
   * [Monaden](#monaden)
   * [Mutable/Immutable](#mutableimmutable)
+  * [Myths and Facts](#myths-and-facts)
   * [Narrowing Conversion](#narrowing-conversion)
   * [Nebenläufigkeit](#nebenl%C3%A4ufigkeit)
   * [Nullhypothese](#nullhypothese)
@@ -1114,6 +1115,10 @@ fn main()
 }
 ```
 
+## Myths and Facts
+
+Often there are a lot of myths by people concerning C++ in embedded world. As an introduction about myths and (as the opposite) facts I recommend to have a look at [39] and [40].
+
 ## Narrowing Conversion
 
 Eine *Narrowing Conversion* ist eine implizite Konvertierung in C/C++ mit Verlust der Datengenauigkeit. Die Konvertierung erfolgt von einem Integer-Typ oder einem *unscoped enum* in einen Integer Typ. Dies kann zu bösen Überraschungen führen und sollte nach Möglichkeit verhindert werden. 
@@ -2009,6 +2014,14 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [37] Robert C. Martin, Clean Code. Refactoring, Patterns, Testen und Techniken für sauberen Code. mitp, 2009. 
 
 [38] https://carstenwindler.de/software-quality, abgerufen am 24.02.2023
+
+[39] C++ Myths, Rainer Grimm, https://www.modernescpp.com/index.php/myths, abgerufen am 09. Mai 2023
+
+[40] C++ Facts, Rainer Grimm, https://www.modernescpp.com/index.php/facts, abgerufen am 09. Mai 2023
+
+[41] Technical Report on C++ Performance https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf
+
+[42] C++ Core Guidelines, https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines, abgerufen am 09. Mai 2023
 
 
 
