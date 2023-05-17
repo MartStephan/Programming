@@ -1,3 +1,7 @@
+---
+
+---
+
 # Rust
 
 [TOC]
@@ -65,6 +69,22 @@ Ziel von Rust ist es, sicher zu sein und Speicherfehler (segfaults) zu vermeiden
 
 Rust orientiert sich syntaktisch an C und C++.
 
+Es entstand von 2006 an als Projekt von dem Mozilla-Mitarbeiter Graydon Hoare. Mozilla hat die Sprache dann 2010 angekündigt. Die erste stabile Version 1.0 erblickte dann 2015 das Licht der Welt. 
+
+**Sicherheit**
+
+Das Beste zuerst: Rust kennt kein *null*. Dadurch hat man schon viele Probleme beseitigt. Alle Daten, die 'leer' sein können, bekommen stattdessen einen Datentyp *Option*.
+
+Weiterhin schmeisst der Rust-Compiler bei möglichen Data Races einen Fehler, Resourcen werden automatisch deallokiert und der Compiler meckert bei Out-of-scope Zugriffen.  
+
+**Expressivität**
+
+Rust ist eine ausdrucksstarke Sprache und bietet viele Patterns aus der funktionalen Programmierung: pattern matching, destucturing, streams, iterators und vieles mehr. Ausserdem kennt Rust *traits* und *generics*. 
+
+**Geschwindigkeit**
+
+Rust Binärdateien sind standalone, native Binaries. Sie konsumieren relativ wenig Speicherplatz und besitzen nur einen kleinen Memory Footprint. Wobei der Code üblicherweise stark performant ist. Und wie schon erwähnt: Rust benötigt keinen Garbage Collector. 
+
 **Eigenschaften**
 
 -  	statisch typisiert mit Typ-Inferenz, d.h. explizites Annotieren des Typs entfällt oft
@@ -84,7 +104,7 @@ Rust orientiert sich syntaktisch an C und C++.
 
 - Ich habe die Standardeinstellungen übernommen (speziell Installationsverzeichnis und PATH-Umgebung).
 
-- Überprüfe die Rust Toolchain Installation mit *rustup --version*. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
+- Überprüfe die Rust Toolchain Installation mit ***rustup --version***. Eventuell muß man Windows neu starten, um die PATH-Umgebungsvariable sichtbar zu machen. 
 
 - ```
   >> rustup --version
@@ -165,6 +185,13 @@ Current installation options:
 stable-x86_64-unknown-linux-gnu installed - rustc 1.67.1 (d5a82bbd2 2023-02-07)
 
 Rust is installed now. Great!
+```
+
+Mit ***rustc*** kann man die installierte Version der Sprache überprüfen. 
+
+```
+>> rustc --version
+>> rustc 1.63.0 (4b91a6ea7 2022-08-08)
 ```
 
 ### Konsolen Entwicklung
@@ -291,6 +318,38 @@ Zum schnellen Entwickeln hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
   
 
 - Und Voila - es ist vollbracht; *Hello World!* wurde ausgegeben
+
+## Zielsysteme (Targets)
+
+Rust unterstützt von Haus aus verschiedene Zielsysteme. So z.B. auch ARM-basierende Systeme. So ist es in Rust ganz einfach möglich von seinem Lieblingssystem für ein anderes System zu bauen. 
+
+Mit ***rustup toolchain list*** kann man die aktuell installierten Zielsysteme sich anzeigen lassen.
+
+Gib dir mit ***rustup target list*** alle verfügbaren Zielsysteme aus.
+
+Und installiere zusätzliche mit ***rustup target add <target_system>***.
+
+```
+# show all current installed target systems
+>> rustup toolchain list 
+>> stable-x86_64-pc-windows-msvc (default)
+
+# show all available targets
+>> rustup target list
+>> armv7-linux-androideabi
+>> armv7-unknown-linux-gnueabi
+# and so on and so on
+
+# install new target 
+>> rustup target add armv7-unknown-linux-gnueabi
+>> info: downloading component 'rust-std' for 'armv7-unknown-linux-gnueabi'
+>> info: installing component 'rust-std' for 'armv7-unknown-linux-gnueabi'
+
+# now build your Rust code for specified target
+>> cargo build --target armv7-unknown-linux-gnueabi
+```
+
+**Achtung:** rustup target add installiert nur die Rust Standard-Bibliothek für das angegebene Zielsystem. Üblicherweise müssen noch andere Werkzeuge installiert werden um tatsächlich Cross-Compilen zu können; insbesondere benötigt man einen Linker. Zum Beispiel benötigt man ein Android NDK um einen Cross-Compile für Android erfolgreich durchzuführen.
 
 ## Basics
 
@@ -940,13 +999,12 @@ fn main()
 
 **Result<T, E>**
 
-Result<T, E> kennt zwei Varianten.
+*Result<T, E>* hat seine Wuzeln in funktionalen Sprachen wie z.B. Haskell. Die Idee ist einen Typ *Result* zu haben, der zwei Varianten kennt. 
 
 ```rust
-enum Result<T, E>
-{
+enum Result<T, E> {
     Ok(T),
-    Err(E),
+    Err(E)
 }
 ```
 
@@ -1392,6 +1450,10 @@ Größeres Update.
 [10] Bewusst unvollständig: Programmiersprache Rust 1.40 führt #[non_exhaustive] ein, https://www.heise.de/developer/meldung/Bewusst-unvollstaendig-Programmiersprache-Rust-1-40-fuehrt-non-exhaustive-ein-4621122.html (abgerufen am 27.04.2020)
 
 [11] Announcing Rust 1.20, https://blog.rust-lang.org/2017/08/31/Rust-1.20.html (abgerufen am 1.5.2020)
+
+[12] Error Handling Patterns, Andrea Bergia, https://andreabergia.com/blog/2023/05/error-handling-patterns/ (abgerufen am 11.05.2023)
+
+[13] Programming WebAssembly with Rust, Kevin Hoffman, The Pragmatic Bookshelf
 
 
 
