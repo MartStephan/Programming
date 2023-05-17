@@ -17,6 +17,7 @@ Table of Contents
     * [Installation](#installation)
     * [Konsolen Entwicklung](#konsolen-entwicklung)
     * [Visual Studio Code](#visual-studio-code)
+  * [Zielsysteme](#zielsysteme-(targets))
   * [Basics](#basics)
     * [Kommentare](#kommentare)
     * [Datentypen](#datentypen)
