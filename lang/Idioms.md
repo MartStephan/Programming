@@ -21,6 +21,7 @@ Table of Contents
   * [Container](#container)
     * [Sequentielle Container](#sequentielle-container)
     * [Assoziative Container](#assoziative-container)
+  * [Conway's Law](#conway-s-law)
   * [Curiously Recurring Template Pattern (CRTP)](#curiously-recurring-template-pattern-crtp)
   * [Daemon](#daemon)
   * [Dangling Pointer](#dangling-pointer)
@@ -63,6 +64,7 @@ Table of Contents
     * [Microkernel](#microkernel)
     * [Monolithischer Kernel](#monolithischer-kernel)
   * [KISS](#kiss)
+  * [Kopplung und Kohäsion](#kopplung-und-koh%C3%A4sion)
   * [Koroutine](#koroutine)
   * [Lambda](#lambda)
   * [Literal](#literal)
@@ -335,6 +337,9 @@ Als Assoziative Container bezeichnet man Strukturen, die *key-value* Paare beinh
 | map                       | Jeder *Key* besitzt einen assoziierten *Value* |
 | multiset                  |                                                |
 | multimap                  |                                                |
+
+## Conway's Law
+In den späten 60er Jahren des letzten Jahrhunderts formulierte Melvin Conway das nach ihm benannte Conway's Law. Organisationen können nur Systeme entwerfen, die die Kommunikationsstrukturen dieser Organisationen abbilden. Die Organisationsstruktur beeinflusst oder determiniert somit die Softwarearchitektur. 
 
 ## Curiously Recurring Template Pattern (CRTP)
 
@@ -869,7 +874,12 @@ Bekannte Implementierungen eines Monolithischen Kernel sind Windows und LInux. D
 
 KISS seht für *Keep it simple,* *stupid* und besagt, dass eine Implementierung so einfach wie möglich gehalten werden soll. Man erhofft sich dadurch Vorteile in der Lesbarkeit, Nachvollziehbarkeit oder auch in der Anzahl der Fehler (je einfacher etwas umgesetzt wird, desto weniger Fehler sollten gemacht werden).  
 
+## Kopplung und Kohäsion
+Auf Englisch: Coupling and Cohesion.
+Zentrale Prinzipien der Softwarearchitektur sind Kopplung und Kohäsion. In Komponenten möchte man starke Kohäsion ("Dinge, die sich zusammen ändern, sind am selben Ort") und zwischen Komponenten nur eine lockere Kopplung ("Änderungen in einer Komponente haben wenig oder keine Auswirkungen auf andere Komponenten").
+
 ## Koroutine
+
 
 ## Lambda
 
