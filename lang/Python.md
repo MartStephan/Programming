@@ -1403,6 +1403,20 @@ Möglichkeit mit Hilfe von Python und Delphi die Annehmlichkeiten eines GUI-Buil
 
 [22] Eine Bibliothek, um Deep-Learning-Modelle zu erstellen. Die drei Hauptschwerpunkte sind: Transportsysteme (autonomes Fahren), Fertigungsindustrie (Objekterkennung, Optimierung, Robotik) und Gesundheitsvorsorge (Bildanalyse). 
 
+### Pandas
+
+Pandas ist eine der am häufigsten verwendeten Python-Bibliotheken im Bereich Datenanalyse, -manipulation und -visualisierung. Es kann Daten aus verschiedenen Quellen wie JSON-, CSV-, Excel- und SQL-Dateien lesen. 
+Hervorzuhebende Eigenschaften von Pandas sind: 
+- Einfache Datenverarbeitung
+Pandas kann Daten aus einer Vielzahl von Quellen lesen und in ein einheitliches Format umwandeln. 
+- Flexibilität bei der Verwaltung von Daten
+Daten können gefiltert, sortiert, gruppiert und transformiert werden. 
+- Effektive Datenanalyse 
+Die Bibliothek wurde entwickelt, um große Datenmengen parallel zu verarbeiten. 
+- Flexibilität bei der Visualisierung von Daten
+Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
+
+
 ## Literatur  
 
 [1] Python – Das umfassende Handbuch, <http://openbook.galileocomputing.de/python/>, abgerufen am 18. März 2014
@@ -1451,7 +1465,9 @@ Möglichkeit mit Hilfe von Python und Delphi die Annehmlichkeiten eines GUI-Buil
 
 [23] https://github.com/pyscripter/python4delphi
 
-[24] entwickler magazin, 8.2022, The Beauty of Python - Teil 2, Michael Inden
+[24] entwickler magazin, 08.2022, The Beauty of Python - Teil 2, Michael Inden
+
+[25] entwickler magazin, 06.2023, Datenanalyse und -manipulation in Einfach
 
 
 
