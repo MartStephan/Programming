@@ -8,10 +8,10 @@ Table of Contents
 * [Idioms](#idioms)
 * [Table of Contents](#table-of-contents)
   * [Standardisierung](#standardisierung)
-	* [IAB](#iab)
-	* [IETF](#ietf)
-	* [IRTF](#irtf)
-	* [ICANN](#icann)
+    * [IAB](#iab)
+    * [IETF](#ietf)
+    * [IRTF](#irtf)
+    * [ICANN](#icann)
     * [RFCs](#rfcs)
     * [W3C](#w3c)
     * [ECMA](#ecma)
@@ -21,8 +21,8 @@ Table of Contents
       * [WebAssembly](#webassembly)
       * [HTML](#html)
       * [CSS](#css)
-	  * [XML](#xml)
-      * [Bootstrap](#bootstrap)
+      * [XML](#xml)
+    * [Client-Server-Paradigma](#client-server-paradigma)	  
     * [Frontends](#frontends)
     * [Backends](#backends)
     * [Authentifizierung](#authentifizierung)
@@ -50,7 +50,9 @@ Table of Contents
       * [WSGI](#wsgi)
   * [GraphQL](#graphql)
   * [JSON\-API](#json-api)
+  * [Prototyping](#prototyping)
   * [Frameworks](#frameworks)
+    * [Bootstrap](#bootstrap)
     * [Flask](#flask)
   * [Literatur](#literatur)
 
@@ -180,11 +182,13 @@ XML ist Ausgangspunkt für eine ganze Reihe anwendungsspezifischer Markup-Sprach
 
 XML beschreibt nur die Struktur; die Formatierung eines Dokuments wird durch die Dokument-Formatbeschreibungssprache in Form von Stylesheets ähnlich zu HTML bestimmt. 
 
-#### Bootstrap
+### Client-Server-Paradigma
 
-Bootstrap ist ein von der Firma Twitter entwickeltes CSS-Framework. Es liefert zahlreiche CSS-Klassen, die die Handhabung von CSS vereinfachen. Die Bootstrap-Komponenten erfordern auch JavaScript, wobei hier im Hintergrund jQuery zum Einsatz kommt. 
+Das Client-Server-Paradigma ist das vorherrschende Verarbeitungsprinzip in Rechnernetzen. 
 
-Die aktuelle Version ist Bootstrap 4.
+- Client übernimmt Initiative und fordert vom Server angebotene Dienstleistung und Ressourcen an.
+- Clients können verschiedene Server kontaktieren und Server können verschiedene Clients bedienen.
+- Bevor Server Anforderung des Clients erfüllt, überprüft er dessen Berechtigung - Authentizität und Authorisation - zur Inanspruchnahme des Dienstes bzw. der Ressource. 
 
 ### Frontends
 
@@ -591,8 +595,6 @@ Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in al
 
 *AJAX* steht für Asynchronous JavaScript und XML. *AJAX* ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
 
-
-
 #### Responsive Web Design - RWD
 
 *RWD* steht für *Responsive Web Design*. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. *Responsive Web Design* realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie *Bootstrap*. 
@@ -639,6 +641,12 @@ In der Praxis verwendet man of Prototyping, um ein Gefühl zu haben, ob meine Si
 - POP
 
 ## Frameworks
+
+### Bootstrap
+
+Bootstrap ist ein von der Firma Twitter entwickeltes CSS-Framework. Es liefert zahlreiche CSS-Klassen, die die Handhabung von CSS vereinfachen. Die Bootstrap-Komponenten erfordern auch JavaScript, wobei hier im Hintergrund jQuery zum Einsatz kommt. 
+
+Die aktuelle Version ist Bootstrap 4.
 
 ### Flask
 
