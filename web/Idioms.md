@@ -8,10 +8,10 @@ Table of Contents
 * [Idioms](#idioms)
 * [Table of Contents](#table-of-contents)
   * [Standardisierung](#standardisierung)
-    * [IAB](#iab)
-    * [IETF](#ietf)
-    * [IRTF](#irtf)
-    * [ICANN](#icann)
+	* [IAB](#iab)
+	* [IETF](#ietf)
+	* [IRTF](#irtf)
+	* [ICANN](#icann)
     * [RFCs](#rfcs)
     * [W3C](#w3c)
     * [ECMA](#ecma)
@@ -21,8 +21,8 @@ Table of Contents
       * [WebAssembly](#webassembly)
       * [HTML](#html)
       * [CSS](#css)
-      * [XML](#xml)
-    * [Client-Server-Paradigma](#client-server-paradigma)	  
+	  * [XML](#xml)
+      * [Bootstrap](#bootstrap)
     * [Frontends](#frontends)
     * [Backends](#backends)
     * [Authentifizierung](#authentifizierung)
@@ -50,9 +50,7 @@ Table of Contents
       * [WSGI](#wsgi)
   * [GraphQL](#graphql)
   * [JSON\-API](#json-api)
-  * [Prototyping](#prototyping)
   * [Frameworks](#frameworks)
-    * [Bootstrap](#bootstrap)
     * [Flask](#flask)
   * [Literatur](#literatur)
 
@@ -182,13 +180,11 @@ XML ist Ausgangspunkt für eine ganze Reihe anwendungsspezifischer Markup-Sprach
 
 XML beschreibt nur die Struktur; die Formatierung eines Dokuments wird durch die Dokument-Formatbeschreibungssprache in Form von Stylesheets ähnlich zu HTML bestimmt. 
 
-### Client-Server-Paradigma
+#### Bootstrap
 
-Das Client-Server-Paradigma ist das vorherrschende Verarbeitungsprinzip in Rechnernetzen. 
+Bootstrap ist ein von der Firma Twitter entwickeltes CSS-Framework. Es liefert zahlreiche CSS-Klassen, die die Handhabung von CSS vereinfachen. Die Bootstrap-Komponenten erfordern auch JavaScript, wobei hier im Hintergrund jQuery zum Einsatz kommt. 
 
-- Client übernimmt Initiative und fordert vom Server angebotene Dienstleistung und Ressourcen an.
-- Clients können verschiedene Server kontaktieren und Server können verschiedene Clients bedienen.
-- Bevor Server Anforderung des Clients erfüllt, überprüft er dessen Berechtigung - Authentizität und Authorisation - zur Inanspruchnahme des Dienstes bzw. der Ressource. 
+Die aktuelle Version ist Bootstrap 4.
 
 ### Frontends
 
@@ -595,6 +591,8 @@ Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in al
 
 *AJAX* steht für Asynchronous JavaScript und XML. *AJAX* ist die Basis für Single Page Applications und ermöglicht ein clientseitiges Rendering. Im klassischen Modell werden komplette Seiten ausgetauscht. Bei einer modernen Webanwendung (Web2.0/AJAX-Modell/SPAs) wird die Webseite z.B. per Document Object Model auf Client-Seite aktualisiert. 
 
+
+
 #### Responsive Web Design - RWD
 
 *RWD* steht für *Responsive Web Design*. Es bezeichnet ein Konzept im Rahmen der Gestaltung von Webseiten, das ein komfortables Lesen der Webseiten auf jeder Bildschirmgröße ohne Scrolling erlaubt. *Responsive Web Design* realisiert man mit Box- beziehungsweise Flexbox-Modell in CSS direkt oder mit darauf aufbauenden Frameworks wie *Bootstrap*. 
@@ -641,12 +639,6 @@ In der Praxis verwendet man of Prototyping, um ein Gefühl zu haben, ob meine Si
 - POP
 
 ## Frameworks
-
-### Bootstrap
-
-Bootstrap ist ein von der Firma Twitter entwickeltes CSS-Framework. Es liefert zahlreiche CSS-Klassen, die die Handhabung von CSS vereinfachen. Die Bootstrap-Komponenten erfordern auch JavaScript, wobei hier im Hintergrund jQuery zum Einsatz kommt. 
-
-Die aktuelle Version ist Bootstrap 4.
 
 ### Flask
 
@@ -698,6 +690,18 @@ $> flask run
 
 ### Vue 
 
+## Baukästen
+Es gibt viele Anbieter von sogenannten Website-Baukästen, mit denen sich einfach und schnell Webseiten erstellen lassen sollen. Einige Beispiele sind: 
+- Wix ADI https://www.wix.com/
+- Jimdo Dolphin https://www.jimdo.com/de/
+- Squarespace AI https://squarespace.com/
+- Webflow https://webflow.com/
+
+Eine gute Übersicht über Web-Design Helferlein findest du hier: 
+- AI Design Tools to Optimize Your Design Workflow https://www.mailmodo.com/guides/ai-design-tools/
+
+
+
 ## Literatur 
 
 [1] Bootstrap, https://getbootstrap.com/, abgerufen am 08.12.2019
@@ -731,3 +735,8 @@ $> flask run
 [15] openHPI, Zum Web-Profi in drei Schritten, https://open.hpi.de/courses/webtech-exam-2, abgerufen am 29.09.2022
 
 [16] HTTP-Status-Codes, https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml, abgerufen am 2.10.2022
+
+[17] Websites programmieren mit KI, https://www.benutzerfreun.de/newsletter/websites-programmieren-mit-ki-newsletter-8-2023/, abgerufen am 09.08.2023
+
+[18] AI Design Tools to Optimize Your Design Workflow, https://www.mailmodo.com/guides/ai-design-tools/, abgerufen am 09.08.2023
+
