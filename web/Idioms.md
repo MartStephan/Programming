@@ -50,8 +50,13 @@ Table of Contents
       * [WSGI](#wsgi)
   * [GraphQL](#graphql)
   * [JSON\-API](#json-api)
+  * [Prototyping](#prototyping)
   * [Frameworks](#frameworks)
     * [Flask](#flask)
+    * [Angular](#angular)
+    * [React](#react)
+    * [Vue](#´vue)
+    * [Svelte](#svelte)
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
@@ -125,9 +130,34 @@ Beschreibungssprache für Hypermedia Dokumente
 
 #### WebAssembly
 
-Bei WebAssembly handelt es sich um einen Binärcode für das Web, der durch die JavaScript-Runtime des Zielbrowsers direkt ausgeführt wird. 
+Bei WebAssembly handelt es sich um einen Binärcode für das Web, der durch die JavaScript-Runtime des Zielbrowsers direkt ausgeführt wird. Es wurde von einem Team aus Entwicklern von Mozilla, Google, Microsoft und Apple entworfen und entwickelt. 
 
-Inzwischen kann man mit wasm fast jede Programmiersprache auch für das Web kompilieren. 
+Inzwischen kann man mit *wasm* fast jede Programmiersprache auch für das Web kompilieren. 
+
+WebAssembly wurde entwickelt, um die folgenden Ziele zu erreichen:
+
+- *Effizienz*
+
+WebAssembly soll eine bessere Leistung bieten als JavaScript, da es als Binärcode interpretiert wird. 
+
+- *Sicherheit*
+
+Es ist wichtig, dass WebAssembly in einer sicheren Sandbox-Umgebung im Browser ausgeführt wird. 
+
+- *Sprachunabhängigkeit*
+
+WebAssembly ist so entworfen, dass es nicht an eine bestimmte Programmiersprache gebunden ist. 
+
+- *Plattformunabhängigkeit*
+
+WebAssembly soll auf verschiedenen Betriebssystemen und Hardwarearchitekturen lauffähig sein. 
+
+Der Prozess, eine Programmiersprache in WebAssembly zu kompilieren, umfasst normalerweise folgende Schritte:
+
+1. Schreiben des Quellcodes in der gewählten Programmiersprache
+2. Verwenden eines speziellen Compilers
+3. Übersetzen in WebAssembly
+4. Bereitstellung im Browser
 
 #### HTML
 
@@ -585,7 +615,7 @@ REST hat den Nachteil, dass bei zunehmender Komplexität und sehr großen Umgebu
 
 SPA steht für Single Page Application. Eine SPA ist eine Webanwendung, die keinen Seitenwechsel (Roundtrip) durchführt, sondern die Anzeige nur durch Austausch von Seitenelementen via JavaScript/DOM verändert. Es gibt dabei also keine serverseitige Seitennavigation. Die URL ändert sich nicht. Initial wird eine komplette HTML-Seite oder zumindest das Grundgerüst einer Webseite in einem HTML-Dokument von dem Server geladen. Die Seite lädt anschließend Daten über Webservices (z.B. REST-basierte Dienste) nach und erzeugt die Darstellung clientseitig. Eine SPA wirkt damit wie eine Desktop-Anwendung. 
 
-Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in aller Munde: Angular, Vue und React. Üblicherweise sollte man auf eine dieser Lösungen zurückgreifen, da eine Eigenentwicklung in den seltensten Fällen sinnvoll ist, da man sich dann um sehr viele Standardprobleme in der Applikationsentwicklung selbst kümmern muss. 
+Aktuell sind drei große Framework-Lösungen für Single-Page-Applications in aller Munde: Angular, Vue und React. Daneben gibt es z.B. noch Svelte. Üblicherweise sollte man auf eine dieser Lösungen zurückgreifen, da eine Eigenentwicklung in den seltensten Fällen sinnvoll ist, da man sich dann um sehr viele Standardprobleme in der Applikationsentwicklung selbst kümmern muss. 
 
 #### AJAX
 
@@ -686,9 +716,19 @@ $> flask run
 
 ### Angular
 
+Ein Single Page Applications Framework von Google. Es setzt auf TypeScript mit all den Vorteilen wie statische Typisierung und Generics. 
+
 ### React
 
+SPA Framework
+
 ### Vue 
+
+SPA Framework
+
+### Svelte
+
+SPA Framework
 
 ## Baukästen
 Es gibt viele Anbieter von sogenannten Website-Baukästen, mit denen sich einfach und schnell Webseiten erstellen lassen sollen. Einige Beispiele sind: 
