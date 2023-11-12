@@ -44,6 +44,8 @@ Table of Contents
     * [scikit-learn](#scikit-learn)
     * [SymPy](#sympy)
     * [Chainer](#chainer)
+  * [Verschiedenes](#verschiedenes)
+    * [Validierungstools Statische Typisierung](#validierungstools-statische-typisierung)
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
@@ -1415,6 +1417,41 @@ Daten können gefiltert, sortiert, gruppiert und transformiert werden.
 Die Bibliothek wurde entwickelt, um große Datenmengen parallel zu verarbeiten. 
 - Flexibilität bei der Visualisierung von Daten
 Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
+
+## Verschiedenes
+
+### Validierungstools Statische Typisierung
+
+Vorweg: Python ist eine sogenannte dynamisch typisierte Sprache. Gleichzeitig zählt Python jedoch zu den stark typisierten Sprachen. Was bedeutet das? Zum einen bedeutet dynamisch typisiert, dass der Typ von Variablen erst zur Laufzeit festgelegt wird. Allerdings ist Python auch stark typisiert, was bedeutet, dass, wenn zur Laufzeit der Typ festgelegt wurde, er nicht so ohne weiteres implizit auf einen anderen Typ konvertiert wird. 
+
+Es gibt verschiedene Validierungstools zur Statischen Typisierung. Die Wichtigsten sind: 
+
+- Mypy
+- Pyre (Facebook)
+- Pytype (Google)
+- Pyright (Microsoft)
+
+Ein kurzes Beispiel zur Typisierung in Python
+
+```python
+#!usr/bin/python
+
+if __name__ == '__main__':
+   print("hallo")
+
+   a_number = 123
+   print(a_number)
+
+   # geht nicht - TypeError: unsupported operand type(s) for +=: 'int' and 'str'
+   # a_number += "4"
+
+   # ABER: das geht - die erneute Zuweisung zur Variablen a_number setzt einfach die Verknüpfung 
+   # des Labels a_number von einem Objekt zum nächsten
+   a_number = "1234"
+   print(a_number)
+
+```
+
 
 
 ## Literatur  
