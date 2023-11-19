@@ -1395,7 +1395,17 @@ Möglichkeit mit Hilfe von Python und Delphi die Annehmlichkeiten eines GUI-Buil
 
 ### scikit-learn
 
-[20] Eine Bibliothek für maschinelles Lernen. Sie kann für eine Vielzahl von Anwendungen verwendet werden, darunter Klassifizierung, Regression, Clustering und Modellauswahl.
+[20] Eine Bibliothek für maschinelles Lernen. Sie kann für eine Vielzahl von Anwendungen verwendet werden, darunter Klassifizierung, Regression, Clustering und Modellauswahl.  Wird also überwiegend für statistische Verfahren verwendet. Darüber hinaus bietet sie aber auch eine Möglichkeit zum Trainieren neuronaler Netze, Sie eignet sich für den schnellen Einstieg in Datentransformation und Machine-Learning-Algorithmen.   
+
+![](https://github.com/MartStephan/Programming/blob/master/lang/images/scikit-learn-cheatsheet.png)
+
+[^]: Image is from scikit-learn. You can find the clickable original under https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
+
+
+
+### PyTorch
+
+PyTorch ist das wohl populärste Framework, um künstliche neuronale Netze zu definieren, zu trainieren und anzuwenden. Es verbirgt die komplexen KI-Algorithmen unter einer entwicklerfreundlichen Programmierschnittstelle.  
 
 ### SymPy
 
@@ -1505,6 +1515,8 @@ if __name__ == '__main__':
 [24] entwickler magazin, 08.2022, The Beauty of Python - Teil 2, Michael Inden
 
 [25] entwickler magazin, 06.2023, Datenanalyse und -manipulation in Einfach
+
+[26] Choosing the right estimator, https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html, abgerufen am 19.11.2023
 
 
 
