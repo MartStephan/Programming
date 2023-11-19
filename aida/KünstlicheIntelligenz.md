@@ -49,6 +49,14 @@ Table of Contents
     * [k\-Means](#k-means)
     * [Temporal Difference Learning](#temporal-difference-learning)
     * [Reinforcement Learning Applications](#reinforcement-learning-applications)
+  * [Bibliotheken](#bibliotheken)
+    * [Matplotlib](#matplotlib)
+    * [TensorFlow](#tensorflow)
+    * [scikit-learn](#scikit-learn)
+    * [PyTorch](#pytorch)
+    * [SymPy](#sympy)
+    * [Chainer](#chainer)
+    * [Pandas](#pandas)
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
@@ -303,6 +311,50 @@ Backgammon, Arcade Games like PacMan, Go
 
 
 
+## Bibliotheken
+
+### Matplotlib
+
+Eine Open-Source-Bibliothek, die häufig für die Visualisierung von Daten mit Hilfe von Diagrammen verwendet wird. Mit nur wenigen Codezeilen können Grafiken, Tortendiagramme, Streudiagramme, Histogramme usw. erstellt werden.
+
+### TensorFlow
+
+Ein beliebtes Open-Source-Deep-Learning-Framework für numerische Berechnungen. Die Bibliothek wird auch für maschinelles Lernen verwendet. TensorFlow wurde von den Forschern des Google-Brain-Teams innerhalb der Google-AI-Organisation entwickelt und wird heute von vielen Wissenschaftlern eingesetzt. 
+
+### scikit-learn
+
+Eine Bibliothek für maschinelles Lernen. Sie kann für eine Vielzahl von Anwendungen verwendet werden, darunter Klassifizierung, Regression, Clustering und Modellauswahl.  Wird also überwiegend für statistische Verfahren verwendet. Darüber hinaus bietet sie aber auch eine Möglichkeit zum Trainieren neuronaler Netze, Sie eignet sich für den schnellen Einstieg in Datentransformation und Machine-Learning-Algorithmen.   
+
+![](https://github.com/MartStephan/Programming/blob/master/lang/images/scikit-learn-cheatsheet.png)
+
+Image is from scikit-learn. You can find the clickable original under https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
+
+### PyTorch
+
+PyTorch ist das wohl populärste Framework, um künstliche neuronale Netze zu definieren, zu trainieren und anzuwenden. Es verbirgt die komplexen KI-Algorithmen unter einer entwicklerfreundlichen Programmierschnittstelle.  
+
+### SymPy
+
+Eine Bibliothek, die umfassende Methoden für symbolische Berechnungen bietet und im Sinne eines Computer-Algebra--Systems genutzt werden kann. Symbolisches Rechnen ermöglicht das Lösen von Gleichungen, z.B. die Auflösung nach einer bestimmten Variable. Dabei wird eine exakte Lösung ermittelt und nicht nur ein numerischer Näherungswert bestimmt Symbolisches Rechnen gilt mit Blick auf den Einsatz am Computer als deutlich komplexer als die Verwendung von Näherungsverfahren. Derartige Algorithmen selbst zu entwickeln ist sehr anspruchsvoll.
+
+### Chainer
+
+Eine Bibliothek, um Deep-Learning-Modelle zu erstellen. Die drei Hauptschwerpunkte sind: Transportsysteme (autonomes Fahren), Fertigungsindustrie (Objekterkennung, Optimierung, Robotik) und Gesundheitsvorsorge (Bildanalyse). 
+
+### Pandas
+
+Pandas ist eine der am häufigsten verwendeten Python-Bibliotheken im Bereich Datenanalyse, -manipulation und -visualisierung. Es kann Daten aus verschiedenen Quellen wie JSON-, CSV-, Excel- und SQL-Dateien lesen. 
+Hervorzuhebende Eigenschaften von Pandas sind: 
+
+- Einfache Datenverarbeitung
+  Pandas kann Daten aus einer Vielzahl von Quellen lesen und in ein einheitliches Format umwandeln. 
+- Flexibilität bei der Verwaltung von Daten
+  Daten können gefiltert, sortiert, gruppiert und transformiert werden. 
+- Effektive Datenanalyse 
+  Die Bibliothek wurde entwickelt, um große Datenmengen parallel zu verarbeiten. 
+- Flexibilität bei der Visualisierung von Daten
+  Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
+
 ## Literatur
 
 [1] Machine Learning: The New AI, Ethem Alpaydin
@@ -317,9 +369,21 @@ Backgammon, Arcade Games like PacMan, Go
 
 [6] Rosenblatt. 1962. Principles of Neurodynamics. 
 
-[7] LeCun, Boser, Denker, Henderson, Howard, Hubbard, Jackel. 1989. "Backpropagation Applied to Handwritten Zip C'ode Recognition."
+[7] LeCun, Boser, Denker, Henderson, Howard, Hubbard, Jackel. 1989. "Backpropagation Applied to Handwritten Zip Code Recognition."
 
-[8]  
+[8] https://matplotlib.org/, abgerufen am 19.11.2023
+
+[9] https://www.tensorflow.org/, abgerufen am 19.11.2023
+
+[10] https://scikit-learn.org/stable/index.html, abgerufen am 19.11.2023
+
+[11] https://pytorch.org/, abgerufen am 19.11.2023
+
+[12] https://www.sympy.org/en/index.html, abgerufen am 19.11.2023
+
+[13] https://chainer.org/, abgerufen am 19.11.2023
+
+[14] https://pandas.pydata.org/, abgerufen am 19.11.2023
 
 
 
