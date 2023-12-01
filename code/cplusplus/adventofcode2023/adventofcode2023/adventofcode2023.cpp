@@ -4,9 +4,13 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <array>
 
 
 constexpr uint32_t max_line_length = 1024u;
+enum class Direction { Forward, Backward };
+std::array<std::string, 9> digitarray = { "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+std::array<int32_t, 9> intarray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 
 
 int readline(std::vector<std::string>& input) {
@@ -37,27 +41,76 @@ int readline(std::vector<std::string>& input) {
 }
 
 
-int32_t twodigitnumber(std::string& line) {
-   int32_t digit1 = 0;
-   int32_t digit2 = 0;
-   
-   for (auto i = 0u; i < line.length(); i++) {
-      int32_t cbegin = static_cast<int32_t>(line[i]) - 48;
-      if (cbegin >= 0 && cbegin <= 9) {
-         digit1 = cbegin;
-         break;
+int32_t find_digit(std::string& line, Direction direction, int32_t& pos) {
+   int32_t digit = 0;
+   if (direction == Direction::Forward) {
+      for (auto i = 0u; i < line.length() - 1; i++) {
+         digit = static_cast<int32_t>(line[i]) - 48;
+         if (digit >= 0 && digit <= 9) {
+            pos = i;
+            break;
+         }
       }
    }
 
-   for (auto i = line.length() - 1; i >= 0; i--) {
-      int32_t cend = static_cast<int32_t>(line[i]) - 48;
-      if (cend >= 0 && cend <= 9) {
-         digit2 = cend;
-         break;
+   if (direction == Direction::Backward) {
+      for (auto i = line.length() - 1; i != 0; i--) {
+         digit = static_cast<int32_t>(line[i]) - 48;
+         if (digit >= 0 && digit <= 9) {
+            pos = i;
+            break;
+         }
       }
    }
 
-   return digit1 * 10 + digit2;
+   return digit;
+}
+
+
+/// <summary>
+///  find spelled digit within a string or 0 if none found
+/// </summary>
+/// <param name="line"></param>
+/// <param name="direction"></param>
+/// <param name="pos"></param>
+/// <returns></returns>
+int32_t find_spelled_digit(std::string& line, Direction direction, int32_t& pos) {
+   //std::cout << line;
+   int32_t digit = 0;
+
+   if (direction == Direction::Forward) {
+      std::string::size_type minpos = std::string::npos;
+      for (std::size_t i = 0; i < digitarray.size(); i++) {
+         std::string::size_type begin = line.find(digitarray[i]);
+         if (begin != std::string::npos) {
+            if (begin < minpos) {
+               minpos = begin;
+               digit = intarray[i];
+            }
+         }
+      }
+   }
+
+   if (direction == Direction::Backward) {
+      std::string::size_type maxpos = std::string::npos;
+      for (std::size_t i = 0; i < digitarray.size(); i++) {
+         std::string::size_type begin = line.find(digitarray[i]);
+         if (begin != std::string::npos) {
+            if (maxpos == std::string::npos) {
+               maxpos = begin;
+               digit = intarray[i];
+            }
+            if (maxpos != std::string::npos) {
+               if (begin > maxpos) {
+                  maxpos = begin;
+                  digit = intarray[i];
+               }
+            }
+         }
+      }
+   }
+
+   return digit;
 }
 
 
@@ -71,10 +124,26 @@ int main() {
     for (std::string& line : lines) {
        std::cout << line;
     }
+
+    /*
+    std::cout << "\nPart One\n";
     int32_t sum = 0;
+    int32_t pos = 0;
     for (std::string& line : lines) {
-       sum += twodigitnumber(line);
+       int32_t tens = find_digit(line, Direction::Forward, pos);
+       int32_t unit = find_digit(line, Direction::Backward, pos);
+       sum += tens * 10 + unit;
     }
-    
     std::cout << "Sum: " << sum << std::endl;
+    */
+
+    // Part Two
+    std::cout << "\nPart Two\n";
+    int32_t pos = 0;
+    for (std::string& line : lines) {
+       int32_t tens = find_spelled_digit(line, Direction::Forward, pos);
+       int32_t unit = find_spelled_digit(line, Direction::Backward, pos);
+       std::cout << tens << '\n';
+       std::cout << unit << '\n';
+    }
 }
