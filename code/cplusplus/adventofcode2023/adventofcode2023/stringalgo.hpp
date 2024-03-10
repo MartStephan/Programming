@@ -2,9 +2,11 @@
 #define STRINGALGO_HPP
 
 #include <array>
+#include <vector>
 #include <string>
 #include <sstream>
 #include <iomanip>
+#include <string_view>
 
 
 /// <summary>
@@ -54,5 +56,21 @@ template <class Dgt>
 std::string digit_to_string(const Dgt& d, const bool uppercase = false) {
    return digit_to_string(std::cbegin(d), std::cend(d), uppercase);
 }
+
+
+/// <summary>
+/// Convert character to integer (here: unsigned char)
+/// </summary>
+/// <param name="ch"></param>
+/// <returns></returns>
+unsigned char character_to_int(char const ch);
+
+
+/// <summary>
+/// Convert two char signs into an unsigned char integer
+/// </summary>
+/// <param name="str"></param>
+/// <returns></returns>
+std::vector<unsigned char> string_to_digit(std::string_view str);
 
 #endif // STRINGALGO_HPP

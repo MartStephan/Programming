@@ -94,3 +94,22 @@ int32_t find_spelled_digit(std::string& line, Direction direction, int32_t& pos)
       return -1;
    }
 }
+
+
+unsigned char character_to_int(char const ch) {
+   if (ch >= '0' && ch <= '9') return ch - '0';
+   if (ch >= 'A' && ch <= 'F') return ch - 'A' + 10;
+   if (ch >= 'a' && ch <= 'f') return ch - 'a' + 10;
+
+   // @todo: throw std::invalid_argument("Invalid");
+}
+
+
+std::vector<unsigned char> string_to_digit(std::string_view str) {
+   std::vector<unsigned char> result;
+   for (size_t i = 0; i < str.size(); i += 2) {
+      result.push_back((character_to_int(str[i]) << 4) | character_to_int(str[i + 1]));
+   }
+   return result;
+}
+
