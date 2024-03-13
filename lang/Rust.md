@@ -56,7 +56,7 @@ Freigegeben am 25.6.2015.
 
 Freigegeben am 6.8.2015.
 
-aktuelle **Version 1.63.0** vom 08. August 2022
+aktuelle **Version 1.73.0** vom 05. Oktober 2023
 
 
 
@@ -109,9 +109,11 @@ Rust Binärdateien sind standalone, native Binaries. Sie konsumieren relativ wen
 
 - ```
   >> rustup --version
-  rustup 1.21.1 (7832b2ebe 2019-12-20)
+  rustup 1.25.1 (bb60b1e89 2022-07-12)
+  info: This is the version for the rustup toolchain manager, not the rustc compiler.
+  info: The currently active `rustc` version is `rustc 1.63.0 (4b91a6ea7 2022-08-08)`
   ```
-
+  
 - Mit *rustup update* kann man sich die aktuelle Version der Rust Language herunterladen. Diese sollte bei einer Neuinstallation immer auf der letzten aktuellen stabilen Release sein.
 
 - ```
@@ -568,7 +570,7 @@ fn main()
 
 Rust hat auch einen Mechanismus, um Werte ohne Ownership zu referenzieren: Bezeichnenderweise *references* bezeichnet. Ähnlich wie in C++ kann man dafür den &-Operator nutzen: Ein &String s2 kann also auf einen String s1 referenzieren, ohne die Ownership zu übertragen.
 
-### Ownership
+### Ownership und Borrowing
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
 
