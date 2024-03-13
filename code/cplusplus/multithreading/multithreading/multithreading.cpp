@@ -16,7 +16,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <vector>
-#include <iostream>
+
+#include "multithreading_quicksort.hpp"
+
 
 constexpr uint32_t max_line_length = 1024u;
 
@@ -58,6 +60,49 @@ int readcsv() {
    fclose(file);
 
    return 0;
+}
+
+
+/*
+ * @brief Partition container content
+ */
+template <class RandomIt>
+RandomIt partitionIter2(RandomIt first, RandomIt last) {
+
+   // select the rightmost element as pivot
+   auto pivot = *first;
+   auto i = first + 1;
+   auto j = last - 1;
+
+   while (i <= j)
+   {
+      while (i <= j && *i <= pivot) i++;
+      while (i <= j && *j > pivot) j--;
+      if (i < j) std::iter_swap(i, j);
+   }
+
+   std::iter_swap(i - 1, first);
+
+   return i - 1;
+}
+
+
+/**
+* @brief @brief Quickort recursive Iterators
+*/
+template <class RandomIt>
+void quickSortIter2(RandomIt first, RandomIt last) {
+   if (first < last) {
+
+      // find the pivot element such that
+      auto pivot = partitionIter2(first, last);
+
+      // recursive call on the left of pivot
+      quickSortIter2(first, pivot);
+
+      // recursive call on the right of pivot 
+      quickSortIter2(pivot + 1, last);
+   }
 }
 
 
@@ -127,8 +172,9 @@ int main() {
    int res = readcsv();
    printStations();
    if (res == 0) {
-      int32_t size = stations.size();
-      quickSort(stations, 0, size - 1); 
+      //size_t size = stations.size();
+      //quickSort(stations, 0, size - 1); 
+      quickSortIter2(std::begin(stations), std::end(stations));
    }
    printStations();
 
