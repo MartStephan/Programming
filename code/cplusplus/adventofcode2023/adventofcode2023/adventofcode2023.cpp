@@ -5,6 +5,7 @@
 #include <string>
 #include <array>
 #include <cassert>
+#include <cstdint>
 
 #include "fileio.h"
 #include "stringalgo.hpp"
@@ -37,6 +38,7 @@ int32_t map_reduce(int32_t digit, int32_t dpos, int32_t spelled, int32_t spos, D
 
 
 int main() {
+   /*
    std::cout << "Advent of Code 2023\n";
 
    std::cout << "Day 1\n";
@@ -46,6 +48,7 @@ int main() {
    for (std::string& line : lines) {
       std::cout << line;
    }
+   */
 
    /*
    /// Part One
@@ -91,8 +94,17 @@ int main() {
    std::cout << "result vec to str " << digit2string << std::endl;
    assert(digit2string == "BACD01F09901");
 
-   std::array<unsigned char, 6> a{1, 2, 3, 4, 5, 6};
+   std::array<unsigned char, 6> a{ 1, 2, 3, 4, 5, 6 };
    digit2string = digit_to_string(a, true);
    std::cout << "result array to str " << digit2string << std::endl;
-};
+
+   // string to digits
+   std::vector<unsigned char> string2digit = string_to_digit("BAADF00D42");
+   for (unsigned char &c: string2digit) {
+      std::cout << c << " ";
+   }
+   std::cout << std::endl;
+
+   return 0;
+}
 
