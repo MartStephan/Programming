@@ -892,6 +892,10 @@ Weitere Eigenschaften:
 -  	Kann von einer Funktion zurückgegeben werden
 -  	Leitet den Rückgabewert selbständig her
 
+### Lazy
+
+Ein Begriff aus der Programmierwelt, um z.B. Komponenten erst bei Bedarf (lazy) zu laden. 
+
 ## Literal
 
 Das Wort ‚Literal‘ kommt aus dem Lateinischen und bedeutet ‚Buchstabe‘ (lateinisch littera). Als Literal bezeichnet man eine Zeichenfolge, die zur direkten Darstellung der Werte von Basistypen definiert bzw. zulässig ist.  
@@ -977,6 +981,10 @@ if __name__ == '__main__':
 #> 75025
 #> 0.0010s - using memoisation
 ```
+
+## Memory Model
+
+https://arangodb.com/2021/02/cpp-memory-model-migrating-from-x86-to-arm/
 
 ## Microservices
 
@@ -2032,6 +2040,8 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [41] Technical Report on C++ Performance https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf
 
 [42] C++ Core Guidelines, https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines, abgerufen am 09. Mai 2023
+
+[43] C++ Memory Model: Migrating from X86 to ARM, https://arangodb.com/2021/02/cpp-memory-model-migrating-from-x86-to-arm/, abgerufen am 03.12.2023
 
 
 
