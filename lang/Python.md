@@ -31,6 +31,7 @@ Table of Contents
   * [Python 3\.5](#python-35)
   * [Python 3\.6](#python-36)
   * [Python 3\.9](#python-39)
+  * [Python 3\.10](#python-310)
   * [Arbeiten mit Dateien](#arbeiten-mit-dateien)
     * [Grundlegendes](#grundlegendes)
     * [Directory-Baum erstellen](#directory-baum-erstellen)
@@ -49,6 +50,18 @@ Table of Contents
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
+## Installation
+
+Die Installation von Python sollte für jeden Anwender trivial sein. Das Ergebnis kann mit *--version* jeweils überprüft werden.
+
+```bash
+> C:\Users\Martin>python --version
+Python 3.12.2
+
+> C:\Users\Martin>pip --version
+pip 24.0 from D:\Program Files\Python312\Lib\site-packages\pip (python 3.12)
+```
 
 ## Kernkonzepte
 
@@ -310,7 +323,7 @@ if __name__ == '__main__':
 
 ### Datentypen
 
-Wie in anderen Sprachen gibt es auch in Python Basis Datentypen für Integer, Floating-Point, Komplexe Zahlen und Strings.
+Wie in anderen Sprachen gibt es auch in Python primitive Datentypen für Integer, Floating-Point, Komplexe Zahlen und Strings.
 
 | int  | long            | float    | complex |
 | ---- | --------------- | -------- | ------- |
@@ -353,6 +366,24 @@ ew
 c:\\transer\this\new
 >>>
 ```
+
+**Übersicht über Datentypen**
+
+| Datentyp         | Funktion         | Beispiel                  | veränderlich |
+| ---------------- | ---------------- | ------------------------- | ------------ |
+| int              | ganze Zahlen     | x = 3                     | nein         |
+| float            | Fließkommazahlen | x = 3.0                   | nein         |
+| bool             | boolesche Werte  | x = bool(1)               | nein         |
+| str              | Zeichenketten    | x = 'abc'                 | nein         |
+| tuple            | Tupel            | x = (1, 2, 3)             | nein         |
+| list             | Listen           | x = [1, 2, 3]             | ja           |
+| set              | Sets             | x = {1, 2, 3}             | ja           |
+| dict             | Dictionaries     | x = {1: 'rot', 2: 'blau'} | ja           |
+| bytearray        | Byte-Arrays      | x = b ytearray(...)       | ja           |
+| io.TextIOWrapper | Dateien          | x = open('readme.txt')    | ja           |
+| ...              | sonstige Klassen | ...                       | ja           |
+
+
 
 ### Slicing 
 
@@ -1259,6 +1290,86 @@ Doppelte Elemente werden entfernt und das zuletzt deklarierte übernommen.
 
 Erweiterung der Type Annotations aus Python 3.5. Der Typ *annotated* wird neu hinzugefügt, um bestehende Typen mit kontextspezifischen Metadaten auszustatten.
 
+## Python 3.10
+
+**Pattern Matching**
+
+Für das Pattern Matching wurden die beiden neuen Schlüsselwörter 
+
+- *match*
+- *case* 
+
+eingeführt. Muster für einen Abgleich können Listen, Tupel, Wörterbücher, primitive Datentypen oder auch Klasseninstanzen sein. 
+
+```python
+#!usr/bin/evn python3
+
+def string_ifelif() -> None:
+    """ string matching using if-elif """ 
+    wochentag = "Freitag"
+    if wochentag == "Montag":
+        print("Heute ist Montag.")
+    elif wochentag == "Dienstag":
+        print("Heute ist Dienstag.")
+    elif wochentag == "Mittwoch":
+        print("Heute ist Mittwoch.")
+    elif wochentag == "Donnerstag":
+        print("Heute ist Donnerstag.")
+    elif wochentag == "Freitag":
+        print("Heute ist Freitag.")
+    elif wochentag == "Samstag":
+        print("Heute ist Samstag.")
+    elif wochentag == "Sonntag":
+        print("Heute ist Sonntag.")
+    else:
+        print("Ungültiger Wochentag.")
+
+def string_pattern() -> None:
+    """ string matching using match-case """ 
+    wochentag = "Freitag"
+    match wochentag:
+        case "Montag":
+            print("Heute ist Montag.")
+        case "Dienstag":
+            print("Heute ist Dienstag.")
+        case "Mittwoch":
+            print("Heute ist Mittwoch.")
+        case "Donnerstag":
+            print("Heute ist Donnerstag.")
+        case "Freitag":
+            print("Heute ist Freitag.")
+        case "Samstag":
+            print("Heute ist Samstag.")
+        case "Sonntag":
+            print("Heute ist Sonntag.")
+        case _:
+            print("Ungültiger Wochentag.")
+                
+def point_pattern() -> None:
+    """ tuple matching using match-case """ 
+    point = (3, 3)
+    match point:
+        case (0, 0):
+            print("Origin")
+        case (0, y):
+            print(f"Y={y}")
+        case (x, 0):
+            print(f"X={x}")
+        case (x, y):
+            print(f"X={x}, Y={y}")
+        case _:
+            raise ValueError("Not a point")
+
+if __name__ == '__main__':
+    string_ifelif()
+    string_pattern()
+    point_pattern()
+```
+
+**Aussagekräftigere Fehlermeldungen**
+
+Mit Version 3.10 wird es dem Parser leichter gemacht, präzisere und hilfreichere Fehlermeldungen auszugeben. 
+
 ## Arbeiten mit Dateien
 
 Für die Arbeit mit Dateien bedient man sich des Moduls *os*. Einige Beispiele sollen das veranschaulichen.
@@ -1517,6 +1628,8 @@ if __name__ == '__main__':
 [25] entwickler magazin, 06.2023, Datenanalyse und -manipulation in Einfach
 
 [26] Choosing the right estimator, https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html, abgerufen am 19.11.2023
+
+[27] Programmiersprache: Python 3.10 führt das Pattern Matching ein, https://www.heise.de/news/Programmiersprache-Python-3-10-fuehrt-das-Pattern-Matching-ein-6209005.html, abgerufen am 29.03.2024
 
 
 
