@@ -296,7 +296,7 @@ Siehe *Taktiken.mm*.
 
 
 
-## Querschnitskonzepte
+## Querschnittskonzepte
 
 Querschnittskonzepte (engl. Cross-Cutting-Concerns) lösen Probleme, die nicht an einer Stelle des Systems gelöst werden können, sondern die das gesamte System bzw. große Teile davon betreffen. Beispiele sind
 
@@ -351,4 +351,157 @@ Einige wichtige Metriken sind:
 **Metriken geben Hinweise auf Codestellen, bei denen sich ein Review lohnen könnte. Sie fällen keine absoluten Urteile darüber, ob Code gut oder schlecht ist.**
 
 **Für manche Metriken sind die Trends interessanter als ihr aktueller Wert.**
+
+
+
+## DevOps
+
+### Introduction
+
+Since a few years there is a set of methods called DevOps. Nowadays all (successfull) companies are following DevOps methods e.g. Amazon, Google, Twitter, Netflix, Flickr, ... All these companies have one in common: Releasing productive changes daily and at the same time keeping reliability, stability and safety. How do they do this? In short: Using DevOps principles. 
+
+All these companies can add changes fast into their production environment. Whereas the Code Deployment Lead Time is minutes or hours. 
+
+**Code Deployment Lead Time** 
+
+Die Code Deployment Lead Time ist die Zeit, die von "Änderung ist in Versionskontrolle eingecheckt" bis "Läuft erfolgreich in der Produktivumgebung" benötigt wird. 
+
+### What is DevOps?
+
+The word “DevOps” is a combination of the words “development” and “operations.” **DevOps is a set of practices and tools that helps organizations deliver software faster.** 
+
+DevOps involves a development team using continuous integration and  continuous delivery (CI/CD) practices to develop, release, and monitor  software. DevOps teams **develop code, automate testing, deploy to production, and iterate for improvements**.
+
+### Why DevOps?
+
+There are a lot of advantages using DevOps
+
+- faster deliveries of features
+- higher customer satisfaction
+- more market share
+- better staff (developer) productivity 
+
+| Company            | Auslieferungsfrequenz         | Code Deployment Lead Time | Zuverlässigkeit | Reaktion auf Kundenwünsche |
+| ------------------ | ----------------------------- | ------------------------- | --------------- | -------------------------- |
+| Amazon             | 23000/day                     | minutes                   | high            | high                       |
+| Google             | 5500/day                      | minutes                   | high            | high                       |
+| Netflix            | 500/day                       | minutes                   | high            | high                       |
+| Facebook           | 1/day                         | hours                     | high            | high                       |
+| Twitter            | 3/week                        | hours                     | high            | high                       |
+| {negative example} | 1/month - once every 9 months | Months or quaterly        | low/mid         | low/mid                    |
+
+See [3].
+
+In the annual reports published by the Puppet Labs [5] you can see the effect of high-performance companies using DevOps compared to non-high-performance companies.
+
+- 30 times more code deployments
+- 8000 times less Code Deplyoment Lead Time
+
+Also Zuverlässigkeit is higher: 
+
+- 2 times better Change Success Rate
+- 12 times faster MTTR
+
+There is another word for the above characteristics: **Agility - Companies using DevOps have been more agile.**
+
+The report also shows that high-performance companies using DevOps had better results: Code could be deployed successfully more than two times higher than non-high-performance companies could do. One of the reasons: the time of solving a (code) problem has been reduced to a 1/12 of the time compared to non-high-performance companies. One of the main reasons: the extremely high Code Deployment Lead Time. 
+
+So we see: High-Performance companies deliver featuers faster and at the same time they provide better Software (best Zuverlässigkeit, more stability, more safety).
+
+### How DevOps?
+
+All entities within the company are working on the same goal. Ther're working together to reach this goal. It starts from SW Developer Teams, to Product Owner, Integration Teams, QA, IT Operations, ...
+
+All involved parties spend time to make sure everything works fine through all stations, automated tests will be made faster, the development infrastructure getting better, applications will output useful protocol data. 
+
+Everybody is taking care of non-functional requirements e.g. quality, scalability, maintainability, security, operability, ... at the same time as everybody is working on functional requirements. Why? Non-functional requirements are as important as functional requirements. 
+
+There is a collaborative culture of 'gegenseitigem Vertrauen'. Everybody is responsible for the quality of his/her work.
+
+Developers receive 'fortlaufend' fast feedback. There are continuously automated unit tests, acceptance tests, integration tests. If everything shows 'green' it means that everything is in an deployable (auslieferbarem) state. 
+
+### Where does DevOps come from?
+
+The word DevOps has been used first by Patrick Debois and Andrew Shafer in the year 2008. DevOps got popular 2009 with the presentation from John Allspaw and Paul Hammond called "10+ Deploys Per Day: Dev and Ops Cooperation at Flickr".
+
+DevOps makes use of the work created by the **Agile-Community**: "kleine Teams mit starkem gegenseitigem Vertrauen, kleinen Auftragsgrößen und kleineren, aber dafür häufigeren Software-Releases die Produktivität von Entwicklungsorganisationen massiv erhöhen können".
+
+It uses the work of **"Infrastructure as Code"** developed by Dr. Mark Burgess as well as **Continuous Integration and Continuous Deployment** (Jez Humble and David Farley). 
+
+And finally DevOps makes use of Best-Practice Management movements like **Lean Startup, Innovation Culture, Toyota Kata, Rugged Computing and Velocity Community.** 
+
+### The Three Ways
+
+There are "The Three Ways" principles from where all DevOps structures are setup from. 
+
+**First Way**
+
+The First Way is the flow from Development through Integration through Operations until the customer. Small development packages, small intervalls, never forward faulty products. Optimize on global goals not on local goals (local goals here e.g. mean the finish rate of functional features, the rate between found errors and fixed errors, the code coverage values and such things).
+
+Necessities are continuous build, integration and deployment. Restrict the WIP (work in progess) items, setup safe systems and organizations which can be easily changed. 
+
+**Second Way**
+
+The Second Way is the constant and fast feedback back to the origin of the 'Wertschöpfungskette'. So that problems can be detected and fixed fast. Such that we can prevent these issues the next time. Idea: Quality and knowledge at the source. 
+
+This includes:
+
+- 'Stop the production line' as soon as builds or tests fail within the Deployment-Pipeline
+- Highlight the improvement of the daily work compared to the actual work
+- Create fast and automated test suites - make sure that code is always in a 'production-ready' state
+- Create collective and corporate goals and undergo pain and problems together (from development to operations)
+- Create omnipresent measuring points and checkpoints within the live system to check if code and environment are working correctly 
+
+**Third Way** 
+
+The Third Way is about culture that fosters two things:
+
+- constant experimentation, take risks and learn from success and failure
+- repetition and practice are the foundation of proficiency (skills)
+
+It is mandatory to foster a culture of innovation and to take risks - in contrast to frightened acting and the empty-headed execution of orders. At least 20 percent of your time should be used for non-functional requirements. Improvements will be constantly supported and promoted.
+
+### Myths of DevOps
+
+**DevOps replaces Agile**
+
+DevOps is compatibe to Agile and just the logical continuation of the Agile way started 2001. In DevOps Code is "Done" when it is fully tested and runnable within the live system (production system). 
+
+**DevOps is only something for Start-ups and Unicorns**
+
+Here are some examples of companies doing a (painful) transformation.
+
+- In [8] Amazon, up until 2001, ran on the OBIDOS content delivery system, which  became so problematic and dangerous to maintain that CTO Werner Vogels **transformed** their entire **organization** **and code to a service-oriented architecture**. 
+- In [9] Raffi Krikorian talks about **migration of the Twitter architecture** from primarily Ruby on Rails (RoR) to a JVM-based **SOA system** with emphasis on high performance,  scalability, and resilience to failure. 
+- In [10] LinkedIn shows how a **2 month code Feature Freeze** has been used to rearrange the Server environments, the Deployments and the Architecture. 
+- In [11] Etsy, in 2009, according to Michael Rembetsy, “had to come to grips that they were living in a sea of their own engineering filth,” dealing with problematic software deployments and technical debt. They committed  themselves to a **cultural transformation**.
+- In [12] Facebook, in 2009, was at the breaking point for infrastructure operations. Barely able to keep up with user growth, code deployments were becoming increasingly dangerous and staff were **continually** **firefighting**. Jay Parikh and Pedro Canahuati started their **transformation to make code safe to deploy again**. 
+
+## Literatur
+
+[1] Stefan Zörner: Software-Architekturen - Dokumentieren und Kommunizieren, Carl Hanser Verlag, 2012
+
+[2] Gernot Starke: Effektive Softwarearchitekturen - Ein praktischer Leitfaden, Carl Hanser Verlag, 9. überarbeitete Auflage, 2020
+
+[3] Gene Kim, Kevin Behr, George Spafford: Projekt Phoenix - Der Roman über IT und DevOps, O'Reilly Verlag, 2015
+
+[4] Puppet Labs, https://www.puppet.com/blog/what-is-devops, abgerufen am 14.03.2024
+
+[5] Puppet Labs, 2023 State of DevOps Report, https://www.puppet.com/resources/state-of-platform-engineering, abgerufen am 14.03.2024
+
+[6] Michael T. Nygard, Release It!: Design and Deploy Production-Ready Software
+
+[7] John Allspaw and Paul Hammond, "10+ Deploys Per Day: Dev and Ops Cooperation at Flickr", http://velocityconf.com/velocity2009/public/schedule/detail/1641
+
+[8] Jim Gray, "A Conversation with Werner Vogels: Learning from the Amazon Technology Platform", https://queue.acm.org/detail.cfm?id=1142065, abgerufen am 05.04.2024
+
+[9] Raffi Krikorian, "Real-Time Systems at Twitter", https://de.slideshare.net/raffikrikorian/realtime-systems-at-twitter, abgerufen am 05.04.2024
+
+[10] Ashlee Vance, "Inside Operation In Version, the Code Freeze that Saved LinkedIn",https://www.bloomberg.com/news/articles/2013-04-10/inside-operation-inversion-the-code-freeze-that-saved-linkedin, abgerufen am 05.04.2024
+
+[11] Michael Rembetsy and Patrick McDonnell, "Continuously Deploying Culture: Scaling Culture at Etsy", https://de.slideshare.net/mcdonnps/continuously-deploying-culture-scaling-culture-at-etsy-14588485, abgerufen am 05.04.2024
+
+[12] Pedro Canahuati, "From the Few to the Many: Scaling Ops at Facebook", https://www.infoq.com/presentations/scaling-operations-facebook/, abgerufen am 05.04.2024
+
+[13] Werner Vogels, All Things Distributed, https://www.allthingsdistributed.com/, abgerufen am 05.04.2024
 
