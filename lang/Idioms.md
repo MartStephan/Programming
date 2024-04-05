@@ -40,6 +40,7 @@ Table of Contents
     * [Compiler](#compiler-1)
     * [Linker](#linker)
   * [Favour Composition over Inheritance](#favour-composition-over-inheritance)
+  * [FUBAR](#fubar)
   * [Functors](#functors)
   * [Funktionale Programmierung](#funktionale-programmierung)
     * [First\-class functions](#first-class-functions)
@@ -104,6 +105,7 @@ Table of Contents
   * [Scope](#scope)
   * [SFINAE](#sfinae)
   * [Smart Pointer](#smart-pointer)
+  * [Smoke Test](#smoke-test)
   * [SOLID](#solid)
     * [Single Responsibility Principle](#single-responsibility-principle)
     * [Open/Close Principle](#openclose-principle)
@@ -488,6 +490,10 @@ Der Linker kann eine ausführbare Datei, eine statische oder eine geteilte Bibli
 ## Favour Composition over Inheritance
 
 Durch Komposition von Klassen anstelle von Vererbung fördern wir die lose Kopplung eines Systems. 
+
+## FUBAR
+
+Fucket Up Beyond All Recognition. Kurz gesagt: "Am Arsch". Verwende es, wenn in der IT, in der Software, ... wirklich alles "am Arsch" ist.
 
 ## Functors
 
@@ -1465,6 +1471,10 @@ SFINAE steht für Substitution Failure Is Not An Error und ist eine Programmiert
 ## Smart Pointer
 
 Ein Smart Pointer verhält sich grundsätzlich wie ein normaler Zeiger. Er speichert eine Adresse, über die auf ein dynamisches reserviertes Objekt zugegriffen werden kann. Er wird jedoch als intelligent bzw. smart bezeichnet, weil er automatisch im Destruktor das Objekt mit ‚delete‘ freigibt. Das setzt natürlich voraus, dass das Objekt zuvor mit ‚new‘ erzeugt wurde. Der große Vorteil ist, dass man die Speicherfreigabe nicht vergessen kann, da diese automatisch stattfindet. In C++ gibt es den Smart Pointer std::auto_ptr.  
+
+## Smoke Test
+
+Ein Begriff, den die Entwickler von Schaltkreisen nutzen. Dort heißt es: "Wenn du die Schaltung mit Strom versorgst und es nirgendwo qualmt, wird sie vermutlich funktionieren."
 
 ## SOLID  
 
