@@ -718,17 +718,27 @@ $> flask run
 
 Ein Single Page Applications Framework von Google. Es setzt auf TypeScript mit all den Vorteilen wie statische Typisierung und Generics. 
 
+Das grundlegende Konzept von Angular ist, eine Anwendung in wiederverwendbare, anpassbare Kompnenten aufzuteilen. Dieses grundlegende Konzept findet sich auch in anderen Frontend-Franeworks und Bibliotheken Vue und React.
+
 ### React
 
 SPA Framework
+
+Das grundlegende Konzept von React ist, eine Anwendung in wiederverwendbare, anpassbare Kompnenten aufzuteilen. Dieses grundlegende Konzept findet sich auch in anderen Frontend-Franeworks und Bibliotheken Vue und Angular.
 
 ### Vue 
 
 SPA Framework
 
+Das grundlegende Konzept von Vue ist, eine Anwendung in wiederverwendbare, anpassbare Kompnenten aufzuteilen. Dieses grundlegende Konzept findet sich auch in anderen Frontend-Franeworks und Bibliotheken Angular und React.
+
 ### Svelte
 
 SPA Framework
+
+### Web Components
+
+Bei Web Components handelt es sich streng genommen nicht um ein Framwework sondern um einen nativen Ansatz, um Kompomenten für eine Web-Anwendung zu realisieren. Seit 2020 unterstützen alle aktuellen Browser die Web-Component-Standards. Siehe [20] und [21].
 
 ## Baukästen
 Es gibt viele Anbieter von sogenannten Website-Baukästen, mit denen sich einfach und schnell Webseiten erstellen lassen sollen. Einige Beispiele sind: 
@@ -779,4 +789,10 @@ Eine gute Übersicht über Web-Design Helferlein findest du hier:
 [17] Websites programmieren mit KI, https://www.benutzerfreun.de/newsletter/websites-programmieren-mit-ki-newsletter-8-2023/, abgerufen am 09.08.2023
 
 [18] AI Design Tools to Optimize Your Design Workflow, https://www.mailmodo.com/guides/ai-design-tools/, abgerufen am 09.08.2023
+
+[19] Building a better web, together,  https://web.dev/, abgerufen am 14.03.2024
+
+[20] https://github.com/ssimone175/react-components
+
+[21] https://github.com/ssimone175/web-components
 
