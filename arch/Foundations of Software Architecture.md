@@ -1,6 +1,34 @@
+---
+
+---
+
 # Foundations of Software Architecture
 
 [TOC]
+
+Table of Contents
+=================
+
+* [Foundations of Software Architecture](#foundations-of-software-architecture)
+* [Table of Contents](#table-of-contents)
+  * [Softwarearchitektur - Definition](#softwarearchitektur-definitionen)
+  * [Softwarearchitektur-Prozess](#softwarearchitektur-prozess)
+  * [Anforderungen](#anforderungen)
+  * [Systemkontext](#systemkontext)
+  * [Randbedingungen](#randbedingungen)
+  * [Qualität](#qualitaet)
+  * [Architekturentscheidungen](#architekturentscheidungen)
+  * [Architektur- und Entwurfs-Prinzipien](#architektur-und-entwurfs-prinzipien)
+  * [Vorgehen und Heuristiken zur Architekturentwicklung](#vorgehen-und-heuristiken-zur-architekturentwicklung)
+  * [Lösungsmuster für Architekten](#loesungsmuster-fuer-architekten)
+  * [Architektur-Sichten](#architektur-sichten)
+  * [Schnittstellen](#schnittstellen)
+  * [Taktiken und Praktiken](#taktiken-und-praktiken)
+  * [Querschnittskonzepte](#querschnittskonzepte)
+  * [Bewertung](#bewertung)
+  * [Quantitative Bewertung und Metriken](#quantitative-bewertung-und-metriken)
+  * [DevOps](#devops)
+  * [Literatur](#literatur)
 
 ## Softwarearchitektur - Definition
 
@@ -184,7 +212,11 @@ Es gibt viele verschiedene Vorgehensweisen zur Architekturentwicklung. Die Wicht
 - Globale Analyse
 - Modellgetriebene Architektur
 
+### Entwurfsmethoden
 
+#### Domain-Driven Design
+
+Eric Evans hat den Begriff Domain-Driven Design (DDD) geprägt. 
 
 ## Lösungsmuster für Architekturen
 
@@ -467,6 +499,10 @@ It is mandatory to foster a culture of innovation and to take risks - in contras
 
 DevOps is compatibe to Agile and just the logical continuation of the Agile way started 2001. In DevOps Code is "Done" when it is fully tested and runnable within the live system (production system). 
 
+**DevOps means NoOps**
+
+In DevOps it is essential that many/all IT operations will be automated. In a way that Developer Teams can do the IT work itself; e.g. setup a production-ready environment or measure and deploy data (like KPIs).
+
 **DevOps is only something for Start-ups and Unicorns**
 
 Here are some examples of companies doing a (painful) transformation.
@@ -476,6 +512,48 @@ Here are some examples of companies doing a (painful) transformation.
 - In [10] LinkedIn shows how a **2 month code Feature Freeze** has been used to rearrange the Server environments, the Deployments and the Architecture. 
 - In [11] Etsy, in 2009, according to Michael Rembetsy, “had to come to grips that they were living in a sea of their own engineering filth,” dealing with problematic software deployments and technical debt. They committed  themselves to a **cultural transformation**.
 - In [12] Facebook, in 2009, was at the breaking point for infrastructure operations. Barely able to keep up with user growth, code deployments were becoming increasingly dangerous and staff were **continually** **firefighting**. Jay Parikh and Pedro Canahuati started their **transformation to make code safe to deploy again**. 
+
+### Further Reading
+
+**The Five Dysfunctions of A Team: A Leadership Fable (Patrick Lencionis)**
+
+- Fehlendes Vertrauen - der fehlende Wille, sich verletzbar zu zeigen
+- Angst vor Konflikten - künstliche Harmonie suchen, statt konstruktiv zu diskutieren
+- Fehlendes Engagement - durch Zurückhaltung entstehen Unsicherheiten in der gesamten Organisation
+- Scheu vor Verantwortung - das Abwälzen von Verantwortung auf andere ist kontraproduktiv
+- Fehlende Erfolgsorientierung- Konzentration auf persönlichen Erfolg, Status und Ego
+
+**Toyota Kata: Managing People for Improvement, Adaptiveness and Superior Results (Mike Rother)**
+
+The practice of Kata is the act of practicing a pattern so it becomes a second nature. Die Idee ist tägliche Wiederholungen, um ein Verhalten einzuüben und die Ergebnisse zu verbessern. Also eine Kultur aufbauen, in der man experimentieren kann, aus Fehlern lernt und versteht, dass Wiederholung und Übung die Voraussetzungen für den Weg zum Meister sind. 
+
+Mike Rother beschreibt in seinem Buch ein System, das eben nicht in einem stabilen Zustand verharrt, wenn es nicht verbessert wird. Stattdessen wird die Leistung der Organisation dank der Entropie abnehmen. 
+
+**Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation (Jez Humble and David Farley)**
+
+Dieses Buch beschreibt viele der Techniken, die notwendig sind, um schneller und mit höherer Qualität Software auszuliefern. 
+
+Continuous Delivery ist die Weiterentwicklung von Continuous Integration, zu dem auch Continuous Builds und Continuous Tests gehören. Continuous Delivery erweitert die bisherigen Prozesse bis in die Produktivumgebung. 
+
+Continuous Delivery der Wege wie oben beschrieben: 
+
+- kleine Größen (tägliches Einspielen von Code)
+- das Anhalten wenn Probleme auftauchen
+- Notwendigkeit, fortlaufend an Validierungstests zu arbeiten
+
+**Release It!: Design and Deploy Production-Ready Software (Michael T. Nygard)**
+
+Dieses Buch zeigt Entwicklern und Architekten auf, wie man Anwendungen baut, die selbst in der feindlichsten Produktivumgebung überleben und deployt und gewartet werden können,.
+
+Leute aus IT Operations zeigt es, wie bestimmte Entscheidungen in der Entwicklung zu schlechten Ergebnissen im Produktivumfeld führen. 
+
+**Personal Kanban: Mapping Work | Navigating Life (Jim Benson und Tonianne DeMaria Berry)**
+
+In diesem Buch geht es darum zu zeigen, wie notwendig es ist, unsere Arbeit sichtbar zu machen und die Menge an WIP (Work-in-progress) zu steuern. 
+
+**Kanban: Successful Evolutionary Change For Your Technology Business (Davin J. Anderson)**
+
+Konzentriert sich auf den Einsatz von Kanban-Boards in Unternehmen. 
 
 ## Literatur
 
@@ -504,4 +582,6 @@ Here are some examples of companies doing a (painful) transformation.
 [12] Pedro Canahuati, "From the Few to the Many: Scaling Ops at Facebook", https://www.infoq.com/presentations/scaling-operations-facebook/, abgerufen am 05.04.2024
 
 [13] Werner Vogels, All Things Distributed, https://www.allthingsdistributed.com/, abgerufen am 05.04.2024
+
+
 
