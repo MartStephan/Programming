@@ -555,6 +555,17 @@ In diesem Buch geht es darum zu zeigen, wie notwendig es ist, unsere Arbeit sich
 
 Konzentriert sich auf den Einsatz von Kanban-Boards in Unternehmen. 
 
+## Release It!
+
+### Create Stability
+
+One of the most important messages: Bug will happen. But how do we prevent bugs in one system from affecting everything else? Bugs must not cause a chain of failures. 
+
+**Stabilize Your System**
+
+- Run your own (automated) longevity tests. In parallel run a load-testing tool (simulating CPU load).
+- Create safe failure modes that contain the damage and protect the rest of the system
+
 ## Literatur
 
 [1] Stefan Zörner: Software-Architekturen - Dokumentieren und Kommunizieren, Carl Hanser Verlag, 2012
