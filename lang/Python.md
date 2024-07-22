@@ -435,7 +435,7 @@ class meineKlasse(Basisklasse):
 
 Vererbung ist möglich (siehe oben - Basisklasse). Falls keine Basisklasse angegeben ist, erbt die Klasse nichts. *init* ist der Konstruktor und *del* der Destruktor. Python bietet dir eine Garbage Collection. Dadurch ist ein eigener Destruktor quasi nie notwendig.
 
-Funktionen bekommen als ersten Parameter immer ein Referenz auf das Objekt, von dem sie aufgerufen wird. 
+Funktionen bekommen als ersten Parameter immer eine Referenz auf das Objekt, von dem sie aufgerufen wird. 
 
 ```python
 #!usr/bin/python
@@ -463,6 +463,52 @@ if __name__ == '__main__':
     print(ergebnis)
 
 ```
+
+Die *init()-*Methode ist das Gegenstück zum Konstruktor anderer Sprachen. Die init()-Methode wird also automatisch beim Erzeugen eines Objekts ausgeführt. Instanzattribute eines Objekts sind in Python dynamisch, d.h. sie werden erst angelegt, wenn die entsprechende Anweisung ausgeführt wird. Wenn man möchte, dass ein Objekt seine Attribute sofort nach der Instanziierung besitzt, müssen sie also in der *init()*-Methode definiert werden. 
+
+Zusätzlich zu den Instanzattributen ist es in Python auch möglich zur Laufzeit einzelne Objekte um Attribute zu erweitern. Ein Beispiel kann man in unserer Rectangle-Klasse unten sehen. 
+
+```python
+#!/usr/bin/python
+
+class Rectangle:
+    def __init__(self, length=1, width=1) -> None:
+        self.length = length
+        self.width = width 
+
+    def change_length(self, l):
+        self.length += l
+
+    def change_width(self, w):
+        self.width += w
+
+    def show_area(self):
+        print(self.length * self.width)
+
+
+if __name__ == '__main__':
+    print("Hallo")
+
+    # create two instances of our Rectangle
+    rect1 = Rectangle(5, 6)
+    rect2 = Rectangle()
+
+    # change the length of rect2
+    rect2.change_length(4)
+
+    rect1.show_area()
+    rect2.show_area()
+
+    # add a new attribute called 'area' - which is only available for object 'rect2'
+    rect2.area = rect2.length * rect2.width
+    print(rect2.area)
+
+# 30
+# 5
+# 5 
+```
+
+
 
 ### Iterationen
 
