@@ -49,6 +49,11 @@ Table of Contents
     * [k\-Means](#k-means)
     * [Temporal Difference Learning](#temporal-difference-learning)
     * [Reinforcement Learning Applications](#reinforcement-learning-applications)
+  * [Ansonsten](#ansonsten)
+    * [Ethik](#ethik)
+    * [Recht](#recht)
+      * [DSVGO](#dsvgo)
+      * [AI Act (AIA)](#ai-act-(aia))
   * [Bibliotheken](#bibliotheken)
     * [Matplotlib](#matplotlib)
     * [TensorFlow](#tensorflow)
@@ -311,6 +316,83 @@ Backgammon, Arcade Games like PacMan, Go
 
 
 
+## Ansonsten
+
+### Ethik
+
+In einer Studie von Europol geht man davon aus, dass bis 2026 bis zu 90 Prozent des Web-Contents von KI generiert wird [15].
+
+ 
+
+Wichtige Herausforderungen sind:
+
+**Datenschutz**
+
+Daten müssen effektiv geschützt werden und die Privatsphäre der Nutzer respektiert werden.
+
+**Autonomie**
+
+Wie autonom sollen KIs agieren? Vor allem im Bereich der kritischen Infrastruktur?
+
+**Kontrolle**
+
+Es bedarf Möglichkeiten menschlicher Kontrolle bzw. Möglichkeiten, nachzuvollziehen, was zu bestimmten Entscheidungen  geführt hat.
+
+ 
+
+**Bias**
+
+Mit dem Bias meint man die Voreingenommenheit der Modelle. Auf [16] kann man schön den Bias verschiedener Modelle testen.
+
+ 
+
+**Regulierung**
+
+In Europa versucht man mit dem KI Act und der DSVGO KI zu regulieren. Aber wie so oft haben Regulierungen positive als auch negative Effekte.
+
+ 
+
+**Alignment**
+
+Mit Alignment bezeichnet man die Möglichkeit, dass  künstliche Intelligenz menschliche Werte und Absichten kennt und darauf  ausgerichtet werden kann.
+
+ 
+
+Die Firma Aleph Alpha aus Deutschland versucht mit  Attention Manipulation (AtMan []) einen Weg zu gehen, um transparent zu  machen, wie das Modell zu den entsprechenden Ergebnissen kommt.
+
+ 
+
+### Recht und Datenschutz
+
+(Mindestens) in Europa bilden vor allem die Datenschutz-Grundverordnung (DSVGO) und der AI Act der Europäischen Union (AIA) die Leitplanken der Regelungen zur Gestaltung der digitalen Zukunft und hier besonders der Künstlichen Intelligenz. 
+
+#### DSVGO
+
+Die Ziele der DSVGO [18] sind klar: Den Bürgern die Kontrolle über ihre Daten zurückzugeben und ein einheitliches Datenschutzniveau in der gesamten EU sicherzustellen. Praktisch hat das für KI-Entwickler/entwickelnde Firmen Auswirkungen. 
+
+So braucht man die Einwilligung der Nutzer für die Verwendung zu Trainingszwecken. 
+
+Sobald man eine Anwendung, wie bspw. OpenAI via API, anbindet und den Nutzern über einen eigenen Service zur Verfügung stellt, ist man selbst zur Sicherstellung der DSVGO verpflichtet. 
+
+Wie im vorherigen Kapitel schon einmal beschrieben: Eine Herausforderung beim Einsatz vortrainierter Modelle besetht darin, dass sie die Voreingenommenheit (Bias), die man nicht genau kennt, mitgeliefert bekommt und erst nachträglich feststellt, welche Auswirkungen das für den Entwickler und die Nutzer in der Praxis hat.  
+
+#### AI Act (AIA) 
+
+Im Grundsatz geht es beim AI Act [19] darum, ein Umfeld zu schaffen, in dem KI zum Wohl aller eingesetzt wird. Das bedeutet, dass KI-Systeme auch ttransparent, verantwortungsbewusst und ohne Diskriminierung arbeiten sollten. 
+
+Die drei wichtigsten Aspekte sind: 
+
+- *Risikokategorien:* Der AI Act klassifiziert KI-Systeme nach ihrem Risiko für Grundrechte und Sicherheit
+- *Qualität der Trainingsdaten:* Qualität und Herkunft der Trainingsdaten müssen fair, repräsentativ und ohne Diskriminierung sein. 
+- *Transparenzanforderungen:* KI-Systeme sollten transparent in ihrer Funktionsweise sein. 
+
+Es gibt insgesamt vier Risikogruppen/-kategorien im AI Act.
+
+- Unacceptable Risk (inakzeptables Risiko)
+- High Risk (hohes Risiko)
+- Limited Risk (eingeschränktes Risiko)
+- Minimal/No Risk (minimales oder kein Risiko)
+
 ## Bibliotheken
 
 ### Matplotlib
@@ -384,6 +466,26 @@ Hervorzuhebende Eigenschaften von Pandas sind:
 [13] https://chainer.org/, abgerufen am 19.11.2023
 
 [14] https://pandas.pydata.org/, abgerufen am 19.11.2023
+
+[15] [ https://www.europol.europa.eu/publications-events/publications/facing-reality-law-enforcement-and-challenge-of-deepfakes](https://www.europol.europa.eu/publications-events/publications/facing-reality-law-enforcement-and-challenge-of-deepfakes), abgerufen am 27.08.2024
+
+[16] [ https://huggingface.co/spaces/society-ethics/DiffusionBiasExplorer](https://huggingface.co/spaces/society-ethics/DiffusionBiasExplorer), abgerufen am 27.08.2024
+
+[17] [ https://docs.aleph-alpha.com/docs/category/explainability/](https://docs.aleph-alpha.com/docs/category/explainability/), abgerufen am 27.08.2024
+
+[18] https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:32016R0679, abgerufen am 05.10.2024
+
+[19] https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:52021PC0206, abgerufen am 05.10.2024
+
+
+
+https://blog.iao.fraunhofer.de/spielarten-der-kuenstlichen-intelligenz-maschinelles-lernen-und-kuenstliche-neuronale-netze/
+
+https://www.spektrum.de/news/hat-kuenstliche-intelligenz-wie-chatgpt-ein-bewusstsein/2193018
+
+https://www.wolfgang-wahlster.de/wwdata/Gutenberg_Stiftungsprofessur_Mainz_2017/Lernende_Maschinen.pdf
+
+https://www.plattform-lernende-systeme.de/files/Downloads/Publikationen/AG3_WP_KI_Datenschutz_Datenschatz.pdf
 
 
 
