@@ -424,6 +424,92 @@ Ab und an trifft man auch auf den Begriff Dangling References.
 
 ## Dependency Injection (DI)
 
+Dependeny Injection (DI) ist eine Technik, die in der Programmierung häufig Anwendung findet. Oft wird DI als Basis einer guten Software-Architektur verwendet. Vorteile bei Verwendung von DI sind: 
+
+- Wiederverwendung
+- Vereinfacht Refactoring 
+- Vereinfacht das Testen
+
+Zuerst ein Beispiel ohne Verwendung von Dependency Injection. 
+
+Was unschöne Nebeneffekte hat: 
+
+- enge Agnhängigkeit zwischen *Car* und *Engine*
+- dadurch bedingt schwieriger zu testen
+
+```c++
+#include <iostream>
+
+class Engine {
+public:
+   void start() { std::cout << "Engine start\n"; }
+};
+
+/// <summary>
+/// No Dependency injection used. 
+/// Car that creates its own engine dependency.
+/// </summary>
+class CarNoDI {
+public:
+   void start() { engine.start(); }
+
+private:
+   Engine engine = Engine();
+
+};
+
+
+int main()
+{
+    std::cout << "Hello World!\n";
+
+    CarNoDI car; 
+    car.start();
+}
+
+```
+
+Und unter Verwendung von Dependency Injection kann es dann z.B. so aussehen. 
+
+```c++
+#include <iostream>
+
+class Engine {
+public:
+   void start() { std::cout << "Engine start\n"; }
+};
+
+/// <summary>
+/// Dependency injection used. 
+/// Here using Constructor Injection
+/// </summary>
+class CarWithDI {
+public:
+   CarWithDI(Engine& myEngine) {
+      engine = myEngine; 
+   }
+
+   void start() { engine.start(); }
+
+private:
+   Engine engine; 
+};
+
+int main()
+{
+    std::cout << "Hello World!\n";
+
+    Engine new_engine; 
+    CarWithDI car_with_di(new_engine);
+    car_with_di.start();
+    
+}
+
+```
+
+- Erhöht die Wiederverwendung da man einem *Car* jetzt verschiedene Arten von *Engines* geben kann
+- Das Testen wird vereinfacht, da ich auch hier verschiedene Arten von *Engines* injizieren kann
+
 ## Dependent and non-dependent names
 
  Ein ‘Dependent Name’ ist ein Bezeichner, der von einem Template-Parameter abhängt. Während ein ‘Non-Dependent Name’ nicht von einem Template-Parameter abhängt.   
@@ -863,6 +949,8 @@ Der Grund dahinter ist oft die Verwendung einer arithmetischen Operation (wie z.
 In der Informatik eine Bedingung, die zu gegebener Zeit als ‘wahr’ angenommen werden kann. Eine Schleifen-Invariante ist z.B. immer wahr am Anfang und Ende einer Schleife.   
 
 ## Inversion of Control (IoC)
+
+Das Inversion of Control Prinzip besagt, dass generischer Coden die Ausführung und das Verhalten von spezifischem Code steuert. Seine Anwendung findet es z.B. beim Dependency Injection.
 
 ## Kernel
 
@@ -2042,6 +2130,10 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [41] Technical Report on C++ Performance https://www.open-std.org/jtc1/sc22/wg21/docs/TR18015.pdf
 
 [42] C++ Core Guidelines, https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines, abgerufen am 09. Mai 2023
+
+[43] fruit - a dependency injection framework for C++, https://github.com/google/fruit, abgerufen am 31. Oktober 2024
+
+[44] pigweed - Modern software development for embedded systems, https://github.com/google/pigweed, abgerufen am 31. Oktober 2024
 
 
 
