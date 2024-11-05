@@ -668,7 +668,31 @@ In der Praxis verwendet man of Prototyping, um ein Gefühl zu haben, ob meine Si
 - Proto.io
 - POP
 
-## Frameworks
+## Frameworks und Plattformen
+
+### Cross-Platform-Frameworks
+
+Cross-Platform-Frameworks bieten den Vorteil, dass man mit nur einer Codebasis mehrere Platformen unterstützen kann. Populäre Vertreter sind: 
+
+- Flutter
+
+Framework von Google. Unterstützt die Programmiersprache Dart. 
+
+- Kotlin Multiplatform
+
+Framework von JetBrains basierend auf der Programmiersprache Kotlin.
+
+- Ionic
+
+Ionic wird von Drifty entwickelt. Setzt auf JavaScript bzw. TypeScript. 
+
+- .NET MAUI
+
+Das Microsoft Framework in C#.
+
+- React Native 
+
+Unterstützt von Meta. Nutzt JavaScript und React.
 
 ### Flask
 
