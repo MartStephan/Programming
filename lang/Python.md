@@ -1540,7 +1540,13 @@ Möglichkeit mit Hilfe von Python und Delphi die Annehmlichkeiten eines GUI-Buil
 
 ### NumPy
 
-### SciPy
+Eine mathematische Python-Bibliothek.
+
+### NumPy2
+
+Version 2 von NumPy wurde im Juni 2024 veröffentlicht. NumPy2 enthält u.a. Verbesserungen bei Strings, eine neue Array API und FFTs lassen sich effizienter ausführen. Außerdem gibt es eine Aktualisierung bei den Scalar Promotion Types. 
+
+### SciPy	
 
 ### Matplotlib
 
@@ -1676,6 +1682,10 @@ if __name__ == '__main__':
 [26] Choosing the right estimator, https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html, abgerufen am 19.11.2023
 
 [27] Programmiersprache: Python 3.10 führt das Pattern Matching ein, https://www.heise.de/news/Programmiersprache-Python-3-10-fuehrt-das-Pattern-Matching-ein-6209005.html, abgerufen am 29.03.2024
+
+[28] Strings und Skalare - Verbesserungen in NumPy2, iX 11/2024
+
+[29] NumPy2, iX Links, [ix.de/zuwp](https://ix.de/zuwp), abgerufen am 31. Oktober 2024
 
 
 
