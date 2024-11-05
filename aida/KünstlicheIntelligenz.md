@@ -258,6 +258,12 @@ Nach und nach wurden die Ergebnisse vor allem aufgrund von Big Data und genügen
 
 Die Idee hinter *Deep Learning* basiert auf *Multilayer*-Netzwerken, wie oben beschrieben. Man startet mit dem raw input (z.B. Pixel) und jede Schicht führt inkrementell eine komplexere Transformation durch, so dass am Ende ein abstraktes Ergebnis erzielt wird. Die erste Schicht verarbeitet also z.B. nur einzelne Pixel aus einem Bild. Im nächsten Schritt werden daraus Striche und Kanten bis am Ende beispielsweise Zahlen erkannt werden können.
 
+### Wissenschaft
+
+Im Jahr 2000 konnte der Biochemiker Eric Kandel einen Nobelpreis für seine Arbeit zum Nervensystem von Meeresschnecken entgegennehmen. Meeresschnecken besitzen rund 20000 Neuronen. Vollständig rekonstruiert wurde das Gehirn des Fadenwurms C. elegans, welches 300 Neuronen besitzt. In einem Artikel [24] und [25] wurde von einem Forscherteam das Gehirn einer Fruchtfliege rekonstruiert, welches ca. 140.000 Neuronen besitzt. Im Schnitt besitzt jede Nervenzelle rund 360 Verbindungen zu anderen Nervenzellen. 
+
+Der Mensch besitzt ca 140.000.000.000 Neuronen im Gehirn. 
+
 ## Unsupervised Learning
 
 Bei *Unsupervised Learning* Algorithmen sind die Trainingsdaten nicht gekennzeichnet, d.h. es gibt keine vorgegebenen Werte für die Ausgangs-Variable(n) in den Trainingsdaten. Ziel ist es, Objekte anhand ihrer Gemeinsamkeiten und Unterschiede zu *Clustern* zusammenzufassen. Der Anwender gibt dabei die Cluster-Definitionen nicht vor, sondern überlässt diese Aufgabe dem Computer. 
@@ -378,7 +384,19 @@ Wie im vorherigen Kapitel schon einmal beschrieben: Eine Herausforderung beim Ei
 
 #### AI Act (AIA) 
 
-Im Grundsatz geht es beim AI Act [19] darum, ein Umfeld zu schaffen, in dem KI zum Wohl aller eingesetzt wird. Das bedeutet, dass KI-Systeme auch ttransparent, verantwortungsbewusst und ohne Diskriminierung arbeiten sollten. 
+Im Grundsatz geht es beim AI Act [19] darum, ein Umfeld zu schaffen, in dem KI zum Wohl aller eingesetzt wird. Das bedeutet, dass KI-Systeme auch ttransparent, verantwortungsbewusst und ohne Diskriminierung arbeiten sollten. Anders gesagt: das Hauptziel besteht in der Etablierung ethischer Standards. 
+
+Folgende Prinzipien sind in der KI-VO (AI Act) verankert: 
+
+- menschliches Handeln/menschliche Aufsicht
+- technische Robustheit und Sicherheit
+- Privatsphäre
+- Daten-Governance
+- Transparenz/Informationspflichten
+- Vielfalt
+- Nichtdiskriminierung/Fairness
+- soziales und ökologisches Wohlergehen
+- technische Dokumentation/Rechenschaftspflicht
 
 Die drei wichtigsten Aspekte sind: 
 
@@ -388,10 +406,33 @@ Die drei wichtigsten Aspekte sind:
 
 Es gibt insgesamt vier Risikogruppen/-kategorien im AI Act.
 
-- Unacceptable Risk (inakzeptables Risiko)
-- High Risk (hohes Risiko)
-- Limited Risk (eingeschränktes Risiko)
+- Unacceptable Risk (inakzeptables/unannehmbares Risiko)
+- High Risk (hohes Risiko) - stark regulierter Bereich
+- Limited Risk (begrenztes Risiko)
 - Minimal/No Risk (minimales oder kein Risiko)
+
+Ein *unahnnembares Risiko* wird in folgenden Fällen angenommen: 
+
+- unterschwellige Beeinflussung
+- Ausnutzung der Schwäche oder Schutzbedürftigkeit von Personen
+- biometrische Kategorisierung
+- Bewertung des sozialen Verhaltens
+- biometrische Echtzeit-Fernidentifizierungssysteme
+- Risikobeurteilung von natürlichen Personen
+- Datenbanken zur Gesichtserkennung
+- Ableitung von Emotionen natürlicher Personen
+- Analyse von aufgezeichneten Bildmaterial
+
+Zum *Hochrisikobereich* zählen dagegen die folgenden KI-Technologien:
+
+- biometrische Identifizierung
+- Verwaltung und Betrieb kritischer Infrastrukturen (KRITIS)
+- allgemeine und berufliche Bildung
+- Beschäftigung, Personalmanagement und Zugang zur Selbständigkeit
+- Zugänglichkeit und Inanspruchnahme grundlegender privater und öffentlicher Dienste und Dienstleistungen (z.B. Wohnen, Strom, Heizung, Internet, Ärzte, ...)
+- Strafverfolgung
+- Migration, Asyl und Grenzkontrolle
+- Rechtspflege und demokratische Prozesse 
 
 ## Bibliotheken
 
@@ -477,8 +518,6 @@ Hervorzuhebende Eigenschaften von Pandas sind:
 
 [19] https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:52021PC0206, abgerufen am 05.10.2024
 
-
-
 https://blog.iao.fraunhofer.de/spielarten-der-kuenstlichen-intelligenz-maschinelles-lernen-und-kuenstliche-neuronale-netze/
 
 https://www.spektrum.de/news/hat-kuenstliche-intelligenz-wie-chatgpt-ein-bewusstsein/2193018
@@ -486,6 +525,14 @@ https://www.spektrum.de/news/hat-kuenstliche-intelligenz-wie-chatgpt-ein-bewusst
 https://www.wolfgang-wahlster.de/wwdata/Gutenberg_Stiftungsprofessur_Mainz_2017/Lernende_Maschinen.pdf
 
 https://www.plattform-lernende-systeme.de/files/Downloads/Publikationen/AG3_WP_KI_Datenschutz_Datenschatz.pdf
+
+[24] https://www.mdr.de/wissen/psychologie-sozialwissenschaften/fruchtfliege-gerhin-komplett-kartiert-100.html, abgerufen am 27.10.2024
+
+[25] https://www.nature.com/articles/s41586-024-07558-y, abgerufen am 27.10.2024
+
+[26] AI Act - die KI-Verordnung ist endlich da, entwickler magazin, Ausgabe 07.2024
+
+[27] Bundesverband IT-Sicherheit, https://www.stand-der-technik-security.de/startseite/, abgerufen am 05.11.2024
 
 
 
