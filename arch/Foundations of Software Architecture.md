@@ -27,7 +27,9 @@ Table of Contents
   * [Querschnittskonzepte](#querschnittskonzepte)
   * [Bewertung](#bewertung)
   * [Quantitative Bewertung und Metriken](#quantitative-bewertung-und-metriken)
+  * [Heuristiken](#heuristiken)
   * [DevOps](#devops)
+  * [Release It!](#release-it!)
   * [Literatur](#literatur)
 
 ## Softwarearchitektur - Definition
@@ -200,7 +202,7 @@ Architektur-Prinzipien sind Prinzipien, die ein System erfüllen sollte. Diese w
 
 ## Vorgehen und Heuristiken zur Architekturentwicklung
 
-Als Heuristiken bezeichnet man Verfahren, die helfen sollen, Probleme ressourcensparend zu lösen.
+Als Heuristiken bezeichnet man Verfahren, die helfen sollen, Probleme ressourcensparend zu lösen. Tatsächlich sind Heuristiken viel mehr als das: Sie sind die Art und Weise, wie Menschen tatsächlich denken und entscheiden.
 
 Es gibt viele verschiedene Vorgehensweisen zur Architekturentwicklung. Die Wichtigsten sind:
 
@@ -385,6 +387,57 @@ Einige wichtige Metriken sind:
 **Für manche Metriken sind die Trends interessanter als ihr aktueller Wert.**
 
 
+
+## Heuristiken
+
+Der Psychologe Daniel Kahneman bekam 2002 den Wirtschaftsnobelpreis für  seine Arbeiten zu dem Thema "Heuristiken". Er unterscheidet zwischen „schnellem“  und „langsamem“ Denken. Das schnelle Denken – unsere Heuristiken – hilft uns, blitzschnell Situationen einzuschätzen und Entscheidungen zu  treffen. Das ist überlebenswichtig in einer Welt, in der ständig  Informationen auf uns einprasseln. Heuristiken sind eine Möglichkeit,  mit den aktuell vorliegenden Informationen eine Entscheidung zu treffen, die in den meisten Fällen richtig ist. Aber diese mentalen Abkürzungen  führen auch in die Irre. Wir folgen dabei Vorurteilen, Klischees und  Wahrscheinlichkeiten – nicht kluger Abwägung. Und doch nutzen wir diese  Heuristiken ständig, weil wir damit Energie sparen und schnell  entscheiden können. (s. [14] und [15]).
+
+Die wichtigsten Heuristiken laut Kahneman sind: 
+
+### Verlustaversion: Bloß nichts hergeben
+
+Der Schmerz, etwas zu verlieren, wiegt emotional schwerer als die Freude, etwas von gleichem Wert zu gewinnen.. Wenn wir z.B. einen Dienst/Produkt einmal abonniert haben, fällt es uns schwer, ihn wieder aufzugeben. 
+
+### Satisficing: OK ist gut genug
+
+Anstatt die beste mögliche Lösung zu suchen, trifft man Entscheidungen, die "gut genug" sind. Satisficing ist in vielen realen Szenarien eine nützliche Strategie, da es schneller und einfacher ist als perfektes Optimieren.
+
+### Knappheitsprinzip: Selten lockt besonders
+
+Was knapp ist, muss wertvoll sein – so denken wir automatisch.Im Marketing wird das Knappheitsprinzip genutzt, um Begehrlichkeit zu erzeugen. Beispiele:
+
+- **Limitierte Angebote:** „Nur noch 2 Artikel auf Lager!“
+- **Zeitliche Begrenzung:** „Nur heute erhältlich!“
+
+### Verfügbarkeitsverzerrung: Das Naheliegende zählt
+
+Informationen, die leicht verfügbar oder auffällig sind, beeinflussen unsere Entscheidungen mehr. Es ist eine kognitive Verzerrung, bei der Menschen Informationen oder Ereignisse, die ihnen leichter in den Sinn kommen, als wahrscheinlicher oder repräsentativer bewerten, als sie tatsächlich sind. 
+
+### Ankereffekt: Alles ist relativ
+
+Der **Ankereffekt** ist eine kognitive Verzerrung, bei der Menschen bei Entscheidungen oder Schätzungen von einem initial präsentierten Wert – dem sogenannten **Anker** – beeinflusst werden. Dieser Wert dient als Referenzpunkt, auch wenn er mit der eigentlichen Entscheidung oder Schätzung nichts zu tun hat.
+
+### Status-quo-Verzerrung: Bekanntes beruhigt
+
+Die **Status-quo-Verzerrung** (englisch: *status quo bias*) beschreibt die Tendenz von Menschen, den aktuellen Zustand (den Status quo) zu bevorzugen und Änderungen zu vermeiden, selbst wenn eine Veränderung objektiv besser wäre. Sie ist eine kognitive Verzerrung, die mit Verlustaversion, Trägheit und dem Wunsch nach Stabilität zusammenhängt.
+
+Das erklärt, warum selbst schlechte Standardeinstellungen oft beibehalten  werden und warum Interface-Änderungen häufig auf Ablehnung stoßen –  selbst wenn sie objektiv besser sind.
+
+### Bestätigungsfehler: Wir sehen, was wir erwarten
+
+Der **Bestätigungsfehler** (englisch: *confirmation bias*) ist eine kognitive Verzerrung, bei der Menschen Informationen bevorzugt suchen, interpretieren oder erinnern, die ihre bestehenden Überzeugungen, Meinungen oder Hypothesen bestätigen. Gleichzeitig werden widersprüchliche Informationen ignoriert oder abgewertet.
+
+### Hick’sches Gesetz: Länger dauert länger
+
+Das **Hick’sche Gesetz** (englisch: *Hick's Law*) ist ein psychologisches Prinzip, das beschreibt, wie die Zeit, die eine Person benötigt, um eine Entscheidung zu treffen, von der Anzahl der zur Verfügung stehenden Optionen abhängt. Je mehr Auswahlmöglichkeiten es gibt, desto länger dauert es, eine Entscheidung zu treffen.
+
+### Entscheidungsmüdigkeit: Zu viele Optionen lähmen
+
+**Entscheidungsmüdigkeit** (englisch: *decision fatigue*) bezeichnet den Zustand, in dem die Fähigkeit einer Person, gute Entscheidungen zu treffen, im Laufe des Tages oder bei wiederholtem Treffen von Entscheidungen nachlässt. Diese Form der mentalen Erschöpfung tritt auf, weil das Treffen von Entscheidungen geistige Ressourcen verbraucht, die mit der Zeit erschöpft werden.
+
+### Präventionsparadox
+
+Das **Präventionsparadox** beschreibt eine Situation, in der eine Maßnahme zur Prävention von gesundheitlichen oder sozialen Risiken von der Gesellschaft insgesamt als weniger wichtig oder dringlich angesehen wird, obwohl sie potenziell eine große Wirkung auf die Bevölkerung hat. Das Paradox entsteht, weil präventive Maßnahmen oft nur dann wahrgenommen werden, wenn die Risikofaktoren schon Auswirkungen zeigen, oder wenn sie individuelle (negative) Folgen vermeiden, die in der breiten Masse oft nicht direkt spürbar sind.
 
 ## DevOps
 
@@ -578,7 +631,7 @@ One of the most important messages: Bug will happen. But how do we prevent bugs 
 
 [5] Puppet Labs, 2023 State of DevOps Report, https://www.puppet.com/resources/state-of-platform-engineering, abgerufen am 14.03.2024
 
-[6] Michael T. Nygard, Release It!: Design and Deploy Production-Ready Software
+[6] Michael T. Nygard, Release It!: Design and Deploy Production-Ready Software, 2018
 
 [7] John Allspaw and Paul Hammond, "10+ Deploys Per Day: Dev and Ops Cooperation at Flickr", http://velocityconf.com/velocity2009/public/schedule/detail/1641
 
@@ -593,6 +646,10 @@ One of the most important messages: Bug will happen. But how do we prevent bugs 
 [12] Pedro Canahuati, "From the Few to the Many: Scaling Ops at Facebook", https://www.infoq.com/presentations/scaling-operations-facebook/, abgerufen am 05.04.2024
 
 [13] Werner Vogels, All Things Distributed, https://www.allthingsdistributed.com/, abgerufen am 05.04.2024
+
+[14] Denken auf der Überholspur – Heuristiken in UX und Design – Newsletter 12/2024, https://www.benutzerfreun.de/newsletter/denken-auf-der-ueberholspur-heuristiken-in-ux-und-design-newsletter-12-2024/, abgerufen am 02.01.2024
+
+[15] Daniel Kahneman: Schnelles Denken, langsames Denken, 2016
 
 
 
