@@ -430,11 +430,11 @@ Dependeny Injection (DI) ist eine Technik, die in der Programmierung häufig Anw
 - Vereinfacht Refactoring 
 - Vereinfacht das Testen
 
-Zuerst ein Beispiel ohne Verwendung von Dependency Injection. 
+Zuerst ein Beispiel ohne Verwendung von *Dependency Injection*. 
 
 Was unschöne Nebeneffekte hat: 
 
-- enge Agnhängigkeit zwischen *Car* und *Engine*
+- enge Abhängigkeit zwischen *Car* und *Engine*
 - dadurch bedingt schwieriger zu testen
 
 ```c++
@@ -469,7 +469,7 @@ int main()
 
 ```
 
-Und unter Verwendung von Dependency Injection kann es dann z.B. so aussehen. 
+Und unter Verwendung von *Dependency Injection* kann es dann z.B. so aussehen. 
 
 ```c++
 #include <iostream>
@@ -509,6 +509,8 @@ int main()
 
 - Erhöht die Wiederverwendung da man einem *Car* jetzt verschiedene Arten von *Engines* geben kann
 - Das Testen wird vereinfacht, da ich auch hier verschiedene Arten von *Engines* injizieren kann
+
+Zusammengefasst bedeutet Dependency Injection, dass ich die Abhängigkeiten einer Klasse identifiziere und sie als Parameter (z.B. via Konstruktor-Argument) übergeben anstatt es der Klasse zu überlassen, diese Abhängigkeiten eigenständig zu beziehen.
 
 ## Dependent and non-dependent names
 
@@ -950,7 +952,7 @@ In der Informatik eine Bedingung, die zu gegebener Zeit als ‘wahr’ angenomme
 
 ## Inversion of Control (IoC)
 
-Das Inversion of Control Prinzip besagt, dass generischer Coden die Ausführung und das Verhalten von spezifischem Code steuert. Seine Anwendung findet es z.B. beim Dependency Injection.
+Das *Inversion of Control* Prinzip besagt, dass generischer Coden die Ausführung und das Verhalten von spezifischem Code steuert. Seine Anwendung findet es z.B. beim *Dependency Injection*.
 
 ## Kernel
 
@@ -2134,6 +2136,8 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [43] fruit - a dependency injection framework for C++, https://github.com/google/fruit, abgerufen am 31. Oktober 2024
 
 [44] pigweed - Modern software development for embedded systems, https://github.com/google/pigweed, abgerufen am 31. Oktober 2024
+
+[45] Dependency injection in Android, https://developer.android.com/training/dependency-injection, abgerufen am 27. Januar 2025
 
 
 
