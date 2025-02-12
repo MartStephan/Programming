@@ -56,7 +56,7 @@ Freigegeben am 25.6.2015.
 
 Freigegeben am 6.8.2015.
 
-aktuelle **Version 1.63.0** vom 08. August 2022
+aktuelle **Version 1,84.1** vom 30. Januar 2025
 
 
 
@@ -78,6 +78,10 @@ Das Beste zuerst: Rust kennt kein *null*. Dadurch hat man schon viele Probleme b
 
 Weiterhin schmeisst der Rust-Compiler bei möglichen Data Races einen Fehler, Resourcen werden automatisch deallokiert und der Compiler meckert bei Out-of-scope Zugriffen.  
 
+**Speichersicherheit** 
+
+Rust hat bietet von Haus aus Speichersicherheit. Der Speicher wird automatisch als Teil der Programmiersprache verwaltet; er ist nicht darauf angewiesen, dass der Programmierer Code hinzufügt, um Speicherschutzmechanismen zu implementieren. Die Sprache setzt automatische Schutzmaßnahmen durch eine Kombination aus Prüfungen zur Kompilierzeit und zur Laufzeit durch.
+
 **Expressivität**
 
 Rust ist eine ausdrucksstarke Sprache und bietet viele Patterns aus der funktionalen Programmierung: pattern matching, destucturing, streams, iterators und vieles mehr. Ausserdem kennt Rust *traits* und *generics*. 
@@ -94,6 +98,14 @@ Rust Binärdateien sind standalone, native Binaries. Sie konsumieren relativ wen
 -  	Ein Hauptkonzept von Rust ist das der 'Ownership'
 -  	Speicher-(De-)Allokation wird vom Rust-Compiler getätigt, d.h. es gibt keine 'malloc' oder 'free' Aufrufe
 -  	'move'-Semantik eingebaut
+
+## Warum
+
+Ganz oben bei bekannten Schwachstellen findet man Implementierungsfehler sind Fehler  bei der Speicherverwaltung: „Out-of-bounds Read & Write”, „Buffer  Overflow”, „Null Pointer Dereference”, „Use After Free”, usw. 
+
+Rust hat von Haus aus Sicherheiten eingebaut, die diese Schwachstellen überhaupt erst nicht möglich machen. 
+
+Wenn man sich die Top-25-Schwachstellen anschaut, dann wird man feststellen, dass viele davon durch Verwendung von Rust ausgeschlossen sind. Und zwar durch die syntaktische und semantische Prüfung durch den Compiler und das  Laufzeitsystem. So lassen sich also allein durch die Wahl  der Programmiersprache viele bekannte Schwachstellen vermeiden - und das unabhängig von  Programmierfehlern. 
 
 ## Installation und Hello World
 
@@ -1455,6 +1467,14 @@ Größeres Update.
 [12] Error Handling Patterns, Andrea Bergia, https://andreabergia.com/blog/2023/05/error-handling-patterns/ (abgerufen am 11.05.2023)
 
 [13] Programming WebAssembly with Rust, Kevin Hoffman, The Pragmatic Bookshelf
+
+[14] Informationsblatt zu sicheren Programmiersprachen, https://media.defense.gov/2022/Nov/10/2003112742/-1/-1/0/CSI_SOFTWARE_MEMORY_SAFETY.PDF (abgerufen am 12.02.2025)
+
+[15] Katalog ausgenutzer Sicherheitsprobleme der CISA (Cybersecurity and Infrastructure Security Agency), https://www.cisa.gov/known-exploited-vulnerabilities-catalog (abgerufen am 12.02.2025)
+
+[16] Common Vulnerabilities and Exposures (CVE) Programm, https://www.cve.org/ (abgerufen am 12.02.2025)
+
+[17] CWE Top 25 Most Dangerous Software Weaknesses, https://cwe.mitre.org/top25/index.html (abgerufen am 12.02.2025)
 
 
 
