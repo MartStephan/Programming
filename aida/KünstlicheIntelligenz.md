@@ -62,6 +62,8 @@ Table of Contents
     * [SymPy](#sympy)
     * [Chainer](#chainer)
     * [Pandas](#pandas)
+    * [LangChain](#langchain)
+    * [Jupyter](#jupyter)
   * [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
@@ -478,6 +480,26 @@ Hervorzuhebende Eigenschaften von Pandas sind:
 - Flexibilität bei der Visualisierung von Daten
   Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
 
+### LangChain
+
+Python-Framework zur Erstellung und Benutzung von Generativen KIs (LLMs). Es ist das führende Framework derzeit für Use-Cases im Bereich der Generativen AI. 
+
+### Jupyter
+
+Notebooks wie Jupyter ermöglichen die Kombination von Notizen, Grafiken, Videos und dergleichen mit editier- und ausführbarem Code. Jupyter stellt dabei unterschiedliche Kernels zur Verfügung. Unter einem Kernel versteht man in diesem Zusammenhang einen Prozess, der interaktiven Code in einer bestimmten Sprache ausführt. 
+
+Bei Start von Jupyter befindet man sich in einer sogenannten Zelle. Es gibt verschiedene Arten von Zellen z.B. Codezellen oder Textzellen. 
+
+Die nächste Generation von Jupyter-Benutzeroberfächen ist das sogenannte *JupyterLab*. 
+
+Ergänzende Werkzeuge für die Arbeit mit Notebooks: 
+
+*nbstripout*: Jedes Notebook speichert alle Daten in einer Datei. nbstripout sorgt hier für Ordnung und entfernt alle generierten (Meta-)Daten. 
+
+*RISE*: RISE ist ein Generator für reveal.js-basierte HTML-Slideshows. 
+
+*JupyterHub*: Erweitert Jupyter für mehrere Benutzer inkl. Authentifizierung, Container-Unterstützung und zentralisiertem Deployment. 
+
 ## Literatur
 
 [1] Machine Learning: The New AI, Ethem Alpaydin
@@ -533,6 +555,22 @@ https://www.plattform-lernende-systeme.de/files/Downloads/Publikationen/AG3_WP_K
 [26] AI Act - die KI-Verordnung ist endlich da, entwickler magazin, Ausgabe 07.2024
 
 [27] Bundesverband IT-Sicherheit, https://www.stand-der-technik-security.de/startseite/, abgerufen am 05.11.2024
+
+[28] https://the-decoder.de/, abgerufen am 29.11.2024 
+
+[29] https://www.langchain.com/, abgerufen am 29.11.2024
+
+[30] https://paperswithcode.com/, abgerufen am 29.11.2024
+
+[31] Project Jupyter, https://jupyter.org, abgerufen am 16.02.2025
+
+[32] JupyterLab Documentation, https://jupyterlab.readthedocs.io/en/latest/, abgerufen am 16.02.2025
+
+[33] nbstripout, https://github.com/kynan/nbstripout, abgerufen am 16.02.2025
+
+[34] RISE, https://github.com/damianavila/RISE, abgerufen am 16.02.2025
+
+[35] JupyterHub, https://github.com/jupyterhub/jupyterhub, abgerufen am 16.02.2025
 
 
 
