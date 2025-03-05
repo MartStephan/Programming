@@ -24,13 +24,21 @@ Table of Contents
     * [Schleifen](#schleifen)
     * [Mutable/Immutable](#mutableimmutable)
     * [Funktionen](#funktionen)
-    * [Kopien, Referenzen und Ownership](#kopien-referenzen-und-ownership)
-    * [Ownership](#ownership)
+    * [Sichere Nebenläufigkeit](#sichere-nebenl%C3%A4ufigkeit)
+    * [Embedded](#embedded)
+    * [Fehlerbehandlung](#fehlerbehandlung)
+    * [Pattern Matching](#pattern-matching)
+    * [Ownership, Borrowing und Lifetimes](#ownership-borrowing-und-lifetimes)
+      * [Ownership](#ownership)
+	  * [Borrowing](#borrowing)
+	  * [Lifetimes](#lifetimes)
     * [Structs](#structs)
-    * [enums und Pattern Matching](#enums-und-pattern-matching)
-  * [Packages, Crates, and Modules](#packages-crates-and-modules)
+    * [Enums](#enums)
+    * [Traits](#traits)
+  * [Ökosystem](#%C3%B6kosystem)
+    * [Packages, Crates, and Modules](#packages-crates-and-modules)
+    * [Cargo](#cargo)
   * [Collections](#collections)
-  * [Error Handling](#error-handling)
   * [Generics](#generics)
   * [Automatisierte Tests](#automatisierte-tests)
     * [Tests schreiben](#tests-schreiben)
@@ -98,6 +106,8 @@ Rust Binärdateien sind standalone, native Binaries. Sie konsumieren relativ wen
 -  	Ein Hauptkonzept von Rust ist das der 'Ownership'
 -  	Speicher-(De-)Allokation wird vom Rust-Compiler getätigt, d.h. es gibt keine 'malloc' oder 'free' Aufrufe
 -  	'move'-Semantik eingebaut
+-  	Rust ist keine objektorientierte Sprache und es fehlen Dinge wie Laufzeitpolymorphismus, Klassen, Subtypen und Methodenüberladung
+-  	Rust hat Interfaces, sogenannte *Traits*
 
 ## Warum
 
@@ -364,6 +374,20 @@ Und installiere zusätzliche mit ***rustup target add <target_system>***.
 
 **Achtung:** rustup target add installiert nur die Rust Standard-Bibliothek für das angegebene Zielsystem. Üblicherweise müssen noch andere Werkzeuge installiert werden um tatsächlich Cross-Compilen zu können; insbesondere benötigt man einen Linker. Zum Beispiel benötigt man ein Android NDK um einen Cross-Compile für Android erfolgreich durchzuführen.
 
+## Speichersicherheit
+
+**Manuelle Speicherverwaltung**
+
+Bei Sprachen wie C oder C++ spricht man von manueller Speicherverwaltung. Zuweisung und Freigabe von Speicher ist in der Verantwortung des Benutzers. Probleme sind hier Szenarien wie "use after free" oder "double free".
+
+**Speicherveraltung mit Garbage Collection**
+
+Modernere Sprachen (im Vergleich zu C/C++) führten die Garbage Collection ein. Zusätzlich zum Hauptprogrammcode existiert eine Laufzeitumgebung im Hintergrund, jede Speicherzuweisung wird von dieser Laufzeitumgebung verwaltet, etwa indem sie *malloc()* und *free()* für uns aufruft. 
+
+Rust
+
+Rust verwendet keinen dieser beiden Ansätze und erzeugt stattdessen ein Speicherverwaltungssystem mit statischer Analyse. Alle Speicherbeziehungen werden zur Kompilierzeit überprüft. Es gibt keine Laufzeitumgebung! Und kein Garbage Collection! Das Speicherverwaltungssystem muss nicht regelmäßig aktualisiert werden. 
+
 ## Basics
 
 ### Kommentare
@@ -558,7 +582,91 @@ fn eine_andere_funktion(val: u32) -> u8
 // return 1
 ```
 
-### Kopien, Referenzen und Ownership
+### Sichere Nebenläufigkeit
+
+Rust bietet ein Typsystem, das die Grenzen der Nebenläufigkeit von Threads kennt und viele gängige Race Conditions verhindert. 
+
+### Embedded
+
+Rust ist nicht auf eine Laufzeitumgebung angewiesen. Dadurch können die erzeugten Binärdateien sehr klein sein. Es gibt für Rust die Arbeitsgruppe "Rust Embedded", die die Embedded-Entwicklung vorantreibt. 
+
+### Fehlerbehandlung
+
+Rust kennt keine Exceptions, und es gibt nicht einmal einen Nulltyp. 
+
+Rust bietet mehrere Möglichkeiten zur Fehlerbehandlung. 
+
+- *Result<T, E>* 
+- *panic!*
+
+**panic!**
+
+Für nicht wieder heilbare Fehler bietet Rust das *panic!* Makro. Mit *panic!* wird eine Fehlermeldung ausgegeben, der Stack aufgeräumt und dann das Programm verlassen. 
+
+```rust
+// Rust Error Handling
+fn main() 
+{
+   // something bad happened - Panik Panther
+   panic!("Panik Panther");
+}
+
+//thread 'main' panicked at 'Panik Panther', src\main.rs:5:4
+//note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+//error: process didn't exit successfully: `collections.exe` (exit code: 101)
+```
+
+**Result<T, E>**
+
+*Result<T, E>* hat seine Wuzeln in funktionalen Sprachen wie z.B. Haskell. Die Idee ist einen Typ *Result* zu haben, der zwei Varianten kennt. 
+
+```rust
+enum Result<T, E> {
+    Ok(T),
+    Err(E)
+}
+```
+
+Praktisch sieht es dann so aus. 
+
+```rust
+// Rust Error Handlin
+use std::fs::File;
+
+fn main() 
+{
+   let f = File::open("hello.txt");
+
+   let f = match f 
+   {
+      Ok(file) => file,
+      Err(error) => 
+      {
+          panic!("Problem opening the file: {:?}", error)
+      },
+  };
+  println!("f{:?}", f);
+}
+
+//thread 'main' panicked at 'Problem opening the file: Os { code: 2, kind: NotFound, //message: "Das System kann die angegebene Datei nicht finden." }', src\main.rs:13:11
+//note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+//error: process didn't exit successfully: `collections.exe` (exit code: 101)
+```
+
+### Pattern Matching
+
+Rust verfügt über eine Pattern-Matching-Syntax, mit der schnell verschiedene Bedingungen eines zurückgegebenen Werts überprüft werden können. 
+
+```rust
+let f = match File::open("placeholder.txt") {
+    Err(_) => File::create("placeholder.txt"),
+    file => file,
+}?;
+```
+
+### Ownership, Borrowing und Lifetimes
+
+Rust löst viele Probleme der Speicherverwaltung, ohne sich auf Garbage Collection verlassen zu müssen. Das geschieht über die Konzepte von Ownership und Borrowing. Jedes Datenelement in einem Rust-Programm hat genau einen einzigen expliziten Scope. Nur der Owner ist dafür verantwortlich, den Speicher eines Typs, der den Scope verlässt, aufzuräumen. Und da es immer nur einen einzigen Owner geben kann, kommt es auch nie zu einem Double-free-Fehler. 
 
 Wichtig zu wissen: Mit dem *=* Zeichen wechselt in Rust die Ownership. Vor allem Programmierer, die C/C++/Python gewohnt sind, müssen hier umdenken. 
 
@@ -578,9 +686,9 @@ fn main()
 // hello world
 ```
 
-Rust hat auch einen Mechanismus, um Werte ohne Ownership zu referenzieren: Bezeichnenderweise *references* bezeichnet. Ähnlich wie in C++ kann man dafür den &-Operator nutzen: Ein &String s2 kann also auf einen String s1 referenzieren, ohne die Ownership zu übertragen.
+Rust hat auch einen Mechanismus, um Werte ohne Ownership zu referenzieren: Bezeichnenderweise *references* bezeichnet. Ähnlich wie in C++ kann man dafür den &-Operator nutzen: Ein &String s2 kann also auf einen String s1 referenzieren, ohne die Ownership zu übertragen. In Rust wird dies *Borrowing* genannt. 
 
-### Ownership
+#### Ownership
 
 Ein zentrales Element der Sprache ist die *Ownership*, welche wir im obigen Beispiel schon einmal in Aktion gesehen haben. Hier noch einige zusätzliche Information dazu. 
 
@@ -609,11 +717,19 @@ fn main() {
 }
 ```
 
+#### Borrowing
 
+Was ist, wenn man möchte, dass andere Teile der Anwendung einen schon genutzten Speicher verwenden wollen, ohne gleich der neue Owner zu werden? Hier kommen Borrowing und Lifetimes ins Spiel. 
+
+#### Lifetimes
+
+Mit Lifetimes kann man Speicher definieren, welcher zuerst einmal keinem Owner zugeordnet ist Die Datenstruktur/der Typ soll also nicht selbst Owner seiner Daten sein, sondern sie sich von einem anderen Ort ausleihen. Es handelt sich um unveränderliche Borrows; sie können weder von außen noch von sich selbst geändert werden.
+
+Eine Lifetime kann mit einer Annotation dem Rust-Compiler mitgeteilt werden. Man gibt ihm damit eine Anweisung, den Lebenszyklus dieses Borrows unter einem bestimmten Namen zu verfolgen. Diese Lifetimes werden später vom Compiler ausgefüllt, je nachdem, wo und wie wir eine Instanz erstellen. 
 
 ### Structs
 
-Für Strukturen gibt es das Schlüsselwort *struct*. Ein kurzes Beispiel sollte genügen. 
+Für Strukturen gibt es das Schlüsselwort *struct*. Mit dem Schlüsselwort impl ist es möglich, Methoden auf einem Typ zu implementieren. Ein kurzes Beispiel soll genügen. 
 
 ```rust
 /// Example of strcuts/enums
@@ -649,9 +765,9 @@ fn main()
 // The starting point today is x=10 y=10
 ```
 
-### enums und Pattern Matching
+### Enums
 
-Weiter geht es mit einem kleinen Beispiel für die Benutzung von *enum*. Interessant in Rust ist die Möglichkeit, zusätzliche Daten direkt in den Enum-Wert zu setzen. Zusätzlich lassen sich in Rust Werte mit einem sogenannten *match* Operator vergleichen. 
+Weiter geht es mit einem kleinen Beispiel für die Benutzung von *enum*. Interessant in Rust ist die Möglichkeit, zusätzliche Daten direkt in den Enum-Wert zu setzen. Zusätzlich lassen sich in Rust Werte mit einem sogenannten *match* Operator vergleichen. Ein Enum kann immer nur eine seiner vielen Varianten sein. 
 
 ```rust
 /// Example of enums
@@ -703,7 +819,44 @@ fn ipNumber(ip: InternetProtocol) -> u8
 // I'm using protocol 4
 ```
 
-## Packages, Crates, and Modules
+Es können recht komplexe Daten in eine Enum-Variante eingebettet werden. Es ist möglich, externe oder generische Typen in eine Enum-Variante einzubinden.
+
+```rust
+/// This type represents books in a library
+enum BookState {
+    /// The book is available in the library
+    Available,
+    /// The book has been borrowed by someone
+    Borrowed { from: Date, to: Date },
+    /// The book is otherwise unavailable
+    Unavailable
+}
+```
+
+### Traits
+
+Rust verfügt über einen Schnittstellenmechanismus namens Traits. Ein Trait ist ein einfaches Funktionsinterface, das standardmäßig keine Funktionsimplementierungen bereitstellen muss. Ein Trait kann für einen bestehenden Typ implementiert werden. 
+
+```rust
+trait Vehicle {
+    fn move_by(&mut self, x: i64, y: i64);
+}
+
+struct Bicycle(i64, i64);
+
+impl Vehicle for Bicycle {
+    fn move_by(&mut self, x: i64, y: i64) {
+        self.0 += x;
+        self.1 += y; 
+    }
+}
+```
+
+
+
+## Ökosystem
+
+### Packages, Crates, and Modules
 
 Das Modul-System von Rust umfasst folgende Features. 
 
@@ -862,6 +1015,23 @@ fn main()
 }
 ```
 
+### Cargo
+
+Rust-Projekte werden normalerweise mit dem Cargo-Projektmanager erstellt. Ein Cargo-Projekt besteht aus mindestens einer Rust-Datein (entweder *main.rs* oder l*ib.rs*) sowie einer Metadatendatei namens *Cargo.toml*, in der Dinge wie Paketname, Version und Abhängigkeiten festgehalten werden. 
+
+```toml
+[package]
+name = "on-the-run"
+version = "0.1.0"
+
+[dependencies]
+chrono = "0.4"
+```
+
+Außerdem wird nach der ersten Kompilierung eine Cargo.lock-Datei erstellt, in der Hashes von Abhängigkeiten aufgezeichnet werden, um sicherzustellen, dass Netzwerkausfälle oder Angriffe aud die Lieferkette einen Build in Zukunft nicht beeinträchtigen. 
+
+Projekte können mit dem Befehl *cargo build* erstellt und mit *cargo run* ausgeführt werden.
+
 ## Collections
 
 Wie in anderen Sprachen auch, gibt es in Rust sogenannte Collections. Drei davon schauen wir uns an:
@@ -984,67 +1154,6 @@ fn main()
 //ksc Some(3)
 //fcb: 1
 //ksc: 3
-```
-
-## Error Handling
-
-Rust bietet mehrere Möglichkeiten zur Fehlerbehandlung. 
-
-- *Result<T, E>* 
-- *panic!*
-
-**panic!**
-
-Für nicht wieder heilbare Fehler bietet Rust das *panic!* Makro. Mit *panic!* wird eine Fehlermeldung ausgegeben, der Stack aufgeräumt und dann das Programm verlassen. 
-
-```rust
-// Rust Error Handling
-fn main() 
-{
-   // something bad happened - Panik Panther
-   panic!("Panik Panther");
-}
-
-//thread 'main' panicked at 'Panik Panther', src\main.rs:5:4
-//note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-//error: process didn't exit successfully: `collections.exe` (exit code: 101)
-```
-
-**Result<T, E>**
-
-*Result<T, E>* hat seine Wuzeln in funktionalen Sprachen wie z.B. Haskell. Die Idee ist einen Typ *Result* zu haben, der zwei Varianten kennt. 
-
-```rust
-enum Result<T, E> {
-    Ok(T),
-    Err(E)
-}
-```
-
-Praktisch sieht es dann so aus. 
-
-```rust
-// Rust Error Handlin
-use std::fs::File;
-
-fn main() 
-{
-   let f = File::open("hello.txt");
-
-   let f = match f 
-   {
-      Ok(file) => file,
-      Err(error) => 
-      {
-          panic!("Problem opening the file: {:?}", error)
-      },
-  };
-  println!("f{:?}", f);
-}
-
-//thread 'main' panicked at 'Problem opening the file: Os { code: 2, kind: NotFound, //message: "Das System kann die angegebene Datei nicht finden." }', src\main.rs:13:11
-//note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-//error: process didn't exit successfully: `collections.exe` (exit code: 101)
 ```
 
 ## Generics
@@ -1475,6 +1584,14 @@ Größeres Update.
 [16] Common Vulnerabilities and Exposures (CVE) Programm, https://www.cve.org/ (abgerufen am 12.02.2025)
 
 [17] CWE Top 25 Most Dangerous Software Weaknesses, https://cwe.mitre.org/top25/index.html (abgerufen am 12.02.2025)
+
+[18] Eternal Sunshine of the Spotless Programming Language, Stefan Baumgartner, https://fettblog.eu/slides/eternal-sunshine-rust/ (abgerufen am 28.02.2025)
+
+[19] The joys & pains of async/await, Zeeshan Ali Khan, https://zeenix.github.io/presentations-marp/Rust/async-await/async-await-good-bad-ugly.html (abgerufen am 28.02.2025)
+
+[20] Rust als Ergänzung zu C++, Rainer Stropek
+
+[21] Einführung in Rust, Katharina Fey, Entwickler Magazin, Ausgabe 03/2022
 
 
 
