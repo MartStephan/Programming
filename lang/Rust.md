@@ -107,7 +107,7 @@ Rust Binärdateien sind standalone, native Binaries. Sie konsumieren relativ wen
 -  	Speicher-(De-)Allokation wird vom Rust-Compiler getätigt, d.h. es gibt keine 'malloc' oder 'free' Aufrufe
 -  	'move'-Semantik eingebaut
 -  	Rust ist keine objektorientierte Sprache und es fehlen Dinge wie Laufzeitpolymorphismus, Klassen, Subtypen und Methodenüberladung
--  	Rust hat Interfaces, sogenannte *Traits*
+-  	Rust hat Interfaces, sogenannte *Traits* (Ok. Manche sagen: "Traits sind keine Interfaces")
 
 ## Warum
 
@@ -346,14 +346,14 @@ Zum schnellen Entwickeln hier eine Kurzbeschreibung, wie man Rust-Code mit Visua
 
 Rust unterstützt von Haus aus verschiedene Zielsysteme. So z.B. auch ARM-basierende Systeme. So ist es in Rust ganz einfach möglich von seinem Lieblingssystem für ein anderes System zu bauen. 
 
-Mit ***rustup toolchain list*** kann man die aktuell installierten Zielsysteme sich anzeigen lassen.
+Mit ***rustup toolchain list*** kann man die aktuell installierten Toolchains sich anzeigen lassen.
 
 Gib dir mit ***rustup target list*** alle verfügbaren Zielsysteme aus.
 
 Und installiere zusätzliche mit ***rustup target add <target_system>***.
 
 ```
-# show all current installed target systems
+# show all current installed toolchains
 >> rustup toolchain list 
 >> stable-x86_64-pc-windows-msvc (default)
 
@@ -373,6 +373,32 @@ Und installiere zusätzliche mit ***rustup target add <target_system>***.
 ```
 
 **Achtung:** rustup target add installiert nur die Rust Standard-Bibliothek für das angegebene Zielsystem. Üblicherweise müssen noch andere Werkzeuge installiert werden um tatsächlich Cross-Compilen zu können; insbesondere benötigt man einen Linker. Zum Beispiel benötigt man ein Android NDK um einen Cross-Compile für Android erfolgreich durchzuführen.
+
+Eine Aktualisierung der Toolchain kann mit ***rustup update*** erfolgen.
+
+```
+PS D:\Projects\rust> rustup update
+info: syncing channel updates for 'stable-x86_64-pc-windows-msvc'
+warning: Signature verification failed for 'https://static.rust-lang.org/dist/channel-rust-stable.toml'
+info: latest update on 2025-02-20, rust version 1.85.0 (4d91de4e4 2025-02-17)
+info: downloading component 'rust-std' for 'armv7-unknown-linux-gnueabi'
+ 25.4 MiB /  25.4 MiB (100 %)   2.7 MiB/s in 11s ETA:  0s
+info: downloading component 'rls'
+info: downloading component 'rust-src'
+info: downloading component 'rust-analysis'
+info: downloading component 'cargo'
+  6.9 MiB /   6.9 MiB (100 %)   3.4 MiB/s in  2s ETA:  0s
+......
+info: installing component 'rustfmt'
+info: checking for self-updates
+info: downloading self-update
+
+  stable-x86_64-pc-windows-msvc updated - rustc 1.85.0 (4d91de4e4 2025-02-17) (from rustc 1.63.0 (4b91a6ea7 2022-08-08))
+
+info: cleaning up downloads & tmp directories
+```
+
+
 
 ## Speichersicherheit
 
