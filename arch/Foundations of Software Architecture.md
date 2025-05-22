@@ -157,6 +157,38 @@ Manchmal ist es so, dass sich Attribute gegenseitig beeinflussen. So geht eine h
 - Sicherheit versus Benutzbarkeit 
 - Laufzeitflexibilität versus Wartbarkeit
 
+Neben ISO/IEC 25010 gibt es weitere Qualitätsstandards (kein Anspruch auf Vollständigkeit):
+
+- ISO/IEC 25010 - Softwarequalitätsmodelle
+- ISO/IEC 9126 - Vorgänger von ISO/IEC 25010
+- MISRA - Motor Industry Software Reliability Association
+- CWE - Common Weakness Enumeration
+- OWASP 
+- FDA, IEC 62304 - Medizingerätesoftware
+- EU-Richtlinien und DSVGO - Datenschutz und sichere Softwareentwicklung
+- Sarbanes-Oxley Act (SOX) und IT-Sicherheitsgesetz für Unternehmenssoftware
+
+### **Metriken und Messgrößen**
+
+| Kategorie                | Metrik                               | Beschreibung                                                 | Bewertung                                                    |
+| ------------------------ | ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Lesbarkeit & Wartbarkeit | Maintainability Index (MI)           | Bewertet die Wartbarkeit des Codes basierend auf LoC, CC und Halstead-Metriken | Werte über 80 sind sehr gut, unter 20 schlecht               |
+|                          | Lines of Code (LOC)                  | Anzahl der Zeilen im Quellcode                               | Hohe LoC kann auf mangelnde Modularität hinweisen            |
+|                          | Comment Density                      | Anteil von Kommentaren im Verhältnis zum Code                | Zu viele Kommentare deuten auf schlechten Codestil hin, zu wenige auf geringe Verständlichkeit |
+| Komplexität              | Cyclomatic Complexity (CC)           | Misst die Anzahl der unabhängigen Pfade durch den Code; höhere Werte entsprechen höherer Komplexität | CC < 10 ist akzeptabel, > 20 komplex, bei < 50 ist ein Refactoring angemessen |
+|                          | Halstead-Metriken                    | Bewertet die Code-Komplexität anhand der Anzahl von Operatoren und Operanden | Höhere Werte deuten auf komplexeren Code hin                 |
+|                          | Nesting Depth                        | Gibt an, wie tief Schleifen und Bedingungen verschachtelt sind. Tiefe > 3-4 deutet auf komplexen Code hin | Tiefe > 3-4 sollte vermieden werden                          |
+| Testbarkeit              | Code Coverage                        | Gibt den prozentualen Anteil des Codes an, der durch Tests abgedeckt ist | > 80 Prozent ist ideal. Achtung: 100 Prozent bedeutet nicht automatisch gute Tests |
+|                          | Mutation Testing Score               | Bewertet, wie gut Tests Fehler erkennen, indem zufällige Code-Änderungen vorgenommen werden | Ein hoher Score bedeutet gute Testqualität                   |
+| Sicherheit               | CWE (Sicherheitslücken)              | Gibt die Anzahl der bekannten Schwachstellen wie SQL-Injections oder Buffer Overflows an | Je mehr Schwachstellen, desto unsicherer ist der Code        |
+|                          | Dependency Vulnerability Score       | Bewertet die Sicherheit der verwendeten Biblitotheken anhand bekannter Sicherheitslücken | Geringere Werte sind besser                                  |
+|                          | Attack Surface  ("Angriffsvektoren") | Misst die Anzahl der exponierten APIs, offenen Ports oder unsicheren Eingabepunkte | Weniger Angriffsfläche bedeutet höhere Sicherheit            |
+| Performance              | Big-O-Notation (Komplexität)         | Beschreibt, wie sich der Code mit steigender Datenmenge verhält | Ziel ist, O(n log n) oder besser, d.h. die zum Ausführen des Algorithmus erforderliche Zeit steigt logarithmisch mit der Größe der Eingabe |
+|                          | CPU- und Speicherverbrauch           | Misst den Ressourcenverbrauch des Codes während der Laufzeit | Hohe Speicher- oder CPU-Auslastung sollte vermieden werden   |
+|                          | Query Efficiency                     | Reduziert redundante Datenbankabfragen zur Performanceoptimierung | Vermeidung von N+1 - Queryproblemen ist wichtig              |
+
+
+
 
 
 ## Architekturentscheidungen
