@@ -13,14 +13,17 @@ Table of Contents
 * [Table of Contents](#table-of-contents)
   * [Softwarearchitektur - Definition](#softwarearchitektur-definitionen)
   * [Softwarearchitektur-Prozess](#softwarearchitektur-prozess)
+    * [Ziele und Aufgaben des Softwarearchitekturentwurfs](#ziele-und-aufgaben-des-softwarearchitekturentwurfs)
   * [Anforderungen](#anforderungen)
   * [Systemkontext](#systemkontext)
   * [Randbedingungen](#randbedingungen)
   * [Qualität](#qualitaet)
+    * [Metriken und Messgrößen](#metriken-und-messgr%C3%B6%0D%0A%C3%9F%0D%0Aen)
   * [Architekturentscheidungen](#architekturentscheidungen)
   * [Architektur- und Entwurfs-Prinzipien](#architektur-und-entwurfs-prinzipien)
   * [Vorgehen und Heuristiken zur Architekturentwicklung](#vorgehen-und-heuristiken-zur-architekturentwicklung)
   * [Lösungsmuster für Architekten](#loesungsmuster-fuer-architekten)
+  * [Architekturstile und -muster](#architekturstile-und-muster)
   * [Architektur-Sichten](#architektur-sichten)
   * [Schnittstellen](#schnittstellen)
   * [Taktiken und Praktiken](#taktiken-und-praktiken)
@@ -285,7 +288,53 @@ Ausgewählte Architekturmuster sind:
 - Idioms
   - RAII in C++
 
+## Architekturstile und -muster
 
+| Stil                            | Intention                                                    | Beispiele                                                    |
+| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Datenflusssysteme               |                                                              |                                                              |
+| Datenzentrische Systeme         |                                                              |                                                              |
+| Hierarchische Systeme           | Bestehen aus Bausteinen in unterschiedlichen Ebenen einer Hierarchie | Schichtenarchitektur, Hexagonale Architektur (Ports- und Adapter), Onion Architecture, Clean Architecture |
+| Verteilte Systeme               |                                                              |                                                              |
+| Ereignisbasierte Systeme        |                                                              |                                                              |
+| Interaktionsorientierte Systeme |                                                              |                                                              |
+| Heterogene Systeme              |                                                              |                                                              |
+
+### Hierarchische Architekturstile
+
+**Schichtenarchitektur**
+
+In der Schichtenarchitektur behandelt jede Schicht einen spezifischen Aspekt der Anwendung. Dieses Konzept basiert auf dem Prinzip der "Separaion of Concerns", also der Trennung von Verantwortlichkeiten. 
+
+Ein zentraler Aspekt dieser Architektur ist, dass die Abhängigkeiten immer von oben nach unten  verlaufen. Eine Schicht kennt und nutzt nur die darunterliegende Schicht, niemals die darüberliegende. Das erleichtert die Verständlichkeit des Codes und verbessert die Wartbarkeit. Vorteil: Eine obere Schicht kann ausgetauscht werden, ohne dass die darunterliegenden Schichten geändert werden müssen. 
+
+Eine Herausforderung ist, dass obere Schichten oft Code in der darunterliegenden Schicht kennen und verwenden muss. Verwendet die unten liegende Schicht eine Datenbank aus der Infrastruktur, und muss diese Datenbank ausgetauscht werden, müssen evtl. auch in der oberen Schicht Anpassungen vorgenommen werden. 
+
+Um die Abhängigkeiten der Schichten zu Infrastrukturen zu verringern bzw. ganz zu eliminieren (also die Entkopplung der fachlichen Domäne von der verwendeten Technik) kommen oft Dependency Inversion gekoppelt mit Dependency Injection zum Zuge. 
+
+**Hexagonale Architektur**
+
+Das Prinzip der Dependency Inversion konsequent anwenden - das ist das Prinzip der hexagonalen Architektur. Oder auch Ports- und Adapter Architektur genannt. Sie wurde 2005 von Alistair Cockburn entwickelt. Ziel war, die Geschäftslogik von technischen Details zu entkoppeln. Dazu wird die Geschäftslogik von der Technik isoliert. Die Verbindung zwischen der Applikation und der externen Infrastruktur erfolgt ausschließlich über Ports und Adapter. 
+
+Ein Port beschreibt entweder, wie ein externer Treiber den Anwendungskern nutzen kann oder wie der Anwendungskern ein externes System ansprechen kann. Adapter fungieren als "Klebstoff" und übernehmen die Anpassung zwischen externen Systemen und Ports. 
+
+Die Prinzipien des Domain-Driven Designs (DDD) lassen sich sehr gut mit der hexagonalen Architektur kombinieren. In dieser Architektur entspricht ein Bounded Context einem Hexagon. 
+
+**Onion Architecture**
+
+Eine weitere Architektur, die auf dem Prinzip der Dependency Inversion aufbaut, ist die Onion Architecture, die 2008 von Jeffrey Palermo beschrieben wurde. 
+
+Im Zentrum der Onion-Architektur steht das Domain Model, mit anderen Worten die Geschäftslogik. Dieser Kern ist von allen äußeren Schichten unabhängig. 
+
+Auch die Onion Architecture wird durch den Einsatz von Dependency Inversion und Dependency Injection realisiert. 
+
+**Clean Architecture**
+
+Clean Architecture ist ein Konzept von Robert C. Martin. Auch Clean Architecture zielt darauf ab, Syteme so zu strukturieren, dass die Geschäftslogik vollständig von den äußeren Schichten der Applikation getrennt bleibt. 
+
+Im Zentrum der Architektur stehen Entitäten. Das sind Klassen, die unternehmensweit verwendet werden. Der nächste Ring enthält anwendungsspezifische Geschäftsregeln und Services. Der nächste Ring umfasst die Adapter, die als Vermittler zwischen der internen Geschäftslogik und den externen Technologien fungiert. Im äußersten Ring der Clean Architecture befinden sich Frameworks und Datenbanken. 
+
+Auch hier gilt (wie bei den zuvor genannten Architekturen auch): Abhängigkeiten dürfen nur nach innen gerichtet sein. 
 
 ## Architektur-Sichten
 
@@ -682,6 +731,8 @@ One of the most important messages: Bug will happen. But how do we prevent bugs 
 [14] Denken auf der Überholspur – Heuristiken in UX und Design – Newsletter 12/2024, https://www.benutzerfreun.de/newsletter/denken-auf-der-ueberholspur-heuristiken-in-ux-und-design-newsletter-12-2024/, abgerufen am 02.01.2024
 
 [15] Daniel Kahneman: Schnelles Denken, langsames Denken, 2016
+
+[16] Thomas Bayer, Schichten oder Schalen?, Hexagonale Architektur, Onion Architecture, Clean Architecture und ihre Vorteile für Doman Driven Design, entwickler.de magazin 5.2025
 
 
 
