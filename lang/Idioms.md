@@ -11,6 +11,7 @@ Table of Contents
   * [Aggregation](#aggregation)
   * [Aspektorientierte Programmierung](#aspektorientierte-programmierung)
   * [Bedarfsauswertung (Lazy Evaluation)](#bedarfsauswertung-lazy-evaluation)
+  * [Big\-O\-Notation](#big-o-notation)
   * [Clean Code](#clean-code)
   * [Closure](#closure)
   * [Compiler](#compiler)
@@ -39,6 +40,7 @@ Table of Contents
     * [Präprozessor](#pr%C3%A4prozessor)
     * [Compiler](#compiler-1)
     * [Linker](#linker)
+  * [Expressivität](#expressivit%C3%A4t)	
   * [Favour Composition over Inheritance](#favour-composition-over-inheritance)
   * [FUBAR](#fubar)
   * [Functors](#functors)
@@ -78,11 +80,11 @@ Table of Contents
   * [Monaden](#monaden)
   * [Mutable/Immutable](#mutableimmutable)
   * [Myths and Facts](#myths-and-facts)
+  * [Nachhaltige Softwareentwicklung](#nachhaltige-softwareentwicklung)
   * [Narrowing Conversion](#narrowing-conversion)
   * [Nebenläufigkeit](#nebenl%C3%A4ufigkeit)
   * [Nullhypothese](#nullhypothese)
   * [Objektorientierte Programmierung](#objektorientierte-programmierung)
-  * [O\-Notation](#o-notation)
   * [Opcode](#opcode)
   * [Package](#package)
   * [Pointers to Functions](#pointers-to-functions)
@@ -185,6 +187,12 @@ int main()
 Tatsächlich gibt es noch mehr Arten von Bedarfsauswertungen: Eager Evaluation (Strict Evaluation), Partial Evaluation, Remote Evaluation, Short-circuit Evaluation. Die Rechereche überlasse ich (vorerst) dem interessierten Leser. 
 
 Nur soviel: Die 'gewöhnliche' Bedarfsauswertung von vielen Programmiersprachen ist die *Eager Evaluation* (oder auch *Strict Evaluation*). Ein Ausdruck wird dabei sofort ausgewertet, sobald der Ausdruck einer Variablen zugeordnet wird, z.B. in C oder Java. 
+
+## Big-O-Notation
+
+Auf deutsch O-Notation oder auch Landau-Symbole. Siehe <https://de.wikipedia.org/wiki/Landau-Symbole>.
+
+In der Informatik werden sie bei der Analyse von Algorithmen verwendet und geben ein Maß für die Anzahl der Elementarschritte oder  der Speichereinheiten in Abhängigkeit von der Größe des gegebenen  Problems an.
 
 ## Clean Code
 
@@ -574,6 +582,12 @@ Die Kompilierung findet auf allen Dateien statt, die der Präprozessor erzeugt. 
 ### Linker
 
 Der Linker kann eine ausführbare Datei, eine statische oder eine geteilte Bibliothek (shared library) erzeugen. Er hat die Aufgabe, die Referenzen zu undefinierten Symbolen aufzulösen.
+
+## **Expressivität**
+
+Bei Programmiersprachen spricht man von expressiven bzw. ausdrucksstarken Sprachen, falls diese Sprache z.B. viele Patterns (auch und vor allem aus der funktionalen Programmierung) anbietet: pattern matching, destucturing, streams, iterators und vieles mehr. Auch Traits und Generics/Templates gehören dazu. 
+
+Ein Beispiel für eine expressive Sprache ist z.B. Rust. 
 
 ## Favour Composition over Inheritance
 
@@ -1225,6 +1239,12 @@ fn main()
 
 Often there are a lot of myths by people concerning C++ in embedded world. As an introduction about myths and (as the opposite) facts I recommend to have a look at [39] and [40].
 
+## Nachhaltige Softwareentwicklung
+
+Der Trend zu mehr Umweltschutz macht auch vor einer Tätigkeit wie Programmieren nicht halt. Im Prinzip geht es darum, effizient und ressourcenschonend zu programmieren. Was wiederum heisst, eine niedrige CPU Last, wenig RAM bzw. die Reduzierung von I/O Transfers. Siehe die Übersicht in [46].
+
+Ein typisches Beispiel für das Schreiben von effizientem Code sind die Auswahl  des optimalen Algorithmus für den jeweiligen Einsatzzwck mit Hilfe der Big-O-Notation. 
+
 ## Narrowing Conversion
 
 Eine *Narrowing Conversion* ist eine implizite Konvertierung in C/C++ mit Verlust der Datengenauigkeit. Die Konvertierung erfolgt von einem Integer-Typ oder einem *unscoped enum* in einen Integer Typ. Dies kann zu bösen Überraschungen führen und sollte nach Möglichkeit verhindert werden. 
@@ -1278,10 +1298,6 @@ Man erschafft sogenannte Klassen, in denen diese Eigenschaften von Objekten und 
 Klassen können ihre Eigenschaften und Methoden zudem vererben. Sie dienen in diesem Zusammenhang als Basisklasse, ihre Erben nennt man abgeleitete Klassen.  
 
 Ein weiteres Prinzip von objektorientierten Sprachen ist die Kapselung. Die Sichtbarkeit von Eigenschaften und Methoden lässt sich über Schlüsselwörter festlegen. Dabei unterscheidet man oft zwischen öffentlich („public“), geschützt („protected“) und privat („private“). Man nennt private Eigenschaften oder Methoden auch gekapselt.  
-
-## O-Notation
-
-<https://de.wikipedia.org/wiki/Landau-Symbole>
 
 ## Opcode
 
@@ -2138,6 +2154,12 @@ YAGNI steht für *You aren't* *gonna need it*. Es soll dem Entwickler sagen, das
 [44] pigweed - Modern software development for embedded systems, https://github.com/google/pigweed, abgerufen am 31. Oktober 2024
 
 [45] Dependency injection in Android, https://developer.android.com/training/dependency-injection, abgerufen am 27. Januar 2025
+
+[46] Decarbonise your IT with sustainable software engineering, https://plana.earth/academy/it-decarbonisation-sustainable-engineering, abgerufen am 17. Juni 2025
+
+[47] Big O Notation Tutorial - A Guide to Big O Analysis, https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/, abgerufen am 17. Juni 2025
+
+
 
 
 
