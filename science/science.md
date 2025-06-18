@@ -7,9 +7,13 @@ Table of Contents
 
 * [Science](#science)
   * [Euklidischer Algorithmus](#euklidischer-algorithmus)
+  * [Fibonacci-Folge](#fibonacci\-folge)
+  * [Graphentheorie](#graphentheorie)
   * [Größter gemeinsamer Teiler](#gr%C3%B6%C3%9Fter-gemeinsamer-teiler)
   * [Hamming](#hamming)
+  * [Integral- und Differentialrechnung](#integral\-und\-differentialrechnung)
   * [Kleinstes gemeinsames Vielfaches](#kleinstes-gemeinsames-vielfaches)
+  * [Komprimierung](#komprimierung)  
   * [Primzahlen](#primzahlen)
   * [Primfaktorzerlegung](#primfaktorzerlegung)
   * [Shannon](#shannon)
@@ -182,6 +186,10 @@ if __name__ == '__main__':
 #>hamming distance  1
 ```
 
+## Integral- und Differentialrechnung
+
+Isaac Newton und Gottfried Wilhelm Leibniz kamen zwischen 1660 und 1690 unabhängig voneinander auf die gleiche bahnbrechende Idee. Sie hatten ein neues Gebiet der Mathematik erfunden: Die Integral- und Differentialrechnung. Sie konnten berechnen, wie schnell sich etwas verändert (Differentialrechnung) und wie viel sich nach einer gewissen Zeit verändert hat (Integralrechnung). 
+
 ## Kleinstes gemeinsames Vielfaches
 
 
@@ -269,6 +277,16 @@ Zuerst wird die Zahl 1 gestrichen. Die Zahl 2 wird umkreist und dann alle Vielfa
 Alle Zahlen, die 'umkreist' wurden, sind Primzahlen. 
 
 ## Statistik und Wahrscheinlichkeitstheorie
+
+Wahrscheinlichkeitstheorie und Statistik werden oft gleichbedeutend benutzt. Wobei die Statistik die angewandte Version der Wahrscheinlichkeitsrechnung ist. Blaire Pascal und Pierre de Fermat waren die Ersten, die sich intensiver mit Wahrscheinlichkeiten auseinandersetzten. 
+
+Später war Bernoulli der Erste, der versuchte, eine Wahrscheinlichkeit zu berechnen, ohne alle möglichen Resultate zu kennen. 
+
+Aus den Ideen des Mathematikers Abraham de Moivre ergaben sich die Experimente mit dem Münzwurf. 
+
+Der Mathematiker Thomas Simpson wiederum wartete mit einer neuen Idee auf: Auf die Wahrscheinlichkeit, dass das Ergebnis eines wissenschaftlichen Experiments nicht stimmt. 
+
+Darauf aufbauend wiederum entwickelte Thomas Bayes weitere Ideen. Heutzutage auch als Bayes-Regel bekannt. Bayes konnte plötzlich mit Wahrscheinlichkeiten rechnen, ohne an eine bestimmte Einschätzung gebunden zu sein. 
 
 ### Zufallsexperiment, Ereignis, Häufigkeit, Laplace-Experiment
 
