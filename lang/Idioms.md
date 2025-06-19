@@ -2045,7 +2045,7 @@ template<typename T, int N> Stack
 Stack<int, 100> meinStack;
 ```
 
-Im obigen Beispiel muß man bei der Instantiierung von *‘Stack’* einen konstanten Wert für ‘N’ bereitstellen. Während ‘N’ ein Non-Type Template Parameter darstellt, ist ‘T’ ein Type Template Parameter.
+Im obigen Beispiel muß man bei der Instantiierung von *Stack* einen konstanten Wert für *N* bereitstellen. Während *N* ein Non-Type Template Parameter darstellt, ist *T* ein Type Template Parameter.
 
 ## Variadische Funktion
 
