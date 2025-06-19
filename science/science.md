@@ -586,3 +586,5 @@ Wie kann man jetzt der *digitalen Signatur* trauen? Auch dafür gibt es wieder Z
 
 [14] Das unmögliche Haus vom Nikolaus, Manon Bischoff, https://www.spektrum.de/kolumne/graphentheorie-die-mathematik-hinter-dem-haus-vom-nikolaus/2081799, abgerufen am 13.12.2022
 
+[15] Espresso mit Archimedes, Stefan Buijsman, 2018
+
