@@ -192,7 +192,34 @@ Nur soviel: Die 'gewöhnliche' Bedarfsauswertung von vielen Programmiersprachen 
 
 Auf deutsch O-Notation oder auch Landau-Symbole. Siehe <https://de.wikipedia.org/wiki/Landau-Symbole>.
 
-In der Informatik werden sie bei der Analyse von Algorithmen verwendet und geben ein Maß für die Anzahl der Elementarschritte oder  der Speichereinheiten in Abhängigkeit von der Größe des gegebenen  Problems an.
+In der Informatik werden sie bei der Analyse von Algorithmen verwendet und geben ein Maß für die Anzahl der Elementarschritte oder  der Speichereinheiten in Abhängigkeit von der Größe des gegebenen  Problems an. 
+
+Einen tollen Überblick findet man unter [47] https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/.
+
+### Lineares Komplexität 
+
+```python
+# traverses through an array to find a specific element with linear complexity O(n)
+def find_element(arr, target) -> bool:
+	for i in arr:
+		if i == target:
+			return True
+	return False
+```
+
+### Logarithmische Komplexität
+
+
+
+### Quadratische Komplexität 
+
+### Kubische Komplexität 
+
+### Polynomielle Komplexität
+
+### Exponentielle Komplexität 
+
+### Faktorielle Komplexität 
 
 ## Clean Code
 
