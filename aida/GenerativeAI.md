@@ -77,6 +77,132 @@ Eine spezielle Architektur neuronaler Netze.
 
 
 
+## Workshops
+
+### OpenAI API Grundlagen - KI anbinden und verstehen
+
+**Teil 1: Grundlagen und Überblick**
+
+Die technischen Grundlagen und die Architektur der OpenAI APIs verstehen.
+
+Einführung in die API-Strukturen und Authentifizierungsmechanismen, Vergleich der Chat Completions und Assistant APIs.
+
+Unterschiede und Einsatzmöglichkeiten zwischen der Chat Completions API und der Assistant API erkennen.
+
+**Teil 2: Der TypeScript Client**
+
+TypeScript Client für OpenAI nutzen.
+
+Setup und Konfiguration des TypeScript Clients, Demonstration von API-Calls und deren Handhabung.
+
+**Teil 3: Deployment in Azure**
+
+OpenAI-Modelle in Azure zu deployen und zu verwalten.
+
+Anleitung zum Deployment von Modellen, Diskussion der Vorteile/Nachteile von Azure für KI-Anwendungen.
+
+**Teil 4: Hands-on Beispiele und Szenarien**
+
+Durchführung von praktischen Übungen und reale Anwendungsfälle.
+
+### Deep Dive in die OpenAI API - KI in eigene Anwendungen integrieren
+
+**Teil 1: Grundlagen und Überblick**
+
+Grundlegende Funktionen und Authentifizierungsmethoden der OpenAI-API verstehen.
+
+**Teil 2: Der TypeScript Client**
+
+Verwendung der offiziellen SDKs in TypeScript, um die API in eigenen Projekten zu nutzen
+
+**Teil 3: System Prompts**
+
+Entwicklung von System Prompts und mit der Assistant API für benutzerdefinierte Anwendungsfälle zu arbeiten
+
+**Teil 4: Fortgeschrittene Techniken**
+
+Verwendung von fortgeschrittenen Techniken wie Streaming und Funktionsaufrufe.
+
+**Teil 5: Embeddings und RAG Muster**
+
+Verstehe die Nutzung von Embedding-Vektoren und des RAG-Entwurfsmusters.
+
+### Eigene Sprachmodelle erstellen, feintunen und einsetzen
+
+**Teil 1: Überblick** 
+
+Meilensteine der Künstlichen Intelligenz
+
+Sicherheit und Datenschutz
+
+- Risiken durch Künstliche Intelligenz
+- Cybersecurity und Künstliche Intelligenz
+- Datenschutz und Urheberrecht
+- KI on-premise vs. KI in der Cloud
+
+Grundlagen von Machine Learning / Deep Learning
+
+- Funktionsweise von künstlichen neuronalen Netzen
+- Machine-Learning-Architekturen
+- Funktionsweise von großen Sprachmodellen auf Basis der Transformer-Architektur
+- Training der großen Sprachmodelle
+
+Anwendungsbereiche für Machine Learning
+
+- Die großen Sprach- und Bildmodelle, wie ChatGPT, Llama und Stable Diffusion
+- Gefahren und Risiken von Deep Learning Modellen
+- Einführung in PyTorch
+
+**Teil 2: LLM erstellen mit PyTorch**
+
+Tokenizers
+
+- Tokenizer Types
+- Character-level tokenizers
+- Other tokenizers
+
+Embeddings
+
+- Embeddings vectors
+- Embeddings implementation (from scratch)
+
+Pytorch & Erstellen eines LLM von null auf (Durchführung in Google Colab)
+
+- Tensor statt Arrays
+- Lineare Algebra
+- Inputs und Targets
+- Batch size
+- CPU/CUDA
+- CPU VS GPU Leistungsvergleich
+- Dot product
+- Matrix Multiplikation
+- Pytorch nnModule
+- Gradient Descent
+- Optimizer Erklärung
+- Optimizer Implementierung
+- Loss Function
+- ReLU, Tanh, Sigmoid Activations
+- Transformer und Self-Attention
+- Transformer Architecture
+- Multihead Attention und Dot product Attention
+- Train/Test split
+- Model Pickling
+- Training
+
+**Teil 3: Beispiele, Tuning, Einsatz**
+
+- Übersicht über die Open-Source-Plattform für KI Hugging Face
+- Übersicht über *pretrained models*
+- *Token classification* - Daten anonymisieren
+- *Text classification* - Stimmung von Personen erkennen
+- *Text summarization* - Übersichten über einen Text erstellen
+- *Sentence similarity* - Standard-Chatbot-Anwendungen verbessern
+- Vektor-Speicherarchitektur
+- Wie kombiniert man ein LLM mit Vektorspeicherdatenbank
+- LLM-Feinabstimmung für spezifische Aufgaben
+
+
+
 ## Literatur
 
 [1] Ethem Alpaydin: *Machine Learning: The New AI*, The Massachusetts Institute of Technology, 2016
