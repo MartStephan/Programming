@@ -1,5 +1,5 @@
 ---
-
+typora-root-url: ./images
 ---
 
 # Foundations of Software Architecture
@@ -312,9 +312,11 @@ Eine Herausforderung ist, dass obere Schichten oft Code in der darunterliegenden
 
 Um die Abhängigkeiten der Schichten zu Infrastrukturen zu verringern bzw. ganz zu eliminieren (also die Entkopplung der fachlichen Domäne von der verwendeten Technik) kommen oft Dependency Inversion gekoppelt mit Dependency Injection zum Zuge. 
 
+![](/style_layered.png)
+
 **Hexagonale Architektur**
 
-Das Prinzip der Dependency Inversion konsequent anwenden - das ist das Prinzip der hexagonalen Architektur. Oder auch Ports- und Adapter Architektur genannt. Sie wurde 2005 von Alistair Cockburn entwickelt. Ziel war, die Geschäftslogik von technischen Details zu entkoppeln. Dazu wird die Geschäftslogik von der Technik isoliert. Die Verbindung zwischen der Applikation und der externen Infrastruktur erfolgt ausschließlich über Ports und Adapter. 
+Das Prinzip der Dependency Inversion konsequent anwenden - das ist das Prinzip der hexagonalen Architektur. Oder auch Ports- und Adapter Architektur genannt. Sie wurde 2005 von Alistair Cockburn entwickelt. Ziel war, die Geschäftslogik von technischen Details zu entkoppeln. Dazu wird die Geschäftslogik von der Technik isoliert. Die Verbindung zwischen der Applikation (der Geschäftslogik) und der externen Infrastruktur erfolgt ausschließlich über Ports und Adapter. 
 
 Ein Port beschreibt entweder, wie ein externer Treiber den Anwendungskern nutzen kann oder wie der Anwendungskern ein externes System ansprechen kann. Adapter fungieren als "Klebstoff" und übernehmen die Anpassung zwischen externen Systemen und Ports. 
 
