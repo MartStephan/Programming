@@ -1689,7 +1689,13 @@ Größeres Update.
 
 [20] Rust als Ergänzung zu C++, Rainer Stropek
 
-[21] Einführung in Rust, Katharina Fey, Entwickler Magazin, Ausgabe 03/2022
+[21] Fehlerbehandlung in Rust - Teil 1, Stefan Baumgartner, Entwickler Magazin, Ausgabe 1.2022
+
+[22] Fehlerbehandlung in Rust - Teil 2, Stefan Baumgartner, Entwickler Magazin, Ausgabe 2.2022
+
+[23] Einführung in Rust, Katharina Fey, Entwickler Magazin, Ausgabe 03.2022
+
+[24] Rust Error Handling, Stefan Baumgartner, https://fettblog.eu/slides/eternal-sunshine-rust/ (abgerufen am 21.04.2025)
 
 
 

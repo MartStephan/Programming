@@ -54,6 +54,16 @@ tsc --v
 Version 5.8.2
 ```
 
+### tsx Modul
+
+If you want to run TypeScript code directly on Node.js without precompiling, you can use the tsx Modul.
+
+```
+
+```
+
+
+
 ## Kernkonzepte
 
 ### Features
