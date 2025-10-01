@@ -508,7 +508,63 @@ if __name__ == '__main__':
 # 5 
 ```
 
+**Decorators**
 
+Mit Dekoratoren kann man Methoden explizit als *static* markieren oder als Klassenmethode. Wobei Klassenmethoden implizit gesetzt werden. Die entsprechenden Dekoratoren lauten
+
+- @staticmethod
+- @classmethod
+
+```python
+#!/usr/bin/python
+
+class RectangleClientParent: 
+    number_of_clients: int = 0
+
+    def __init__(self) -> None:
+        RectangleClientParent.number_of_clients += 1
+
+    @staticmethod
+    def get_number_of_clients_static() -> int:
+        """ static method to get the number of clients """
+        return RectangleClientParent.number_of_clients
+    
+    @classmethod   
+    def get_number_of_clients_class(cls) -> int:
+        """ class method to get the number of clients """
+        return cls.number_of_clients
+    
+class RectangleClientChild(RectangleClientParent):
+    number_of_clients: int = 0
+
+    def __init__(self) -> None:
+        super().__init__()
+        RectangleClientChild.number_of_clients += 1
+
+
+if __name__ == '__main__':
+    
+    # create three parent clients and one child client
+    client1 = RectangleClientParent()
+    client2 = RectangleClientParent()
+    client3 = RectangleClientParent()
+    client4 = RectangleClientChild()
+
+    # using static method result is always 4 clients
+    print("Number of parent clients: ", RectangleClientParent.get_number_of_clients_static())      
+    print("Number of children clients : ", RectangleClientChild.get_number_of_clients_static())
+
+    # using class method result is 3 for parent clients and 1 for child clients
+    print("Number of parent clients: ", RectangleClientParent.get_number_of_clients_class())      
+    print("Number of children clients : ", RectangleClientChild.get_number_of_clients_class())
+
+# Number of parent clients:  4
+# Number of children clients :  4
+# Number of parent clients:  4
+# Number of children clients :  1
+```
+
+Es gibt weitere Dekoratoren z.B. den *@property* Dekorator. Damit setzt man Setter/Getter Methoden um. 
 
 ### Iterationen
 
