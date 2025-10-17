@@ -880,6 +880,10 @@ In der Praxis verwendet man den Begriff bei den REST-HTTP Verben GET, HEAD, PUT 
 
 Eine Schnittstelle sollte nur die absolut notwendigen Details nach außen sichtbar machen. Mache also nur jene Methoden oder Attribute öffentlich, die absolut notwendig sind. 
 
+## Infrastructure as Code
+
+Ein Ansatz, bei dem die Provisionierung von Recheninfrastruktur vollständig durch maschinenlesbare Konfigurationsdateien abgebildet wird. 
+
 ## Inheritance, Multiple Inheritance, Protected Inheritance, Virtual Inheritance
 
 Vererbung ist ein Begriff aus der Objektorientierung. Wie der Name schon sagt, dient die Vererbung dazu, aus schon bestehenden Klassen neue zu schaffen. Dabei 'erbt' die abgeleitete Klassen (üblicherweise) die Methoden und Attribute der Basisklasse. 
