@@ -32,6 +32,7 @@ Table of Contents
   * [Python 3\.6](#python-36)
   * [Python 3\.9](#python-39)
   * [Python 3\.10](#python-310)
+  * [Python 3\.13](#python-313)
   * [Arbeiten mit Dateien](#arbeiten-mit-dateien)
     * [Grundlegendes](#grundlegendes)
     * [Directory-Baum erstellen](#directory-baum-erstellen)
@@ -1472,6 +1473,12 @@ if __name__ == '__main__':
 
 Mit Version 3.10 wird es dem Parser leichter gemacht, präzisere und hilfreichere Fehlermeldungen auszugeben. 
 
+## Python 3.13
+
+Python 3.13 verfügt über einen JIT-Compiler, der das  Copy-und-Patch-Verfahren für eine schnelle und effiziente  Codeoptimierung nutzt: Zur Laufzeit werden spezifische Werte in  vorgefertigte Maschinencode-Templates eingefügt.  
+
+Ferner gibt es eine Variante ohne den Global Interpreter Lock (GIL): Das ermöglicht echte Multithreading-Unterstützung und mehr Performance,  wenn ein Skript mehrere Kerne nutzt. Das sogenannte *Free Threading*.
+
 ## Arbeiten mit Dateien
 
 Für die Arbeit mit Dateien bedient man sich des Moduls *os*. Einige Beispiele sollen das veranschaulichen.
@@ -1742,6 +1749,10 @@ if __name__ == '__main__':
 [28] Strings und Skalare - Verbesserungen in NumPy2, iX 11/2024
 
 [29] NumPy2, iX Links, [ix.de/zuwp](https://ix.de/zuwp), abgerufen am 31. Oktober 2024
+
+[30] [Python 3.13: Mehr Performance ohne GIL](https://www.heise.de/select/ix/2025/2/2429813092880970320), iX 02/2025
+
+[31] Python 3.13: Bessere interaktive Shell und endlich Multithreading ohne GIL, https://www.heise.de/news/Python-3-13-Bessere-interaktive-Shell-und-endlich-Multithreading-ohne-GIL-9968435.html, abgerufen am 3.10.2025
 
 
 
