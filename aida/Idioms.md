@@ -185,11 +185,13 @@ Es gibt zwei Arten von Lernen zu unterscheiden. Supervised Learning und Unsuperv
 
 ### Supervised Learning
 
-Die KI erhält Feedback von außen, an dem sie sich orientieren und anpassen kann. Beispiele sind Klassifikation und Regressionsanalyse. 
+Überwachtes Lernen. Die KI erhält Feedback von außen, an dem sie sich orientieren und anpassen kann. Beispiele sind Klassifikation und Regressionsanalyse. 
+
+Eine Herangehensweise im maschinellen Lernen, bei der eine große Menge an Ausgangsmaterial annotiert (mit Labels versehen) vorliegt. Das Modell "weiß" dadurch, dass zum Beispiel auf Bild 1 eine Katze zu sehen ist, auf Bild 2 ein Hund und auf Bild 3 ein Pferd. Neue Bilder kann es anhand der bestehenden Labels oder Klassen klassifizieren. Beim Trainingsprozess wird nun versucht, die Gewichte im Modell so anzupassen, dass, wenn Bild 1 als Input geliefert wird, die Wahrscheinlichkeit, dass als Output die Klasse "Katze" aktiviert wird, so hoch wie möglich ist. Die Anpassung der Gewichte nimmt das Modell jeweils am Ende einer Epoche vor. 
 
 ### Unsupervised Learning
 
-Die KI ist sozusagen auf sich allein gestellt. Ein typischer Algorithmus dafür ist das Clustering.
+Unüberwachtes Lernen, Beim Unsupervised Learning gibt es keine beschrifteten Daten oder bekannte Zielwerte. Das Modell identifiziert selbsttätig Gemeinsamkeiten zwischen den vorliegenden Daten und reagiert auf das Vorhandensein oder die Abwesenheit der gefundenen Muster beim Input neuer Dtaen. Die KI ist sozusagen auf sich allein gestellt. Typische Einsatzszenarien für diesenn Ansatz sind Cluster-Algorithmen und Ausreißererkennung.
 
 ## Ockhams Rasiermesser
 
@@ -211,5 +213,9 @@ Die KI ist sozusagen auf sich allein gestellt. Ein typischer Algorithmus dafür 
 
 ## Literatur
 
-[1] 	Maschinelles Lernen, Grundlagen und Algorithmen in Python, Jörg Frochte
+[1] Maschinelles Lernen, Grundlagen und Algorithmen in Python, Jörg Frochte
+
+[2] Die Ursprünge der künstlichen Intelligenz: So lernten die Maschinen das Lernen, https://www.nzz.ch/wissenschaft/die-geschichte-der-ki-neuronale-netze-revolutionierten-die-welt-ld.1898683 (abgerufen am 3.10.2025)
+
+
 

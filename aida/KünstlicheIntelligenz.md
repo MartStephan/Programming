@@ -572,6 +572,12 @@ https://www.plattform-lernende-systeme.de/files/Downloads/Publikationen/AG3_WP_K
 
 [35] JupyterHub, https://github.com/jupyterhub/jupyterhub, abgerufen am 16.02.2025
 
+[36] Die Ursprünge der künstlichen Intelligenz: So lernten die Maschinen das Lernen, https://www.nzz.ch/wissenschaft/die-geschichte-der-ki-neuronale-netze-revolutionierten-die-welt-ld.1898683 (abgerufen am 3.10.2025)
+
+
+
+
+
 
 
 
