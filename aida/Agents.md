@@ -37,9 +37,50 @@ Via Function Tooling kann ich eine LLM mit verschiedenen Anwendungen verknüpfen
 
 ## Model Context Protocol (MCP) und stdio-Protokoll
 
-KI-Agenten verbinden.
+**KI-Agenten verbinden**
 
+- Übersicht
 
+![MCP_comm](D:\Projects\git\Programming\aida\images\MCP_comm.png)
+
+- MCP ist der USB-C Port für KI Applikationen. 
+  - MCP Spezifikation lesen
+  - MCP Server Beispiel Implementierung
+    - https://github.com/modelcontextprotocol/servers/tree/main/src/everything
+  - Als Protokoll dient *Streamable*
+  - Achtung: *SSE* ist das veraltete Protokoll
+  - MCP basiert auf *JSON-RPC*
+
+- VS Code
+
+  - Tools kann man in VSCode unten rechts in der Symbolleiste auswählen
+
+  - Tools oben rechts das Zahnrad auswählen
+
+  - Tool Set - Anderes - MCP Server Origin
+    - npm
+    - docker
+    - github registry
+    - mcp.so
+  - Note: Viele MCP Server laufen lokal. Nur vertrauenswürdige MCP Server benutzen
+  - Corporate: Offizielle Liste auf github von MCP Server Anbietern  https://github.com/mcp
+  - F1 - Add MCP Server - Add Server HTTP 
+
+- Authentifizierung
+  - Als Authentifizierung wird das *OAuth2* Protokoll verwendet
+  - Ausserdem muss *DCR* (*Dynamic Client Registration Protocol*) unterstützt werden
+- Playwright
+  - Playwright is a framework for Web Testing and Automation. 
+  - Benutze es, um eigene MCP Anwendungen zu testen 
+  - Playwright MCP Server läuft lokal auf dem Rechner --> in diesem Falle nutze das *stdio* Protokoll
+  - Andere Transport-Protokolle sind HTTP (für entfernte MCS Server) und das SSE Transport Protokoll (veraltet)
+
+- DBHub 
+  - DBHub is a universal database gateway implementing the Model Context Protocol (MCP) server interface. 
+- MCP Inspector
+  - The MCP Inspector is a developer tool designed for testing and debugging Model Context Protocol (MCP) servers.
+- Workflow Engine
+  - n8n
 
 ## MCP Streamable Protokoll und Server-Sent Events
 
@@ -67,7 +108,15 @@ KI-Agenten verbinden.
 
 [7] About MCP, https://modelcontextprotocol.io/docs/getting-started/intro, abgerufen am 15.10.2025
 
-[8] MCP Server Referenz-Implementierung, https://github.com/modelcontextprotocol/servers/tree/main/src/everything, abgerufen am 15.10.2025
+[8] MCP Server Referenz-Implementierung, https://github.com/modelcontextprotocol/servers/tree/main/src/everything, abgerufen am 19.10.2025
+
+[9] MCP Server, https://github.com/mcp, abgerufen am 19.10.2025
+
+[10] STDIO Transport, https://mcp-framework.com/docs/Transports/stdio-transport/, abgerufen am 19.10.2025
+
+[11] DBHub, https://github.com/bytebase/dbhub, abgerufen am 19.10.2025
+
+[12] MCP Inspector, https://github.com/modelcontextprotocol/inspector, abgerufen am 19.10.2025
 
 
 
