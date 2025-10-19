@@ -1,3 +1,7 @@
+---
+typora-root-url: ./images
+---
+
 # Agents
 
 [TOC]
@@ -41,15 +45,15 @@ Via Function Tooling kann ich eine LLM mit verschiedenen Anwendungen verknüpfen
 
 - Übersicht
 
-![MCP_comm](D:\Projects\git\Programming\aida\images\MCP_comm.png)
+![MCP_comm](/MCP_comm.png)
 
 - MCP ist der USB-C Port für KI Applikationen. 
   - MCP Spezifikation lesen
-  - MCP Server Beispiel Implementierung
-    - https://github.com/modelcontextprotocol/servers/tree/main/src/everything
+  - MCP Server Beispiel Implementierung https://github.com/modelcontextprotocol/servers/tree/main/src/everything
   - Als Protokoll dient *Streamable*
-  - Achtung: *SSE* ist das veraltete Protokoll
-  - MCP basiert auf *JSON-RPC*
+    - Achtung: *SSE* ist das veraltete Protokoll
+    - MCP basiert auf *JSON-RPC*
+
 
 - VS Code
 
