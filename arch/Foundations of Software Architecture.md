@@ -540,6 +540,16 @@ The word “DevOps” is a combination of the words “development” and “ope
 
 DevOps involves a development team using continuous integration and  continuous delivery (CI/CD) practices to develop, release, and monitor  software. DevOps teams **develop code, automate testing, deploy to production, and iterate for improvements**.
 
+DevOps, a blend of **Dev**elopment and **Op**eration**s**, is a software methodology that encourages Developers and Operations Engineers to collaborate on Automated Software Delivery.
+
+When DevOps is implemented well, teams can iterate quickly to ensure  new features and bug fixes are released swiftly, application and  infrastructure code and runtimes are managed securely, and running  systems are continually stable.
+
+- DevOps fördert Continuous Integration und Continuous Delivery (CI/CD) - das ermöglicht kleinere, häufigere und automatisierte Releases
+- DevOps steht für eine Kultur der gemeinsamen Verantwortung und Zusammenarbeit, basierend auf funktionsübergreifenden Teams und durchgängigen Workflows
+- Durch Infrastructure as Code (IaC) und automatisiertes Testen sorgt DevOps für konsistente Umgebungen über Entwicklungs- und Produktionssysteme hinweg
+- DevOps legt Wert auf Monitoring, Logging und Echtzeitfeedback
+- DevOps-Praktiken unterstützen Automatisierung, Standardisierung und Skalierbarkeit
+
 ### Why DevOps?
 
 There are a lot of advantages using DevOps
@@ -691,6 +701,17 @@ In diesem Buch geht es darum zu zeigen, wie notwendig es ist, unsere Arbeit sich
 
 Konzentriert sich auf den Einsatz von Kanban-Boards in Unternehmen. 
 
+## Platform Engineering
+
+Durch die Einführung von DevOps mussten Entwickler plötzlich unzählige neue Tools, Cloud-Konzepte und Security-Regeln beherrschen. Die sogenannte kognitive Last stieg rasant und die wenigsten Aufgaben, die DevOps mit sich bringt, bringen tatsächlich fachlichen Mehrwert für das Produkt. 
+
+Genau hier setzt Platform Engineering an. Es schafft geeignete Abstraktionen und stellt wiederverwendbare Werkzeuge und Services bereit. Es gibt dafür eine gute Definition von Evan Bottcher: "A digital platform is a foundation of self-service APIs, tools, services, knowledge and support which are arranged as a compelling internal product. Autonomous delivery teams can make use of the platform to deliver product features at a higher pace, with reduced co-ordination".
+
+Platform Engineering hat somit zwei Hauptziele:
+
+- kognitive Last reduzieren
+- Governance einhalten
+
 ## Release It!
 
 ### Create Stability
@@ -735,6 +756,10 @@ One of the most important messages: Bug will happen. But how do we prevent bugs 
 [15] Daniel Kahneman: Schnelles Denken, langsames Denken, 2016
 
 [16] Thomas Bayer, Schichten oder Schalen?, Hexagonale Architektur, Onion Architecture, Clean Architecture und ihre Vorteile für Doman Driven Design, entwickler.de magazin 5.2025
+
+[17] The Complete Guide to DevOps, https://www.bitovi.com/blog/the-complete-guide-to-devops, Mick McGrath, abgerufen am 10.09.2025
+
+[18] Cloud Native CI/CD, https://tekton.dev/, abgerufen am 10.09.2025
 
 
 
