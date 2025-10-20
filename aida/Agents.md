@@ -24,7 +24,7 @@ Via Function Tooling kann ich eine LLM mit verschiedenen Anwendungen verknüpfen
 - Context: Tech Days auf YouTube grafischer Agent Builder von Open AI
 - Reasoning erklärt
 - Reasoning am Beispiel OpenAI Dashboard
-  - Dashboard
+  - [Dashboard](https://github.com/MartStephan/Programming/blob/master/aida/images/MCP_comm.png)
   - Open Chat https://platform.openai.com/chat
   - Click Dashboard
   - Create a Chat Prompt (e.g. Code Debugger)
@@ -45,7 +45,7 @@ Via Function Tooling kann ich eine LLM mit verschiedenen Anwendungen verknüpfen
 
 - Übersicht
 
-![MCP_comm](/MCP_comm.png)
+![](https://github.com/MartStephan/Programming/blob/master/aida/images/MCP_comm.png)
 
 - MCP ist der USB-C Port für KI Applikationen. 
   - MCP Spezifikation lesen
