@@ -652,7 +652,9 @@ Der Hard Mode führt tatsächlich zu einem 'fire and forget'. Sowohl HEAD als au
 
 ## Rebasing
 
+## Hooks
 
+GitHooks sind benutzerdefinierte Anweisungen, die automatisch vor oder nach einem Git-Kommando ausgeführt werden. Git Hooks können verwendet werden, um Commit Messages zu validieren oder vor einem Commit zu prüfen, ob es Syntaxfehler oder Styleguideverstöße gibt. Möchte man einen Git Hook aktivieren, muss nur ein Skript im Verzeichnis *.git/hooks* mit dem Namen des Hooks hinterlegt werden.
 
 ## Links
 
