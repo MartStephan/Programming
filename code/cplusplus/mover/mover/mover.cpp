@@ -51,6 +51,13 @@ public:
 /// Type& reference;
 /// Type function();
 /// Type* pointerToVar1 = &var1;
+/// 
+/// int getFour() { return 4;}
+/// int i = 1; 	// i ist Lvalue; 1 ist Rvalue
+/// int& lvalueRef = i; 	// lvalueRef ist Lvalue Referenz, i ist Lvalue
+/// int rvalue = getFour();	// rvalue ist Lvalue; getFour() ist Rvalue
+// func ist Lvalue; Lambda-Funktion ist Rvalue  
+///auto func = [] {std::cout << 2018 << std::endl; }
 
 int theAnswerToAllQuestions = 42;   // left operand is lvalue; right operand '42' is rvalue
 //Foo foo = Foo();
@@ -99,15 +106,19 @@ StringVector createVectorOfString() {
 
 class MyString {
 public:
-   explicit MyString(const std::size_t size) : data{
+   explicit MyString(const std::size_t size) : data {
       new char[size] } {}
 
    MyString(const char* const charArray, const std::size_t size) {
-      data = new char[size + 1];
-      strcpy_s(data, sizeof(data), charArray);
+      data = new char[strlen(charArray)+1];
+      strncpy_s(data, strlen(charArray)+1, charArray, strlen(charArray)+1);
    }
 
-   virtual ~MyString() { delete[] data; };
+   virtual ~MyString() { 
+      if (data) {
+         delete[] data;
+      }
+   };
 
    char& operator[](const std::size_t index) {
       return data[index];
@@ -121,6 +132,39 @@ private:
    char* data;
 };
 
+class MyStringNextGen {
+public:
+   explicit MyStringNextGen(const std::size_t size) {
+      data.resize(size, ' ');
+   }
+
+   MyStringNextGen(const char* const charArray, const std::size_t size) :
+      MyStringNextGen(size) {
+      if (charArray) {
+         for (size_t index = 0; index < size; index++) {
+            data[index] = charArray[index];
+         }
+      }
+   }
+
+   char& operator[](const std::size_t index) {
+      return data[index];
+   }
+
+private:
+   std::vector<char> data;
+
+};
+
+/// <summary>
+/// deleted functions
+/// </summary>
+/// <returns></returns>
+bool callMe(int32_t number) { 
+   return true;  
+}
+
+bool callMe(bool number) = delete; 
 
 int main() {
    
@@ -131,8 +175,14 @@ int main() {
    builder();
 
    MyString aString("Test", 4);
-   MyString anotherString{ aString }; /// Uhhhhh
+   //MyString anotherString{ aString }; /// Uhhhhh
+
+   MyStringNextGen aNewString("Test", 4);
+   MyStringNextGen anotherNewString{ aNewString }; 
+
+   bool res = callMe(10);
+   //res = callMe(10.245);
+   //res = callMe(false);
 
    return 0;
 }
-
