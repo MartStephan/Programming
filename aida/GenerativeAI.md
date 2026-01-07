@@ -227,5 +227,13 @@ Pytorch & Erstellen eines LLM von null auf (Durchführung in Google Colab)
 
 [11] Code LLM Modell-Provider, [ix.de/z1qq](https://ix.de/z1qq), abgerufen am 31. Oktober 2024
 
+[12] Deep Learning, https://www.deeplearningbook.org/, abgerufen am 05. Dezember 2025
+
+[13] Feature Visualization, https://distill.pub/2017/feature-visualization/, abgerufen am 05. Dezember 2025
+
+[14] AI Coffee Break with Letitia, https://www.youtube.com/@AICoffeeBreak, abgerufen am 05. Dezember 2025
+
+
+
 
 

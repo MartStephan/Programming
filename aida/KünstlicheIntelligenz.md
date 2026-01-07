@@ -12,20 +12,32 @@ Table of Contents
   * [typora\-root\-url: images](#typora-root-url-images)
 * [Künstliche Intelligenz](#k%C3%BCnstliche-intelligenz)
 * [Table of Contents](#table-of-contents)
-  * [Definition](#definition)
-  * [Maschinelles Lernen, Wahrscheinlichkeitstheorie, Statistik und Datenanalyse](#maschinelles-lernen-wahrscheinlichkeitstheorie-statistik-und-datenanalyse)
-    * [Wahrscheinlichkeitstheorie](#wahrscheinlichkeitstheorie)
-    * [Statistik](#statistik)
-      * [Korrelation](#korrelation)
-      * [Regression](#regression)
-    * [Modell](#modell)
+* [Definition](#definition)
+* [Wahrscheinlichkeitstheorie, Statistik und Datenanalyse](#wahrscheinlichkeitstheorie-statistik-und-datenanalyse)
+  * [Wahrscheinlichkeitstheorie](#wahrscheinlichkeitstheorie)
+  * [Statistik](#statistik)
+    * [Korrelation](#korrelation)
+    * [Regression](#regression)
+* [Maschinelles Lernen](#maschinelles-lernen)
+  * [Lernen](#lernen)
+  * [Modell](#modell)
       * [Einfluss der Trainingsdaten auf das Modell](#einfluss-der-trainingsdaten-auf-das-modell)
-    * [Supervised Learning](#supervised-learning)
+  * [Supervised Learning](#supervised-learning)
       * [Lineare Regression](#lineare-regression)
       * [Klassifikation](#klassifikation)
       * [Random Forest](#random-forest)
       * [Expertensysteme](#expertensysteme)
-  * [Pattern Recognition](#pattern-recognition)
+	  * [Lazy Learning und Eager Learning](#lazy-learning-und-eager-learning)
+  * [Unsupervised Learning](#unsupervised-learning)
+    * [Learning Clusters](#learning-clusters)
+    * [Recommendation Systems](#recommendation-systems)
+    * [Reinforcement Learning](#reinforcement-learning)
+    * [Genetische Algorithmen](#genetische-algorithmen)
+    * [k\-Means](#k-means)
+    * [Temporal Difference Learning](#temporal-difference-learning)
+  * [Reinforcement Learning](#reinforcement-learning)
+    * [Reinforcement Learning Applications](#reinforcement-learning-applications)
+* [Pattern Recognition](#pattern-recognition)
     * [Pattern Recognition Applications](#pattern-recognition-applications)
       * [Barcodes](#barcodes)
       * [Optical character recognition](#optical-character-recognition)
@@ -38,23 +50,15 @@ Table of Contents
     * [Decision Trees](#decision-trees)
     * [Ranking](#ranking)
     * [Bayesian Methods](#bayesian-methods)
-  * [Neuronale Netze und Deep Learning](#neuronale-netze-und-deep-learning)
+* [Neuronale Netze und Deep Learning](#neuronale-netze-und-deep-learning)
     * [Introduction](#introduction)
     * [Deep Learning](#deep-learning)
-  * [Unsupervised Learning](#unsupervised-learning)
-    * [Learning Clusters](#learning-clusters)
-    * [Recommendation Systems](#recommendation-systems)
-    * [Reinforcement Learning](#reinforcement-learning)
-      * [Genetische Algorithmen](#genetische-algorithmen)
-    * [k\-Means](#k-means)
-    * [Temporal Difference Learning](#temporal-difference-learning)
-    * [Reinforcement Learning Applications](#reinforcement-learning-applications)
-  * [Ansonsten](#ansonsten)
+* [Ansonsten](#ansonsten)
     * [Ethik](#ethik)
     * [Recht](#recht)
       * [DSVGO](#dsvgo)
       * [AI Act (AIA)](#ai-act-(aia))
-  * [Bibliotheken](#bibliotheken)
+* [Werkzeuge und Ressourcen](#werkzeuge-und-ressourcen)
     * [Matplotlib](#matplotlib)
     * [TensorFlow](#tensorflow)
     * [scikit-learn](#scikit-learn)
@@ -62,13 +66,15 @@ Table of Contents
     * [SymPy](#sympy)
     * [Chainer](#chainer)
     * [Pandas](#pandas)
+    * [Seaborn](#seaborn)
+    * [OpenCV](#opencv)
     * [LangChain](#langchain)
     * [Jupyter](#jupyter)
-  * [Literatur](#literatur)
+* [Literatur](#literatur)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
-## Definition
+# Definition
 
 Was bedeutet überhaupt Künstliche Intelligenz? Künstliche Intelligenz beschreibt "im Prinzip die Fähigkeit des Computers, rational Entscheidungen zu treffen, die möglichst gut ein Problem oder mehrere Probleme lösen können." [3]
 
@@ -76,15 +82,15 @@ Was bedeutet überhaupt Künstliche Intelligenz? Künstliche Intelligenz beschre
 
 Die meisten Algorithmen im Bereich des Machine Learning beruhen rein auf Statistik und Wahrscheinlichkeitsberechnungen und haben tatsächlich wenig zu tun, mit der Intelligenz des Menschen. 
 
-## Maschinelles Lernen, Wahrscheinlichkeitstheorie, Statistik und Datenanalyse
+# Wahrscheinlichkeitstheorie, Statistik und Datenanalyse
 
-### Wahrscheinlichkeitstheorie
+## Wahrscheinlichkeitstheorie
 
 Unsicherheiten modellieren wir mit Hilfe der Wahrscheinlichkeitstheorie. 
 
 Beispiel: Bei einem Münzwurf gehen wir davon aus, dass die Wahrscheinlichkeit auf Kopf oder Zahl bei 50:50 liegt. 
 
-### Statistik
+## Statistik
 
 Falls wir aber diese Wahrscheinlichkeiten nicht kennen, bewegen wir uns im Bereich der Statistik. Wir können z.B. die Münze 6-mal werfen und erhalten 4-mal Kopf + 2-mal Zahl. 
 
@@ -94,17 +100,33 @@ Falls wir aber diese Wahrscheinlichkeiten nicht kennen, bewegen wir uns im Berei
 
 Zwei Begriffe der Statistik sind bei der künstlichen Intelligenz von besonderer Bedeutung: Korrelationen und Regressionen.
 
-#### Korrelation
+### Korrelation
 
 Eine Korrelation beschreibt den Zusammenhang zwischen mindestens zwei Variablen, z.B. gibt es eine Korrelation zwischen dem Alter (0-18 Jahre) und der Schuhgröße bei Menschen. Korrelationen beschreiben nur den Zusammenhang, aber keine Kausalität zwischen Ursache und Wirkung. "Korrelationen beschreiben Zusammenhänge bei bereits existierenden Fällen." [3]
 
-#### Regression
+### Regression
 
 In der Statistik wird das Schätzen eines Ausganswertes auf Basis von Eingangswerten Regression genannt. Bei einem linearen Modell nennen wir es dann *lineare Regression*.
 
 Mit Regression versucht man, "anhand der Zusammenhänge den Wert einer Variablen abhängig von den anderen Variablen statistisch bestmöglich zu schätzen. Sie werden verwendet, um Prognosen beziehungsweise Schätzungen bei neuen Fällen zu machen." [3] 
 
-### Modell
+# Maschinelles Lernen
+
+## Lernen
+
+Was verstehen wir eigentlich unter Lernen? Es gibt viele Antworten darauf. Beispiel gefällig:
+
+- Jede Verhaltensänderung, die sich auf Erfahrung, Übung oder Beobachtung zurückführen lässt. 
+
+Im Prinzip gilt für die Maschine dasselbe. Die Maschine bzw. das Computerprogramm soll aus Erfahrungen lernen und somit Verhaltensänderung bewirken.
+
+Beim Maschinellen Lernen geht es tatsächlich darum, eine mathematische Funktion zu konstruieren (lernen). 
+$$
+f: X ->Y 
+$$
+Das wesentliche Merkmal einer Funktion in der Mathematik ist, dass einem Element aus X genau ein Element aus Y zugeordnet wird. 
+
+## Modell
 
 Einer der kritischen Punkte beim Lernen ist das *Modell*, d.h. die Beziehung zwischen Eingang (Eingabe) und Ausgang (Ausgabe). 
 
@@ -112,7 +134,7 @@ Falls wir z.B. die Ausgabe als gewichtete Summe der (Eingangs-)Attribute schreib
 
 ![formule](/formule.png)
 
-#### Einfluss der Trainingsdaten auf das Modell
+### Einfluss der Trainingsdaten auf das Modell
 
 am Beispiel Fibonacci
 
@@ -124,17 +146,17 @@ in: 0 1 1 2
 
 Modell: ???
 
+## Supervised Learning
 
-
-### Supervised Learning
-
-Beim *Supervised Learning* sind die Outputs bei den Trainingsdaten schon verfügbar. Die Maschine lernt dann, indem sie die Korrelationen zwischen den Input-Variablen und den Output-Variablen sucht. Alle Algorithmen, bei denen Regression angewendet wird, ist eine Art von *Supervised Learning*. Lernen bezeichnet hier die Anpassung der Parameter, so dass das Modell 'optimal' ist. Neben Regressionen sind Klassifizierungsaufgaben ebenfalls Algorithmen des Supervised Learning. 
+Beim *Supervised Learning* (deutsch: Überwachtes Lernen) sind die Outputs bei den Trainingsdaten schon verfügbar. Die Maschine lernt dann, indem sie die Korrelationen zwischen den Input-Variablen und den Output-Variablen sucht. Alle Algorithmen, bei denen Regression angewendet wird, ist eine Art von *Supervised Learning*. Lernen bezeichnet hier die Anpassung der Parameter, so dass das Modell 'optimal' ist. Neben Regressionen sind Klassifizierungsaufgaben ebenfalls Algorithmen des Supervised Learning. 
 
 Beachte: Das Ziel von *Maschinellem Lernen* ist die (korrekte) Vorhersage von neuen Fällen. Alles andere wäre *memorisation*, z.B. durch *table lookup*. 
 
 Beim Lernen sehen wir nur einen Bruchteil aller möglichen Fälle und wir wollen darauf aufbauend verallgemeinern. Wie gut ein Modell aus vorhandenen Daten das Resultat vorhersagt, nennt man die *Fähigkeit zur Verallgemeinerung*. 
 
-#### Lineare Regression
+Das überwachte Lernen bedarf eines Lehrers. Es geht darum, der Methode eine hinreichend große Menge von Ein- und Ausgaben zur Verfügung zu stellen. die bereits über den korrekten Funktionswert verfügen. Bei Datensätzen spricht man von gelabelten oder markierten Datensätzen. 
+
+### Lineare Regression
 
 Die *Lineare Regression* ist ein simpler, aber oft verwendeter, *Machine-Learning-Algorithmus*. 
 $$
@@ -152,23 +174,104 @@ Die Konstante *Const* ergibt sich, wenn alle Eingangs-Gewichtungen 0 sind.
 
 Beispiel für das Schätzen eines Fahrzeugpreises mit Hilfe einer linearen Regression.
 
-#### Klassifikation
+Die Regression funktioniert im Grundsatz recht analog zur Klassifikation. Allerdings handelt es sich bei der Regression in der Regel um Werte aus einem kontinuierlichen Bereich. 
+
+Bei der Klassifikation ist das Ergebnis ein Klassen-Code z.B. Hund oder Katze. Aber nichts dazwischen. Bei der Regression haben wir einen kontinuierlichen Bereich, z.B. einen optimalen Drehwinkel oder die Höhe eines Kreditrahmens. 
+
+### Klassifikation
 
 Ein anderer Typ von *Supervised Learning* ist die *Klassifikation*. Das Ergebnis einer Klassifikation ist ein *Klassen-Code (class code)*, im Gegensatz zu einem numerischen Wert, den eine Regression liefert. 
 
 Eine Klasse ist ein Satz von Instanzen, die sich alle die gleichen Eigenschaften teilen. 
 
+Bei der Klassifikation wollen wir eine Abbildung in eine diskrete Zielmenge lernen. 
 
+Classification = gelernteFunktion(Features)
 
-#### Random Forest
+### Random Forest
 
 Random Forest wird sowohl für Regressionen als auch für Klassifizierungsaufgaben oft verwendet. Random Forest basiert auf Entscheidungsbäumen (Decision Trees). 
 
-#### Expertensysteme
+### Expertensysteme
 
 Bevor der Durchbruch von *Maschinellem Lernen* kam, waren *Expertensysteme* in den 70er und 80er Jahren oft die Norm. Ein Expertensystem besteht aus einer *Wissensbasis* und einer *Inferenzmaschine*. Die Wissensbasis besteht oft in Form von Wenn-Dann-Regeln. Die *Inferenzmaschine* ist eine Software, mit der auf der *Wissensbasis* operiert wird. 
 
-## Pattern Recognition
+### Lazy Learning und Eager Learning
+
+Man unterscheidet bei dem Verahren zwei Arten von Ansätzen. 
+
+- *Eager Learning*
+- *Lazy Learning*
+
+Beim Eager Learning ist der Lernprozess, also das Training, in der Regel wesentlich aufwendiger als die spätere Abfrage der gelernetn Funktion. Ist das Netz trainiert und legt man ihm ein Bild vor, so kommt die Antwort vergleichsweise schnell. Grundlage dieser schnellen Antwort ist ein globales Modell. 
+
+Der Lazy Learner hingegen investiert kaum Arbeit in das Training; kommt jedoch eine Abfrage, dann schaut er sich seinen Datenbestand an, baut ein lokales Modell und nutzt dieses für eine Aussage. 
+
+## Unsupervised Learning
+
+Bei *Unsupervised Learning* Algorithmen (deutsch: Unüberwachtes Lernen) sind die Trainingsdaten nicht gekennzeichnet, d.h. es gibt keine vorgegebenen Werte für die Ausgangs-Variable(n) in den Trainingsdaten. Ziel ist es, Objekte anhand ihrer Gemeinsamkeiten und Unterschiede zu *Clustern* zusammenzufassen. Der Anwender gibt dabei die Cluster-Definitionen nicht vor, sondern überlässt diese Aufgabe dem Computer. 
+
+Wir haben einfach nur eine Menge an Daten und wollen mittels unüberwachtem Lernen versuchen, versteckte Strukturen in unmarkierten Daten zu finden.
+
+Anwendungen des Unsupervised Learning sind z.B. *document clustering* oder Anwendungen in der Bioinformatik.
+
+Auch im Bereich des *Supervised Learning* werden Ähnlichkeiten zu Clustern zusammengefasst. Das kann dann geschehen, falls man Ähnlichkeiten im voraus definieren kann. Diese Applikationen werden im Fachjargon oft unter dem Namen *kernel functions* zusammengefasst. Ein bekannter Algorithmus daraus ist z.B. die *Support Vector Machine*.
+
+### Learning Clusters
+
+Ziele des *Unsupervised Learning* sind üblicherweise die Suche nach neuen Clustern oder die Suche nach Anomalitäten. 
+
+### Recommendation Systems
+
+Matrix Decomposition
+
+### Reinforcement Learning
+
+"Algorithmen der Kategorie Reinforcement Learning lernen selbstständig, indem sie versuchen, Belohnungen zu maximieren beziehungsweise Strafen zu minimieren. Dahinter steckt das Prinzip von Try-und-Error, verbunden mit einer Bewertung, die gutes (zielführendes) Verhalten belohnt und schlechte Verhaltensmuster bestraft." [3]
+
+Die bekanntesten Vertreter von *Reinforcement Learning* sind die genetischen Algorithmen. 
+
+"*Reinforcement Learning* wird bei Minimierung- und Maximierungsaufgaben verwendet. Desweiteren kommt es bei Lernprozessen, bei denen auf sich verändernde Umwelteinflüsse reagiert werden soll, zum Einsatz." [3]
+
+Ein einfaches Beispiel eines *Reinforcement Learning* Algorithmus ist der *K-Armed Bandit*. 
+
+### Genetische Algorithmen
+
+Genetische Algorithmen orientieren sich an der Evolutionstheorie von Charles Darwin. Die drei wichtigsten Prinzipien bei Genetischen Algorithmen sind die Begriffe Rekombination, Mutation und Selektion.
+
+**Rekombination** "Bei genetischen Algorithmen ist die Rekombination die Vermischung von  Eigenschaften der Elterngeneration bei der Weitergabe an die  Kindergeneration" [4]
+
+**Mutation** "Bei genetischen Algorithmen sind Mutationen zufällige Veränderungen von Eigenschaften von einzelnen Individuen." [4]
+
+**Selektion** "Bei genetischen Algorithmen findet die Selektion in der Regel durch eine mathematische Bewertungsfunktion statt: die sogenannte Fitnessfunktion." [4]
+
+### k-Means
+
+Der k-Means Algorithmus ist einer der bekanntesten Clustering-Algorithmen im *Unsupervised Learning*. Der *k-Means Algorithmus* besteht aus fünf Schritten.
+
+1. Setze den Wert für die Variable k, d.h. für die Anzahl der Cluster.
+2. Wähle k-Punkte als Anfangszentren der Cluster.
+3. Ordne jeden Punkt, also jedem Merkmalsträger, jenem Zentrum zu, das ihm am nächsten ist. 
+4. Berechne die k-Clusterzentren neu.
+5. Hat sich die Position der Clusterzentren geändert? Wenn ja, springe zu Schritt 3, ansonsten fini.
+
+### Temporal Difference Learning
+
+Ein typisches Beispiel für eine Anwendung des *Temporal Difference Learning* ist ein Fußball spielender Roboter. Nicht nur die letztendliche Bewegung, die zu einem Tor führt, soll bewertet werden. Sondern eigentlich müssten alle Spielzüge von Anfang an bewertet werden und am Ende eines Spielzuges (also Spielzug führte zu einem Tor oder nicht) in die Gesamtbewertung mit einfließen. Solche Art von Algorithmen nennt man *Temporal Difference Learning (TD)*.
+
+## Reinforcement Learning
+
+Auf Deutsch *Bestärkendes Lernen*. 
+
+Man weiß oft nicht, was richtig oder falsch ist. Und kann daher Daten nicht entsprechend labeln. Man weiß aber, was ein wünschenswerter und was ein unerwünschter Ausgang ist, z.B. beim Roboter-Fußball ist ein erwünschter Ausgang ein Tor. Wie man dahin kommt, ist aber nicht eindeutig zu sagen. Hier bietet sich Reinforcement Learning an. Hierbei enthält die Maschine von uns kontinuierliche Rückmeldungen in Form von Belohnung und Bestrafung, wodurch die mit der Zeit eine (möglichst) optimale Strategie für unser Problem lernen soll.
+
+### Reinforcement Learning Applications
+
+**Games**
+
+Backgammon, Arcade Games like PacMan, Go
+
+# Pattern Recognition
 
 *Pattern Recognition* ist ein Teilbereich der Künstlichen Intelligenz. *Pattern Recognition* ist die automatische Erkennung von Mustern (Patterns) und Regelmäßigkeiten in Datensätzen. 
 
@@ -232,7 +335,7 @@ Verwendet werden solche Algorithmen z.B. bei Suchmaschinen, um die Suchergebniss
 
 In gewissen Applikationen und/oder mit gewissen Modellen besitzen wir möglicherweise a-priori Wissen über die möglichen Werte unserer Parameter. Die Idee der *Bayesian Methode* ist genau die, dieses a-priori Wissen zu nutzen, um bessere Ergebnisse zu erzielen. 
 
-## Neuronale Netze und Deep Learning
+# Neuronale Netze und Deep Learning
 
 ### Introduction
 
@@ -266,67 +369,11 @@ Im Jahr 2000 konnte der Biochemiker Eric Kandel einen Nobelpreis für seine Arbe
 
 Der Mensch besitzt ca 140.000.000.000 Neuronen im Gehirn. 
 
-## Unsupervised Learning
-
-Bei *Unsupervised Learning* Algorithmen sind die Trainingsdaten nicht gekennzeichnet, d.h. es gibt keine vorgegebenen Werte für die Ausgangs-Variable(n) in den Trainingsdaten. Ziel ist es, Objekte anhand ihrer Gemeinsamkeiten und Unterschiede zu *Clustern* zusammenzufassen. Der Anwender gibt dabei die Cluster-Definitionen nicht vor, sondern überlässt diese Aufgabe dem Computer. 
-
-Anwendungen des Unsupervised Learning sind z.B. *document clustering* oder Anwendungen in der Bioinformatik.
-
-Auch im Bereich des *Supervised Learning* werden Ähnlichkeiten zu Clustern zusammengefasst. Das kann dann geschehen, falls man Ähnlichkeiten im voraus definieren kann. Diese Applikationen werden im Fachjargon oft unter dem Namen *kernel functions* zusammengefasst. Ein bekannter Algorithmus daraus ist z.B. die *Support Vector Machine*.
-
-### Learning Clusters
-
-Ziele des *Unsupervised Learning* sind üblicherweise die Suche nach neuen Clustern oder die Suche nach Anomalitäten. 
-
-### Recommendation Systems
-
-Matrix Decomposition
-
-### Reinforcement Learning
-
-"Algorithmen der Kategorie Reinforcement Learning lernen selbstständig, indem sie versuchen, Belohnungen zu maximieren beziehungsweise Strafen zu minimieren. Dahinter steckt das Prinzip von Try-und-Error, verbunden mit einer Bewertung, die gutes (zielführendes) Verhalten belohnt und schlechte Verhaltensmuster bestraft." [3]
-
-Die bekanntesten Vertreter von *Reinforcement Learning* sind die genetischen Algorithmen. 
-
-"*Reinforcement Learning* wird bei Minimierung- und Maximierungsaufgaben verwendet. Desweiteren kommt es bei Lernprozessen, bei denen auf sich verändernde Umwelteinflüsse reagiert werden soll, zum Einsatz." [3]
-
-Ein einfaches Beispiel eines *Reinforcement Learning* Algorithmus ist der *K-Armed Bandit*. 
-
-#### Genetische Algorithmen
-
-Genetische Algorithmen orientieren sich an der Evolutionstheorie von Charles Darwin. Die drei wichtigsten Prinzipien bei Genetischen Algorithmen sind die Begriffe Rekombination, Mutation und Selektion.
-
-**Rekombination** "Bei genetischen Algorithmen ist die Rekombination die Vermischung von  Eigenschaften der Elterngeneration bei der Weitergabe an die  Kindergeneration" [4]
-
-**Mutation** "Bei genetischen Algorithmen sind Mutationen zufällige Veränderungen von Eigenschaften von einzelnen Individuen." [4]
-
-**Selektion** "Bei genetischen Algorithmen findet die Selektion in der Regel durch eine mathematische Bewertungsfunktion statt: die sogenannte Fitnessfunktion." [4]
-
-### k-Means
-
-Der k-Means Algorithmus ist einer der bekanntesten Clustering-Algorithmen im *Unsupervised Learning*. Der *k-Means Algorithmus* besteht aus fünf Schritten.
-
-1. Setze den Wert für die Variable k, d.h. für die Anzahl der Cluster.
-2. Wähle k-Punkte als Anfangszentren der Cluster.
-3. Ordne jeden Punkt, also jedem Merkmalsträger, jenem Zentrum zu, das ihm am nächsten ist. 
-4. Berechne die k-Clusterzentren neu.
-5. Hat sich die Position der Clusterzentren geändert? Wenn ja, springe zu Schritt 3, ansonsten fini.
-
-### Temporal Difference Learning
-
-Ein typisches Beispiel für eine Anwendung des *Temporal Difference Learning* ist ein Fußball spielender Roboter. Nicht nur die letztendliche Bewegung, die zu einem Tor führt, soll bewertet werden. Sondern eigentlich müssten alle Spielzüge von Anfang an bewertet werden und am Ende eines Spielzuges (also Spielzug führte zu einem Tor oder nicht) in die Gesamtbewertung mit einfließen. Solche Art von Algorithmen nennt man *Temporal Difference Learning (TD)*.
-
-### Reinforcement Learning Applications
-
-**Games**
-
-Backgammon, Arcade Games like PacMan, Go
 
 
+# Ansonsten
 
-## Ansonsten
-
-### Ethik
+## Ethik
 
 In einer Studie von Europol geht man davon aus, dass bis 2026 bis zu 90 Prozent des Web-Contents von KI generiert wird [15].
 
@@ -370,11 +417,11 @@ Die Firma Aleph Alpha aus Deutschland versucht mit  Attention Manipulation (AtMa
 
  
 
-### Recht und Datenschutz
+## Recht und Datenschutz
 
 (Mindestens) in Europa bilden vor allem die Datenschutz-Grundverordnung (DSVGO) und der AI Act der Europäischen Union (AIA) die Leitplanken der Regelungen zur Gestaltung der digitalen Zukunft und hier besonders der Künstlichen Intelligenz. 
 
-#### DSVGO
+### DSVGO
 
 Die Ziele der DSVGO [18] sind klar: Den Bürgern die Kontrolle über ihre Daten zurückzugeben und ein einheitliches Datenschutzniveau in der gesamten EU sicherzustellen. Praktisch hat das für KI-Entwickler/entwickelnde Firmen Auswirkungen. 
 
@@ -384,7 +431,7 @@ Sobald man eine Anwendung, wie bspw. OpenAI via API, anbindet und den Nutzern ü
 
 Wie im vorherigen Kapitel schon einmal beschrieben: Eine Herausforderung beim Einsatz vortrainierter Modelle besetht darin, dass sie die Voreingenommenheit (Bias), die man nicht genau kennt, mitgeliefert bekommt und erst nachträglich feststellt, welche Auswirkungen das für den Entwickler und die Nutzer in der Praxis hat.  
 
-#### AI Act (AIA) 
+### AI Act (AIA) 
 
 Im Grundsatz geht es beim AI Act [19] darum, ein Umfeld zu schaffen, in dem KI zum Wohl aller eingesetzt wird. Das bedeutet, dass KI-Systeme auch ttransparent, verantwortungsbewusst und ohne Diskriminierung arbeiten sollten. Anders gesagt: das Hauptziel besteht in der Etablierung ethischer Standards. 
 
@@ -436,17 +483,17 @@ Zum *Hochrisikobereich* zählen dagegen die folgenden KI-Technologien:
 - Migration, Asyl und Grenzkontrolle
 - Rechtspflege und demokratische Prozesse 
 
-## Bibliotheken
+# Werkzeuge und Ressourcen
 
-### Matplotlib
+## Matplotlib
 
 Eine Open-Source-Bibliothek, die häufig für die Visualisierung von Daten mit Hilfe von Diagrammen verwendet wird. Mit nur wenigen Codezeilen können Grafiken, Tortendiagramme, Streudiagramme, Histogramme usw. erstellt werden.
 
-### TensorFlow
+## TensorFlow
 
 Ein beliebtes Open-Source-Deep-Learning-Framework für numerische Berechnungen. Die Bibliothek wird auch für maschinelles Lernen verwendet. TensorFlow wurde von den Forschern des Google-Brain-Teams innerhalb der Google-AI-Organisation entwickelt und wird heute von vielen Wissenschaftlern eingesetzt. 
 
-### scikit-learn
+## scikit-learn
 
 Eine Bibliothek für maschinelles Lernen. Sie kann für eine Vielzahl von Anwendungen verwendet werden, darunter Klassifizierung, Regression, Clustering und Modellauswahl.  Wird also überwiegend für statistische Verfahren verwendet. Darüber hinaus bietet sie aber auch eine Möglichkeit zum Trainieren neuronaler Netze, Sie eignet sich für den schnellen Einstieg in Datentransformation und Machine-Learning-Algorithmen.   
 
@@ -454,19 +501,19 @@ Eine Bibliothek für maschinelles Lernen. Sie kann für eine Vielzahl von Anwend
 
 Image is from scikit-learn. You can find the clickable original under https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html
 
-### PyTorch
+## PyTorch
 
 PyTorch ist das wohl populärste Framework, um künstliche neuronale Netze zu definieren, zu trainieren und anzuwenden. Es verbirgt die komplexen KI-Algorithmen unter einer entwicklerfreundlichen Programmierschnittstelle.  
 
-### SymPy
+## SymPy
 
 Eine Bibliothek, die umfassende Methoden für symbolische Berechnungen bietet und im Sinne eines Computer-Algebra--Systems genutzt werden kann. Symbolisches Rechnen ermöglicht das Lösen von Gleichungen, z.B. die Auflösung nach einer bestimmten Variable. Dabei wird eine exakte Lösung ermittelt und nicht nur ein numerischer Näherungswert bestimmt Symbolisches Rechnen gilt mit Blick auf den Einsatz am Computer als deutlich komplexer als die Verwendung von Näherungsverfahren. Derartige Algorithmen selbst zu entwickeln ist sehr anspruchsvoll.
 
-### Chainer
+## Chainer
 
 Eine Bibliothek, um Deep-Learning-Modelle zu erstellen. Die drei Hauptschwerpunkte sind: Transportsysteme (autonomes Fahren), Fertigungsindustrie (Objekterkennung, Optimierung, Robotik) und Gesundheitsvorsorge (Bildanalyse). 
 
-### Pandas
+## Pandas
 
 Pandas ist eine der am häufigsten verwendeten Python-Bibliotheken im Bereich Datenanalyse, -manipulation und -visualisierung. Es kann Daten aus verschiedenen Quellen wie JSON-, CSV-, Excel- und SQL-Dateien lesen. 
 Hervorzuhebende Eigenschaften von Pandas sind: 
@@ -480,11 +527,19 @@ Hervorzuhebende Eigenschaften von Pandas sind:
 - Flexibilität bei der Visualisierung von Daten
   Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
 
-### LangChain
+## Seaborn
+
+Über die Matplotlib hinaus bietet sich Seaborn zur Visualisierung an. Es baut auf die matplotlib auf und bietet eine High-Level-Schnittstelle zum Erstellen anspruchsvoller statistischer Grafiken. 
+
+## OpenCV
+
+Wer mit Bildern, besonders im Umfeld von Real-Time-Anwendungen arbeitet, wird auf OpenCV stoßen. Sie beinhaltet Algorithmen für die Bildverarbeitung und im Rahmen von Computer Vision auch für maschinelles Lernen.
+
+## LangChain
 
 Python-Framework zur Erstellung und Benutzung von Generativen KIs (LLMs). Es ist das führende Framework derzeit für Use-Cases im Bereich der Generativen AI. 
 
-### Jupyter
+## Jupyter
 
 Notebooks wie Jupyter ermöglichen die Kombination von Notizen, Grafiken, Videos und dergleichen mit editier- und ausführbarem Code. Jupyter stellt dabei unterschiedliche Kernels zur Verfügung. Unter einem Kernel versteht man in diesem Zusammenhang einen Prozess, der interaktiven Code in einer bestimmten Sprache ausführt. 
 
@@ -500,7 +555,7 @@ Ergänzende Werkzeuge für die Arbeit mit Notebooks:
 
 *JupyterHub*: Erweitert Jupyter für mehrere Benutzer inkl. Authentifizierung, Container-Unterstützung und zentralisiertem Deployment. 
 
-## Literatur
+# Literatur
 
 [1] Machine Learning: The New AI, Ethem Alpaydin
 
@@ -540,13 +595,13 @@ Ergänzende Werkzeuge für die Arbeit mit Notebooks:
 
 [19] https://eur-lex.europa.eu/legal-content/DE/TXT/HTML/?uri=CELEX:52021PC0206, abgerufen am 05.10.2024
 
-https://blog.iao.fraunhofer.de/spielarten-der-kuenstlichen-intelligenz-maschinelles-lernen-und-kuenstliche-neuronale-netze/
+[20] https://blog.iao.fraunhofer.de/spielarten-der-kuenstlichen-intelligenz-maschinelles-lernen-und-kuenstliche-neuronale-netze/
 
-https://www.spektrum.de/news/hat-kuenstliche-intelligenz-wie-chatgpt-ein-bewusstsein/2193018
+[21] https://www.spektrum.de/news/hat-kuenstliche-intelligenz-wie-chatgpt-ein-bewusstsein/2193018
 
-https://www.wolfgang-wahlster.de/wwdata/Gutenberg_Stiftungsprofessur_Mainz_2017/Lernende_Maschinen.pdf
+[22] https://www.wolfgang-wahlster.de/wwdata/Gutenberg_Stiftungsprofessur_Mainz_2017/Lernende_Maschinen.pdf
 
-https://www.plattform-lernende-systeme.de/files/Downloads/Publikationen/AG3_WP_KI_Datenschutz_Datenschatz.pdf
+[23] https://www.plattform-lernende-systeme.de/files/Downloads/Publikationen/AG3_WP_KI_Datenschutz_Datenschatz.pdf
 
 [24] https://www.mdr.de/wissen/psychologie-sozialwissenschaften/fruchtfliege-gerhin-komplett-kartiert-100.html, abgerufen am 27.10.2024
 
