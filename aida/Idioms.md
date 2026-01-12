@@ -90,6 +90,10 @@ Sprachmodelle können zu sogenannten Halluzinationen neigen. Bei denen generiert
 
 Fine-Tuning kann diesem Problem entgegenwirken. 
 
+### Inferenz
+
+(Künstliche) Modelle werden verwendet, um Vorhersagen zu machen; Dies wir auch häufig „inference“ / Inferenz genannt. 
+
 ### Large Language Model (LLM)
 
 Diese Modelle sind eine Ausprägung tiefer neuronaler Netze für die Textmodalität. Heute werden sie oft mit Transformern auf großen Datenmengen vortrainiert, bevor sie als Grundlage weiterer Modelle für spezifische Aufgaben verwendet werden. 

@@ -17,7 +17,7 @@ Table of Contents
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
-## Generative Pre-trained Transformers (GPT)
+# Generative Pre-trained Transformers (GPT)
 
 Hinter den heutzutage in aller Munde Generative Pre-trained Transformers (GPT) verbirgt sich im Kern ein Neuronales Netzwerk - und zwar in diesem Falle ein sogenanntes Large Language Model (LLM). Diesem werden viele Texte zum Training gereicht, sodass es nun weiß, mit welchen Teilwörtern (Tokens) ein Satz ergänzt werden soll. Die richtigen Tokens werden anhand von Wahrscheinlichkeiten ausgewählt. 
 
@@ -57,9 +57,9 @@ Diese Embedding-Modelle sind deutlich kleiner als ein LLM und benötigen weniger
 
 Eine spezielle Architektur neuronaler Netze. 
 
-## Amazon AWS
+# Amazon AWS
 
-## OpenAI
+# OpenAI
 
 ### Grundlagen und Überblick
 
@@ -77,7 +77,7 @@ Eine spezielle Architektur neuronaler Netze.
 
 
 
-## Workshops
+# Workshops
 
 ### OpenAI API Grundlagen - KI anbinden und verstehen
 
@@ -203,7 +203,27 @@ Pytorch & Erstellen eines LLM von null auf (Durchführung in Google Colab)
 
 
 
-## Literatur
+# Werkzeuge und Ressourcen
+
+**PyTorch**
+
+Standardwerkzeug um LLMs zu implementieren und zu trainieren. 
+
+**vLLM**
+
+Zum Ausführen von LLMs (bzw. für die Vorhersage aka Inferenz) und um LLMs als Service anzubieten (aka deployment).
+
+Vor allem falls es um Geschwindigkeit geht ist das Framework vLLM der de-facto Standard, welches von tausenden Unternehmen und Nutzenden weltweit  verwendet wird. vLLM hat sich zum Ziel gesetzt, jedes LLM auf jeder  Hardware mit größtmöglicher Effizienz auszuführen und dabei so einfach  wie möglich zu verwenden zu sein. 
+
+**executorch**
+
+Zum Ausführen von LLMs (bzw. für die Vorhersage aka Inferenz) und um LLMs als Service anzubieten (aka deployment).
+
+**llama.cpp**
+
+Zum Ausführen von LLMs (bzw. für die Vorhersage aka Inferenz) und um LLMs als Service anzubieten (aka deployment).
+
+# Literatur
 
 [1] Ethem Alpaydin: *Machine Learning: The New AI*, The Massachusetts Institute of Technology, 2016
 
@@ -232,6 +252,12 @@ Pytorch & Erstellen eines LLM von null auf (Durchführung in Google Colab)
 [13] Feature Visualization, https://distill.pub/2017/feature-visualization/, abgerufen am 05. Dezember 2025
 
 [14] AI Coffee Break with Letitia, https://www.youtube.com/@AICoffeeBreak, abgerufen am 05. Dezember 2025
+
+[15] GI Radar, Open Source und LLMs, https://gi-radar.de/392-open-source-und-llms/, abgerufen am 12. Januar 2026
+
+[16] vLLM, https://docs.vllm.ai/en/latest/getting_started/quickstart/, abgerufen am 12. Januar 2026
+
+[17] llama.cpp, https://github.com/ggml-org/llama.cpp, abgerufen am 12. Januar 2026
 
 
 
