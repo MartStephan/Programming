@@ -43,7 +43,8 @@ public:
 /// <summary>
 ///  The Matter with Those lvalues and rvalues
 /// </summary>
-/// <returns></returns>
+/// <returns></returns
+/// 
 /// 
 /// All below are lvalues 
 /// Type var1;
@@ -80,6 +81,8 @@ void rvaluereferences() {
    int* pointerToRvalueReference = &rvalueReference;
    *pointerToRvalueReference = 23;
 }
+
+
 
 void builder() {
    Foo anObject; 

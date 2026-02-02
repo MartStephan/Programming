@@ -1068,6 +1068,28 @@ int main()
 
 Siehe dazu auch https://en.cppreference.com/w/cpp/language/value_category und https://blog.knatten.org/2018/03/09/lvalues-rvalues-glvalues-prvalues-xvalues-help/. 
 
+## L-Value Reference/R-Value Reference
+
+Mit C++11 wurde die Move-Semantik eingeführt. Dafür wurde eine neue Syntax benötigt. Die sogenannte *RValue* Referenz. Nicht zu verwechseln mit lvalue und rvalue. Welche es schon seit C-Zeiten gibt. 
+
+Um die bisherigen Referenzen von R-Value Referenzen zu unterscheiden, werden bisher übliche Referenzen als L-Value Referenzen bezeichnet. L-Value Referenzen sind also die altbekannten Referenzen; mit einem & markiert. R-Value Referenzen werden mit && markiert. 
+
+```c++
+#include <iostream>
+#include <type_traits>
+
+class A {};
+
+int main() {
+    std::cout << std::boolalpha; 
+    std::cout << "class A\t" << std::is_rvalue_reference<A>::value << "\n";
+    std::cout << "class A&&\t" << std::is_rvalue_reference<A&&>::value << "\n";
+}
+
+//$ class A	false
+//$ class A&&	true
+```
+
 ## Memoisation
 
 Memoisation ist ein Verfahren, bei dem die Ergebnisse von Berechnungen gespeichert werden, um sie später wiederzuverwenden. Ohne dass man später die Ergebnisse erneut berechnen müsste. Oft ist damit eine effizientere Software möglich. Hier gezeigt am Beispiel der Berechnung der Fibonacci-Folge. 
