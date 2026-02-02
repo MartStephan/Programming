@@ -43,6 +43,10 @@ Diese Modelle sind eine Ausprägung tiefer neuronaler Netze für die Textmodalit
 
 Prompt Engineering bezeichnet die Art und Weise (bzw. Tipps und Tricks) wie man mit einer GPT optimal kommuniziert. 
 
+### Reasoning
+
+Mit *Reasoning* kann man LLMs vor sich hin Überlegungen schreiben lassen, bevor sie antworten. Alle aktuellen Modelle sind *Reasoning*-Modelle. Da *Reasoning* im Allgemeinen zu besseren Ergebnissen führt. 
+
 ### Retrieval-augmented Generation (RAG)
 
 Mit RAG kann ich eben nicht nur das Sprachverständnis und Wissen einer LLM nutzen, sondern das generische Wissen der LLM durch spezifische Informationen (z.B. interne Unternehmensinformationen) ersetzen. 
@@ -55,7 +59,7 @@ Diese Embedding-Modelle sind deutlich kleiner als ein LLM und benötigen weniger
 
 ### Transformer
 
-Eine spezielle Architektur neuronaler Netze. 
+Eine spezielle Architektur neuronaler Netze. Sie wurde 2017 von Google beschrieben. Siehe https://en.wikipedia.org/wiki/Attention_Is_All_You_Need. 
 
 # Amazon AWS
 
@@ -223,6 +227,26 @@ Zum Ausführen von LLMs (bzw. für die Vorhersage aka Inferenz) und um LLMs als 
 
 Zum Ausführen von LLMs (bzw. für die Vorhersage aka Inferenz) und um LLMs als Service anzubieten (aka deployment).
 
+# Applikationen
+
+## Claude Code and Obsidian
+
+**Obsidian**
+
+Obsidian is a note taking tool. One of the best features of Obsidian is that all the notes you take are  kept in a folder. You write notes and it saves them as markdown  documents.
+
+**Claude Code**
+
+Claude Code is Anthropic’s AI that is intended to be a coding partner  for creating software with AI. As such, it is designed to be pointed at a folder of code and it can then read, analyze, and reason about the code in that folder.
+
+But since Obsidian also stores all of it’s note data into a folder, you can also run Claude Code on top of your notes.
+
+Claude Code can read through your notes and provide all sorts of helpful comments, find patterns, help you organize, and do really great things  to help you with your notes.
+
+Now you're ready. Just follow the instructions given here https://github.com/deivid11/obsidian-claude-code-plugin?tab=readme-ov-file.
+
+That's it.
+
 # Literatur
 
 [1] Ethem Alpaydin: *Machine Learning: The New AI*, The Massachusetts Institute of Technology, 2016
@@ -258,6 +282,10 @@ Zum Ausführen von LLMs (bzw. für die Vorhersage aka Inferenz) und um LLMs als 
 [16] vLLM, https://docs.vllm.ai/en/latest/getting_started/quickstart/, abgerufen am 12. Januar 2026
 
 [17] llama.cpp, https://github.com/ggml-org/llama.cpp, abgerufen am 12. Januar 2026
+
+[18] Obsidian + Claude Code Plugin, https://github.com/deivid11/obsidian-claude-code-plugin, abgerufen am 16. Januar 2026
+
+[19] Obsidian + Claude Code is Beyond Useful, https://emergentinsights.substack.com/p/obsidian-claude-code-is-beyond-useful, abgerufen am 16. Januar 2026
 
 
 

@@ -69,10 +69,6 @@ Via Function Tooling kann ich eine LLM mit verschiedenen Anwendungen verknüpfen
 - Beispiel: Wie ist das Wetter heute in London?
 - Bild LLM + Function Calling
 
-**any-llm**
-
-Mozilla stellt mit *any-llm* eine einheitliche API für viele LLMs zur Verfügung. Ein mandantenfähiges Gateway verwaltet Budgets  und Keys. Die angebundenen Modelle können in der Cloud oder lokal vorliegen und lassen sich über die asynchrone API leicht wechseln. Das Tool stellt auch für das Reasoning eine standardisierte Ausgabe. Ein optionales LLM-Gateway dient dem Budget- und Key-Management und ist mandantenfähig.
-
 **Open AI API**
 
 Heutzutage quasi der Standard, um auf LLMs zuzugreifen. 
@@ -94,6 +90,14 @@ Heutzutage quasi der Standard, um auf LLMs zuzugreifen.
   - SSE (Server-Sent Events)
 - Beispiele
 - Applikation
+
+**any-llm**
+
+Mozilla stellt mit *any-llm* eine einheitliche API für viele LLMs zur Verfügung. Ein mandantenfähiges Gateway verwaltet Budgets  und Keys. Die angebundenen Modelle können in der Cloud oder lokal vorliegen und lassen sich über die asynchrone API leicht wechseln. Das Tool stellt auch für das Reasoning eine standardisierte Ausgabe. Ein optionales LLM-Gateway dient dem Budget- und Key-Management und ist mandantenfähig.
+
+**Open Responses**
+
+Open Responses von OpenAI ist ein Open-Source-Standard für eine herstellerunabhängige LLM-API. 
 
 ## Model Context Protocol (MCP) und stdio-Protokoll
 
@@ -319,6 +323,8 @@ Bidirektionale Kommunikation; schwergewichtig.
 [20] Agent2Agent (A2A) Protocol, https://a2a-protocol.org/latest/, abgerufen am 07.11.2025
 
 [21] any-llm, https://github.com/mozilla-ai/any-llm, abgerufen am 10.11.2025
+
+[22] Open Responses, https://www.openresponses.org/specification, abgerufen am 25.01.2025
 
 
 
