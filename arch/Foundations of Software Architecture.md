@@ -290,15 +290,16 @@ Ausgewählte Architekturmuster sind:
 
 ## Architekturstile und -muster
 
-| Stil                            | Intention                                                    | Beispiele                                                    |
-| ------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Datenflusssysteme               |                                                              |                                                              |
-| Datenzentrische Systeme         |                                                              |                                                              |
-| Hierarchische Systeme           | Bestehen aus Bausteinen in unterschiedlichen Ebenen einer Hierarchie | Schichtenarchitektur, Hexagonale Architektur (Ports- und Adapter), Onion Architecture, Clean Architecture |
-| Verteilte Systeme               |                                                              |                                                              |
-| Ereignisbasierte Systeme        |                                                              |                                                              |
-| Interaktionsorientierte Systeme |                                                              |                                                              |
-| Heterogene Systeme              |                                                              |                                                              |
+| Stil                                  | Intention                                                    | Beispiele                                                    |
+| ------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Datenflusssysteme                     |                                                              |                                                              |
+| Datenzentrische Systeme               |                                                              |                                                              |
+| Hierarchische Systeme                 | Bestehen aus Bausteinen in unterschiedlichen Ebenen einer Hierarchie | Schichtenarchitektur, Hexagonale Architektur (Ports- und Adapter), Onion Architecture, Clean Architecture |
+| Verteilte Systeme                     |                                                              |                                                              |
+| Ereignisbasierte Systeme              |                                                              |                                                              |
+| Interaktionsorientierte Systeme       |                                                              |                                                              |
+| Heterogene Systeme                    |                                                              |                                                              |
+| Capability-centric Architecture (CCA) | Erweitert und synthetisiert Konzepte aus Domain-driven Design, Hexagonal Architecture und Clean Architecture |                                                              |
 
 ### Hierarchische Architekturstile
 
@@ -322,6 +323,46 @@ Ein Port beschreibt entweder, wie ein externer Treiber den Anwendungskern nutzen
 
 Die Prinzipien des Domain-Driven Designs (DDD) lassen sich sehr gut mit der hexagonalen Architektur kombinieren. In dieser Architektur entspricht ein Bounded Context einem Hexagon. 
 
+Für Embedded Systeme nicht ideal, da Hardware-Komponenten wie z.B. ein Hardware Timer durch einen Adapter abstrahiert wird. Was u.U. die Echtzeitfähigkeit des Systems nicht mehr berücksichtigt. Anders gesagt: Auch Hardware wird als eine weitere austauschbare Komponente behandelt. 
+
+Ein typischer Hexagonaler Ansatz.
+
+```c++
+// Port-Definition
+class SensorPort {
+    virtual SensorReading read();
+};
+
+// Domain-Logik
+class TemperatureController {
+    private final SensorPort sensor;
+    
+    public:
+    	TemperatureController(SensorPort sensor) {
+        	this.sensor = sensor;
+    	}
+    
+    void regulate() {
+        SensorReading reading = sensor.read();
+        // Steuerungslogik hier
+    }
+};
+
+// Hardware-Adapter
+class HardwareSensorAdapter : public SensorPort {
+    
+    SensorReading read() override {
+        // Direkter Speicherzugriff
+        int rawValue = readRegister(SENSOR_REGISTER);
+        return new SensorReading(convertToTemperature(rawValue));
+    }
+    
+    private:
+    	constexpr int SENSOR_REGISTER = 0x40001000;
+    	int readRegister(int address);
+};
+```
+
 **Onion Architecture**
 
 Eine weitere Architektur, die auf dem Prinzip der Dependency Inversion aufbaut, ist die Onion Architecture, die 2008 von Jeffrey Palermo beschrieben wurde. 
@@ -337,6 +378,12 @@ Clean Architecture ist ein Konzept von Robert C. Martin. Auch Clean Architecture
 Im Zentrum der Architektur stehen Entitäten. Das sind Klassen, die unternehmensweit verwendet werden. Der nächste Ring enthält anwendungsspezifische Geschäftsregeln und Services. Der nächste Ring umfasst die Adapter, die als Vermittler zwischen der internen Geschäftslogik und den externen Technologien fungiert. Im äußersten Ring der Clean Architecture befinden sich Frameworks und Datenbanken. 
 
 Auch hier gilt (wie bei den zuvor genannten Architekturen auch): Abhängigkeiten dürfen nur nach innen gerichtet sein. 
+
+Und auch hier gilt - nicht ideal für Embedded Systeme. Da Hardware keine Infrastruktur ist, die sich abstrahieren lässt. Sie ist das Fundament, auf dem Fähigkeiten aufgebaut sind. 
+
+### Capability-centric Architecture (CCA)
+
+CCA bietet ein vereinheitlichtes konzeptionelles Framework mit  Mechanismen zur Verwaltung von Komplexität, Abhängigkeiten und  Änderungen.
 
 ## Architektur-Sichten
 
