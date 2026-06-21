@@ -17,6 +17,10 @@ Table of Contents
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
 
+# Generative Artifical Intelligence
+
+Bei der Generative AI berechnet (üblicherweise) ein Modell auf Basis einer Transformer-Architektur die stochastische Wahrscheinlichkeit für die nächste Token-Abfolge, optimiert durch Reinforcement Learning aus menschlichem Feedback.
+
 # Generative Pre-trained Transformers (GPT)
 
 Hinter den heutzutage in aller Munde Generative Pre-trained Transformers (GPT) verbirgt sich im Kern ein Neuronales Netzwerk - und zwar in diesem Falle ein sogenanntes Large Language Model (LLM). Diesem werden viele Texte zum Training gereicht, sodass es nun weiß, mit welchen Teilwörtern (Tokens) ein Satz ergänzt werden soll. Die richtigen Tokens werden anhand von Wahrscheinlichkeiten ausgewählt. 
@@ -247,6 +251,30 @@ Now you're ready. Just follow the instructions given here https://github.com/dei
 
 That's it.
 
+## Coding Agenten
+
+Ein Agent ist ein Sprachmodell, das wiederholt Werkzeuge aufruft, die Ergebnisse verarbeitet und so schrittweise auf ein Ziel hinarbeitet. Bei Coding-Agenten sind diese Werkzeuge der Compiler,die Testsuite, das Dateisystem und das Terminal.
+
+- Claude Code https://code.claude.com
+
+- OpenAI Codex https://openai.com
+
+- Cursor https://cursor.com
+
+- Google Antigravity https://codelabs.developers.google.com
+
+- Aider https://ai-der.chat
+
+- OpenHands https://openhands.dev
+
+- OpenCode https://github.com/opencode-ai/opencode
+
+- MiniMax https://www.minimax.io
+
+- GLM von z.ai 
+
+  
+
 # Literatur
 
 [1] Ethem Alpaydin: *Machine Learning: The New AI*, The Massachusetts Institute of Technology, 2016
@@ -286,6 +314,10 @@ That's it.
 [18] Obsidian + Claude Code Plugin, https://github.com/deivid11/obsidian-claude-code-plugin, abgerufen am 16. Januar 2026
 
 [19] Obsidian + Claude Code is Beyond Useful, https://emergentinsights.substack.com/p/obsidian-claude-code-is-beyond-useful, abgerufen am 16. Januar 2026
+
+[20] Dr. Michael Stal, Large Language Models: Die Mathematik hinter Transformers, https://www.heise.de/blog/Large-Language-Models-Die-Mathematik-hinter-Transformers-11070751.html, abgerufen am 21.06.2026
+
+[21] Golo Roden, Wie Gödel und Turing die Grenzen von KI vorgezeichnet haben, https://www.heise.de/blog/Wie-Goedel-und-Turing-die-Grenzen-von-KI-vorgezeichnet-haben-11308945.html, abgerufen am 21.06.2026
 
 
 

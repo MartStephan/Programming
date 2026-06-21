@@ -110,6 +110,20 @@ In der Statistik wird das Schätzen eines Ausganswertes auf Basis von Eingangswe
 
 Mit Regression versucht man, "anhand der Zusammenhänge den Wert einer Variablen abhängig von den anderen Variablen statistisch bestmöglich zu schätzen. Sie werden verwendet, um Prognosen beziehungsweise Schätzungen bei neuen Fällen zu machen." [3] 
 
+# Artificial Intelligence and Language
+
+## Introduction
+
+Bei aktuellen KIs, die auf eine LLM zurückgreifen, gibt es zwei Strömungen. Zum einen gibt es die, die sagen, dass Sprachmodelle stochastische Papageien sind (vgl. Bender et al, 2021). Daneben gibt es Aussagen wie die von Sam Altman (CEO von OpenAI), der sagt, dass Sprachmodelle erste Anzeichen von echtem Nachdenken zeigen (Sam Altman, 2023).
+
+Sam Altman verwendet dabei das Wort reasoning, das im Englischen in der Mathematik das logische Schließen meint. Aber auch das Nachdenken über einen Sachverhalt, Begründen, Analysieren, die begründete Schlussfolgerung.  
+
+Altman vertritt die Ansicht, dass die sogenannte KI schon in ein paar Jahren zur Superintelligenz (die sogenannte AGI) geworden sein könnte, mit der die Probleme der Menschheit im Sinne der Menschheit gelöst werden können z.B. das Klimaproblem gelöst sein wird oder auch alle noch nicht entdeckten Regeln der Physik entdeckt werden können. 
+
+# Inside Language Models
+
+# What are language models capable of
+
 # Maschinelles Lernen
 
 ## Lernen
@@ -555,6 +569,18 @@ Ergänzende Werkzeuge für die Arbeit mit Notebooks:
 
 *JupyterHub*: Erweitert Jupyter für mehrere Benutzer inkl. Authentifizierung, Container-Unterstützung und zentralisiertem Deployment. 
 
+## Landing Pages
+
+Es gibt viele interessante Ressourcen im Netz. Einige will ich hier vorstellen.
+
+**Selbst Coden lernen**
+
+Viele praktische Beispiele https://newslettertogo.com/k78op17b-hbo0lvc2-bxaigih2-udk
+
+**Ressourcen zum Lernen**
+
+Eine große Sammlung von Ressourcen zu KI und maschinellem Lernen https://newslettertogo.com/k78op17b-hbo0lvc2-fnp7rpzb-1bxq
+
 # Literatur
 
 [1] Machine Learning: The New AI, Ethem Alpaydin
@@ -628,6 +654,22 @@ Ergänzende Werkzeuge für die Arbeit mit Notebooks:
 [35] JupyterHub, https://github.com/jupyterhub/jupyterhub, abgerufen am 16.02.2025
 
 [36] Die Ursprünge der künstlichen Intelligenz: So lernten die Maschinen das Lernen, https://www.nzz.ch/wissenschaft/die-geschichte-der-ki-neuronale-netze-revolutionierten-die-welt-ld.1898683 (abgerufen am 3.10.2025)
+
+[37] Weiß die KI, dass sie nichts weiß?, Katharina Zweig
+
+[38] Die Macht der Computer und die Ohnmacht der Vernunft, Joseph Weizenbaum
+
+[39] Mark Chen, Viele Nutzer wollen, dass die KI rät, Zeit Nr. 26/2026
+
+[40] Dr. Michael Stal, Large Language Models: Die Mathematik hinter Transformers, https://www.heise.de/blog/Large-Language-Models-Die-Mathematik-hinter-Transformers-11070751.html, abgerufen am 21.06.2026
+
+[41] Golo Roden, Blog - The Next Big Thing, KI-Überblick, Teil 1 - 8
+
+[42] Golo Roden, Wie Gödel und Turing die Grenzen von KI vorgezeichnet haben, https://www.heise.de/blog/Wie-Goedel-und-Turing-die-Grenzen-von-KI-vorgezeichnet-haben-11308945.html, abgerufen am 21.06.2026
+
+
+
+
 
 
 
