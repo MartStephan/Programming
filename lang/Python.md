@@ -33,6 +33,7 @@ Table of Contents
   * [Python 3\.9](#python-39)
   * [Python 3\.10](#python-310)
   * [Python 3\.13](#python-313)
+  * [Python 3\.15](#python-315)
   * [Arbeiten mit Dateien](#arbeiten-mit-dateien)
     * [Grundlegendes](#grundlegendes)
     * [Directory-Baum erstellen](#directory-baum-erstellen)
@@ -78,7 +79,7 @@ Dynamisch (“*duck typing*”), objektorientiert, automatische Speicherbereinig
 import this
 
 The Zen of Python, by Tim Peters
- 
+
 Beautiful is better than ugly.
 Explicit is better than implicit.
 Simple is better than complex.
@@ -113,7 +114,7 @@ print math.sin(math.pi)
 Der Namensraum kann auch durch eine import/as-Anweisung festgelegt werden.
 
 ```python
-import math as mathematik		
+import math as mathematik        
 
 print mathematik.sin(mathematik.pi)
 ```
@@ -152,7 +153,7 @@ Oder mit *main* als Einstiegspunkt.
 #!/usr/bin/python
 
 if __name__ == '__main__':
-	print("Hallo Welt")
+    print("Hallo Welt")
 ```
 
 Oder strukturierte Programmierung mit einer Funktion.
@@ -161,10 +162,10 @@ Oder strukturierte Programmierung mit einer Funktion.
 #!/usr/bin/python
 
 def hallo():
-	print("Hallo Welt")
-    
+    print("Hallo Welt")
+
 if __name__ == '__main__':
-	hallo()
+    hallo()
 ```
 
 Oder objektorientiert.
@@ -173,15 +174,15 @@ Oder objektorientiert.
 #!/usr/bin/python
 
 class Hallo:
-	def __init__(self):
-		self.name = 'Hallo'
-	
+    def __init__(self):
+        self.name = 'Hallo'
+
     def giveittome(self):  
-		print("Hallo Welt")
- 
+        print("Hallo Welt")
+
 if __name__ == '__main__':
-	myhallo = Hallo()
-	myhallo.giveittome()
+    myhallo = Hallo()
+    myhallo.giveittome()
 ```
 
 Oder grafisch mit Qt.  
@@ -195,12 +196,12 @@ Wie in den obigen Beispielen schon zu sehen sind Funktionsobjekte durch das *def
 
 ```python
 class MyClass:
-	def __init__(self):
-		self.value = 1
-	
+    def __init__(self):
+        self.value = 1
+
     def multiply(self, parameter1):
-		"""documentation string for the method"""
-		return self.value * parameter1
+        """documentation string for the method"""
+        return self.value * parameter1
 ```
 
 Besonderheit: Viele Statements in Python erfordern zwingend eine visuelle Einrückung.  
@@ -216,7 +217,7 @@ def myfunc(optional_params):
    """Comment function purpose here"""
    # This is a single-line comment
    print("Hallo")
-   
+
 ```
 
 **Variablen und Typen**
@@ -255,15 +256,15 @@ def amountOfFuel(spacecraftWeights):
       print(number)
       # calculate total fuel
       totalFuel = totalFuel + number; 
-      
+
    return totalFuel;
 
 if __name__ == '__main__':
    print("Hallo")
-   
+
    adventofcode = [114739, 132732, 123925, 146385, 72590]
    totalFuel = amountOfFuel(adventofcode)
-        
+
     # print total fuel
     print("Total fuel needed is ", totalFuel)
 ```
@@ -386,7 +387,7 @@ c:\\transer\this\new
 
 
 
-### Slicing 
+### Slicing
 
 Python besitzt mit dem Slicing eine mächtige Funktion, um auf Bestandteile eines Textes zuzugreifen, Syntax lautet str[start:end] bzw. str[start:end : step].
 
@@ -424,12 +425,12 @@ Wie in eigentlich allen objektorientierten Sprachen gibt es auch in Python entsp
 
 ```python
 class meineKlasse(Basisklasse):
-	def __init__(self, args):
-    	pass
-    
+    def __init__(self, args):
+        pass
+
     def __del__(self):
         pass
-    
+
     def funktionsname(self, args):
         pass
 ```
@@ -529,12 +530,12 @@ class RectangleClientParent:
     def get_number_of_clients_static() -> int:
         """ static method to get the number of clients """
         return RectangleClientParent.number_of_clients
-    
+
     @classmethod   
     def get_number_of_clients_class(cls) -> int:
         """ class method to get the number of clients """
         return cls.number_of_clients
-    
+
 class RectangleClientChild(RectangleClientParent):
     number_of_clients: int = 0
 
@@ -544,7 +545,7 @@ class RectangleClientChild(RectangleClientParent):
 
 
 if __name__ == '__main__':
-    
+
     # create three parent clients and one child client
     client1 = RectangleClientParent()
     client2 = RectangleClientParent()
@@ -573,7 +574,7 @@ Iterationen werden (wie in vielen anderen Sprachen auch) mit dem Schlüsselwort 
 
 ```python
 #!/usr/bin/python
- 
+
 if __name__ == '__main__':
     for item in ["a", "b", "c"]:
         print(item)
@@ -584,13 +585,13 @@ if __name__ == '__main__':
     for j in range(4, 8):  # 4 to 7
         print(j)
 
-    for k in range(31,-1,-1):	# 31 to 0 step -1
+    for k in range(31,-1,-1):    # 31 to 0 step -1
         print(k)
 
     ingredients = {'spam': 1, 'egg': 2, 'ham': 3}
     for key, val in ingredients.items():
         print(key)
-        
+
 #>a
 #>b
 #>c
@@ -641,13 +642,13 @@ Listen sind ähnlich den Arrays in anderen Sprachen. Listen sind veränderlich (
 
 ```python
 #!/usr/bin/python
- 
+
 if __name__ == '__main__':
     mylist = []
     mylist.append(10)
     mylist.append(30)
 
-	odds = [1, 3, 5, 7, 9, 11, 13]
+    odds = [1, 3, 5, 7, 9, 11, 13]
     words = ['hello', 'world']
     car = ['Toyota', 'Civic', 100, 2452345]
     literalsLiterals = [ [1, 2, 3], ['a', 'b', 'c'], ['first', 'second', 'third'] ]
@@ -664,7 +665,7 @@ if __name__ == '__main__':
     print(mylist)
 
     print(odds)
-	
+
     print(words)
 
     print(car)
@@ -675,18 +676,18 @@ if __name__ == '__main__':
 
     # negative Indizes
     print(vowels[-1])
-    
+
     # Listen kann man addieren
     odds += [15, 17, 19]
-    
+
     # praktische built-in Funktionen
     min(odds)
     max(odds)
     sum(odds)
-    
+
     # Initialisierung mit Multiplikation
     zeros = [0] * 10
-    
+
 ```
 
 **Slicing** 
@@ -724,7 +725,7 @@ def square_list_loops():
 
     for x in range(10):
         squares.append(x**2)
- 
+
     print(squares)
 
 def square_list_comprehensions():
@@ -735,7 +736,7 @@ def square_list_comprehensions():
 
 if __name__ == '__main__':
     """Example for List Comprehensions"""
-    
+
     # simple list using list comprehension
     x: int = [i for i in range(10)]
     print(x)
@@ -745,7 +746,7 @@ if __name__ == '__main__':
 
     # list of square numbers using comprehensions
     square_list_comprehensions()
-    
+
 #> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 #> [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 #> [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]    
@@ -788,7 +789,7 @@ Tuples sind ähnlich den Listen. Nur sind sie nicht veränderlich (*immutable*).
 def def multi_return():
     # returning multiple values using tuple
     return (404, "Not Found", ["Info1", "Info2"])
-    
+
 if __name__ == '__main__':
     # define empty tuple
     t = tuple()
@@ -809,11 +810,11 @@ if __name__ == '__main__':
     # t2 is a tuple
     t2 = ('Python',)
     print(type(t2))
-    
+
     # multi-return tuple
     multi_return()
-    
-    
+
+
 ```
 
 **Tuple (Un-)Packing**
@@ -864,7 +865,7 @@ if __name__ == '__main__':
 
     #define dictionary Per Anhalter durch die Galaxis
     person = { 'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker', 'home': 'earth' }
-    
+
     print(person)
 
     #create additional dictionary containing all person (dictionary inside dictionary)
@@ -874,7 +875,7 @@ if __name__ == '__main__':
     people['Ford'] = { 'name': 'Ford Prefect', 'gender': 'male', 'occupation': 'researcher', 'home': 'betelgeuse' }
 
     print(people)
-  
+
 
 # OUTPUT
 """ {'name': 'Arthur Dent', 'gender': 'male', 'occupation': 'sandwich maker', 'home': 'earth'}
@@ -897,7 +898,7 @@ Python bringt vier effiziente (eingebaute) Datenstrukturen mit: *Listen*, *Tuple
 
 Ein *Set* ist eine Ansammlung unsortierter Objekte. Wobei ein Objekt nie mehrfach vorkommenn darf.  
 
-### zip( ) 
+### zip( )
 
 In Python gibt es eine Built-In Funktion zip( ), die es erlaubt, zwei oder mehr Datenbestände zu einer Einheit zu verbinden; z.B. zwei Listen. 
 
@@ -961,7 +962,7 @@ Die *range*-Funktion kennt man natürlich aufgrund der *range-based for-loops*. 
 
 if __name__ == '__main__':
     """Example for Python built-in functions"""
-    
+
     # range returns a sequence of numbers, from 1 to 10
     odds = filter(lambda i: (i % 2) == 1 , range(1, 10))
 
@@ -978,7 +979,7 @@ Die *filter*-Funktion liefert einen Iterator auf Elemente, wobei die Elemente zu
 
 if __name__ == '__main__':
     """Example for Python built-in functions"""
-    
+
     # filter returns elements that have been filtered by a function beforehand
     odds = filter(lambda i: (i % 2) == 1 , range(1, 10))
 
@@ -995,7 +996,7 @@ Auch *Lambdas* sind in Python built-in. Verwende das *Lambda*-Pattern, um Funkti
 
 if __name__ == '__main__':
     """Example for Python built-in functions"""
-    
+
     # lambda is an anonymous function inside a filter function
     odds = filter(lambda i: (i % 2) == 1 , range(1, 10))
 
@@ -1015,13 +1016,13 @@ def get_length(item):
 
 if __name__ == '__main__':
     """Example for Python built-in functions"""
-    
+
     # map - calculate length of each item in the sequence 
     lengths = map(get_length, ('wake', 'the', 'sleeping', 'dragon'))
 
     for y in lengths: 
         print(y)
-       
+
 #> 4
 #> 3
 #> 8
@@ -1036,11 +1037,11 @@ Wenn Sie den Namen einer Methode oder Instanzvariablen in einer Klasse mit zwei 
 
 Das Wichtigste vorweg: Python 3 ist inkompatibel zu den Python 2.x Entwicklungslinien. Die wichtigsten Neurungen in Python 3 sind:  
 
--  	Strings (*str*) sind jetzt immer Unicode-basiert, *bytes* für Byte-Ketten
--  	*exec* und *print* sind jetzt Funktionen statt syntaktische Statements
--  	neue Syntax für Exception-Handling
--  	Viele iterierende Methoden von Containern liefern nun *views*, anstatt wie vorher ganze Listen zu erzeugen
--  	Es gibt nur noch einen unifizierten Zahlentyp (*int*)
+- Strings (*str*) sind jetzt immer Unicode-basiert, *bytes* für Byte-Ketten
+- *exec* und *print* sind jetzt Funktionen statt syntaktische Statements
+- neue Syntax für Exception-Handling
+- Viele iterierende Methoden von Containern liefern nun *views*, anstatt wie vorher ganze Listen zu erzeugen
+- Es gibt nur noch einen unifizierten Zahlentyp (*int*)
 
 **print**
 
@@ -1055,7 +1056,7 @@ class Hallo:
 
    def giveittome(self): 
       print("Hallo Welt")
-   
+
 if __name__ == '__main__':
    myhallo = Hallo()
    myhallo.giveittome()
@@ -1112,9 +1113,9 @@ Aus der Funktion *raw_input()* in Python 2.x wurde nun einfach *input()*.
 
 Neue Features in Python 3.4. umfassen:  
 
--  	Aufzählungstypen
--  	Asynchrone Werkzeuge
--  	Bootstrapping-Mechanismus für Paketmanager pip
+- Aufzählungstypen
+- Asynchrone Werkzeuge
+- Bootstrapping-Mechanismus für Paketmanager pip
 
 **Aufzählungstypen**
 
@@ -1124,11 +1125,11 @@ Um Aufzählungstypen zu benutzen, muss der Typ *Enum* aus dem Modul *enum* impor
 
  \>> class Color(Enum)
 
- …	red = 1
+ …    red = 1
 
- …	blue = 2
+ …    blue = 2
 
- …	green = 3
+ …    green = 3
 
  \>> print(Color.red)
 
@@ -1146,10 +1147,10 @@ Um Aufzählungstypen zu benutzen, muss der Typ *Enum* aus dem Modul *enum* impor
 
  Für asynchrones I/O gibt es jetzt ein neues Modul *asyncio.* Es ist vor allem für den Netzwerkeinsatz gedacht. Es bietet die Infrastruktur für z.B.  
 
--  	Single-Threaded Applikationen nebenläufig ablaufen zu lassen mit Hilfe von Koroutinen
--  	Multiplexing I/O Zugriff über Sockets und ähnliche Resourcen
--  	Das Laufenlassen von Netzwerk-Clients und Servers
--  	u.a.  	
+- Single-Threaded Applikationen nebenläufig ablaufen zu lassen mit Hilfe von Koroutinen
+- Multiplexing I/O Zugriff über Sockets und ähnliche Resourcen
+- Das Laufenlassen von Netzwerk-Clients und Servers
+- u.a.      
 
 **Bootstrapping Mechanismus für pip**
 
@@ -1157,8 +1158,8 @@ Es gibt jetzt ein neues Modul *ensurepip,* mit welchem das Bootstrapping der *pi
 
 **Module**
 
-| Modul      | Beschreibung                                                 |
-| ---------- | ------------------------------------------------------------ |
+| Modul      | Beschreibung                                                                                                                             |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
 | pathlib    | Das Modul *pathlib* bietet Klassen an, um auf verschiedenen Betriebssystemen Operationen auf Datei- und Verzeichnispfaden durchzuführen. |
 | statistics | Das Modul *statistics* bietet Funktionen für mathematische Statistik-Funktionalitäten, z.B. Mittelwert, Median, Standardabweichung, usw. |
 
@@ -1166,9 +1167,9 @@ Es gibt jetzt ein neues Modul *ensurepip,* mit welchem das Bootstrapping der *pi
 
 Das Modul *tracemalloc* kann zur Ablaufverfolgung von Speicherblöcken, allokiert aus Python, benutzt werden.  
 
--  	Traceback von der Stelle, an der ein Objekt allokiert wurde
--  	Statistik von allokierten Blöcken sortiert nach Dateinamen und Zeilennummer: Gesamtgröße, Anzahl und durchschnittliche Größe der allokierten Blöcke
--  	Berechnung des Unterschiedes von zwei ‚Snapshots‘, um Speicherlecks zu entdecken
+- Traceback von der Stelle, an der ein Objekt allokiert wurde
+- Statistik von allokierten Blöcken sortiert nach Dateinamen und Zeilennummer: Gesamtgröße, Anzahl und durchschnittliche Größe der allokierten Blöcke
+- Berechnung des Unterschiedes von zwei ‚Snapshots‘, um Speicherlecks zu entdecken
 
 ## Python 3.5
 
@@ -1326,7 +1327,7 @@ if __name__ == '__main__':
 
    print(name)
    print(meine_liste)
-   
+
 #> Hallo
 #> [1, 3, 5, 7, 9, 11, 13]
 ```
@@ -1360,8 +1361,8 @@ def random_key(length: int) -> int:
    return int.from_bytes(random_bytestring, "big")
 
 if __name__ == '__main__':
-	rand_int: int = random_key(10)
-     
+    rand_int: int = random_key(10)
+
 ```
 
 ## Python 3.9
@@ -1374,7 +1375,7 @@ Es gibt nun einen eleganten Weg, um zwei Dictionaries miteinander zu verbinden.
 #!usr/bin/python
 
 if __name__ == '__main__':
-    
+
     ingredients = {'spam': 1, 'egg': 2, 'ham': 3}
     print(ingredients)
 
@@ -1447,7 +1448,7 @@ def string_pattern() -> None:
             print("Heute ist Sonntag.")
         case _:
             print("Ungültiger Wochentag.")
-                
+
 def point_pattern() -> None:
     """ tuple matching using match-case """ 
     point = (3, 3)
@@ -1591,6 +1592,112 @@ if __name__ == '__main__':
 
 ```
 
+## Python 3.15
+
+Python 3.15 erschien am 9. Oktober 2026. 
+
+Die neue Version kennt explizit verzögerte Imports (Lazy Imports). 
+
+```python
+# Python 3.15
+lazy import json
+import sys
+
+# ohne die Option --json benötigt das Programm das Modul sys nicht
+# erst beim Zugriff auf json.dumps wird der verzögerte Import aufgelöst
+def main():
+    if "--json" in sys.argv:
+        print(json.dumps({"status": "ok", "version": "3.15"}))
+    else:
+        print("Status: ok")
+
+if __name__ == "__main__":
+    main()
+```
+
+Ein Wörterbuch (`dict`) ordnet Schlüsseln Werte zu. Mit *frozendict* gibt es davon nun eine unveränderliche Variante.
+
+```python
+# Python 3.15
+config = frozendict({
+    "host": "localhost",
+    "port": 8000,
+    "debug": False,
+})
+
+print(config["port"])  # 8000
+
+# Löst TypeError aus: 'frozendict' object does not support item assignment
+# config["port"] = 9000
+```
+
+Der neue eingebaute Typ *sentinel* löst ein häufiges API-Problem: Eine Funktion soll unterscheiden können, ob ein Argument fehlt oder ausdrücklich *None*, Pythons Wert für „nichts“, übergeben wurde. 
+
+```python
+# Python 3.15
+MISSING = sentinel("MISSING")
+
+def describe(value=MISSING):
+    if value is MISSING:
+        return "Kein Wert übergeben"
+    if value is None:
+        return "Explizit None übergeben"
+    return f"Wert: {value!r}"
+
+print(describe())       # Kein Wert übergeben
+print(describe(None))   # Explizit None übergeben
+print(describe(0))      # Wert: 0
+```
+
+*Comprehensions* und die verwandten Generatorausdrücke können jetzt entpacken: * führt mehrere Listen oder Mengen zu einer zusammen, ** mehrere Wörterbücher. 
+
+```python
+# Python 3.15
+# * führt mehrere Listen oder Mengen zu einer zusammen
+batches = [[1, 2], [3], [4, 5]]
+
+flat = [*batch for batch in batches]
+print(flat)  # [1, 2, 3, 4, 5]
+
+groups = [{"python", "linux"}, {"python", "windows"}]
+all_tags = {*group for group in groups}
+print(sorted(all_tags))  # ['linux', 'python', 'windows'] 
+
+
+# Python 3.15 
+# mehrere Konfigurationsebenen lassen sich kompakt kombinieren
+layers = [
+    {"host": "localhost", "port": 8000},
+    {"port": 9000},
+    {"debug": True},
+]
+
+config = {**layer for layer in layers}
+print(config)
+# {'host': 'localhost', 'port': 9000, 'debug': True}
+```
+
+### UTF-8
+
+Python 3.15 aktiviert den UTF-8 Modus standardmäßig. Textoperationen ohne ausdrücklich angegebene Kodierung verwenden dadurch UTF-8.
+
+### Profiler
+
+Profiler messen, wo ein Programm seine Laufzeit verbringt. Python ordnet seine eingebauten Werkzeuge dafür neu. Das Paket `profiling` bündelt unterschiedliche Verfahren unter einem gemeinsamen Namen.
+
+Tracing verfolgt Funktionsaufrufe und liefert genaue Aufrufzahlen. Sampling nimmt Stichproben des Aufrufstapels, um zeitintensive Programmstellen zu finden.
+
+```bash
+sudo python3.15 -m profiling.sampling run analyse.py
+sudo python3.15 -m profiling.sampling attach 12345
+
+sudo python3.15 -m profiling.sampling run --flamegraph -o profile.html analyse.py 
+```
+
+### Just-in-time-Compiler
+
+Der experimentelle Just-in-time-Compiler wurde überarbeitet. Er lässt sich mit der Umgebungsvariable *PYTHON_JIT = 1* aktivieren. 
+
 ## Bibliotheken
 
 ### TKinter
@@ -1609,7 +1716,7 @@ Eine mathematische Python-Bibliothek.
 
 Version 2 von NumPy wurde im Juni 2024 veröffentlicht. NumPy2 enthält u.a. Verbesserungen bei Strings, eine neue Array API und FFTs lassen sich effizienter ausführen. Außerdem gibt es eine Aktualisierung bei den Scalar Promotion Types. 
 
-### SciPy	
+### SciPy
 
 ### Matplotlib
 
@@ -1645,14 +1752,15 @@ PyTorch ist das wohl populärste Framework, um künstliche neuronale Netze zu de
 
 Pandas ist eine der am häufigsten verwendeten Python-Bibliotheken im Bereich Datenanalyse, -manipulation und -visualisierung. Es kann Daten aus verschiedenen Quellen wie JSON-, CSV-, Excel- und SQL-Dateien lesen. 
 Hervorzuhebende Eigenschaften von Pandas sind: 
+
 - Einfache Datenverarbeitung
-Pandas kann Daten aus einer Vielzahl von Quellen lesen und in ein einheitliches Format umwandeln. 
+  Pandas kann Daten aus einer Vielzahl von Quellen lesen und in ein einheitliches Format umwandeln. 
 - Flexibilität bei der Verwaltung von Daten
-Daten können gefiltert, sortiert, gruppiert und transformiert werden. 
+  Daten können gefiltert, sortiert, gruppiert und transformiert werden. 
 - Effektive Datenanalyse 
-Die Bibliothek wurde entwickelt, um große Datenmengen parallel zu verarbeiten. 
+  Die Bibliothek wurde entwickelt, um große Datenmengen parallel zu verarbeiten. 
 - Flexibilität bei der Visualisierung von Daten
-Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
+  Pandas beinhaltet eine große Anzahl von Diagrammtypen zur Visualisierung wie Boxplots, Balkendiagramme und Streudiagramme. 
 
 ## Verschiedenes
 
@@ -1690,7 +1798,7 @@ if __name__ == '__main__':
 
 
 
-## Literatur  
+## Literatur
 
 [1] Python – Das umfassende Handbuch, <http://openbook.galileocomputing.de/python/>, abgerufen am 18. März 2014
 
@@ -1754,10 +1862,4 @@ if __name__ == '__main__':
 
 [31] Python 3.13: Bessere interaktive Shell und endlich Multithreading ohne GIL, https://www.heise.de/news/Python-3-13-Bessere-interaktive-Shell-und-endlich-Multithreading-ohne-GIL-9968435.html, abgerufen am 3.10.2025
 
-
-
-
-
-
-
-  
+[32] Python 3.15 erschienen: Faule Importe, UTF-8 und neue Datentypen, [Python 3.15](https://www.heise.de/news/Python-3-15-erschienen-Faule-Importe-UTF-8-und-neue-Datentypen-11483795.html), abgerufen am 13.10.2026
